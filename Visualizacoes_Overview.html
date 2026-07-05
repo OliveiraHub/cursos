@@ -1,0 +1,2367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Guia de estudo — Visualizações no Power BI: tipos de gráfico, mapas, cards, slicers, formatação e recursos avançados.">
+<link rel="icon" type="image/png" href="images/logo.png">
+<title>Visualizações no Power BI — Guia de Estudo</title>
+<!-- Barlow (Google Fonts) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- CSS compartilhado -->
+<link rel="stylesheet" href="power-bi.css">
+<style>
+/* CSS específico deste curso */
+</style>
+</head>
+<body>
+
+<header>
+  <img src="images/logo.png" class="header-logo" alt="Logo Power BI">
+  <div>
+    <h1>Visualizações no Power BI</h1>
+  </div>
+  <a href="PowerBI_Home.html" class="hub-link">← Home</a>
+</header>
+
+<div class="breadcrumb">
+  <a href="PowerBI_Home.html">Home</a>
+  <span class="bc-sep">›</span>
+  <span>Visualizações no Power BI</span>
+  <span class="bc-sep">›</span>
+  <span id="bc-page">Bem-vindo</span>
+</div>
+
+<div class="container">
+  <aside id="sidebar">
+    <div class="nav-group">
+      <div class="nav-group-header" onclick="toggleGroup(this)">Fundamentos de Visualização <span>▾</span></div>
+      <div class="nav-group-body">
+        <button class="nav-btn" data-page="1"><span class="dot pending" data-page="1"></span> Visão geral de visualizações</button>
+        <button class="nav-btn" data-page="2"><span class="dot pending" data-page="2"></span> Gráficos de tendência</button>
+        <button class="nav-btn" data-page="3"><span class="dot pending" data-page="3"></span> Parte-todo e distribuição</button>
+      </div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-header" onclick="toggleGroup(this)">Tabelas e Indicadores <span>▾</span></div>
+      <div class="nav-group-body">
+        <button class="nav-btn" data-page="4"><span class="dot pending" data-page="4"></span> Tabelas e matrizes</button>
+        <button class="nav-btn" data-page="5"><span class="dot pending" data-page="5"></span> Cards, KPIs e gauges</button>
+      </div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-header" onclick="toggleGroup(this)">Mapas <span>▾</span></div>
+      <div class="nav-group-body">
+        <button class="nav-btn" data-page="6"><span class="dot pending" data-page="6"></span> Mapas</button>
+        <button class="nav-btn" data-page="7"><span class="dot pending" data-page="7"></span> Azure Maps</button>
+      </div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-header" onclick="toggleGroup(this)">Visuais Especiais <span>▾</span></div>
+      <div class="nav-group-body">
+        <button class="nav-btn" data-page="8"><span class="dot pending" data-page="8"></span> Visuais com IA</button>
+        <button class="nav-btn" data-page="9"><span class="dot pending" data-page="9"></span> Slicers</button>
+        <button class="nav-btn" data-page="10"><span class="dot pending" data-page="10"></span> Outros visuais</button>
+      </div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-header" onclick="toggleGroup(this)">Formatação <span>▾</span></div>
+      <div class="nav-group-body">
+        <button class="nav-btn" data-page="11"><span class="dot pending" data-page="11"></span> Formatação básica</button>
+        <button class="nav-btn" data-page="12"><span class="dot pending" data-page="12"></span> Formatação condicional e tooltips</button>
+        <button class="nav-btn" data-page="13"><span class="dot pending" data-page="13"></span> Strings de formato e rótulos</button>
+      </div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-header" onclick="toggleGroup(this)">Recursos Avançados <span>▾</span></div>
+      <div class="nav-group-body">
+        <button class="nav-btn" data-page="14"><span class="dot pending" data-page="14"></span> Recursos avançados de visual</button>
+        <button class="nav-btn" data-page="15"><span class="dot pending" data-page="15"></span> Visuais personalizados</button>
+      </div>
+    </div>
+  </aside>
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+  <main>
+    <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu">☰</button>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+
+    <section class="page-section" id="page-1">
+  <h1>Visão geral de visualizações</h1>
+
+  <p>Visualizações, ou <strong>visuais</strong>, são os blocos de construção dos relatórios do Power BI. Elas transformam os dados e cálculos DAX do seu modelo semântico em insights que ajudam a entender padrões, tendências e relações nos dados. Os visuais de um relatório interagem entre si por meio de filtragem cruzada e realce cruzado, criando uma experiência dinâmica e totalmente interativa. Também é possível usar drillthrough para explorar outras páginas ou relatórios relacionados.</p>
+
+  <div class="info-box">
+    <strong>Aplica-se a:</strong> Power BI Desktop e Power BI service.
+  </div>
+
+  <h2 id="categorias-de-visuais">Categorias de visuais</h2>
+  <p>O Power BI oferece uma grande variedade de visuais prontos, cada um pensado para um cenário e tipo de dado específico. Conhecer as categorias ajuda a escolher rapidamente o visual certo:</p>
+
+  <div class="capability-grid">
+    <div class="capability-card">
+      <h4>Comparação e tendência</h4>
+      <p>Gráficos de colunas/barras, linhas, área, combinados, faixa (ribbon) e cascata (waterfall) — comparam categorias ou acompanham mudanças ao longo do tempo.</p>
+    </div>
+    <div class="capability-card">
+      <h4>Parte-todo</h4>
+      <p>Gráficos de pizza/rosca, treemaps e funil — mostram como partes individuais contribuem para um total.</p>
+    </div>
+    <div class="capability-card">
+      <h4>Distribuição e relação</h4>
+      <p>Gráficos de dispersão, bolha e dot plot — revelam correlações, agrupamentos e padrões entre variáveis.</p>
+    </div>
+    <div class="capability-card">
+      <h4>Tabelas e matrizes</h4>
+      <p>Exibem dados detalhados em linhas e colunas, ideais para comparações quantitativas exatas.</p>
+    </div>
+    <div class="capability-card">
+      <h4>Mapas</h4>
+      <p>Exibem dados geográficos e espaciais em diferentes tipos de mapa.</p>
+    </div>
+    <div class="capability-card">
+      <h4>Cartões, KPIs e indicadores</h4>
+      <p>Cartões, KPIs, medidores (gauges) e o visual de Metas destacam valores-chave e o progresso em relação a objetivos.</p>
+    </div>
+    <div class="capability-card">
+      <h4>Visuais com IA</h4>
+      <p>Árvore de decomposição, principais influenciadores, narrativa inteligente e detecção de anomalias usam IA para explorar os dados.</p>
+    </div>
+    <div class="capability-card">
+      <h4>Outros</h4>
+      <p>Segmentações de dados (slicers), imagens, caixas de texto e formas, botões e navegadores, relatório paginado, Perguntas e Respostas (Q&amp;A), visuais R/Python e Power Apps.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    Alguns visuais estão disponíveis em versão prévia (preview) e podem mudar antes de ficarem geralmente disponíveis. Para habilitá-los no Power BI Desktop, acesse <em>Arquivo &gt; Opções e configurações &gt; Opções &gt; Recursos de versão prévia</em>.
+  </div>
+
+  <h2 id="escolhendo-o-visual-certo">Escolhendo o visual certo</h2>
+  <p>Ao selecionar um visual, considere:</p>
+  <ul>
+    <li><strong>Tipo de dado:</strong> categórico, numérico, temporal ou geográfico.</li>
+    <li><strong>Objetivo:</strong> comparar valores, mostrar tendências, exibir relações ou acompanhar progresso.</li>
+    <li><strong>Público:</strong> qual nível de detalhe as pessoas que vão consumir o relatório precisam?</li>
+    <li><strong>Espaço disponível:</strong> alguns visuais funcionam melhor em áreas pequenas, outros exigem mais espaço.</li>
+  </ul>
+
+  <h2 id="personalizar-formatacao">Personalizando a aparência dos visuais</h2>
+  <p>Os <strong>temas de relatório</strong> aplicam uma formatação consistente (cores, fontes, planos de fundo) a todos os visuais de uma vez. É possível usar temas prontos, personalizá-los ou criar os seus e exportá-los como arquivo JSON para reutilizar em outros relatórios.</p>
+  <p>Cada visual também pode ser formatado individualmente pelo <strong>painel Formatar</strong>. A formatação aplicada diretamente a um visual tem prioridade sobre o tema do relatório.</p>
+
+  <div class="callout">
+    <span class="callout-icon">💡</span>
+    <div>Muitas propriedades visuais, incluindo cores, podem ser controladas pelos próprios dados usando <strong>formatação condicional</strong> — por regras, valores de campo ou escalas de cor. Isso é útil para destacar status, criar efeitos de mapa de calor e assim por diante.</div>
+  </div>
+
+  <h2 id="recursos-analiticos">Tooltips, cálculos visuais e Analytics</h2>
+  <ul>
+    <li><strong>Tooltips:</strong> por padrão mostram os valores do ponto de dados ao passar o mouse, mas podem ser personalizados com campos e medidas adicionais. É possível criar também <span class="tooltip-wrap"><span class="tooltip-term">tooltips de página de relatório</span><span class="tooltip-box">Uma página inteira do relatório exibida como tooltip ao passar o mouse sobre um ponto de dado, mostrando gráficos e KPIs relacionados sem sair da visão atual.</span></span> para um contexto mais rico.</li>
+    <li><strong>Cálculos visuais:</strong> permitem criar cálculos DAX diretamente sobre um visual, operando no contexto específico das linhas e colunas daquele visual — úteis para totais em execução, médias móveis, percentual do total e classificações sem precisar dominar contexto de filtro complexo.</li>
+    <li><strong>Painel Analytics:</strong> adiciona linhas de referência (constante, média, mínimo, máximo, mediana, percentil), previsão (forecasting) para dados de série temporal e detecção de anomalias.</li>
+    <li><strong>Pequenos múltiplos (small multiples):</strong> dividem um visual em várias versões menores, uma para cada valor de um campo escolhido — útil para comparar padrões entre categorias lado a lado (também chamado de trellis ou lattice chart).</li>
+  </ul>
+
+  <h2 id="trabalhar-com-visuais">Trabalhando com visuais</h2>
+
+  <h3>Mover, redimensionar e focar</h3>
+  <p>Para mover um visual, selecione qualquer área dele e arraste até a nova posição. Para redimensionar, selecione o visual para exibir a borda e arraste as alças do quadro. Para ver mais detalhes, use o <strong>Modo de foco</strong> (ícone de expansão no cabeçalho do visual).</p>
+
+  <h3>Copiar e colar visuais</h3>
+  <p>Visuais podem ser copiados dentro do mesmo relatório (Ctrl+C / Ctrl+V) para reutilizar elementos entre páginas. No Power BI service e no aplicativo móvel, também é possível copiar uma <strong>imagem estática</strong> do visual (com legenda e metadados, como filtros aplicados e carimbo de data/hora) e colar em outros aplicativos, como Word, PowerPoint ou OneNote.</p>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Considerações sobre copiar e colar <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ul>
+        <li>Administradores e proprietários de conteúdo podem desabilitar a cópia como imagem para um visual específico ou para todo o tenant (em Configurações de exportação e compartilhamento).</li>
+        <li>Suporte limitado para mapas ESRI e outros visuais de mapa, visuais R e Python, Power Apps, segmentações de dados, visuais licenciados, visuais personalizados não certificados e visuais com temas/cores aplicados.</li>
+        <li>Visualizações em dashboards não podem ser copiadas e coladas em relatórios (ou outros dashboards).</li>
+        <li>Ao copiar uma tabela que exige rolagem, apenas a parte visível no momento da cópia é incluída — para capturar tudo, use a exportação de dados.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Exportar dados para o Excel</h3>
+  <p>Se você tiver permissão sobre os dados, pode exportar o que alimenta a visualização para um arquivo <code>.csv</code> ou <code>.xlsx</code>, a partir de um bloco de dashboard ou de um visual de relatório (<em>Mais opções (...) &gt; Exportar dados</em>).</p>
+
+  <div class="goal-list">
+    <p><strong>Opções de exportação controladas pelo designer do relatório:</strong></p>
+    <ul>
+      <li>Permitir exportar apenas dados resumidos.</li>
+      <li>Permitir exportar dados resumidos e dados subjacentes (underlying data).</li>
+      <li>Não permitir nenhuma exportação.</li>
+    </ul>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Limites e considerações da exportação <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ul>
+        <li>Máximo de 30.000 linhas para exportação em <code>.csv</code> (sem linhas de subtotal/total) e 150.000 linhas para <code>.xlsx</code> (podendo ser menor conforme limites de consulta).</li>
+        <li>Para matrizes, o limite de 150.000 se refere a <em>interseções de dados</em> (linhas × colunas de valor), não apenas linhas.</li>
+        <li>A exportação de "Dados subjacentes" não funciona se as tabelas não tiverem chave única, se estiver desabilitada por um administrador, ou se a opção "Mostrar itens sem dados" estiver ativada no visual.</li>
+        <li>Em DirectQuery, o limite é de 16 MB de dados não compactados, o que pode resultar em menos linhas do que o máximo.</li>
+        <li>Rótulos de sensibilidade (Microsoft Purview) aplicam suas proteções também aos arquivos exportados.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Mostrar dados subjacentes como tabela</h3>
+  <p>Ao selecionar <strong>Mais ações (...) &gt; Mostrar como uma tabela</strong>, o Power BI exibe abaixo (ou ao lado) do visual os dados usados para criá-lo. No Power BI Desktop, o recurso <strong>Mostrar registros</strong> vai um passo além, exibindo as linhas reais do modelo semântico.</p>
+
+  <h3 id="mostrar-itens-sem-dados">Mostrar itens sem dados</h3>
+  <p>Por padrão, o Power BI omite linhas e colunas cuja medida resulte em valor em branco. A opção <strong>Mostrar itens sem dados</strong> (disponível no menu de contexto de cada campo, nos poços de campo como Eixo X, Eixo Y, Linhas, Colunas ou Legenda) força a exibição dessas combinações vazias.</p>
+  <div class="callout warning">
+    <span class="callout-icon">⚠️</span>
+    <div>Ativar essa opção pode impactar negativamente o desempenho, causando lentidão na renderização ou timeout em exportações. Quando ativada para um campo, ela também é automaticamente ativada para os demais campos do mesmo bucket ou hierarquia.</div>
+  </div>
+
+  <h3 id="mostrar-valor-como">Mostrar valor como (percentuais)</h3>
+  <p>O recurso <strong>Mostrar valor como</strong> converte valores brutos em percentuais, útil para dashboards executivos e comparações relativas. Disponível ao clicar na seta suspensa de um campo em Valores, em matrizes, tabelas e diversos gráficos.</p>
+
+  <table class="term-table">
+    <thead>
+      <tr><th>Opção</th><th>O que faz</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Sem cálculo</td><td>Mostra o valor bruto (comportamento padrão).</td></tr>
+      <tr><td>Percentual do total geral</td><td>Cada valor como percentual do total de todas as células.</td></tr>
+      <tr><td>Percentual do total da coluna (só matriz)</td><td>Cada valor como percentual do total da sua coluna.</td></tr>
+      <tr><td>Percentual do total da linha (só matriz)</td><td>Cada valor como percentual do total da sua linha.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    Você pode adicionar a mesma medida várias vezes na área de Valores e aplicar uma opção diferente de "Mostrar valor como" a cada uma, permitindo comparações lado a lado (valor bruto e percentual, por exemplo).
+  </div>
+
+  <h2 id="solucao-de-problemas">Solução de problemas comuns</h2>
+  <p>Alguns comportamentos que costumam gerar dúvidas ao trabalhar com visuais:</p>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Segmentações e filtros <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ul>
+        <li>O botão <strong>Limpar</strong> (ícone de borracha) só aparece ao passar o mouse sobre o cabeçalho da segmentação; nas segmentações (novo), ele fica no cabeçalho do contêiner visual.</li>
+        <li><strong>Filtros persistentes</strong> salvam automaticamente as seleções do usuário entre sessões — desative essa opção em Configurações do relatório se quiser que todos comecem do mesmo estado.</li>
+        <li>"Selecionar tudo" na verdade envia apenas os itens desmarcados como filtro negado (mais eficiente que enviar milhares de valores).</li>
+        <li>Parâmetros What if aceitam até 1.000 valores únicos; acima disso, os valores são amostrados, perdendo granularidade.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Datas, fontes e cores <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ul>
+        <li>Alguns elementos visuais (eixos, segmentações) usam a configuração regional do navegador para exibir datas, e não a formatação definida no modelo.</li>
+        <li>Fontes da Microsoft podem não renderizar corretamente no macOS por não virem instaladas por padrão; considere fontes disponíveis em ambas as plataformas.</li>
+        <li>Fontes personalizadas precisam estar instaladas na máquina de cada usuário, pois não são incorporadas ao relatório.</li>
+        <li>Cores de séries dinâmicas são atribuídas por ordem de chegada, o que pode gerar inconsistência entre visualizações — defina cores explicitamente para séries dinâmicas quando a consistência for importante.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Mapas, tooltips e imagens <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ul>
+        <li>Bing Maps está sendo descontinuado; a Microsoft recomenda migrar para Azure Maps.</li>
+        <li>Tooltips de página de relatório não aparecem em blocos de dashboard.</li>
+        <li>URLs de imagem precisam ser acessíveis anonimamente (sem exigir login) — imagens hospedadas no SharePoint ou OneDrive geralmente não funcionam.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" id="page-2">
+  <h1>Gráficos de tendência</h1>
+
+  <p>Esta página reúne os gráficos usados para comparar categorias e acompanhar mudanças ao longo do tempo: colunas/barras, linhas, área, combinados, faixa (ribbon) e cascata (waterfall).</p>
+
+  <table class="term-table">
+    <thead>
+      <tr><th>Gráfico</th><th>Quando usar</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Colunas / Barras</td><td>Comparar valores entre categorias. Colunas para séries temporais; barras quando os nomes das categorias são longos.</td></tr>
+      <tr><td>Linhas</td><td>Enfatizar a forma geral de uma tendência ao longo de um eixo contínuo (tempo).</td></tr>
+      <tr><td>Área</td><td>Enfatizar a magnitude da mudança e totais acumulados (quando empilhada).</td></tr>
+      <tr><td>Combinado</td><td>Comparar duas medidas com escalas diferentes no mesmo eixo de categorias.</td></tr>
+      <tr><td>Faixa (ribbon)</td><td>Mostrar como o ranking das categorias muda ao longo do tempo.</td></tr>
+      <tr><td>Cascata (waterfall)</td><td>Mostrar um total em execução conforme valores são somados ou subtraídos.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="graf-colunas-barras">Gráfico de colunas e barras</h2>
+  <p>O gráfico de colunas (barras verticais) compara valores numéricos entre categorias — cada coluna representa uma categoria e a altura representa o valor. É um dos visuais mais versáteis, muito usado para métricas financeiras (receita, despesas, lucro) e de marketing.</p>
+  <p>Existem três variações: <strong>empilhado</strong>, <strong>agrupado (clustered)</strong> e <strong>100% empilhado</strong>.</p>
+  <div class="goal-list">
+    <p><strong>Requisitos mínimos de campo:</strong></p>
+    <ul>
+      <li>Um campo no Eixo X e uma medida no Eixo Y; ou</li>
+      <li>Um campo no Eixo X, uma medida no Eixo Y e exatamente um campo na Legenda; ou</li>
+      <li>Um ou mais campos no Eixo X e múltiplas medidas no Eixo Y (nesse caso, não é possível usar Legenda).</li>
+    </ul>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Recursos interativos e boas práticas — Colunas/Barras <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ul>
+        <li><strong>Drill (detalhamento):</strong> com uma hierarquia no Eixo X, use os ícones de drill up/down, "ir para o próximo nível" e "expandir um nível" para navegar entre resumo e detalhe.</li>
+        <li><strong>Zoom slider:</strong> disponível quando o Eixo X é do tipo <em>Contínuo</em>; permite ajustar dinamicamente o intervalo visível dos eixos X e Y.</li>
+        <li><strong>Formatação condicional:</strong> pode ser aplicada por gradiente, regras ou valor de campo (medida personalizada), tudo pelo ícone <em>fx</em> ao lado da opção Cor.</li>
+        <li><strong>Limitações:</strong> em eixo categórico com datas, a barra de rolagem sempre começa à esquerda (use eixo contínuo para começar pela data mais antiga); não há controle manual de intervalos no eixo contínuo; pequenos múltiplos não suportam eixo hierárquico.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="graf-linhas">Gráfico de linhas</h2>
+  <p>Exibe dados contínuos como pontos conectados por linhas — ideal para tendências, sazonalidade e mudanças de longo prazo. O Power BI oferece quatro variantes: linha, área, área empilhada e área 100% empilhada.</p>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Personalização e recursos — Linhas <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ul>
+        <li><strong>Múltiplas séries:</strong> estáticas (várias medidas no Eixo Y) ou dinâmicas (um campo na Legenda, uma linha por valor único).</li>
+        <li><strong>Eixo Y secundário:</strong> útil para comparar medidas com escalas muito diferentes.</li>
+        <li><strong>Rótulos de série (series labels):</strong> colocam o nome da categoria diretamente no fim de cada linha, com linhas-guia (leader lines) — alternativa útil ao gráfico com muitas linhas sobrepostas.</li>
+        <li><strong>Interpolação:</strong> reta, suave (curva monótona ou cardinal) ou em degraus (step).</li>
+        <li><strong>Pequenos múltiplos:</strong> dividem o gráfico em um grid, um painel por categoria, com opção de eixo Y compartilhado ou independente por painel.</li>
+        <li><strong>Limitações:</strong> não há formatação condicional nativa para linhas ou marcadores; segmentação de linha (cor por trecho) só funciona com série única; Anomaly detection e Forecasting exigem série única e eixo X contínuo.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="graf-area">Gráfico de área</h2>
+  <p>Baseado no gráfico de linhas, com a área entre o eixo e a linha preenchida — enfatiza a magnitude da mudança e o total acumulado ao longo do tempo (por exemplo, lucro acumulado).</p>
+  <div class="callout warning">
+    <span class="callout-icon">⚠️</span>
+    <div>Gráficos de área básicos não são eficazes para comparar mais de duas ou três séries, pois a sobreposição (transparência) dificulta a leitura. Para mais de três medidas, prefira gráfico de linhas (tendência) ou treemap (volume). Além disso, realçar uma área não filtra cruzadamente outros visuais da página — mas a área pode ser alvo de filtragem cruzada disparada por outros visuais.</div>
+  </div>
+
+  <h2 id="graf-combinado">Gráfico combinado (combo)</h2>
+  <p>Combina um gráfico de colunas e um de linhas em um único visual, permitindo comparar medidas com faixas de valores diferentes usando um ou dois eixos Y.</p>
+  <div class="goal-list">
+    <p><strong>Bons cenários de uso:</strong></p>
+    <ul>
+      <li>Comparar medidas com escalas muito diferentes (ex.: valor de vendas em R$ vs. margem em %).</li>
+      <li>Verificar se uma medida atinge a meta definida por outra.</li>
+      <li>Economizar espaço no canvas ao unir dois gráficos relacionados.</li>
+    </ul>
+  </div>
+  <p>Ao usar dois eixos, é possível sincronizá-los para compartilhar uma única escala (definindo Mínimo e Máximo como Automático e ocultando os rótulos do eixo secundário), facilitando a comparação direta entre colunas e linha.</p>
+
+  <h2 id="graf-faixa">Gráfico de faixa (ribbon)</h2>
+  <p>Mostra qual categoria tem o maior valor (rank) em cada período, com a faixa de maior valor sempre exibida no topo. É eficaz para visualizar mudanças de posição/ranking ao longo do tempo — por exemplo, qual categoria de produto lidera as vendas mês a mês.</p>
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Formatação — Faixa <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ul>
+        <li><strong>Espaçamento:</strong> controla o espaço entre faixas (percentual da altura máxima da coluna).</li>
+        <li><strong>Corresponder cor da série:</strong> quando desativado, as faixas ficam cinza.</li>
+        <li><strong>Transparência:</strong> padrão de 30%.</li>
+        <li>Como não há rótulos no eixo Y, considere ativar <strong>Rótulos de dados</strong> para facilitar a leitura dos valores.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="graf-cascata">Gráfico de cascata (waterfall)</h2>
+  <p>Mostra um total em execução conforme valores positivos e negativos são somados — ótimo para entender como um valor inicial é afetado por uma série de mudanças, como contribuições para o lucro líquido.</p>
+  <div class="goal-list">
+    <p><strong>Bons cenários de uso:</strong></p>
+    <ul>
+      <li>Auditar as principais mudanças que contribuem para um valor total.</li>
+      <li>Mostrar receita por fonte até chegar ao lucro (ou prejuízo) total.</li>
+      <li>Ilustrar headcount inicial e final de uma empresa ao longo do ano.</li>
+      <li>Acompanhar receitas e despesas mensais e o saldo em execução de uma conta.</li>
+    </ul>
+  </div>
+  <p>O campo <strong>Breakdown</strong> (detalhamento) permite dividir cada valor total em segmentos por uma dimensão adicional (por exemplo, território). A configuração <strong>Máximo de detalhamentos</strong> limita quantas categorias aparecem individualmente por ponto, agrupando o restante em "Outros".</p>
+</section>
+
+<section class="page-section" id="page-3">
+  <h1>Parte-todo e distribuição</h1>
+
+  <p>Esta página cobre dois grupos de visuais: os que mostram como partes contribuem para um todo (pizza, rosca, treemap e funil) e os que exploram distribuição e relações entre variáveis (dispersão, bolha, dot plot e dispersão de alta densidade).</p>
+
+  <h2 id="graf-pizza-rosca">Gráficos de pizza e rosca</h2>
+  <p>O gráfico de <strong>pizza</strong> exibe dados como fatias de um círculo, cada fatia representando a proporção de uma categoria no total. O gráfico de <strong>rosca (donut)</strong> é uma variação com o centro vazio, útil para incluir um rótulo ou ícone.</p>
+
+  <div class="goal-list">
+    <p><strong>Quando usar:</strong></p>
+    <ul>
+      <li>Mostrar relações de percentual ou proporção em um conjunto de dados pequeno (poucas categorias).</li>
+      <li>Explorar dados interativamente por meio de hierarquias com drill down/up.</li>
+    </ul>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Boas práticas e limitações — Pizza/Rosca <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ul>
+        <li><strong>Número máximo de fatias:</strong> não há limite rígido, mas por legibilidade e desempenho, limite a 3–6 fatias.</li>
+        <li><strong>Formatação condicional:</strong> não é oficialmente suportada nesses visuais; um workaround não oficial é aplicar a regra em um gráfico de colunas e depois convertê-lo em pizza/rosca.</li>
+        <li><strong>Bordas:</strong> use com moderação — bordas muito grossas dificultam distinguir fatias, especialmente com baixo contraste de cor.</li>
+        <li>Suportam filtragem cruzada e realce cruzado com outros visuais da página, além de drill down/up quando há uma hierarquia na Legenda.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="graf-treemap">Treemap</h2>
+  <p>Exibe dados hierárquicos como um conjunto de retângulos aninhados: cada ramo (branch node) é um retângulo colorido, e dentro dele ficam retângulos menores (leaf nodes). O tamanho de cada retângulo é definido pela medida, e os retângulos são organizados do maior (canto superior esquerdo) para o menor (canto inferior direito).</p>
+
+  <div class="goal-list">
+    <p><strong>Quando usar:</strong></p>
+    <ul>
+      <li>Exibir grandes volumes de dados hierárquicos que não caberiam bem em um gráfico de barras.</li>
+      <li>Ilustrar proporções entre partes e o todo, usando tamanho e cor.</li>
+      <li>Identificar padrões, outliers e os maiores contribuintes em cada nível da hierarquia.</li>
+    </ul>
+  </div>
+
+  <div class="callout">
+    <span class="callout-icon">💡</span>
+    <div>Os recursos <strong>Saturação de cor</strong> e <strong>Detalhes</strong> não podem ser usados ao mesmo tempo — para aplicar formatação condicional por escala de cor, remova o campo de Detalhes primeiro.</div>
+  </div>
+
+  <h2 id="graf-funil">Gráfico de funil</h2>
+  <p>Visualiza um processo linear com estágios sequenciais e conectados — o exemplo clássico é um funil de vendas (Lead &gt; Lead Qualificado &gt; Prospect &gt; Contrato &gt; Fechamento). O formato do funil revela rapidamente a saúde do processo: normalmente o primeiro estágio (intake) é o maior, e cada estágio seguinte é menor que o anterior.</p>
+
+  <div class="goal-list">
+    <p><strong>Quando usar:</strong></p>
+    <ul>
+      <li>Acompanhar processos sequenciais com pelo menos quatro estágios.</li>
+      <li>Calcular potencial (receita, vendas, negócios) por estágio.</li>
+      <li>Calcular e acompanhar taxas de conversão e retenção.</li>
+      <li>Revelar gargalos em um processo linear, como carrinho de compras ou campanhas de marketing.</li>
+    </ul>
+  </div>
+
+  <p>Ao passar o mouse sobre um estágio, o tooltip mostra o nome do estágio, a quantidade atual, a <span class="tooltip-wrap"><span class="tooltip-term">taxa de conversão geral</span><span class="tooltip-box">Percentual em relação ao primeiro estágio (intake) do funil.</span></span> e o valor estágio a estágio (drop rate), isto é, o percentual em relação ao estágio anterior.</p>
+
+  <h2 id="graf-dispersao-bolha-dotplot">Dispersão, bolha e dot plot</h2>
+  <p>Esses três visuais compartilham a mesma base: exibir pontos de dados na interseção de dois valores numéricos (eixo X e Y), revelando correlações, agrupamentos e outliers.</p>
+
+  <table class="term-table">
+    <thead>
+      <tr><th>Visual</th><th>Diferencial</th><th>Quando usar</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Dispersão (scatter)</td><td>Dois eixos numéricos</td><td>Mostrar relação entre duas variáveis, comparar grandes volumes de pontos independente do tempo.</td></tr>
+      <tr><td>Bolha (bubble)</td><td>Adiciona uma terceira dimensão pelo tamanho da bolha</td><td>Enfatizar diferenças de valor visualmente, suportar três séries de dados, apresentar dados financeiros ou por quadrante.</td></tr>
+      <tr><td>Dot plot</td><td>Permite dado categórico no eixo X</td><td>Comparar uma métrica numérica entre categorias, com cada ponto representando um subgrupo (ex.: região).</td></tr>
+    </tbody>
+  </table>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Configuração e boas práticas — Dispersão/Bolha/Dot plot <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ul>
+        <li>O número máximo de pontos de dados exibíveis é <strong>10.000</strong>; ao se aproximar do limite, teste o desempenho antes de publicar.</li>
+        <li>Para bolhas, o campo <strong>Tamanho</strong> controla a escala; em <em>Marcadores &gt; Range scaling</em> você escolhe entre Automático, Magnitude (converte negativos em positivos) ou Intervalo de dados (Data Range).</li>
+        <li>Adicionar um campo categórico ao Eixo X (em vez de numérico) transforma automaticamente o gráfico de dispersão em um dot plot.</li>
+        <li>Suporta linhas de tendência, linhas constantes, min/máx/média/mediana, linhas de percentil e sombreamento de simetria pelo painel Analytics.</li>
+        <li>Se o gráfico mostrar apenas um ponto agregando todos os valores, adicione um campo único (ID ou número de linha) em <strong>Valores</strong> para que o Power BI saiba como plotar cada ponto individualmente.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="graf-dispersao-alta-densidade">Amostragem de alta densidade (high-density scatter)</h3>
+  <p>Quando um gráfico de dispersão tem dezenas de milhares de pontos, o Power BI usa um algoritmo de amostragem para representar os dados de forma significativa sem sobrecarregar a renderização.</p>
+  <ul>
+    <li><strong>Algoritmo padrão:</strong> seleciona a primeira e a última linha e distribui o restante uniformemente até totalizar 3.500 pontos — determinístico, mas pode não representar bem a distribuição real.</li>
+    <li><strong>Amostragem de alta densidade (ativável em Formatar visual &gt; Geral):</strong> elimina sobreposições aumentando gradualmente o raio dos pontos até chegar a cerca de 3.500 pontos exibidos, preservando outliers e a forma geral da distribuição — melhor para representar fielmente onde os dados realmente se concentram.</li>
+  </ul>
+  <div class="callout warning">
+    <span class="callout-icon">⚠️</span>
+    <div>A amostragem de alta densidade é desativada automaticamente (voltando ao algoritmo padrão) quando: "Mostrar itens sem dados" está ativado, há um campo no Eixo de Reprodução (Play Axis), falta o Eixo X ou Y, ou uma linha de proporção (Ratio) do Analytics está em uso. Funciona apenas com modelos importados, DirectQuery ou conexões ao vivo com o Power BI service.</div>
+  </div>
+</section>
+
+<section class="page-section" id="page-4">
+  <h1>Tabelas e matrizes</h1>
+
+  <p>Tabelas e matrizes exibem dados detalhados em linhas e colunas. A tabela é a grade simples de dados; a matriz acrescenta hierarquias e agregação automática, funcionando como uma tabela dinâmica (pivot table).</p>
+
+  <h2 id="tabelas">Tabelas</h2>
+  <p>Uma tabela é uma grade que contém dados relacionados em linhas e colunas, podendo incluir cabeçalhos e uma linha de totais. Funciona bem para comparações quantitativas em que você precisa ver muitos valores de uma única categoria lado a lado.</p>
+
+  <div class="goal-list">
+    <p><strong>Quando usar uma tabela:</strong></p>
+    <ul>
+      <li>Representar dados numéricos por categoria com múltiplas medidas.</li>
+      <li>Exibir dados em formato tabular simples (sem necessidade de hierarquia de linhas e colunas).</li>
+      <li>Revisar e comparar valores exatos, em vez de representações visuais.</li>
+    </ul>
+  </div>
+
+  <h3 id="formatar-tabelas">Formatação de tabelas</h3>
+  <ul>
+    <li><strong>Grade:</strong> linhas de grade horizontais e verticais com cor e espessura configuráveis.</li>
+    <li><strong>Cabeçalhos de coluna:</strong> fonte, tamanho, negrito, cor de fundo, alinhamento e quebra de texto.</li>
+    <li><strong>Coluna específica:</strong> formate uma coluna (ou a linha de total dela) individualmente, escolhendo a série na lista suspensa.</li>
+    <li><strong>Formatação condicional:</strong> ícones, URLs, cor de fundo/fonte e barras de dados (data bars) com base nos valores das células — inclusive para linhas de subtotal e total.</li>
+  </ul>
+
+  <h3 id="copiar-tabela">Copiar valores de tabela</h3>
+  <p>Clicando com o botão direito em uma célula, é possível <strong>Copiar valor</strong> (apenas o dado, sem formatação) de uma única célula, ou <strong>Copiar seleção</strong> para múltiplas células (contíguas ou não, com Ctrl), que preserva a formatação aplicada.</p>
+
+  <h3 id="largura-colunas">Largura de colunas</h3>
+  <p>A largura pode ser ajustada manualmente arrastando a borda do cabeçalho, ou pelo painel Formatar em <em>Visual &gt; Layout &gt; Largura da coluna</em>:</p>
+  <table class="term-table">
+    <thead>
+      <tr><th>Comportamento de auto-ajuste</th><th>Efeito</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Ajustar ao conteúdo (Fit to content)</td><td>Colunas ficam do tamanho necessário para mostrar os dados, se houver espaço.</td></tr>
+      <tr><td>Crescer para caber (Grow to fit)</td><td>Colunas se expandem para preencher o contêiner, distribuindo o espaço sobrando igualmente.</td></tr>
+      <tr><td>Largura fixa (Fixed width)</td><td>Você define uma largura padrão em pixels para todas as colunas (e novas colunas).</td></tr>
+    </tbody>
+  </table>
+  <p>Com <strong>Larguras personalizadas</strong> ativado, cada coluna ganha seu próprio campo de largura (ou aparece em uma lista suspensa, se houver 15 colunas ou mais). Em matrizes com hierarquia nas colunas, ative <strong>Mais granular</strong> para definir a largura de cada combinação de nível individualmente.</p>
+
+  <h3 id="totais-personalizados">Totais personalizados</h3>
+  <p>Por padrão, a linha de total avalia o campo considerando todo o contexto de filtro da página. Com <strong>totais personalizados</strong> (baseados em cálculos visuais), é possível trocar isso facilmente para soma, média, mínimo, máximo, contagem distinta, contagem, ou nenhum — sem precisar escrever DAX.</p>
+  <div class="note">
+    Ao definir um total personalizado, a coluna original recebe o sufixo <code>_Base</code> e fica oculta, enquanto um novo cálculo visual assume o nome original. Use <strong>Redefinir padrão</strong> para reverter tudo. Totais personalizados só existem para colunas numéricas em tabelas e matrizes, e não estão disponíveis no modo Explorar.
+  </div>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Considerações e limitações — Tabelas <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ul>
+        <li>Cada coluna aceita apenas um alinhamento (Automático, Esquerda, Centro, Direita); o modo Automático alinha texto à esquerda e números à direita.</li>
+        <li>Quebras de linha em células só são reconhecidas se a opção <strong>Quebra de texto (Text wrap)</strong> estiver ativada.</li>
+        <li>O Power BI calcula o tamanho máximo das células com base apenas nas 20 primeiras colunas e 50 primeiras linhas — conteúdo além disso pode não ser dimensionado corretamente.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="matriz">Matriz</h2>
+  <p>A matriz é o equivalente do Power BI a uma tabela dinâmica do Excel: organiza dados em linhas e colunas com hierarquias, agrega automaticamente e permite fazer drill down em cada célula. É muito usada em análises de desempenho por região/categoria e em segmentação de mercado.</p>
+
+  <h3 id="criar-matriz">Criando uma matriz</h3>
+  <ol>
+    <li>Selecione o ícone de <strong>Matriz</strong> no painel Visualizações.</li>
+    <li>Adicione campos aos poços <strong>Linhas</strong> (ex.: Ano, depois Trimestre), <strong>Colunas</strong> (ex.: Subcategoria, depois Produto) e <strong>Valores</strong> (ex.: Unidades vendidas).</li>
+    <li>Expanda os cabeçalhos com os ícones "+" para ver todos os níveis da hierarquia, ou ative <strong>Expansão automática</strong> em Cabeçalhos de linha/coluna &gt; Opções para que a matriz já abra totalmente expandida.</li>
+  </ol>
+  <p>Os cabeçalhos de linha ficam <strong>congelados</strong> por padrão (permanecem visíveis ao rolar horizontalmente); é possível descongelar pelo menu de contexto, mas essa alteração é temporária e não é salva para os consumidores do relatório.</p>
+
+  <h3 id="config-formato-matriz">Principais configurações de formato</h3>
+  <table class="term-table">
+    <thead>
+      <tr><th>Configuração</th><th>O que controla</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Estilo (Style)</td><td>Predefinições visuais prontas: Padrão, Nenhum, Minimalista, Cabeçalho em negrito, Linhas alternadas, Condensado, etc.</td></tr>
+      <tr><td>Layout</td><td><strong>Compacto</strong> (rótulos em uma coluna, hierarquia por indentação — economiza espaço), <strong>Estrutura de tópicos (Outline)</strong> (cada nível em sua própria coluna, como uma pivot table tradicional) ou <strong>Tabular</strong> (como Outline, mas sem indentação).</td></tr>
+      <tr><td>Linhas/colunas de grade</td><td>Cor e espessura das linhas horizontais e verticais.</td></tr>
+      <tr><td>Subtotais de linha/coluna</td><td>Ativar/desativar por nível de hierarquia, com opções de rótulo e posição (topo/base).</td></tr>
+      <tr><td>Total geral</td><td>Formatação de texto e fundo, com herança de cor a partir do subtotal quando não definida explicitamente.</td></tr>
+      <tr><td>Coluna específica / Elementos de célula</td><td>Formatação por série: cor de fundo, cor de fonte, barras de dados, ícones, URLs clicáveis e imagens.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <span class="callout-icon">💡</span>
+    <div>Nas configurações de <strong>Linhas em branco</strong>, você pode inserir espaçamento visual entre categorias de nível superior para facilitar a leitura de matrizes com muitos níveis de hierarquia.</div>
+  </div>
+
+  <h3 id="matriz-limitacoes">Considerações e limitações da matriz</h3>
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Ver limitações conhecidas <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ul>
+        <li>Não há suporte para formatação condicional no texto dos cabeçalhos de coluna; para exibir colunas dinamicamente, use parâmetros de campo (field parameters).</li>
+        <li>Não é possível formatar cada nível hierárquico dos cabeçalhos de coluna individualmente — a formatação do nível mais baixo determina o padrão, e os níveis superiores herdam essas configurações.</li>
+        <li>Os recursos de Saturação de cor e Detalhes não podem ser combinados (mesma limitação do treemap).</li>
+        <li>Ao exportar dados de matriz com "Layout atual", o cálculo de interseções de dados (linhas × colunas de valor) pode atingir o limite de exportação rapidamente em matrizes grandes.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section class="page-section" id="page-5">
+  <h1>Cards, KPIs e gauges</h1>
+
+  <p>Nem toda informação precisa de um gráfico. Às vezes, o dado mais importante do seu relatório é um único número — a receita total do mês, o total de unidades vendidas, o percentual de progresso em relação a uma meta. Para esses casos, o Power BI oferece três visuais complementares: o <strong>card</strong> (cartão), o <strong>KPI</strong> e o <strong>gauge radial</strong> (velocímetro). Esta página explica quando usar cada um e como configurá-los.</p>
+
+  <ul class="goal-list">
+    <li>Destacar um número-chave (KPI de negócio) sem exigir que o usuário interprete um gráfico.</li>
+    <li>Mostrar progresso em relação a uma meta ao longo do tempo.</li>
+    <li>Comunicar rapidamente se um indicador está "no azul" ou "no vermelho".</li>
+  </ul>
+
+  <h2 id="card-visual">O visual de card</h2>
+  <p>O card exibe o valor de uma medida em um formato flexível e visualmente atraente. Cada card pode mostrar o valor principal (callout), uma imagem opcional e rótulos de referência com detalhes complementares. É possível exibir vários cards em um único visual e até quebrá-los por categorias.</p>
+
+  <p>Combinar várias medidas e rótulos de referência em um único visual melhora a performance do relatório, pois reduz o tempo de carregamento e otimiza as consultas ao modelo semântico.</p>
+
+  <div class="callout">
+    <strong>Novidade (novembro de 2025):</strong> o novo visual de card tornou-se disponível de forma geral (GA), substituindo os antigos visuais "card único" e "card múltiplo". Relatórios que já usavam os visuais legados continuam funcionando sem alterações, mas o card novo é o recomendado para relatórios criados a partir de agora.
+  </div>
+
+  <h3>Como criar um card</h3>
+  <ol>
+    <li>No painel Visualizações, selecione a guia <strong>Build visual</strong> e escolha o visual <strong>Card</strong>.</li>
+    <li>Arraste uma medida (ou coluna) para o campo <strong>Values</strong>.</li>
+    <li>Adicione quantos valores quiser — cada um vira um novo card dentro do mesmo visual.</li>
+  </ol>
+
+  <h3>Layout do card</h3>
+  <p>Cada card é dividido em até três seções: <em>callout</em> (o valor principal), <em>imagem</em> e <em>rótulos de referência</em>. O painel Formatar visual permite controlar a disposição, o alinhamento e o espaçamento de cada seção, incluindo um layout de colagem dinâmica que destaca uma seção enquanto as outras dividem o espaço restante.</p>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Opções de disposição de múltiplos cards <span class="acc-arrow">&#9662;</span></div>
+    <div class="acc-body">
+      <table class="term-table">
+        <tr><th>Configuração</th><th>Efeito</th></tr>
+        <tr><td>Fixed size</td><td>Define dimensões exatas em pixels para cada card. Se não houver espaço suficiente, aparecem barras de rolagem; os cards não se redimensionam proporcionalmente.</td></tr>
+        <tr><td>Fit to space</td><td>Os cards crescem ou encolhem para preencher o contêiner do visual, de acordo com a quantidade de cards presentes.</td></tr>
+        <tr><td>Multi-category layout</td><td>Controla como cada seção de categoria é organizada (por exemplo, um bloco para "Canadá", outro para "Alemanha"), quando há um campo em Categories.</td></tr>
+      </table>
+      <p><em>Fixed size</em> e <em>Fit to space</em> são mutuamente exclusivos: ativar um desativa o outro.</p>
+    </div>
+  </div>
+
+  <h3>Imagens e categorias no card</h3>
+  <p>O card aceita três tipos de imagem: uma <strong>imagem principal</strong> (destaque grande, ideal para fotos de produto), uma <strong>imagem no callout</strong> (menor, ao lado do valor) e uma <strong>imagem de fundo no cabeçalho de categoria</strong>. Todas podem vir de upload local, URL ou de uma coluna de dados — inclusive imagens SVG geradas dinamicamente por DAX, que reagem aos valores do próprio relatório (por exemplo, uma barra de progresso ou um selo "no prazo" / "atenção").</p>
+
+  <p>Ao arrastar um campo para <strong>Categories</strong>, o card se expande em uma seção por valor de categoria. Os cabeçalhos de categoria são clicáveis e filtram os demais visuais da página — um comportamento útil para permitir que o usuário explore segmentos diretamente pelo card.</p>
+
+  <div class="callout warning">
+    Antes de novembro de 2025 existiam dois visuais separados: <em>card único</em> (uma medida) e <em>card múltiplo</em> (várias medidas). Ambos continuam disponíveis como visuais legados (restaure-os pelo menu de reticências do painel Visualizações), mas não recebem mais novas funcionalidades.
+  </div>
+
+  <h2 id="kpi-visual">Visual de KPI</h2>
+  <p>Um <strong>KPI (Key Performance Indicator)</strong> é um indicador visual que comunica o progresso feito em direção a uma meta mensurável. Use um KPI quando quiser responder duas perguntas centrais:</p>
+  <ul class="goal-list">
+    <li><strong>Medir progresso</strong> — "Estou à frente ou atrás do planejado?"</li>
+    <li><strong>Medir distância até a meta</strong> — "Quão à frente ou atrás estou?"</li>
+  </ul>
+
+  <p>Um KPI precisa de três elementos: uma <strong>medida base</strong> (o valor atual), uma <strong>medida ou valor de meta</strong> (o alvo) e um <strong>eixo de tendência</strong> (geralmente uma coluna de tempo, como mês fiscal).</p>
+
+  <h3>Como criar um KPI</h3>
+  <ol>
+    <li>Arraste a medida indicadora (por exemplo, "Total de unidades vendidas neste ano") para o visual.</li>
+    <li>Adicione o campo de tempo (por exemplo, "Mês fiscal") — ele se tornará o eixo de tendência.</li>
+    <li>Ordene o eixo corretamente (crescente, pela sequência de meses) <strong>antes</strong> de converter para KPI — depois da conversão não é mais possível reordenar.</li>
+    <li>Converta o visual para <strong>KPI</strong> no painel Visualizações.</li>
+    <li>Arraste a medida de meta (por exemplo, "Total de unidades vendidas no ano anterior") para o campo <strong>Target</strong>.</li>
+  </ol>
+
+  <div class="callout warning">
+    Depois de converter o visual em KPI não há opção de ordenar o eixo. Ordene a visualização original <em>antes</em> de convertê-la — caso contrário, será preciso recomeçar do zero.
+  </div>
+
+  <h3>Opções de formatação do KPI</h3>
+  <table class="term-table">
+    <tr><th>Opção</th><th>O que controla</th></tr>
+    <tr><td>Callout value</td><td>Unidades de exibição, casas decimais e formatação de texto do indicador.</td></tr>
+    <tr><td>Icons</td><td>Exibe um ícone (check verde para valores crescentes, alerta vermelho para decrescentes), conforme a direção definida no eixo de tendência.</td></tr>
+    <tr><td>Trend axis</td><td>Mostra o eixo de tendência como plano de fundo do KPI. Permite definir se "valor alto é bom" ou "valor baixo é bom" (por exemplo, receita vs. tempo de espera).</td></tr>
+    <tr><td>Target label</td><td>Mostra o rótulo do valor da meta e a distância até ela.</td></tr>
+    <tr><td>Date</td><td>Mostra a data de referência, com opções de fonte, estilo e cor.</td></tr>
+  </table>
+
+  <p>Se o KPI não mostrar o eixo de tendência, verifique se a coluna usada no campo de valor é contínua e não contém valores nulos.</p>
+
+  <h2 id="radial-gauge">Gauge radial (velocímetro)</h2>
+  <p>Um <strong>gauge radial</strong> usa um arco circular para mostrar como um único valor progride em direção a uma meta ou KPI. A agulha (ou linha de referência) representa o valor-alvo; o sombreado do arco representa o progresso atual. O Power BI distribui todos os valores possíveis uniformemente ao longo do arco, do mínimo (extremo esquerdo) ao máximo (extremo direito).</p>
+
+  <p>É uma ótima escolha para:</p>
+  <ul class="goal-list">
+    <li>Mostrar progresso em relação a uma meta.</li>
+    <li>Representar uma medida percentual, como um KPI.</li>
+    <li>Exibir a "saúde" de uma única métrica, de forma fácil de escanear visualmente.</li>
+  </ul>
+
+  <h3>Como criar um gauge</h3>
+  <ol>
+    <li>Adicione um campo numérico ao visual (por padrão, o Power BI cria um gráfico de colunas).</li>
+    <li>Converta o visual para <strong>Gauge</strong> no painel Visualizações — o valor selecionado passa a ser o <strong>Value</strong> do gauge.</li>
+    <li>Por padrão, o Power BI define o valor atual como o ponto médio do arco: o <strong>Minimum</strong> é 0 e o <strong>Maximum</strong> é o dobro do valor atual.</li>
+  </ol>
+
+  <h3>Adicionar meta (agulha) e ajustar limites</h3>
+  <p>Para exibir uma agulha de meta, arraste um campo para <strong>Target value</strong>. O Power BI calcula automaticamente a posição da agulha e mostra se o valor atual está acima ou abaixo do alvo.</p>
+
+  <p>Os limites do arco (mínimo e máximo) também podem ser ajustados:</p>
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Definindo mínimo, máximo e meta manualmente <span class="acc-arrow">&#9662;</span></div>
+    <div class="acc-body">
+      <ol>
+        <li>Arraste um campo para <strong>Maximum value</strong> (por exemplo, o valor máximo de vendas no modelo) para que o Power BI calcule o limite automaticamente.</li>
+        <li>Ou remova o campo de Maximum/Minimum e, no painel Formatar visual, expanda <strong>Gauge axis</strong> para digitar valores fixos de Min e Max.</li>
+        <li>Para definir a meta manualmente (em vez de calculada), remova o campo de Target value e preencha o campo <strong>Target value</strong> disponível em Gauge axis no painel de formatação.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" id="page-6">
+  <h1>Mapas</h1>
+
+  <p>Visualizações de mapa ajudam a exibir dados geográficos e espaciais, revelando padrões, tendências e relações entre localizações que seriam difíceis de perceber em uma tabela ou gráfico comum. O Power BI oferece várias opções de mapa, cada uma pensada para um cenário diferente.</p>
+
+  <h2 id="visao-geral-mapas">Visão geral: qual mapa usar</h2>
+  <table class="term-table">
+    <tr><th>Tipo de mapa</th><th>Quando usar</th></tr>
+    <tr><td>Azure Maps</td><td>Mapeamento corporativo completo: bolhas, colunas 3D, mapas de calor, camadas de referência, marcadores customizados, tráfego em tempo real. É o visual recomendado atualmente (veja a página dedicada a seguir).</td></tr>
+    <tr><td>Shape map</td><td>Comparar regiões por cor, sem mostrar localizações exatas — ótimo para territórios customizados, plantas de andar ou mapas de assentos.</td></tr>
+    <tr><td>Mapa básico (Bing Maps)</td><td>Bolhas sobre um mapa geográfico, com geocodificação automática de endereços, cidades, estados e países. <strong>Programado para descontinuação</strong> — veja aviso abaixo.</td></tr>
+    <tr><td>Mapa preenchido / choropleth (Bing Maps)</td><td>Sombreamento de regiões para mostrar variação de um valor (ex.: sentimento do cliente por estado). Também programado para descontinuação.</td></tr>
+    <tr><td>ArcGIS Maps</td><td>Análise espacial avançada, dados demográficos, camadas de referência, infográficos e análise de tempo de deslocamento — feito pela Esri.</td></tr>
+  </table>
+
+  <div class="callout warning">
+    O visual clássico do Bing Maps (mapas de bolha e mapas preenchidos) está programado para descontinuação, embora o cronograma ainda não esteja definido. Mapas já existentes em relatórios continuam funcionando. Recomenda-se migrar para o Azure Maps, exceto se sua organização tiver usuários na China, Coreia ou em nuvens governamentais — regiões ainda não totalmente suportadas pelo Azure Maps.
+  </div>
+
+  <h3>Capacidades comuns a todos os tipos de mapa</h3>
+  <ul class="goal-list">
+    <li><strong>Interatividade:</strong> cross-filtering e cross-highlighting com outros visuais da página.</li>
+    <li><strong>Tooltips:</strong> passar o mouse sobre uma localização mostra detalhes dos dados.</li>
+    <li><strong>Zoom e pan:</strong> navegação livre pelo mapa.</li>
+    <li><strong>Formatação:</strong> cores, rótulos, títulos e planos de fundo customizáveis.</li>
+    <li><strong>Categorização automática:</strong> o Power BI reconhece automaticamente campos geográficos (país, estado, cidade etc.).</li>
+  </ul>
+
+  <h2 id="shape-map">Shape maps</h2>
+  <p>O shape map exibe dados sobre qualquer forma que você definir — países, regiões, plantas de andar, mapas de assentos ou fronteiras customizadas. Cada área é colorida conforme os dados, permitindo identificar padrões rapidamente. É possível usar mapas prontos (built-in), fazer upload de arquivos próprios em TopoJSON/GeoJSON, ou referenciar um mapa hospedado via URL.</p>
+
+  <h3>Criando um shape map</h3>
+  <ol>
+    <li>Adicione o visual <strong>Shape map</strong> ao relatório.</li>
+    <li>Arraste um campo geográfico (estado, região, distrito) para <strong>Location</strong>.</li>
+    <li>Arraste uma medida numérica para <strong>Color saturation</strong>.</li>
+    <li>No painel Formatar visual, expanda <strong>Map settings</strong> e escolha o <strong>Map type</strong> (por exemplo, Itália, México, EUA).</li>
+    <li>Escolha a <strong>Projection</strong> (forma de converter o globo 3D em um mapa 2D): Equirretangular, Mercator ou Ortográfica.</li>
+  </ol>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Usando um mapa customizado (TopoJSON/GeoJSON) <span class="acc-arrow">&#9662;</span></div>
+    <div class="acc-body">
+      <p>Além dos mapas prontos, é possível carregar um mapa próprio:</p>
+      <ol>
+        <li>Em Map settings, selecione <strong>Custom map</strong> como Map type.</li>
+        <li>Selecione <strong>Add a map type</strong> e escolha um arquivo <code>.topojson</code> ou <code>.geojson</code>, ou informe uma URL hospedada.</li>
+        <li>Use <strong>View map type key</strong> para conferir se os nomes/IDs das regiões do arquivo batem com os valores do campo Location.</li>
+      </ol>
+      <p><strong>TopoJSON</strong> é uma extensão do GeoJSON que armazena fronteiras compartilhadas apenas uma vez, resultando em arquivos menores. Ambos os formatos são aceitos pelo Shape map.</p>
+      <p>Mapas customizados servem tanto para dados geográficos reais (distritos judiciais, territórios de vendas) quanto para cenários não geográficos, como plantas de andar ou mapas de assentos.</p>
+    </div>
+  </div>
+
+  <h3>Formatação de cores</h3>
+  <table class="term-table">
+    <tr><th>Configuração</th><th>Comportamento</th></tr>
+    <tr><td>Location apenas</td><td>Cor definida por formatação condicional ou individualmente por região.</td></tr>
+    <tr><td>Location + Legend</td><td>Cor distinta para cada valor de legenda.</td></tr>
+    <tr><td>Color saturation</td><td>Gradiente de cor baseado nos valores do campo; mostra automaticamente o valor da medida no tooltip.</td></tr>
+  </table>
+
+  <div class="callout">
+    <strong>Limite importante:</strong> o Shape map plota no máximo 1.500 pontos de dados. Ao trabalhar com países/regiões, use a abreviação de três letras (ISO) para garantir a geocodificação correta — abreviações de duas letras podem não ser reconhecidas.
+  </div>
+
+  <h2 id="filled-maps">Mapas preenchidos (choropleth)</h2>
+  <p>Um mapa preenchido usa sombreamento, tonalidade ou padrões para mostrar como um valor varia proporcionalmente entre regiões geográficas. Cores claras indicam valores menores; cores escuras, valores maiores. É a escolha certa quando você quer:</p>
+  <ul class="goal-list">
+    <li>Exibir informação quantitativa sobre um mapa.</li>
+    <li>Mostrar padrões e relações espaciais.</li>
+    <li>Trabalhar com dados socioeconômicos ou padronizados por região definida (país, estado, condado etc.).</li>
+  </ul>
+
+  <h3>Criando um mapa preenchido</h3>
+  <ol>
+    <li>Adicione um campo geográfico (por exemplo, "Estado") ao visual — por padrão, o Power BI cria um mapa de bolhas comum.</li>
+    <li>Converta o visual para <strong>Filled map</strong> no painel Visualizações.</li>
+    <li>Use o painel Filtros para restringir a área exibida (por exemplo, remover Alasca e Havaí para focar nos EUA continentais).</li>
+    <li>Em Formatar visual, expanda <strong>Fill colors &gt; Colors</strong> e configure um gradiente: escolha o campo base e as cores mínima/máxima (por padrão, vermelho para valores baixos e verde para valores altos).</li>
+    <li>Arraste campos adicionais para <strong>Tooltips</strong> para exibir detalhes ao passar o mouse sobre uma região.</li>
+  </ol>
+
+  <p>Assim como os demais visuais de mapa, o mapa preenchido participa de cross-filtering e cross-highlighting: selecionar um estado no mapa filtra os demais visuais da página, e vice-versa.</p>
+
+  <h2 id="arcgis-maps">ArcGIS Maps</h2>
+  <p>O ArcGIS for Power BI, desenvolvido pela Esri, é uma visualização de mapeamento voltada para análise espacial avançada. Combina camadas de dados autoritativas com ferramentas de análise para revelar as relações por trás dos seus dados geográficos.</p>
+
+  <p>Principais capacidades:</p>
+  <ul class="goal-list">
+    <li><strong>Temas de mapa inteligente (smart mapping):</strong> a simbologia se ajusta automaticamente conforme o tipo de dado.</li>
+    <li><strong>Camadas de referência:</strong> dados demográficos (renda, idade, escolaridade) ou camadas públicas do ArcGIS Online, como o ArcGIS Living Atlas of the World.</li>
+    <li><strong>Infográficos:</strong> cartões com detalhes demográficos sobre a área selecionada ou visível no mapa.</li>
+    <li><strong>Análise de raio e tempo de deslocamento (drive time):</strong> encontrar locais dentro de uma distância ou tempo de carro a partir de um ponto de referência.</li>
+    <li><strong>Ferramentas de seleção:</strong> seleção única, por retângulo, círculo, polígono (laço) ou à mão livre — até 250 pontos de dados por vez.</li>
+  </ul>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Conta padrão vs. conta ArcGIS licenciada <span class="acc-arrow">&#9662;</span></div>
+    <div class="acc-body">
+      <table class="term-table">
+        <tr><th>Recurso</th><th>Padrão (incluso no Power BI)</th><th>Com conta ArcGIS</th></tr>
+        <tr><td>Basemaps</td><td>4 basemaps básicos</td><td>Todos os basemaps Esri e customizados da organização</td></tr>
+        <tr><td>Geocodificação</td><td>3.500 locais por mapa / 10.000 por mês</td><td>10.000 locais por mapa, sem limite mensal</td></tr>
+        <tr><td>Camadas de referência</td><td>10 camadas demográficas dos EUA</td><td>Acesso global, incluindo ArcGIS Living Atlas</td></tr>
+        <tr><td>Infográficos</td><td>Galeria com variáveis dos EUA, até 2 variáveis</td><td>Variáveis globais, até 5 variáveis</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <p>Administradores de locatário podem desabilitar o ArcGIS for Power BI para toda a organização em <strong>Configurações &gt; Portal do administrador &gt; Configurações do locatário</strong>. Designers podem desativá-lo individualmente no Power BI Desktop, em Arquivo &gt; Opções e configurações &gt; Opções &gt; Segurança.</p>
+
+  <h2 id="dicas-geocodificacao">Dicas e truques para geocodificação de mapas</h2>
+  <p>Os mapas baseados em Bing (mapa básico e mapa preenchido) dependem de <strong>geocodificação</strong>: o processo de converter um endereço, cidade ou país em coordenadas de latitude/longitude. Nem sempre o resultado é exato — às vezes é um "melhor palpite". As dicas abaixo aumentam a precisão.</p>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Se você tem acesso ao modelo semântico <span class="acc-arrow">&#9662;</span></div>
+    <div class="acc-body">
+      <ol>
+        <li><strong>Categorize os campos geográficos:</strong> no Power BI Desktop, defina a Categoria de Dados (Data Category) de cada coluna como Endereço, Cidade, Estado, País etc. Isso ajuda o Bing a interpretar corretamente os valores.</li>
+        <li><strong>Use mais de uma coluna de localização:</strong> uma coluna "Cidade" sozinha pode ser ambígua (existem dezenas de cidades chamadas "Franklin" nos EUA). Adicionar "Estado" resolve a ambiguidade.</li>
+        <li><strong>Use latitude e longitude específicas:</strong> quando disponíveis, elas eliminam qualquer ambiguidade e aceleram o processo.</li>
+        <li><strong>Use a categoria "Place" para colunas com endereço completo</strong> (ex.: "Av. Paulista, 1000, São Paulo, SP"), em vez de tentar separar em várias colunas.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Se você não tem acesso ao modelo (apenas ao relatório) <span class="acc-arrow">&#9662;</span></div>
+    <div class="acc-body">
+      <ol>
+        <li><strong>Use campos de latitude e longitude, se existirem</strong> — arraste-os para os campos específicos Latitude/Longitude do visual.</li>
+        <li><strong>Use hierarquias geográficas:</strong> arraste mais de um campo (País, Estado, Cidade) para o campo Location, na ordem correta, para permitir drill-down e melhorar a precisão da geocodificação — o Power BI envia ao Bing mais contexto sobre cada nível.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" id="page-7">
+  <h1>Azure Maps</h1>
+
+  <p>O <strong>Azure Maps</strong> é o visual de mapa de nova geração do Power BI, construído sobre a plataforma de mapeamento corporativo da Microsoft. Estima-se que mais de 80% dos dados de negócio tenham algum contexto de localização — o Azure Maps foi criado para explorar esse contexto com recursos muito mais ricos do que os antigos mapas baseados em Bing: marcadores customizados, colunas 3D, mapas de calor, camadas de referência, tráfego em tempo real e muito mais.</p>
+
+  <h2 id="como-funciona-azure-maps">Como o visual funciona e o que é enviado à nuvem</h2>
+  <p>O Azure Maps Power BI visual se conecta a um serviço na nuvem (Azure) para obter imagens de mapa e coordenadas geográficas. Isso significa que:</p>
+  <ul class="goal-list">
+    <li>Detalhes da área exibida são enviados ao Azure para obter os tiles (imagens) do mapa.</li>
+    <li>Dados no campo Location podem ser enviados ao Azure para geocodificação (conversão em coordenadas).</li>
+    <li>Dados de telemetria (por exemplo, relatórios de falha) podem ser coletados, se essa opção estiver habilitada no Power BI.</li>
+  </ul>
+  <p>Fora esses cenários, nenhum outro dado sobreposto ao mapa é enviado aos servidores do Azure Maps — toda a renderização dos dados acontece localmente no cliente. O Power BI garante que nenhuma informação pessoalmente identificável (PII) seja enviada ao Azure Maps.</p>
+
+  <h2 id="comecando-azure-maps">Primeiros passos</h2>
+  <ol>
+    <li>Selecione o ícone <strong>Azure Maps</strong> no painel Visualizações (um administrador de locatário precisa habilitá-lo antes, em Configurações &gt; Portal do administrador &gt; Configurações de integração).</li>
+    <li>Preencha os dados mínimos: arraste campos de latitude/longitude para os buckets <strong>Latitude</strong>/<strong>Longitude</strong>, ou um campo geográfico para <strong>Location</strong>.</li>
+    <li>Para colorir por categoria, arraste um campo categórico para <strong>Legend</strong>.</li>
+    <li>Para escalar pontos por um valor, arraste uma medida para <strong>Size</strong>.</li>
+  </ol>
+
+  <table class="term-table">
+    <tr><th>Campo</th><th>Uso</th></tr>
+    <tr><td>Location</td><td>Dados geográficos legíveis: país/região, estado, cidade.</td></tr>
+    <tr><td>Latitude / Longitude</td><td>Coordenadas decimais (latitude entre -90 e 90; longitude entre -180 e 180).</td></tr>
+    <tr><td>Legend</td><td>Categoriza os pontos, atribuindo uma cor a cada categoria.</td></tr>
+    <tr><td>Size</td><td>Medida usada para dimensionar os pontos relativamente.</td></tr>
+    <tr><td>Tooltips</td><td>Campos adicionais exibidos ao passar o mouse sobre um ponto.</td></tr>
+  </table>
+
+  <h3>Estilo e configurações do mapa</h3>
+  <p>O painel Formatar visual, em <strong>Map settings</strong>, é dividido em três blocos: <strong>Style</strong> (estilo visual do mapa — estradas, satélite, escala de cinza, alto contraste, noturno etc., cada um com suporte diferente para rótulos e fronteiras), <strong>View</strong> (zoom, centro e orientação padrão, com opção de zoom automático) e <strong>Controls</strong> (navegação, seletor de estilo, ferramenta de seleção e cultura de geocodificação).</p>
+
+  <div class="callout">
+    O Azure Maps suporta até <strong>30.000 pontos de dados</strong> por visual — bem mais que o limite do Shape map (1.500). Está disponível no Power BI Desktop, serviço, apps móveis, publicação na web e Power BI Embedded, mas <strong>não</strong> em exportações do Power BI nem em assinaturas por e-mail. Ainda não está disponível na China, Coreia ou Azure Government.
+  </div>
+
+  <h2 id="migrar-para-azure-maps">Migrando mapas antigos para o Azure Maps</h2>
+  <p>Existe uma função de conversão automática no Power BI Desktop que transforma visuais de <strong>Mapa</strong> e <strong>Mapa preenchido</strong> (baseados em Bing) em visuais Azure Maps. Ao abrir um relatório com mapas antigos, o Power BI exibe uma caixa de diálogo oferecendo o upgrade — é possível converter todos os mapas do relatório de uma vez ou converter um visual específico pela galeria de visualizações.</p>
+  <p>Todas as configurações dos visuais originais são preservadas na conversão. Uma diferença a observar: como o tamanho máximo de marcador no Azure Maps é menor que o tamanho máximo de bolha no Bing Maps, alguns círculos podem aparecer menores após a conversão.</p>
+
+  <div class="callout warning">
+    Recomenda-se migrar para o Azure Maps, a menos que sua organização tenha usuários que consomem relatórios na China, Coreia ou em nuvens governamentais — regiões onde o Azure Maps ainda não é totalmente suportado.
+  </div>
+
+  <h2 id="camadas-azure-maps">Camadas (layers) do Azure Maps</h2>
+  <p>O Azure Maps organiza a exibição de dados em <strong>camadas</strong>. Existem camadas que renderizam diretamente os dados do relatório (marcadores, colunas 3D, pizza, mapa de calor, mapa preenchido) e camadas que adicionam contexto externo ao mapa (referência, tile, tráfego). Várias camadas podem ser combinadas no mesmo visual, com posição relativa configurável (acima dos rótulos, abaixo dos rótulos, ou abaixo das ruas).</p>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Marker layer (marcadores) <span class="acc-arrow">&#9662;</span></div>
+    <div class="acc-body">
+      <p>Plota localizações individuais como pontos no mapa, usando círculos simples ou ícones/imagens customizadas (SVG). Suporta ícones distintos por categoria, cores e transparência configuráveis, rotação por ponto de dado (via formatação condicional) e alinhamento de pitch/rotação em relação à tela ou ao mapa. O tamanho pode ser fixo ou escalado por um campo em Size.</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">3D column layer (colunas 3D) <span class="acc-arrow">&#9662;</span></div>
+    <div class="acc-body">
+      <p>Renderiza pontos como cilindros ou caixas 3D, permitindo visualizar duas métricas ao mesmo tempo (cor e altura relativa). Requer uma medida em Size para ter altura; sem ela, aparecem como formas achatadas. O mapa pode ser inclinado (pitch) e rotacionado com o botão direito do mouse, gestos de toque ou teclado (Shift + setas).</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Pie chart layer (pizza) <span class="acc-arrow">&#9662;</span></div>
+    <div class="acc-body">
+      <p>Extensão da camada de bolhas: cada local vira um mini-gráfico de pizza, com fatias proporcionais a uma medida (Size) categorizadas por um campo em Legend. Ativado alternando o toggle Bubbles para On.</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Heat map layer (mapa de calor) <span class="acc-arrow">&#9662;</span></div>
+    <div class="acc-body">
+      <p>Mostra "pontos quentes" de densidade de dados usando cores — ideal para grandes volumes de pontos que, se plotados individualmente, ficariam sobrepostos e degradariam a performance. Configurável por raio (em pixels ou metros), intensidade, gradiente de três cores (baixo/médio/alto) e opção de usar o campo Size como peso de cada ponto.</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Reference layer (camada de referência) <span class="acc-arrow">&#9662;</span></div>
+    <div class="acc-body">
+      <p>Sobrepõe um conjunto de dados espaciais externo (GeoJSON, WKT, KML, Shapefile ou CSV com WKT) para dar contexto adicional — por exemplo, limites de bairros ou zonas censitárias. Pode ser carregado por upload ou referenciado por URL. Suporta estilização customizada (cor de preenchimento, borda, transparência) e <strong>vinculação de dados</strong>: uma coluna com identificadores únicos no campo Location é automaticamente associada às propriedades correspondentes no arquivo espacial. Limite: renderiza apenas as primeiras 30.000 feições do arquivo.</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Tile layer (camada de tiles) <span class="acc-arrow">&#9662;</span></div>
+    <div class="acc-body">
+      <p>Sobrepõe imagens (pré-renderizadas ou dinâmicas) sobre os tiles-base do Azure Maps — útil para imagens de drone ou grandes conjuntos de dados vetoriais. Requer uma URL formatada de serviço de tiles, com suporte a três convenções de nomenclatura: X/Y/Zoom, Quadkey e Bounding Box.</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Traffic layer (tráfego em tempo real) <span class="acc-arrow">&#9662;</span></div>
+    <div class="acc-body">
+      <p>Sobrepõe dados de tráfego em tempo real como estradas coloridas por fluxo, com opção de mostrar incidentes (interdições, obras) e um botão de controle para o leitor do relatório ligar/desligar a camada.</p>
+    </div>
+  </div>
+
+  <h2 id="geocodificacao-azure-maps">Geocodificação no Azure Maps</h2>
+  <p>Geocodificação é o processo de transformar um endereço em coordenadas de latitude/longitude. O campo <strong>Location</strong> aceita múltiplos valores (país, estado, cidade, endereço, CEP) — quanto mais níveis informados, maior a precisão e menor a ambiguidade (por exemplo, existem mais de 20 cidades chamadas "Franklin" nos EUA).</p>
+  <p>Ao combinar vários campos em Location, você cria uma <strong>geo-hierarquia</strong>, que habilita botões de drill-down no mapa: <strong>Drill Mode</strong> (desce um nível de cada vez, em uma localização selecionada), <strong>drill para todos os níveis</strong> (desce um nível para todas as localizações simultaneamente) e <strong>Expand all</strong> (expande mantendo o contexto do nível atual, enviando o máximo de informação para a geocodificação).</p>
+  <p>Para melhorar a precisão, defina a <strong>Categoria de Dados</strong> de cada coluna (Endereço, Local, Cidade, Condado, Estado/Província, CEP, País, Continente, Latitude ou Longitude) no modo de modelagem do Power BI.</p>
+
+  <h2 id="gestao-organizacional">Residência de dados e gestão organizacional</h2>
+  <p>O Azure Maps roteia as requisições para o endpoint geográfico do Azure Maps mais próximo da localização do <strong>locatário (tenant)</strong> do Power BI, ajudando a cumprir requisitos regionais de residência de dados. Por exemplo, um tenant na Europa usa o endpoint <code>eu.atlas.microsoft.com</code>; um tenant nos EUA usa <code>us.atlas.microsoft.com</code>. A localização do tenant pode ser conferida em <strong>Ajuda &gt; Sobre o Power BI</strong>. Esse roteamento é automático — não exige configuração adicional.</p>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Configurações de administrador de locatário <span class="acc-arrow">&#9662;</span></div>
+    <div class="acc-body">
+      <table class="term-table">
+        <tr><th>Configuração</th><th>Efeito</th></tr>
+        <tr><td>Habilitar o visual Azure Maps</td><td>Controla se os usuários da organização podem criar e visualizar relatórios com o visual.</td></tr>
+        <tr><td>Processar dados fora da região/fronteira do tenant</td><td>Necessário quando o Azure Maps não está disponível na região do tenant; sem isso, os recursos ficam limitados nessas regiões.</td></tr>
+        <tr><td>Permitir subprocessadores da Microsoft</td><td>Habilita recursos que dependem de capacidades de mapeamento de terceiros (como a ferramenta de seleção). Só pode ser ativada se a opção anterior também estiver ativa. Atualmente, o Azure Maps só funciona nas regiões EUA e União Europeia — tenants fora dessas regiões precisam habilitar essa opção para que o visual funcione.</td></tr>
+      </table>
+      <p>Nenhum dado pessoalmente identificável é compartilhado com os subprocessadores — apenas informações de localização, como coordenadas ou nomes de lugares.</p>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" id="page-8">
+  <h1>Visuais com IA</h1>
+
+  <p>Além dos gráficos tradicionais, o Power BI inclui um conjunto de visuais que usam inteligência artificial para fazer parte do trabalho analítico por você: encontrar onde investigar, explicar por que uma métrica se comporta de determinada forma, escrever um resumo em texto ou apontar pontos fora do padrão em uma série temporal. Esta página cobre os quatro principais: <strong>árvore de decomposição</strong>, <strong>principais fatores de influência</strong>, <strong>narrativa inteligente</strong> e <strong>detecção de anomalias</strong>.</p>
+
+  <ul class="goal-list">
+    <li><strong>Árvore de decomposição</strong> — para explorar uma métrica dimensão por dimensão e descobrir a causa raiz de um resultado.</li>
+    <li><strong>Principais fatores de influência</strong> — para descobrir o que aumenta ou diminui uma métrica.</li>
+    <li><strong>Narrativa inteligente</strong> — para gerar automaticamente um resumo em texto dos dados de um visual ou de uma página inteira.</li>
+    <li><strong>Detecção de anomalias</strong> — para sinalizar pontos fora do esperado em uma série temporal.</li>
+  </ul>
+
+  <h2 id="arvore-decomposicao">Árvore de decomposição</h2>
+  <p>A árvore de decomposição permite visualizar dados em múltiplas dimensões, agregando-os automaticamente e permitindo <strong>drill-down em qualquer ordem</strong>. É um visual de IA: além de você escolher manualmente a próxima dimensão para explorar, pode pedir que o próprio visual descubra, sozinho, qual dimensão revela os valores mais altos ou mais baixos. É especialmente valiosa para exploração livre de dados e <strong>análise de causa raiz</strong> — por exemplo, entender por que o percentual de produtos em backorder está alto, ou como as vendas de um jogo se distribuem entre gênero e publicadora.</p>
+
+  <h3>Como funciona</h3>
+  <ol>
+    <li>Defina o campo <strong>Analyze</strong>: a medida ou agregação que você quer investigar (por exemplo, "% em backorder").</li>
+    <li>Adicione uma ou mais dimensões ao campo <strong>Explain by</strong> — são os campos disponíveis para drill-down.</li>
+    <li>Um sinal de "+" aparece ao lado de cada nó; ao selecioná-lo, você escolhe em qual campo aprofundar a análise.</li>
+    <li>Selecionar um nó do último nível aplica cross-filter aos dados; selecionar um nó de nível intermediário muda o caminho de exploração a partir dali.</li>
+  </ol>
+
+  <h3>AI Splits: deixe a IA escolher onde olhar</h3>
+  <p>Os <strong>AI Splits</strong> aparecem no topo da lista de opções, marcados com um ícone de lâmpada. Eles analisam todos os campos disponíveis e recomendam automaticamente qual dimensão revela o valor mais alto (<strong>High Value</strong>) ou mais baixo (<strong>Low Value</strong>) da métrica analisada, indicando o nó recomendado com uma linha pontilhada.</p>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Análise absoluta vs. relativa <span class="acc-arrow">&#9662;</span></div>
+    <div class="acc-body">
+      <p>Por padrão, o AI Split usa análise <strong>absoluta</strong>: procura o valor mais alto (ou mais baixo) em termos brutos. É possível alternar para análise <strong>relativa</strong>, que procura valores que se destacam <em>em comparação com o restante dos dados da mesma coluna</em> — mesmo que não sejam o maior valor absoluto. Por exemplo, um valor pode ser "apenas" o segundo maior em termos absolutos, mas ser quatro vezes maior que a média esperada, o que o torna estatisticamente mais interessante.</p>
+    </div>
+  </div>
+
+  <p>É possível encadear vários níveis de AI Split (inclusive alternando entre High e Low Value), mas um nível manual não pode vir <em>depois</em> de um nível de IA sem "converter" esse nível em normal. Os splits de IA são recalculados automaticamente sempre que você seleciona um nó diferente ou aplica cross-filter a partir de outro visual.</p>
+
+  <h3>Bloqueio de níveis (locking)</h3>
+  <p>Quem cria o relatório pode <strong>bloquear níveis</strong> da árvore para os consumidores do relatório: um nível bloqueado não pode ser removido nem alterado, mas os leitores ainda podem explorar diferentes caminhos dentro dele e adicionar novos níveis depois. Não é possível ter níveis desbloqueados antes de um nível bloqueado.</p>
+
+  <div class="callout">
+    Limites técnicos: máximo de 50 níveis na árvore, até 5.000 pontos de dados visualizados de uma vez, e truncamento para os 10 principais valores por nível (top n). Não suportada com Analysis Services on-premises; AI Splits não funcionam com Azure Analysis Services, Power BI Report Server, Publish to Web, medidas complexas ou de esquemas de extensão.
+  </div>
+
+  <h2 id="principais-fatores-influencia">Principais fatores de influência (key influencers)</h2>
+  <p>Este visual ajuda a entender <strong>quais fatores impulsionam uma métrica</strong> que interessa a você. Ele analisa os dados, classifica os fatores por importância e os exibe como "influenciadores-chave". É a ferramenta certa quando a pergunta é: "o que faz esse número subir ou descer?" — por exemplo, o que leva um cliente a dar uma avaliação baixa, ou o que aumenta a rotatividade (churn) de funcionários.</p>
+
+  <h3>Duas visões complementares</h3>
+  <table class="term-table">
+    <tr><th>Aba</th><th>O que mostra</th></tr>
+    <tr><td>Key influencers</td><td>Lista os principais fatores individuais que contribuem para o valor da métrica analisada (por exemplo, "clientes com cargo de Consumer são 2,57x mais propensos a dar nota baixa").</td></tr>
+    <tr><td>Top segments</td><td>Mostra combinações de fatores (segmentos) que, juntos, produzem uma proporção maior do resultado analisado — por exemplo, "clientes com mais de 29 meses de casa E mais de 4 chamados de suporte".</td></tr>
+  </table>
+
+  <h3>Como interpretar o resultado</h3>
+  <p>Ao selecionar um influenciador, o painel da direita mostra um gráfico comparando o grupo selecionado com a média de todos os outros valores (representada por uma linha pontilhada). O número na bolha expressa a força do efeito: em métricas categóricas, como uma razão (ex.: "2,57 vezes mais provável"); em métricas numéricas/contínuas, como uma diferença absoluta (ex.: "US$ 158 mil a mais em média").</p>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Analisando métricas categóricas, contínuas e medidas <span class="acc-arrow">&#9662;</span></div>
+    <div class="acc-body">
+      <ul>
+        <li><strong>Análise categórica:</strong> pergunta do tipo "o que influencia a nota ser Baixa?" — usada para valores discretos com poucas categorias.</li>
+        <li><strong>Análise contínua:</strong> pergunta do tipo "o que influencia o preço da casa a aumentar/diminuir?" — melhor para campos com muitos valores únicos (como preços), onde perguntar sobre um valor exato não faz sentido.</li>
+        <li><strong>Medidas e colunas resumidas:</strong> por padrão, analisadas de forma contínua, no nível definido pelos campos em <strong>Explain by</strong>. Use o campo <strong>Expand by</strong> para definir o nível de granularidade da análise sem que esses campos sejam considerados como possíveis influenciadores (por exemplo, incluir um ID apenas para ajustar o nível, sem que o "ID crescente" vire uma influência espúria).</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>Nos bastidores, o visual usa <strong>ML.NET</strong>: regressão logística para metas categóricas, regressão linear para metas numéricas, e uma árvore de decisão para encontrar os segmentos da aba Top segments. Um teste estatístico (teste de Wald, com p-valor de 0,05) garante que só sejam apontados como influenciadores fatores com dados suficientes para sustentar o padrão — evitando falsos positivos com poucas observações.</p>
+
+  <div class="callout warning">
+    Recomenda-se ao menos 100 observações no estado analisado (por exemplo, clientes que deram nota baixa) e ao menos 10 no estado de comparação. Não é suportado com DirectQuery, conexão ao vivo com Analysis Services, Publish to Web, nem quando "Discourage Implicit Measures" está ativado no modelo.
+  </div>
+
+  <h2 id="narrativa-inteligente">Narrativa inteligente (smart narrative)</h2>
+  <p>A narrativa inteligente gera automaticamente um <strong>resumo em texto</strong> dos visuais e relatórios, destacando tendências, valores-chave e insights relevantes — que podem ser editados e customizados livremente. É especialmente útil ao incorporar uma página de relatório ativa no PowerPoint: em vez de colar um print estático, você adiciona uma narrativa que se atualiza a cada atualização dos dados.</p>
+
+  <h3>Três formas de uso</h3>
+  <ul class="goal-list">
+    <li><strong>Narrativa de página:</strong> selecione o visual "Smart narrative" no canvas para gerar um resumo de todos os visuais da página (por exemplo, "a receita cresceu 72% e as visitas ao site também aumentaram").</li>
+    <li><strong>Narrativa de um visual específico:</strong> clique com o botão direito em um visual e escolha <strong>Summarize</strong> para gerar (e opcionalmente fixar) um resumo apenas daquele visual.</li>
+    <li><strong>Ícone de narrativa sob demanda:</strong> adicione um ícone no cabeçalho de qualquer visual (Format &gt; General &gt; Header icons &gt; Smart narrative) para que o leitor gere uma explicação em texto ao passar o mouse — útil também para acessibilidade (leitores de tela).</li>
+  </ul>
+
+  <h3>Personalizando o resumo com valores dinâmicos</h3>
+  <p>O texto gerado pode ser editado como qualquer caixa de texto (negrito, cor etc.) e enriquecido com <strong>valores dinâmicos</strong> — referências a campos e medidas existentes, ou até novas medidas criadas em linguagem natural (sem precisar escrever DAX), de forma parecida com o visual de Perguntas e Respostas (Q&amp;A). Esses valores podem ser formatados (moeda, casas decimais, separador de milhar) pela guia <strong>Review</strong>.</p>
+
+  <p>O resumo é <strong>dinâmico</strong>: atualiza-se automaticamente ao aplicar cross-filter ou selecionar pontos específicos em outro visual. Quando não há insight disponível para o filtro atual, um símbolo de "resumo oculto" indica que aquele trecho ficou vazio.</p>
+
+  <div class="callout">
+    O visual de narrativa tem dois modos: <strong>Copilot</strong> (gera resumos por IA a partir dos dados do relatório, requer licença Copilot, limite de 10.000 caracteres no prompt) e <strong>Custom</strong> (texto escrito e formatado manualmente, com valores dinâmicos vinculados a campos e medidas).
+  </div>
+
+  <h2 id="deteccao-anomalias">Detecção de anomalias</h2>
+  <p>A detecção de anomalias enriquece um <strong>gráfico de linha com série temporal</strong>, marcando automaticamente pontos que fogem do padrão esperado — sem precisar fatiar e recortar os dados manualmente. Além de identificar a anomalia, o Power BI oferece uma <strong>explicação em linguagem natural</strong> para ajudar na análise de causa raiz.</p>
+
+  <h3>Como habilitar</h3>
+  <ol>
+    <li>Selecione um gráfico de linha com dados de série temporal no eixo.</li>
+    <li>Na guia <strong>Analytics</strong> do painel Visualizações, selecione <strong>Anomalies</strong>.</li>
+    <li>O Power BI acrescenta ao gráfico o intervalo de valores esperados e marca com um símbolo os pontos que ficaram fora desse intervalo.</li>
+  </ol>
+
+  <p>A sensibilidade do algoritmo é ajustável: aumentá-la faz com que até pequenos desvios sejam marcados como anomalia; diminuí-la torna o algoritmo mais seletivo. O formato (forma, tamanho, cor) das anomalias e do intervalo esperado também é customizável.</p>
+
+  <h3>Explicações automáticas</h3>
+  <p>Ao selecionar uma anomalia, o Power BI roda uma análise pelos campos do modelo de dados para sugerir possíveis explicações, ordenadas por força explicativa — por exemplo, apontando que uma alta de receita em um dia específico está associada a um vendedor ou cidade específicos. Você pode restringir manualmente os campos considerados nessa análise usando o campo <strong>Explain by</strong> (por exemplo, limitando a análise a "Vendedor" e "Cidade"), e adicionar o visual de detalhe diretamente à página com a opção <strong>Add to report</strong>.</p>
+
+  <div class="callout warning">
+    Limitações: exige ao menos 4 pontos de dados; não funciona com legendas, múltiplos valores ou valores secundários no gráfico de linha; incompatível com linhas de previsão (forecast), mínimo/máximo/média/mediana/percentil; não suportada com DirectQuery sobre SAP, Power BI Report Server, ou conexão ao vivo com Analysis Services; não funciona com "Show Value As" nem com drill-down para o próximo nível da hierarquia.
+  </div>
+</section>
+
+
+<section class="page-section" id="page-9">
+  <h1>Slicers</h1>
+
+  <div class="info-box"><strong>Aplica-se a:</strong> Power BI Desktop, Power BI service</div>
+
+  <p><strong>Slicers</strong> (segmentações de dados) são controles de filtragem interativos que ficam
+  diretamente na tela do relatório. Eles restringem a parte do <span class="tooltip-wrap"><span class="tooltip-term">modelo semântico</span><span class="tooltip-box">Conjunto de dados, relacionamentos e cálculos que alimentam os visuais de um relatório (antigamente chamado de "dataset").</span></span>
+  exibida nos demais visuais, permitindo que quem consome o relatório filtre os dados rapidamente
+  sem precisar abrir o painel de Filtros. Slicers deixam os filtros mais usados visíveis e acessíveis,
+  mostrando o estado atual do filtro à primeira vista.</p>
+
+  <p>O Power BI oferece vários visuais de slicer, cada um pensado para um cenário de filtragem e um
+  tipo de dado diferente.</p>
+
+  <h2 id="quando-usar-slicer">Quando usar um slicer</h2>
+  <p>Use slicers para:</p>
+  <div class="goal-list">
+    <ul>
+      <li>Mostrar filtros comumente usados na tela do relatório, para acesso rápido;</li>
+      <li>Deixar visível o estado atual do filtro, sem precisar abrir um dropdown ou o painel de Filtros;</li>
+      <li>Filtrar por colunas que estão ocultas nas tabelas de dados;</li>
+      <li>Criar relatórios focados, posicionando slicers ao lado dos visuais relevantes.</li>
+    </ul>
+  </div>
+
+  <h2 id="slicers-vs-painel-filtros">Slicers vs. painel de Filtros</h2>
+  <p>Além dos slicers, você pode usar o painel de <strong>Filtros</strong> para aplicar filtros em nível de visual,
+  página ou relatório. O painel de Filtros centraliza o gerenciamento de todos os filtros do relatório,
+  enquanto os slicers deixam filtros específicos visíveis e interativos na própria tela.</p>
+
+  <table class="term-table">
+    <thead>
+      <tr><th>Aspecto</th><th>Slicers</th><th>Painel de Filtros</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Visibilidade</td><td>Sempre visível na tela</td><td>Oculto até ser aberto</td></tr>
+      <tr><td>Interatividade</td><td>Interação direta com os valores do filtro</td><td>Exige abrir o painel</td></tr>
+      <tr><td>Melhor uso</td><td>Filtros frequentes, relatórios voltados ao usuário final</td><td>Filtragem complexa, uso pelo autor do relatório</td></tr>
+      <tr><td>Sincronização entre páginas</td><td>Sim, com "Sync slicers"</td><td>Filtros de nível de relatório se aplicam a todas as páginas</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="tipos-de-slicer">Tipos de slicer</h2>
+  <p>Todos os tipos de slicer do Power BI compartilham recursos comuns: interações visuais configuráveis
+  (filtrar ou destacar outros visuais), sincronização entre páginas, opções de formatação de cores,
+  bordas, títulos e planos de fundo, e a possibilidade de filtrar outros slicers na mesma página.</p>
+
+  <table class="term-table">
+    <thead>
+      <tr><th>Slicer</th><th>Descrição</th><th>Tipos de dado</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Slicer (visual padrão)</strong></td>
+        <td>Controle versátil com múltiplas configurações de exibição: dropdown, lista vertical, tile e
+        date picker. É a base de todos os slicers do Power BI.</td>
+        <td>Texto, numérico e data</td>
+      </tr>
+      <tr>
+        <td><strong>Button slicer</strong></td>
+        <td>Exibe as opções de filtro como botões interativos, com estilos e layout em grade
+        personalizáveis. Suporta imagens, ícones e formatação condicional dos rótulos.</td>
+        <td>Texto e numérico</td>
+      </tr>
+      <tr>
+        <td><strong>List slicer (preview)</strong></td>
+        <td>Lista vertical com suporte a hierarquias, busca e formatação condicional. Ideal para
+        conjuntos de dados grandes em que é preciso buscar valores específicos ou navegar por
+        estruturas hierárquicas.</td>
+        <td>Texto, numérico, data e hierarquia</td>
+      </tr>
+      <tr>
+        <td><strong>Input slicer</strong></td>
+        <td>Aceita entrada de texto ou número em formato livre, com múltiplos operadores de filtro.
+        Também pode ser usado sem coluna de dados, para capturar entradas de usuário em
+        translytical task flows (cenários de write-back).</td>
+        <td>Texto e numérico (ou nenhum, em modo de entrada pura)</td>
+      </tr>
+      <tr>
+        <td><strong>Intervalo de datas</strong> (configurações Between/Relative date/Date picker)</td>
+        <td>Não é um visual separado, e sim configurações do slicer padrão voltadas para filtrar por
+        intervalo, data relativa ("últimos 7 dias") ou seleção manual em calendário.</td>
+        <td>Data e numérico</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id="slicer-visual-configuracoes">O slicer visual e suas configurações (style)</h2>
+  <p>O <strong>Slicer visual</strong> é o slicer fundamental do Power BI. Para criá-lo, selecione o ícone de Slicer no
+  painel de Visualizações e adicione um campo no painel de Dados. Para mudar a configuração de
+  exibição, selecione o slicer e, no painel de Formatação, expanda <strong>Visual &gt; Slicer settings &gt;
+  Options &gt; Style</strong>.</p>
+
+  <table class="term-table">
+    <thead>
+      <tr><th>Style</th><th>Tipos de dado</th><th>Uso comum</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Dropdown (padrão)</td><td>Texto, numérico, data, hierarquia</td><td>Layouts com pouco espaço e muitos valores; ocupa o mínimo de espaço na tela</td></tr>
+      <tr><td>Vertical list</td><td>Texto, numérico, data, hierarquia</td><td>Mostrar todas as opções de uma vez, listas pequenas/médias, filtragem com drill-down</td></tr>
+      <tr><td>Tile</td><td>Texto, numérico</td><td>Layout horizontal compacto, nomes de categoria curtos (status, anos)</td></tr>
+      <tr><td>Between</td><td>Data, numérico</td><td>Filtrar um intervalo com valores de início e fim (slider + caixas de entrada)</td></tr>
+      <tr><td>Before / After</td><td>Data, numérico</td><td>Filtrar até ou a partir de um ponto específico</td></tr>
+      <tr><td>Relative date</td><td>Data</td><td>Períodos móveis, como "últimos 7 dias" ou "este mês", recalculados a cada carregamento</td></tr>
+      <tr><td>Relative time</td><td>DateTime</td><td>Períodos móveis com precisão de hora/minuto/segundo, útil para monitoramento em tempo real</td></tr>
+      <tr><td>Date picker (preview)</td><td>Data</td><td>Combina seleção relativa com calendário/slider manual; permite ancorar em hoje, na primeira ou na última data da coluna</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">Tile e Vertical list não suportam hierarquias com múltiplos campos — para isso, use
+  Dropdown, Vertical list (com múltiplos campos) ou o List slicer (preview). Between, Before, After,
+  Relative date, Relative time e Date picker aceitam apenas uma coluna por slicer.</div>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Date picker: opções de data relativa <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <p>A configuração <strong>Date picker</strong> (preview) combina seleção relativa com calendário e slider
+      para escolha manual. Para habilitar, vá em <strong>Arquivo &gt; Opções e configurações &gt; Opções &gt;
+      Preview features</strong> e marque <strong>Date picker slicer</strong>.</p>
+      <table class="term-table">
+        <thead><tr><th>Opção</th><th>Descrição</th></tr></thead>
+        <tbody>
+          <tr><td>Last/Next/This</td><td>Direção e escopo do período em relação à data-âncora</td></tr>
+          <tr><td>Number of periods</td><td>Quantos dias, semanas, meses ou anos incluir</td></tr>
+          <tr><td>Period type</td><td>Days, Weeks, Weeks (Calendar), Months, Months (Calendar), Years ou Years (Calendar)</td></tr>
+          <tr><td>Anchor</td><td>Ponto de referência do cálculo relativo: Today, First date ou Last date da coluna</td></tr>
+          <tr><td>Offset</td><td>Desloca a âncora para frente ou para trás em um número de períodos antes de calcular o intervalo</td></tr>
+        </tbody>
+      </table>
+      <p>Ao publicar um relatório com uma seleção relativa, o intervalo de datas é recalculado a cada
+      carregamento, com base na data atual — inclusive em blocos fixados (pin) em dashboards.</p>
+    </div>
+  </div>
+
+  <h2 id="button-list-slicer-recursos">Recursos do button slicer e do list slicer</h2>
+  <p>Além do slicer padrão, o <strong>button slicer</strong> e o <strong>list slicer (preview)</strong> compartilham vários
+  recursos avançados:</p>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Layout, destaque e formatação condicional <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ul>
+        <li><strong>Fixed size:</strong> define dimensões exatas em pixels para cada botão/item; quando o
+        contêiner não comporta todos, aparecem barras de rolagem.</li>
+        <li><strong>Fit to space:</strong> os itens crescem ou encolhem para preencher o contêiner, sem reservar
+        espaço para posições vazias.</li>
+        <li><strong>Highlight label:</strong> no button slicer, é possível arrastar uma medida para o poço "Highlight
+        label" para exibir um valor de destaque em cada botão, que reage ao cross-highlighting de
+        outros visuais.</li>
+        <li><strong>Formatação condicional:</strong> aplicável a cores de fundo, bordas, valores e rótulos dos
+        botões, usando os estilos Rules, Gradient ou Field value (via o botão <em>fx</em> ao lado da cor).</li>
+        <li><strong>Hierarquias (list slicer):</strong> arraste múltiplos campos para o poço de valores para criar uma
+        hierarquia expansível; a opção <strong>Restrict to leaf nodes</strong> impede a seleção de níveis
+        superiores, permitindo escolher apenas os itens mais granulares.</li>
+        <li><strong>Busca:</strong> disponível no slicer padrão (Dropdown/Vertical list) e no list slicer — pressione
+        Ctrl+F ou use o menu de reticências (...) para abrir a barra de busca.</li>
+        <li><strong>Eraser (list slicer):</strong> ícone que limpa todas as seleções feitas de uma vez.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="input-slicer-operadores">O input slicer e seus operadores de filtro</h2>
+  <p>O <strong>input slicer</strong> filtra por texto digitado ou colado livremente, em vez de exibir categorias
+  predefinidas. Quando você adiciona uma coluna de dados, ele funciona como filtro; sem coluna, ele
+  atua como um controle de entrada puro, útil para capturar comentários, anotações ou valores de
+  write-back em translytical task flows.</p>
+
+  <table class="term-table">
+    <thead><tr><th>Operador</th><th>Descrição</th></tr></thead>
+    <tbody>
+      <tr><td>Contains any (padrão)</td><td>Retorna registros que contêm ao menos um dos valores digitados</td></tr>
+      <tr><td>Contains all</td><td>Retorna registros que contêm todos os valores digitados</td></tr>
+      <tr><td>Does not contain any</td><td>Exclui registros que contêm qualquer um dos valores</td></tr>
+      <tr><td>Starts with any / Does not start with any</td><td>Filtra por valores que começam (ou não) com o texto digitado</td></tr>
+      <tr><td>Is any / Is not any</td><td>Correspondência exata com um ou mais valores digitados</td></tr>
+    </tbody>
+  </table>
+
+  <p>Para campos numéricos, o input slicer aceita expressões como intervalo (<code>1-2</code>), maior que
+  (<code>&gt;2</code>), menor que (<code>&lt;2</code>) ou valor único, combinadas em pills separadas (por exemplo,
+  <code>1, 2, 4-5, &gt;600</code>).</p>
+
+  <h2 id="filtrando-intervalo-de-datas">Filtrando um intervalo de datas com slicer</h2>
+  <p>As configurações <strong>Relative date</strong>, <strong>Relative time</strong> e <strong>Date picker</strong> aplicam seleções
+  baseadas em tempo usando uma coluna de data. Por exemplo, é possível mostrar apenas vendas dos
+  últimos 30 dias ou do mês calendário anterior; o intervalo é recalculado toda vez que o relatório é
+  aberto, com base na data atual (em UTC).</p>
+
+  <div class="callout"><span class="callout-icon">💡</span><div>Para evitar mostrar o mês corrente parcial ao comparar meses com períodos anteriores,
+  use a variante <strong>Months (Calendar)</strong> ou <strong>Weeks (Calendar)</strong>, que considera apenas períodos
+  calendário completos.</div></div>
+
+  <p>Você também pode criar um <strong>filtro de data relativa</strong> em nível de página ou de relatório,
+  arrastando uma coluna de data para o painel de Filtros e escolhendo <strong>Relative date</strong> no tipo de
+  filtro — a experiência é equivalente à do slicer.</p>
+
+  <p>Para exibir o valor mais recente dos dados junto com a data correspondente (útil em cartões ou
+  resumos), use medidas DAX com <code>LASTNONBLANKVALUE</code> e <code>LASTNONBLANK</code> em vez de, ou
+  junto com, um slicer.</p>
+
+  <div class="note">A coluna usada em um slicer ou filtro de data relativa precisa ser do tipo Data — a
+  hierarquia automática de data/hora (auto date/time) não pode ser usada diretamente. As opções
+  relativas de semana consideram que a semana começa no domingo, sem opção de alterar.</div>
+</section>
+
+<section class="page-section" id="page-10">
+  <h1>Outros visuais</h1>
+
+  <div class="info-box"><strong>Aplica-se a:</strong> Power BI Desktop, Power BI service, Power BI Report Builder</div>
+
+  <p>Além dos gráficos e tabelas mais comuns, o Power BI oferece visuais especializados para cenários
+  específicos: exibir imagens e logotipos, incorporar relatórios paginados pixel-perfect, criar
+  visualizações estatísticas avançadas com R e embutir aplicativos do Power Apps diretamente no
+  relatório.</p>
+
+  <h2 id="visual-de-imagem">Visual de imagem</h2>
+  <p>O visual de <strong>Imagem</strong> exibe imagens diretamente no relatório, com mais flexibilidade e controle
+  do que os métodos antigos. É útil para logotipos, fotos de produto ou elementos gráficos que
+  enriquecem a narrativa dos dados, e pode inclusive se tornar um elemento interativo de
+  navegação.</p>
+
+  <p>Para criar um visual de imagem, selecione o ícone correspondente no painel de Visualizações e,
+  no painel de Formatação, expanda <strong>Image &gt; Style &gt; Image controls &gt; Image source</strong> para
+  escolher a origem:</p>
+  <div class="goal-list">
+    <ul>
+      <li><strong>Upload image</strong> — carrega um arquivo do seu dispositivo;</li>
+      <li><strong>Enter URL</strong> — vincula a uma imagem hospedada na web;</li>
+      <li><strong>Select from data</strong> — vincula o visual a uma imagem armazenada no modelo de dados.</li>
+    </ul>
+  </div>
+
+  <table class="term-table">
+    <thead><tr><th>Recurso</th><th>O que controla</th></tr></thead>
+    <tbody>
+      <tr><td>Image fit</td><td>Como a imagem se ajusta aos limites do visual: Fit, Fill, Center ou Stretch</td></tr>
+      <tr><td>Visual states (Apply settings to)</td><td>Estilos diferentes para Default, Hover e Pressed — útil quando a imagem tem uma ação associada (navegação de página, URL)</td></tr>
+      <tr><td>Effects</td><td>Exposure, Contrast, Saturation e Blur, ajustáveis por estado</td></tr>
+      <tr><td>Shape / Border / Background</td><td>Corner radius, borda e cor de fundo do visual</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">Imagens grandes podem afetar o desempenho do relatório; use efeitos com
+  moderação e otimize o tamanho do arquivo. Ao publicar no serviço, o nome original do arquivo não
+  aparece — o controle mostra apenas "Uploaded file".</div>
+
+  <h2 id="visual-relatorio-paginado">Visual de relatório paginado</h2>
+  <p>O visual de <strong>relatório paginado</strong> (paginated report) renderiza, dentro de um relatório comum do
+  Power BI, um relatório paginado que já foi publicado no serviço. Isso combina a interatividade dos
+  visuais do Power BI com a formatação pixel-perfect e os recursos de exportação em massa dos
+  relatórios paginados — úteis para exportações grandes, detalhamento e geração de documentos.</p>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Como criar e configurar <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ol>
+        <li>No relatório do Power BI (Desktop ou serviço, em modo de edição), selecione <strong>Paginated
+        Report</strong> no painel de Visualizações.</li>
+        <li>Selecione <strong>Connect to report</strong> e procure o relatório paginado já salvo no serviço.</li>
+        <li>Em <strong>Set Parameters</strong>, associe campos do Power BI aos parâmetros do relatório
+        paginado (arrastando o campo para o poço de Parameters), ou use os parâmetros padrão
+        definidos pelo autor.</li>
+        <li>Publique/salve o relatório. Recomenda-se salvá-lo no mesmo workspace do relatório
+        paginado, para garantir que os leitores tenham acesso a ambos.</li>
+      </ol>
+      <p>Quando os parâmetros do relatório paginado são mapeados para campos do Power BI, outros
+      visuais da página podem <strong>cross-filtrar</strong> o visual paginado automaticamente. A opção
+      <strong>Auto-apply filters</strong> (desligada por padrão) controla se os filtros do relatório são aplicados
+      automaticamente ao visual paginado.</p>
+    </div>
+  </div>
+
+  <div class="callout"><span class="callout-icon">💡</span><div>Diferente dos visuais nativos, que limitam a exportação a 150.000 linhas, o botão de
+  exportação do visual de relatório paginado permite exportar até 1.000.000 de linhas para Excel,
+  preservando toda a formatação do relatório paginado.</div></div>
+
+  <div class="note">O visual tem um limite de redução de dados de 30.000 valores por campo; acima
+  disso, uma parte dos dados é descartada. O visual não é suportado em assinaturas (subscriptions) ou
+  exportação de relatórios do Power BI, e não é atualizado por Deployment Pipelines.</div>
+
+  <h2 id="visuais-r">Visuais criados com R</h2>
+  <p>O Power BI Desktop permite usar <strong>R</strong>, uma linguagem de computação estatística e gráficos, para
+  criar visualizações personalizadas. O R não vem instalado com o Power BI Desktop — é preciso
+  instalar o R separadamente no computador (por exemplo, a partir do CRAN) e confirmar o caminho
+  em <strong>Arquivo &gt; Opções e configurações &gt; Opções &gt; R scripting</strong>.</p>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Criando um visual R no Desktop <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ol>
+        <li>Selecione o ícone de <strong>R Visual</strong> no painel de Visualizações e confirme a habilitação de
+        script visuals.</li>
+        <li>Arraste os campos que o script vai consumir para a área de Values — eles ficam disponíveis
+        no R como colunas de um dataframe chamado <code>dataset</code> (por exemplo,
+        <code>dataset$gear</code>).</li>
+        <li>Escreva o script R no editor que aparece na parte inferior da tela e selecione o ícone de
+        <strong>Run script</strong> para plotar o resultado.</li>
+      </ol>
+      <p>A agregação padrão dos campos é "do not summarize". O visual é replotado sempre que os
+      dados mudam (atualização, filtro ou highlight), mas a imagem em si não é interativa: não é
+      possível selecionar elementos dentro dela para cross-filtrar outros visuais.</p>
+    </div>
+  </div>
+
+  <table class="term-table">
+    <thead><tr><th>Limitação</th><th>Detalhe</th></tr></thead>
+    <tbody>
+      <tr><td>Volume de dados</td><td>Até 150.000 linhas; acima disso, apenas as primeiras 150.000 são usadas</td></tr>
+      <tr><td>Tamanho de saída</td><td>Limite de 2 MB, resolução fixa em 72 DPI</td></tr>
+      <tr><td>Tempo de cálculo</td><td>Timeout em 5 minutos no Desktop (60 segundos no serviço)</td></tr>
+      <tr><td>Tooltips e interatividade</td><td>Visuais R não exibem tooltips nem cross-filtram outros visuais</td></tr>
+      <tr><td>Licenciamento (serviço)</td><td>Exige licença Pro ou Premium Per User (PPU) para renderizar, atualizar e filtrar</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">Visuais R são criados a partir de scripts que podem conter riscos de segurança ou
+  privacidade. Habilite-os apenas se confiar no autor e na origem, ou após revisar o script. O serviço
+  aplica uma tecnologia de sandbox que restringe acesso à internet e a outros recursos durante a
+  execução.</div>
+
+  <h3 id="visuais-r-appsource">Usando visuais prontos com tecnologia R (AppSource)</h3>
+  <p>Você não precisa saber R para se beneficiar dele: é possível baixar visuais personalizados
+  "R-powered" prontos da galeria do <strong>AppSource</strong> e usá-los como qualquer outro visual do Power
+  BI Desktop.</p>
+  <ol>
+    <li>Acesse a galeria de visuais do Power BI em appsource.microsoft.com, ou use <strong>Get more
+    visuals</strong> (reticências no painel de Visualizações) direto no Power BI Desktop.</li>
+    <li>Baixe o arquivo <code>.pbiviz</code> do visual desejado.</li>
+    <li>No painel de Visualizações, selecione <strong>Import a visual from a file</strong> e escolha o arquivo
+    baixado.</li>
+    <li>Adicione dados ao visual normalmente; o Power BI Desktop instala automaticamente os
+    pacotes R necessários.</li>
+  </ol>
+  <p>Para usar um visual R-powered no <strong>Power BI Desktop</strong>, o R precisa estar instalado localmente.
+  Para apenas <strong>visualizar</strong> o relatório no serviço, o consumidor não precisa ter R instalado — mas os
+  pacotes R usados devem estar entre os pacotes suportados pelo serviço (publicados no CRAN, com
+  licença livre e open-source).</p>
+
+  <h2 id="visual-power-apps">Visual do Power Apps</h2>
+  <p>O visual de <strong>Power Apps</strong> incorpora um aplicativo do Power Apps dentro de um relatório do Power
+  BI, com uma conexão de dados ao vivo entre os dois. Isso permite construir experiências
+  interativas — como formulários de entrada de dados ou ações personalizadas — que reagem aos
+  filtros e seleções do relatório.</p>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Fluxo básico de criação <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ol>
+        <li>No relatório em modo de edição, selecione o ícone do <strong>Power Apps</strong> no painel de
+        Visualizações e redimensione o visual.</li>
+        <li>No painel de Campos, adicione os campos que o app deve consumir.</li>
+        <li>No visual, selecione o ambiente do Power Apps e escolha <strong>Create new</strong> para abrir o
+        Power Apps Studio com uma conexão de dados já configurada.</li>
+        <li>Projete o app (controles, layout, propriedades) e salve.</li>
+      </ol>
+      <p>O app criado passa a interagir com os demais visuais do relatório, porque compartilha a
+      mesma fonte de dados: ao selecionar um valor em um slicer, por exemplo, os dados exibidos
+      no app também são filtrados.</p>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" id="page-11">
+  <h1>Formatação básica de visuais</h1>
+
+  <div class="info-box"><strong>Aplica-se a:</strong> Power BI Desktop, Power BI service</div>
+
+  <p>Praticamente todos os elementos de um visual podem ser formatados: cores de séries e pontos de
+  dados, fundo, eixos, rótulos de dados, fontes de títulos e formas. Tanto o Power BI Desktop quanto o
+  Power BI service (em modo de edição) oferecem opções de formatação quase idênticas.</p>
+
+  <h2 id="fluxo-geral-formatacao">Fluxo geral para formatar um visual</h2>
+  <p>Ao selecionar um visual em modo de edição, o painel de Visualizações mostra três ícones
+  abaixo dele: <strong>Fields</strong> (pilha de barras), <strong>Format</strong> (pincel) e <strong>Analytics</strong> (lupa). Selecionando
+  o pincel, a área abaixo exibe as customizações disponíveis para aquele tipo de visual — as opções
+  variam conforme o visual selecionado (por exemplo, um gráfico de pizza não tem eixo X).</p>
+
+  <div class="goal-list">
+    <p><strong>Elementos comuns de formatação</strong></p>
+    <ul>
+      <li>Legend, X-axis, Y-axis, Data colors, Data labels, Total labels;</li>
+      <li>Shapes, Plot area, Title, Background, Lock aspect, Border, Shadow;</li>
+      <li>Tooltip, Visual header, Position, Zoom.</li>
+    </ul>
+  </div>
+
+  <p>Quando nenhum visual está selecionado, o painel mostra <strong>Filters</strong> no lugar dos ícones de
+  formatação, permitindo aplicar filtros a todos os visuais da página.</p>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Exemplo passo a passo: cores, eixo e rótulos de dados <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <p><strong>Alterar cores:</strong> selecione o visual, abra o pincel, expanda <strong>Colors</strong>, ative <strong>Show all</strong>
+      e escolha uma cor para cada série/categoria. Use o seletor de cor para trocar, <strong>Reset to
+      default</strong> para reverter, ou <strong>More colors...</strong> para escolher no espectro completo.</p>
+      <p><strong>Alterar eixos:</strong> selecione a seta ao lado do eixo X ou Y para expandir suas opções — por
+      exemplo, mover os rótulos do eixo Y para a direita, começar o valor em zero, mudar cor e
+      tamanho da fonte, ou adicionar um título ao eixo.</p>
+      <p><strong>Adicionar rótulos de dados:</strong> expanda <strong>Data labels</strong> e ative a opção; ajuste fonte,
+      tamanho, cor de fundo e transparência. Rótulos podem não aparecer se o visual for pequeno
+      demais — tente aumentá-lo ou usar o modo tela cheia.</p>
+      <p><strong>Total labels:</strong> disponíveis para gráficos empilhados (stacked), combo e de área. Quando
+      ativados, mostram o total agregado de cada coluna/barra, em vez do valor de cada segmento
+      individual (Data labels).</p>
+    </div>
+  </div>
+
+  <p>Use <strong>CTRL+Z</strong> para desfazer a última alteração. O <strong>Reset to default</strong> permite reverter com
+  granularidade: o visual inteiro, cada seção do painel de Formatação, ou apenas o grupo de
+  configurações dentro de uma seção.</p>
+
+  <div class="callout"><span class="callout-icon">💡</span><div>Alguns visuais (como tabelas e matrizes) têm um <strong>Style presets</strong> — um único clique
+  aplica um conjunto completo de formatação de uma vez. Depois de aplicar um estilo, você ainda
+  pode continuar ajustando propriedades individuais, como cores.</div></div>
+
+  <h2 id="aba-general">A aba General do painel de Formatação</h2>
+  <p>Ao abrir o painel <strong>Format visual</strong>, há duas abas: <strong>Visual</strong> (opções específicas daquele tipo de
+  visual, como cores de dados e rótulos de eixo) e <strong>General</strong> (opções que se aplicam a quase todos
+  os visuais, como tamanho, título, fundo e ícones de cabeçalho). Muitas dessas opções também podem
+  ser definidas para o relatório inteiro usando um <strong>tema de relatório</strong>.</p>
+
+  <table class="term-table">
+    <thead><tr><th>Seção</th><th>O que controla</th></tr></thead>
+    <tbody>
+      <tr><td>Properties</td><td>Tamanho (altura/largura, lock aspect ratio), posição e padding do visual na tela</td></tr>
+      <tr><td>Title</td><td>Texto do título (fixo ou via <em>fx</em>), subtítulo, linha divisória e espaçamento</td></tr>
+      <tr><td>Effects</td><td>Cor/transparência de fundo, borda do visual (cor, raio, largura) e sombra</td></tr>
+      <tr><td>Data format</td><td>Sobrescreve a formatação de um campo (número, moeda, percentual, data) sem alterar o modelo — essencial para visual calculations</td></tr>
+      <tr><td>Header icons</td><td>Quais ícones aparecem no cabeçalho do visual (drill, pin, focus mode, filtros, help tooltip etc.)</td></tr>
+      <tr><td>Tooltips</td><td>Tipo de tooltip (Default ou Report page), texto, cores e ações de drill</td></tr>
+      <tr><td>Alt text</td><td>Descrição para leitores de tela, fixa ou dinâmica via medida/expressão</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="titulos-fundos-legendas">Personalizando títulos, fundos e legendas</h2>
+  <p>Para customizar o título de um visual: selecione-o, abra o pincel, vá em <strong>General &gt; Title</strong>,
+  digite o texto desejado, defina cor do texto e do fundo, tamanho da fonte e alinhamento horizontal.</p>
+
+  <p>Para o fundo: expanda <strong>Effects &gt; Background</strong>, ative o toggle, escolha a cor e ajuste a
+  transparência.</p>
+
+  <p>Para a legenda: expanda <strong>Legend</strong>, ajuste a <strong>Position</strong> (por exemplo, à esquerda), defina um
+  <strong>Title</strong> personalizado e sua cor.</p>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Quais visuais suportam título, fundo, legenda e totais? <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <table class="term-table">
+        <thead><tr><th>Visual</th><th>Título</th><th>Fundo</th><th>Legenda</th><th>Rótulos de dados</th><th>Totais/Subtotais</th></tr></thead>
+        <tbody>
+          <tr><td>Área, Barra, Coluna, Combo, Waterfall</td><td>Sim</td><td>Sim</td><td>Sim</td><td>Sim</td><td>Condicional</td></tr>
+          <tr><td>Linha, Dispersão</td><td>Sim</td><td>Sim</td><td>Sim</td><td>Sim</td><td>Não</td></tr>
+          <tr><td>Pizza, Rosca, Treemap</td><td>Sim</td><td>Sim</td><td>Sim</td><td>Sim</td><td>Não</td></tr>
+          <tr><td>Funil</td><td>Sim</td><td>Sim</td><td>Não</td><td>Sim</td><td>Não</td></tr>
+          <tr><td>Mapa, Mapa preenchido, Azure Maps</td><td>Sim</td><td>Sim</td><td>Sim</td><td>Condicional</td><td>Não</td></tr>
+          <tr><td>Tabela, Matriz</td><td>Sim</td><td>Sim</td><td>Não</td><td>Não</td><td>Sim</td></tr>
+          <tr><td>Card, Multi-row Card, KPI, Gauge</td><td>Sim</td><td>Sim</td><td>Não</td><td>Apenas valor</td><td>Não</td></tr>
+          <tr><td>Key Influencer, Q&amp;A</td><td>Sim</td><td>Sim</td><td>Não</td><td>Automático</td><td>Não</td></tr>
+          <tr><td>Slicer</td><td>Sim</td><td>Sim</td><td>Não</td><td>Não</td><td>Não</td></tr>
+          <tr><td>Shape</td><td>Não</td><td>Sim</td><td>Não</td><td>Não</td><td>Não</td></tr>
+          <tr><td>Text box</td><td>Não</td><td>Sim</td><td>Não</td><td>Não</td><td>Não</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2 id="eixo-x-eixo-y">Personalizando o eixo X e o eixo Y</h2>
+  <p>Nem todos os visuais têm eixos — gráficos de pizza, por exemplo, não têm. Qual eixo representa
+  valores e qual representa categorias depende do tipo de gráfico:</p>
+
+  <table class="term-table">
+    <thead><tr><th>Tipo de gráfico</th><th>Eixo X</th><th>Eixo Y</th></tr></thead>
+    <tbody>
+      <tr><td>Coluna, linha, área, combo, ribbon, waterfall</td><td>Categorias</td><td>Valores</td></tr>
+      <tr><td>Barra</td><td>Valores</td><td>Categorias</td></tr>
+      <tr><td>Dispersão (X numérico)</td><td>Valores</td><td>Valores</td></tr>
+      <tr><td>Dispersão (X categórico)</td><td>Categorias</td><td>Valores</td></tr>
+    </tbody>
+  </table>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Opções de eixo disponíveis <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ul>
+        <li><strong>Rótulos:</strong> font family, cor, tamanho e unidades de exibição (Thousands, Millions, Auto);
+        podem ser ocultados desligando "Values".</li>
+        <li><strong>Múltiplos campos/hierarquia:</strong> arraste mais campos para o poço do eixo para criar uma
+        hierarquia com drill-down. Campos de data geram automaticamente uma hierarquia Ano/
+        Trimestre/Mês/Dia — use o campo de data diretamente (em vez da hierarquia) para eixos
+        contínuos.</li>
+        <li><strong>Concatenate labels:</strong> combina os níveis da hierarquia em uma única linha (por exemplo,
+        "2026 January"), em vez de uma linha por nível.</li>
+        <li><strong>Tipo de eixo:</strong> Continuous (escala contínua, sem necessidade de rolagem) ou
+        Categorical (cada valor como categoria separada, com barra de rolagem se necessário).
+        Campos de texto são sempre categóricos.</li>
+        <li><strong>Range:</strong> defina Minimum/Maximum para ajustar a escala; ative Logarithmic para dados
+        que abrangem várias ordens de grandeza (exige todos os valores positivos ou todos
+        negativos); Round range controla se os valores do eixo são arredondados para múltiplos
+        "redondos".</li>
+        <li><strong>Gridlines:</strong> cor, espessura e visibilidade das linhas de grade.</li>
+        <li><strong>Invert range:</strong> inverte o eixo Y (valores positivos para baixo, negativos para cima).</li>
+        <li><strong>Título do eixo:</strong> texto, cor, tamanho e estilo (mostrar só o título, só as unidades, ou
+        ambos).</li>
+        <li><strong>Dual Y-axes:</strong> gráficos combo criam automaticamente um segundo eixo Y ao adicionar
+        uma medida de linha; formate cada eixo separadamente.</li>
+        <li><strong>Category/Series spacing e Overlap:</strong> em gráficos de barra/coluna agrupados, controla o
+        espaçamento entre clusters e séries, ou sobrepõe as séries para comparação direta (com
+        transparência e borda para distinguir as camadas).</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="dicas-formatacao-cor">Dicas e truques de formatação de cor</h2>
+  <div class="goal-list">
+    <ul>
+      <li><strong>Temas de relatório:</strong> aplique um tema (View &gt; Themes) para padronizar cores, fontes e
+      formatação em todos os visuais de uma vez — inclusive temas organizacionais definidos por
+      administradores.</li>
+      <li><strong>Destacar um ponto de dado:</strong> use a busca no painel de Formatação (por exemplo, "Column")
+      para localizar rapidamente a opção de cor certa; selecione uma categoria específica no
+      dropdown e escolha sua cor, mantendo um <strong>Default color</strong> para categorias futuras.</li>
+      <li><strong>Cor condicional (fx):</strong> disponível ao lado da maioria das opções de cor. Três estilos:
+      <strong>Rules</strong> (cor por faixas de valor), <strong>Gradient</strong> (escala contínua entre mínimo e máximo,
+      com cor central opcional) e <strong>Field value</strong> (usa uma medida/coluna que retorna nome de cor
+      ou código hex).</li>
+      <li><strong>Cores de tema via Field value:</strong> uma medida DAX pode retornar o nome de uma cor do
+      tema (em vez de um hex fixo), mantendo o relatório consistente mesmo se o tema mudar.</li>
+      <li><strong>Desfazer:</strong> CTRL+Z para as últimas ações; "Reset to default" no painel de Formatação, ou
+      no menu de reticências, para reverter tudo em um visual.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="page-section" id="page-12">
+  <h1>Formatação condicional e tooltips</h1>
+
+  <div class="info-box"><strong>Aplica-se a:</strong> Power BI Desktop, Power BI service</div>
+
+  <p>A <strong>formatação condicional</strong> permite mudar dinamicamente a aparência de um visual com base
+  nos valores dos dados, em vez de usar cores e estilos estáticos — útil para destacar pontos
+  importantes, mostrar indicadores de status ou criar efeitos de mapa de calor. Combinada com
+  <strong>títulos dinâmicos</strong> e <strong>tooltips</strong> bem configurados, ela torna os relatórios mais intuitivos e
+  fáceis de interpretar sem exigir análise de números brutos.</p>
+
+  <h2 id="formatacao-condicional-visao-geral">Formatação condicional: visão geral</h2>
+  <p>A formatação condicional está disponível para diversos visuais, mas as opções variam conforme o
+  tipo:</p>
+
+  <table class="term-table">
+    <thead><tr><th>Visual</th><th>Opções de formatação suportadas</th></tr></thead>
+    <tbody>
+      <tr><td>Tabelas e matrizes</td><td>Cor de fundo, cor de fonte, data bars, ícones, URLs</td></tr>
+      <tr><td>Gráficos de coluna/barra/empilhados</td><td>Cor das colunas/barras (gradient, rules, field value)</td></tr>
+      <tr><td>Button slicers</td><td>Fundo dos botões, bordas, valores e rótulos de destaque, efeitos</td></tr>
+      <tr><td>Cards, Gauges, KPIs</td><td>Cores de indicador, valores de destaque e metas</td></tr>
+      <tr><td>Maioria dos visuais</td><td>Títulos e subtítulos baseados em expressão</td></tr>
+    </tbody>
+  </table>
+
+  <p>Para acessar: selecione o visual, abra o painel de Formatação (pincel), expanda o cartão do
+  elemento desejado (por exemplo, <strong>Columns</strong>) e selecione o botão <em>fx</em> ao lado da opção de cor.
+  Em tabelas e matrizes, você também pode clicar com o botão direito no campo (ou na seta ao lado
+  dele) e escolher <strong>Conditional formatting</strong> diretamente.</p>
+
+  <div class="note">Gráficos de linha não suportam formatação condicional nativa para linhas, áreas
+  sombreadas ou marcadores. A formatação condicional se aplica apenas a valores em tabelas/
+  matrizes, não a cabeçalhos de linha ou coluna.</div>
+
+  <h2 id="formatacao-condicional-tabelas">Aplicando formatação condicional em tabelas</h2>
+  <p>Em tabelas e matrizes, você pode combinar mais de uma opção de formatação condicional no
+  mesmo campo. A formatação condicional sempre sobrescreve qualquer cor de fundo/fonte fixa
+  aplicada manualmente à célula.</p>
+
+  <table class="term-table">
+    <thead><tr><th>Estilo</th><th>Como funciona</th><th>Melhor uso</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Gradient</strong></td>
+        <td>Escala de cor contínua entre um valor mínimo e máximo (com cor central opcional)</td>
+        <td>Dados numéricos contínuos, para mostrar diferenças relativas</td>
+      </tr>
+      <tr>
+        <td><strong>Rules</strong></td>
+        <td>Cores específicas para faixas de valor definidas (percentual ou número)</td>
+        <td>Categorizar dados em grupos discretos (ex.: verde/amarelo/vermelho)</td>
+      </tr>
+      <tr>
+        <td><strong>Field value</strong></td>
+        <td>Usa cores (nome, hex, RGB/RGBA, HSL/HSLA) armazenadas em um campo ou medida do
+        modelo</td>
+        <td>Lógica de cor totalmente customizada, incluindo cores por texto/categoria via medida
+        SWITCH</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Data bars, ícones e URLs em tabelas <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ul>
+        <li><strong>Data bars:</strong> mostram uma barra proporcional ao valor da célula; é possível ocultar o
+        valor numérico e exibir só a barra (<em>Show bar only</em>), além de definir mínimo, máximo, cor e
+        direção.</li>
+        <li><strong>Ícones:</strong> baseados em Rules ou Field value, com categorias como Directional (setas,
+        tendências), Shapes (semáforos, círculos), Indicators (bandeiras, check/X) e Ratings
+        (estrelas, sinal). O layout permite ícone à esquerda, à direita ou somente o ícone.</li>
+        <li><strong>Web URL:</strong> transforma o valor de um campo em um link ativo, com base em uma coluna
+        ou medida que contém URLs.</li>
+      </ul>
+      <p><strong>Cor por texto:</strong> diferente do Excel, não é possível colorir um valor de texto diretamente
+      (por exemplo, "Aprovado" = azul). Em vez disso, crie uma medida com <code>SWITCH</code> que retorne
+      o nome ou hex da cor, e use Field value baseado nessa medida.</p>
+    </div>
+  </div>
+
+  <div class="callout"><span class="callout-icon">💡</span><div>Ao formatar campos com percentuais, digite os valores das regras como decimais (por
+  exemplo, <code>0.25</code> para 25%) e selecione o formato Number, não Percent — usar Percent pode gerar
+  resultados inesperados no cálculo das faixas.</div></div>
+
+  <h2 id="titulos-dinamicos">Títulos dinâmicos baseados em expressão</h2>
+  <p>É possível criar títulos e subtítulos que se atualizam automaticamente conforme filtros, seleções
+  ou interações do usuário, usando uma expressão DAX.</p>
+  <ol>
+    <li>Crie um campo (medida) no modelo que retorne o texto desejado para o título — por
+    exemplo, uma medida que reflete o contexto de filtro atual, ou que usa
+    <code>USERCULTURE()</code> para exibir o título no idioma do usuário.</li>
+    <li>No visual, vá em <strong>Format &gt; General &gt; Title</strong> e ative o título.</li>
+    <li>Ao lado do texto do título (ou subtítulo), selecione o ícone de formatação condicional
+    (<em>fx</em>) e escolha o campo criado.</li>
+  </ol>
+
+  <div class="note">O campo usado no título precisa ser do tipo texto (string) — medidas que retornam
+  número ou data/hora não são suportadas. Títulos baseados em expressão não são preservados ao
+  fixar (pin) o visual em um dashboard, e não funcionam em visuais Python, R ou Key Influencers.</div>
+
+  <h2 id="tooltips-visao-geral">Tooltips: visão geral dos três tipos</h2>
+  <p>Tooltips mostram informação contextual quando o consumidor passa o mouse sobre um ponto de
+  dado ou ícone do visual. O Power BI oferece três tipos, que podem ser combinados no mesmo
+  visual:</p>
+
+  <table class="term-table">
+    <thead><tr><th>Tipo</th><th>Quando usar</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Tooltip visual (padrão)</strong></td>
+        <td>Mostra os campos do visual mais quaisquer campos extras adicionados ao poço de
+        Tooltip; formatável em texto/fundo, com ações de drill no rodapé quando suportado.</td>
+      </tr>
+      <tr>
+        <td><strong>Tooltip de página de relatório</strong></td>
+        <td>Substitui o card padrão por uma página de relatório inteira, com visuais, KPIs e imagens
+        — para contexto mais rico do que cabe em um hover simples.</td>
+      </tr>
+      <tr>
+        <td><strong>Help tooltip</strong></td>
+        <td>Acionado pelo ícone de ajuda no cabeçalho do visual; mostra texto curto ou uma página
+        de relatório explicando como interpretar ou interagir com o visual.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 id="tooltip-visual-configuracao">Configurando o tooltip visual</h3>
+  <p>Arraste campos para o poço <strong>Tooltip</strong> no painel de Build visual para exibi-los no hover, sem
+  alterar o visual em si. Em <strong>Format &gt; General &gt; Tooltips &gt; Options</strong>:</p>
+  <div class="goal-list">
+    <ul>
+      <li><strong>Tooltip fields only:</strong> mostra apenas os campos adicionados ao poço de Tooltip, em vez dos
+      campos do visual + os do poço juntos.</li>
+      <li><strong>Sentence format:</strong> renderiza o tooltip como uma frase a partir de um template, em vez de
+      uma lista de campos — referencie qualquer campo entre chaves, como <code>{Sales}</code>. Use
+      <code>ISINSCOPE</code> em uma medida para adaptar a frase a diferentes níveis de uma hierarquia
+      com drill.</li>
+      <li><strong>Chart-specific tooltips:</strong> exibe conteúdo específico do tipo de gráfico (por exemplo, %
+      em relação ao valor anterior em um funil).</li>
+      <li><strong>Actions:</strong> ativa um rodapé com ações de drill down/up/through direto pelo tooltip.</li>
+    </ul>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Tooltip de página de relatório: como criar <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ol>
+        <li>Crie uma nova página de relatório (botão + na área de abas).</li>
+        <li>No painel de Formatação, em <strong>Canvas Settings</strong>, mude o template de tamanho da página
+        para <strong>Tooltip</strong>, e ajuste a visualização para <strong>Actual size</strong>.</li>
+        <li>Adicione os visuais desejados na página (cards, gráficos, imagens).</li>
+        <li>Em <strong>Page Information</strong>, ative o toggle <strong>Tooltip</strong> e dê um nome à página.</li>
+        <li>Arraste os campos que devem acionar esse tooltip para <strong>Tooltip fields</strong>, no painel de
+        Campos — visuais que usam esses campos passam a exibir a página como tooltip
+        automaticamente.</li>
+      </ol>
+      <p>Você também pode definir manualmente qual página de tooltip usar em um visual específico,
+      em <strong>Format &gt; Tooltips &gt; Page</strong>, útil quando o visual tem mais de um campo com tooltip
+      associado e o Power BI escolheria apenas um automaticamente. Selecione <strong>Auto</strong> para reverter
+      ao padrão.</p>
+    </div>
+  </div>
+
+  <div class="note">Em gráficos de linha, o tooltip de página de relatório mostra um único tooltip para
+  todas as linhas (a legenda não filtra o tooltip). Dashboards não suportam tooltips de página, e
+  visuais Python/R não aparecem em tooltips de relatório.</div>
+
+  <h3 id="help-tooltips">Help tooltips</h3>
+  <p>Para adicionar um tooltip de ajuda a um visual:</p>
+  <ol>
+    <li>Selecione o visual e vá em <strong>Format &gt; General &gt; Header icons</strong>.</li>
+    <li>Expanda <strong>Icons</strong> e ative <strong>Help tooltip</strong>.</li>
+    <li>Escolha o tipo de conteúdo: <strong>texto digitado</strong> (explicações curtas) ou <strong>página de
+    relatório</strong> (conteúdo mais rico, com visuais e imagens — inclusive GIFs animados
+    demonstrando interações).</li>
+  </ol>
+  <div class="note">O ícone de Help tooltip só aparece quando os Header icons estão ativados e o
+  cabeçalho do visual está visível. Texto digitado não reage a slicers/filtros; uma página de relatório
+  usada como help tooltip pode reagir a filtros, se você projetar a página para isso.</div>
+</section>
+
+
+<section class="page-section" id="page-13">
+  <h1>Strings de formato e rótulos</h1>
+
+  <div class="goal-list">
+    <p>Nesta página você vai aprender a:</p>
+    <ul>
+      <li>Criar strings de formato dinâmicas para medidas, controladas por DAX</li>
+      <li>Usar strings de formato personalizadas em três níveis: modelo, visual e elemento</li>
+      <li>Definir a localidade padrão de formato de um relatório</li>
+      <li>Usar rótulos de hierarquia inline em matrizes e tabelas</li>
+    </ul>
+  </div>
+
+  <h2 id="strings-formato-dinamicas">Strings de formato dinâmicas para medidas</h2>
+  <p>Strings de formato dinâmicas permitem controlar, por meio de uma expressão DAX separada, como uma medida é exibida — por exemplo, alternando entre moeda, percentual ou outra unidade dependendo do contexto de filtro. Isso resolve um problema conhecido da função <code>FORMAT</code>: ela sempre devolve texto, mesmo para valores numéricos, o que quebra o comportamento de gráficos que exigem tipos numéricos. Com strings de formato dinâmicas, a medida mantém seu tipo de dado numérico e apenas a <em>aparência</em> muda conforme o contexto.
+
+  <div class="callout">
+    Strings de formato dinâmicas usam os mesmos padrões DAX que os grupos de cálculo (calculation groups), mas o escopo fica limitado a uma medida individual, em vez de valer para todas as medidas do modelo.
+  </div>
+
+  <h3>Como configurar</h3>
+  <ol>
+    <li>No painel Dados, selecione a medida desejada.</li>
+    <li>Na faixa de opções Ferramentas de medida, na seção Formatação, selecione <strong>Dinâmico</strong> na lista de Formato. Um novo menu suspenso "Formato" aparece à esquerda da barra de fórmulas DAX, permitindo alternar entre a expressão estática da medida e a expressão dinâmica de formato.</li>
+    <li>Substitua a string estática por uma expressão DAX que devolva a string de formato correta para o contexto (por exemplo, buscando o formato de moeda de uma tabela de referência por país/região).</li>
+    <li>Teste o resultado em um visual.</li>
+  </ol>
+  <p>Para remover a string dinâmica e voltar a um formato estático, selecione outra opção no menu Formato — como não existe "desfazer" para essa ação, o Power BI pede confirmação antes de prosseguir.</p>
+
+  <div class="callout success">
+    Caixas de texto também podem exibir valores de medidas com a formatação dinâmica aplicada: selecione a caixa de texto, abra o painel Formatar, em Valores selecione o ícone de campo (fx) e escolha a medida com formato dinâmico.
+  </div>
+
+  <h3>Exemplo prático: conversão de moeda</h3>
+  <p>Um cenário típico usa uma tabela de taxas de câmbio e uma tabela de formatos de moeda por país/região, relacionadas a uma medida <code>Converted Sales Amount</code>. A string de formato dinâmica busca o formato correto conforme o país selecionado em um segmentador:</p>
+  <pre>SELECTEDVALUE ( 'Country/Region Currency Format Strings'[Format], "\$#,0.00;(\$#,0.00);\$#,0.00" )</pre>
+  <p>Ao trocar o país no segmentador, tabela e gráfico de linhas passam a exibir o valor convertido já no formato monetário correto (AU$, C$, kr, €, ¥, CHF, £, US$ etc.), sem que a medida deixe de ser numérica.</p>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Exemplo: formatando durações em milissegundos <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <p>Quando uma medida armazena duração em milissegundos, exibir "3.600.000 ms" não é amigável. Uma string de formato dinâmica pode converter o valor para a unidade mais adequada (ms, s, m ou h) mantendo a medida subjacente em milissegundos para cálculos precisos:</p>
+      <pre>VAR ms = SELECTEDMEASURE()
+RETURN
+    SWITCH(
+        TRUE(),
+        ms &lt; 1000, FORMAT(ms, "#,0") &amp; " \m\s",
+        ms &lt; 60000, "'" &amp; FORMAT(ms / 1000, "#,0.0") &amp; " s'",
+        ms &lt; 3600000, "'" &amp; FORMAT(ms / 60000, "#,0.0") &amp; " m'",
+        "'" &amp; FORMAT(ms / 3600000, "#,0.0") &amp; " h'"
+    )</pre>
+      <table class="term-table">
+        <tr><th>Valor bruto (ms)</th><th>Exibição</th></tr>
+        <tr><td>500</td><td>500 ms</td></tr>
+        <tr><td>5.000</td><td>5,0 s</td></tr>
+        <tr><td>120.000</td><td>2,0 m</td></tr>
+        <tr><td>7.200.000</td><td>2,0 h</td></tr>
+      </table>
+      <p><code>SELECTEDMEASURE()</code> recupera o valor real da medida, converte para a unidade apropriada e o envolve em aspas simples, forçando o Power BI a tratar o resultado como texto literal. Use <code>\m\s</code> para escapar "ms" como texto literal. O mesmo padrão pode ser reaplicado a várias medidas de duração, inclusive via grupos de cálculo.</p>
+      <div class="callout warning">
+        Se a formatação do visual (Display units) alterar o resultado inesperadamente, vá em Formatar visual &gt; Display units e mude de Automático para Nenhum. Para aplicar isso a todos os visuais de um relatório de uma vez, use um tema de relatório JSON customizado que zere as propriedades <code>displayUnits</code>.
+      </div>
+    </div>
+  </div>
+
+  <h2 id="strings-formato-personalizadas">Strings de formato personalizadas</h2>
+  <p>Strings de formato personalizadas existem em três níveis hierárquicos — do mais geral ao mais específico, o nível mais alto sempre prevalece sobre o mais baixo:</p>
+
+  <table class="term-table">
+    <tr><th>Nível</th><th>Afeta</th><th>Disponível para</th></tr>
+    <tr><td>Modelo</td><td>Todos os visuais, páginas e relatórios que usam o mesmo modelo</td><td>Medidas, colunas</td></tr>
+    <tr><td>Visual</td><td>O visual selecionado</td><td>Medidas, colunas, cálculos visuais</td></tr>
+    <tr><td>Elemento</td><td>Um elemento específico do visual selecionado (ex.: rótulo de dados, cartão novo, segmentador novo)</td><td>Medidas, colunas, cálculos visuais</td></tr>
+  </table>
+
+  <p>Como cálculos visuais não existem no modelo, eles só podem receber string de formato no nível de visual ou de elemento. Ao trocar a agregação de um campo, uma string de formato de nível visual definida anteriormente é removida; para campos normais ela é restaurada se o campo for removido e adicionado de novo ao visual — o que <strong>não</strong> acontece com cálculos visuais.</p>
+
+  <div class="callout warning">
+    <strong>Atenção à sintaxe:</strong> o novo visual de cartão e a formatação em nível de visual usam sintaxe .NET, enquanto o nível de modelo e de elemento usam sintaxe VBA. Formatos numéricos (como <code>#,##0</code>) funcionam igual nos dois, mas formatos de data/hora divergem — em .NET, <code>M</code> maiúsculo é mês e <code>m</code> minúsculo é minuto; em VBA é o contrário (<code>m</code> minúsculo é mês). Prefira <code>n</code>/<code>nn</code> para minutos no estilo VBA para evitar ambiguidade.
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Exemplos comuns de strings numéricas <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <table class="term-table">
+        <tr><th>String</th><th>Entrada</th><th>Saída</th><th>Descrição</th></tr>
+        <tr><td><code>#,##0</code></td><td>1234567</td><td>1.234.567</td><td>Milhar sem decimais</td></tr>
+        <tr><td><code>#,##0.00</code></td><td>1234.5</td><td>1.234,50</td><td>Milhar com 2 decimais</td></tr>
+        <tr><td><code>0%</code></td><td>0.156</td><td>16%</td><td>Percentual sem decimais</td></tr>
+        <tr><td><code>$#,##0.00</code></td><td>1234.5</td><td>$1.234,50</td><td>Moeda com 2 decimais</td></tr>
+        <tr><td><code>#,##0.00;(#,##0.00)</code></td><td>-1234.5</td><td>(1.234,50)</td><td>Negativos entre parênteses</td></tr>
+        <tr><td><code>0.00" °C"</code></td><td>23.4</td><td>23,4 °C</td><td>Sufixo literal com símbolo</td></tr>
+        <tr><td><code>0.00E+00</code></td><td>1234567</td><td>1,23E+06</td><td>Notação científica</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Símbolos de data e hora (estilo VBA — modelo/elemento) <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <table class="term-table">
+        <tr><th>Símbolo</th><th>Significado</th></tr>
+        <tr><td><code>d</code> / <code>dd</code></td><td>Dia do mês, sem/com zero à esquerda</td></tr>
+        <tr><td><code>m</code> / <code>mm</code></td><td>Mês (ou minuto, se vier logo após <code>h</code>/<code>hh</code>)</td></tr>
+        <tr><td><code>mmm</code> / <code>mmmm</code></td><td>Nome do mês abreviado / completo</td></tr>
+        <tr><td><code>yy</code> / <code>yyyy</code></td><td>Ano com 2 ou 4 dígitos</td></tr>
+        <tr><td><code>h</code> / <code>hh</code></td><td>Hora sem/com zero à esquerda</td></tr>
+        <tr><td><code>n</code> / <code>nn</code></td><td>Minuto sem/com zero à esquerda (evita ambiguidade com mês)</td></tr>
+        <tr><td><code>s</code> / <code>ss</code></td><td>Segundo sem/com zero à esquerda</td></tr>
+      </table>
+      <p>Exemplo com o timestamp 2025-09-04 15:07:08: <code>m/d/yy</code> → 9/4/25; <code>mmm d, yyyy</code> → Sep 4, 2025; <code>h:nn:ss</code> → 15:07:08.</p>
+    </div>
+  </div>
+
+  <h3>Onde definir cada nível</h3>
+  <ul>
+    <li><strong>Modelo:</strong> selecione o campo na visão de Modelagem e use o menu suspenso Formato no painel de Propriedades.</li>
+    <li><strong>Visual:</strong> adicione o campo ao visual, abra o painel Formatar, seção Geral &gt; Format data.</li>
+    <li><strong>Elemento:</strong> abra o painel Formatar, localize a seção do elemento específico (ex.: rótulos de dados) e configure o Display units como personalizado.</li>
+  </ul>
+
+  <div class="callout">
+    Strings de formato personalizadas não são suportadas para campos do tipo texto ou booleano, e não aceitam sequências de escape hexadecimais (<code>°</code>, <code>0xB0</code>). Para inserir símbolos como °, €, µ ou ², cole o caractere real dentro de aspas (ex.: <code>0.0" °C"</code>).
+  </div>
+
+  <h4>Resolvendo problemas comuns</h4>
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">"Aparece minuto em vez de mês" <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <p>Confirme se o formato foi aplicado no nível visual (sintaxe .NET, onde <code>M</code> maiúsculo = mês) ou no nível modelo/elemento (sintaxe VBA, onde <code>m</code> minúsculo = mês). Ajuste a caixa da letra ou mova a formatação para o nível correto. Use <code>n</code>/<code>nn</code> para minutos sempre que possível.</p>
+    </div>
+  </div>
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">"Aparece sufixo K/M/B mesmo com formato personalizado" <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <p>O culpado geralmente é o Display units (escala automática), configurado como Automático por padrão em cartões, KPIs, gauges, segmentadores e rótulos de dados — não a string de formato em si. Altere Display units para <strong>Nenhum</strong> no local correspondente ao visual (ex.: Visual &gt; Callout values &gt; Display units no cartão novo) e reaplique a string personalizada.</p>
+      <table class="term-table">
+        <tr><th>Configuração</th><th>Display units</th><th>Formato</th><th>Resultado</th></tr>
+        <tr><td>Cartão (padrão)</td><td>Automático</td><td><code>#,##0</code></td><td>12K (escalado)</td></tr>
+        <tr><td>Cartão (ajustado)</td><td>Nenhum</td><td><code>#,##0</code></td><td>11.732</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2 id="localidade-formato-relatorio">Localidade padrão de formato do relatório</h2>
+  <p>Você pode definir uma localidade padrão de formato de string para o relatório, garantindo que datas e números apareçam segundo uma região específica, independentemente do navegador do usuário que visualiza o relatório. Isso é útil para manter consistência quando o relatório é direcionado a uma região específica.</p>
+  <p>Para configurar, no Power BI Desktop: <strong>Arquivo &gt; Opções e configurações &gt; Opções &gt; Arquivo atual &gt; Configurações regionais</strong>, e escolha a localidade em "Localidade de string de formato padrão para datas e números". Opcionalmente, ative "Unidades de exibição padrão" como "nenhuma" para desativar abreviações (K/M/B) em todo o relatório de uma só vez.</p>
+
+  <div class="callout">
+    Essa configuração afeta apenas a exibição de valores. Ela não altera a percepção de cultura do modelo semântico: <code>USERCULTURE</code> continua retornando a localidade do navegador do usuário, e traduções de metadados também continuam usando a localidade do navegador.
+  </div>
+
+  <h2 id="rotulos-hierarquia-inline">Rótulos de hierarquia inline</h2>
+  <p>Rótulos de hierarquia inline melhoram a experiência de detalhamento (drill-down) hierárquico: ao usar o recurso Expandir tudo, todos os níveis da hierarquia aparecem juntos, lado a lado, em vez de mostrar apenas o nível mais profundo isoladamente.</p>
+  <p>Esse comportamento já é familiar na hierarquia padrão de Data: ao expandir de Ano para Trimestre, por exemplo, os rótulos Ano e Trimestre aparecem combinados, e esse padrão se repete conforme você expande até o nível mais baixo.</p>
+  <p>O diferencial dos rótulos de hierarquia inline é que eles também funcionam com <strong>hierarquias informais</strong> — por exemplo, um gráfico de barras com Quantidade por Nome do Produto, onde Nome do Produto e País de Envio formam uma hierarquia informal criada pelo usuário ao expandir os dados.</p>
+
+  <div class="callout success">
+    Com rótulos inline habilitados, você pode ordenar os dados expandidos pela própria hierarquia (e não só pelo valor da medida): selecione Mais opções (...) no canto superior direito e escolha "Ordenar por" o nome da hierarquia informal.
+  </div>
+
+  <div class="callout warning">
+    Limitação atual: a ordenação por valor ainda não é suportada para a hierarquia de tempo (Data) embutida — ela só pode ser ordenada pela própria ordem hierárquica. Se um visual travar em um estado de hierarquia expandida e o "recolher" parar de funcionar, exclua e recrie o visual.
+  </div>
+</section>
+
+<section class="page-section" id="page-14">
+  <h1>Recursos avançados de visual</h1>
+
+  <div class="goal-list">
+    <p>Nesta página você vai aprender a:</p>
+    <ul>
+      <li>Criar cálculos visuais diretamente sobre um visual</li>
+      <li>Usar o painel Análises para linhas de referência, tendência, previsão e anomalias</li>
+      <li>Criar e interagir com pequenos múltiplos (small multiples)</li>
+      <li>Entender os limites de pontos de dados por tipo de visual</li>
+      <li>Entender como funciona a amostragem de alta densidade em gráficos de linha</li>
+    </ul>
+  </div>
+
+  <h2 id="calculos-visuais">Cálculos visuais</h2>
+  <p>Um <strong>cálculo visual</strong> é uma expressão DAX definida e executada diretamente sobre um visual, em vez de existir no modelo semântico. Isso simplifica cálculos que antes eram difíceis de escrever — como somas acumuladas ou médias móveis — resultando em DAX mais simples, mais fácil de manter e, muitas vezes, com melhor desempenho.</p>
+  <pre>Running sum = RUNNINGSUM([Sales Amount])</pre>
+
+  <table class="term-table">
+    <tr><th>Característica</th><th>Cálculo visual</th></tr>
+    <tr><td>Onde vive</td><td>Armazenado no próprio visual, não no modelo</td></tr>
+    <tr><td>O que pode referenciar</td><td>Apenas colunas, medidas e outros cálculos visuais já presentes no visual</td></tr>
+    <tr><td>Contexto</td><td>Combina a simplicidade de contexto de uma coluna calculada com a flexibilidade sob demanda de uma medida</td></tr>
+    <tr><td>Desempenho</td><td>Opera sobre dados já agregados (não em nível de detalhe), geralmente mais rápido que uma medida equivalente</td></tr>
+    <tr><td>Funções de modelo</td><td>Não pode usar <code>USERELATIONSHIP</code>, <code>RELATED</code> ou <code>RELATEDTABLE</code>, pois não depende de relacionamentos do modelo</td></tr>
+  </table>
+
+  <h3>Como criar</h3>
+  <p>Selecione um visual e clique em <strong>Novo cálculo visual</strong> na faixa de opções. Abre-se o editor com três áreas: a prévia do visual, a barra de fórmulas e a matriz visual (que mostra os dados crus e o resultado do cálculo, sem o estilo aplicado ao visual final). Digite a expressão na barra de fórmulas — por padrão a maioria dos cálculos visuais é avaliada linha a linha, como uma coluna calculada, então normalmente não é necessário (nem recomendado) usar funções de agregação como <code>SUM</code>.</p>
+  <p>Exemplo, em um visual com Valor de Vendas e Custo Total do Produto por Ano Fiscal:</p>
+  <pre>Profit = [Sales Amount] – [Total Product Cost]</pre>
+
+  <div class="callout">
+    É possível ocultar campos do visual (sem removê-los da matriz), para que só o resultado do cálculo apareça visualmente enquanto os campos ocultos continuam disponíveis para os cálculos visuais fazerem referência a eles.
+  </div>
+
+  <h3>Modelos prontos (templates)</h3>
+  <p>Templates aceleram a criação dos cálculos mais comuns. Selecione o botão de template ou a parte inferior do botão Novo cálculo visual na faixa de opções:</p>
+
+  <table class="term-table">
+    <tr><th>Template</th><th>Função de base</th><th>O que faz</th></tr>
+    <tr><td>Soma acumulada</td><td><code>RUNNINGSUM</code></td><td>Soma valores acumulando com os anteriores</td></tr>
+    <tr><td>Média móvel</td><td><code>MOVINGAVERAGE</code></td><td>Média de um conjunto de valores em uma janela</td></tr>
+    <tr><td>Percentual do pai</td><td><code>COLLAPSE</code></td><td>Percentual de um valor em relação ao seu nível pai</td></tr>
+    <tr><td>Percentual do total geral</td><td><code>COLLAPSEALL</code></td><td>Percentual de um valor em relação a todos os valores</td></tr>
+    <tr><td>Média dos filhos</td><td><code>EXPAND</code></td><td>Média dos valores do nível filho</td></tr>
+    <tr><td>Vs. anterior / próximo / primeiro / último</td><td><code>PREVIOUS</code>, <code>NEXT</code>, <code>FIRST</code>, <code>LAST</code></td><td>Comparações entre pontos da série</td></tr>
+    <tr><td>Consultar valor com contexto / com totais</td><td><code>LOOKUP</code>, <code>LOOKUPWITHTOTALS</code></td><td>Busca um valor específico na matriz visual</td></tr>
+  </table>
+  <p>Use <kbd>Ctrl+Espaço</kbd> para ativar os seletores de parâmetro (parameter pickers) e facilitar o preenchimento das funções.</p>
+
+  <h3 id="axis-reset-cálculos-visuais">Parâmetros Axis e Reset</h3>
+  <p><strong>Axis</strong> determina como o cálculo percorre a matriz visual: por padrão segue o primeiro eixo do visual (geralmente ROWS, de cima para baixo).</p>
+  <table class="term-table">
+    <tr><th>Eixo</th><th>Descrição</th></tr>
+    <tr><td>ROWS</td><td>Calcula verticalmente, de cima para baixo</td></tr>
+    <tr><td>COLUMNS</td><td>Calcula horizontalmente, da esquerda para a direita</td></tr>
+    <tr><td>ROWS then COLUMNS</td><td>Percorre linhas de cima a baixo, depois avança coluna a coluna</td></tr>
+    <tr><td>COLUMNS then ROWS</td><td>Percorre colunas da esquerda à direita, depois avança linha a linha</td></tr>
+  </table>
+
+  <p><strong>Reset</strong> define se e quando o cálculo reinicia (volta a zero) ao percorrer a hierarquia da matriz. O padrão é <code>NONE</code> (nunca reinicia). Aceita inteiros, referências de coluna ou os sinônimos <code>HIGHESTPARENT</code> (equivale a 1, modo absoluto pelo nível mais alto), <code>LOWESTPARENT</code> (equivale a -1, modo relativo pelo pai imediato) e <code>NONE</code> (equivale a 0).</p>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Modo absoluto vs. relativo (exemplo com Ano/Trimestre/Mês/Dia) <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <p>Valores positivos operam em <strong>modo absoluto</strong>: particionam pela coluna alvo e todas acima dela, contando a partir do topo (1 = Ano). Valores negativos operam em <strong>modo relativo</strong>: particionam por todas as colunas X níveis acima do nível atual.</p>
+      <pre>RUNNINGSUM([Sales Amount], HIGHESTPARENT)   -- reinicia a cada Ano (absoluto)
+RUNNINGSUM([Sales Amount], 1)               -- equivalente ao acima
+RUNNINGSUM([Sales Amount], [Year])          -- equivalente, por referência de coluna
+
+RUNNINGSUM([Sales Amount], LOWESTPARENT)    -- reinicia a cada pai imediato (relativo)
+RUNNINGSUM([Sales Amount], -1)              -- equivalente ao acima
+
+RUNNINGSUM([Sales Amount])                  -- nunca reinicia (Reset = NONE)</pre>
+      <p>Os parâmetros <code>OrderBy</code> e <code>PartitionBy</code> funcionam de forma parecida, mas fazem referência explícita a campos (em vez da estrutura do visual) e também estão disponíveis em colunas calculadas e medidas comuns. Use <code>PartitionBy</code> quando não há múltiplos níveis no eixo para o Reset operar.</p>
+    </div>
+  </div>
+
+  <h3>Principais funções exclusivas de cálculos visuais</h3>
+  <table class="term-table">
+    <tr><th>Função</th><th>Descrição</th><th>Atalho equivalente</th></tr>
+    <tr><td>COLLAPSE</td><td>Avalia em um nível mais alto do eixo</td><td>—</td></tr>
+    <tr><td>COLLAPSEALL</td><td>Avalia no nível de total do eixo</td><td>—</td></tr>
+    <tr><td>EXPAND / EXPANDALL</td><td>Avalia em um nível mais baixo / no nível folha do eixo</td><td>—</td></tr>
+    <tr><td>FIRST / LAST</td><td>Refere-se à primeira / última linha do eixo</td><td>INDEX(1) / INDEX(-1)</td></tr>
+    <tr><td>PREVIOUS / NEXT</td><td>Refere-se à linha anterior / seguinte</td><td>OFFSET(-1) / OFFSET(1)</td></tr>
+    <tr><td>RUNNINGSUM</td><td>Soma acumulada em um eixo</td><td>WINDOW</td></tr>
+    <tr><td>MOVINGAVERAGE</td><td>Média móvel em um eixo</td><td>WINDOW</td></tr>
+    <tr><td>ISATLEVEL</td><td>Indica se uma coluna está presente no nível atual</td><td>—</td></tr>
+    <tr><td>LOOKUP / LOOKUPWITHTOTALS</td><td>Avalia expressão na matriz visual, com ou sem totais</td><td>—</td></tr>
+  </table>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Exemplo: formatação condicional com cor hexadecimal <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <p>Cálculos visuais também podem gerar valores de texto (como códigos de cor hex) para alimentar a formatação condicional de outro campo:</p>
+      <ol>
+        <li>Crie o cálculo visual: <code>Conditional Hex Code = IF([Progress] &gt; .5, "#5BA300", "#E91C1C")</code></li>
+        <li>No painel Formatar &gt; Propriedades &gt; Data Format, defina o tipo de dado e o formato do cálculo como Texto.</li>
+        <li>Oculte o cálculo visual do visual (ele continua disponível para referência).</li>
+        <li>Use-o como campo de referência na seção de formatação condicional do outro valor.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="callout warning">
+    <strong>Limitações:</strong> cálculos visuais não funcionam em Segmentador, visuais R/Python, Influenciadores-chave, Árvore de decomposição, Perguntas e Respostas, Narrativa inteligente, Métricas, Relatório paginado, Power Apps, Power Automate, pequenos múltiplos, eixo de reprodução (scatter) e visuais personalizados. Também não suportam filtragem/ordenação/troca de agregação, autorreferência, cópia entre visuais, categorias de dados, drill-through de registros, fixação em dashboards, Publicar na web, nem strings de formato dinâmicas.
+  </div>
+
+  <h2 id="painel-analises">Painel Análises</h2>
+  <p>O painel Análises permite adicionar linhas de referência constantes e dinâmicas, barras de erro, previsões e detecção de anomalias aos visuais. Acesse-o selecionando um visual e clicando no ícone Análises na área de Visualizações.</p>
+
+  <table class="term-table">
+    <tr><th>Recurso</th><th>Descrição</th><th>Visuais suportados</th></tr>
+    <tr><td>Linha de tendência</td><td>Mostra a direção geral dos dados ao longo do tempo</td><td>Área, colunas agrupadas, linha, linha e colunas agrupadas</td></tr>
+    <tr><td>Linha constante (eixo X / Y)</td><td>Linha de referência fixa vertical ou horizontal</td><td>Área, barras, colunas, linha, faixa, dispersão, empilhados</td></tr>
+    <tr><td>Linha de mínimo / máximo / média / mediana</td><td>Linha no valor correspondente de uma medida</td><td>Área, barras, colunas, linha, dispersão</td></tr>
+    <tr><td>Linha de percentil</td><td>Linha em um percentil específico da medida</td><td>Área, barras, colunas, linha, dispersão</td></tr>
+    <tr><td>Sombreamento de simetria</td><td>Destaca a região onde X e Y são iguais</td><td>Dispersão</td></tr>
+    <tr><td>Barras de erro</td><td>Mostra variabilidade/incerteza das medições</td><td>Barras, colunas, linha, linha e colunas agrupadas</td></tr>
+    <tr><td>Previsão (forecast)</td><td>Prevê valores futuros com base em tendência histórica</td><td>Linha</td></tr>
+    <tr><td>Anomalias</td><td>Identifica picos ou quedas inesperados em séries temporais</td><td>Linha</td></tr>
+  </table>
+
+  <p>Você pode adicionar várias instâncias do mesmo tipo de linha a um único visual (por exemplo, percentis de 25, 50 e 75, ou linhas de mínimo/máximo para medidas diferentes), cada uma com seu próprio nome, cor e formatação. Para criar: selecione o tipo de linha no painel, clique em <strong>+ Adicionar</strong>, nomeie a linha e configure cor, transparência, estilo e posição.</p>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Detalhes: barras de erro <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <p>Podem ser configuradas de duas formas: <strong>por campo</strong> (limites superior/inferior vindos do modelo, absolutos ou relativos à medida) ou <strong>por percentual</strong> (limites como percentual do valor da medida). Personalização inclui cor, largura, borda, formato dos marcadores das extremidades e, em gráficos de linha, uma faixa de erro (preenchida, apenas linhas de contorno, ou ambos). As tooltips podem exibir o erro como intervalo, valores absolutos, valores relativos (numéricos ou percentuais), ou ficar desativadas.</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Detalhes: previsão e anomalias <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <p><strong>Previsão</strong> exige dados temporais e está disponível apenas para gráficos de linha; permite ajustar o comprimento da previsão e o intervalo de confiança.</p>
+      <p><strong>Anomalias</strong> também é exclusivo de gráficos de linha. Permite ajustar a sensibilidade do algoritmo (mais sensível detecta mais anomalias), escolher campos de "Explicar por" para que o Power BI sugira possíveis causas ao selecionar uma anomalia, e personalizar forma, tamanho, rotação, cor e borda dos marcadores, além do estilo da faixa de intervalo esperado (preenchida ou linha).</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    Se o visual selecionado não suportar linhas de referência dinâmicas (por exemplo, um mapa), o painel Análises exibe uma mensagem informando a indisponibilidade. A linha de percentil só está disponível com dados importados ou conexão ao vivo com Analysis Services 2016+ (ou modelo semântico no serviço Power BI).
+  </div>
+
+  <h2 id="pequenos-multiplos">Pequenos múltiplos (small multiples)</h2>
+  <p>Pequenos múltiplos, ou "trellising", dividem um visual em várias versões de si mesmo, exibidas lado a lado, com os dados repartidos por uma dimensão escolhida — por exemplo, um gráfico de colunas "vendas por produto" repetido para cada país/região ou segmento de cliente. Atualmente disponível para gráficos de barras, colunas, linha e área.</p>
+
+  <h3>Como criar</h3>
+  <p>Crie um dos visuais suportados e arraste o campo de partição para o poço <strong>Pequenos múltiplos</strong> no painel Campos. O visual se divide em uma grade (2x2 por padrão, ajustável até 6x6 no painel Formatar), ordenada pelo critério escolhido, da esquerda para a direita e de cima para baixo. Os eixos ficam sincronizados: um eixo Y à esquerda de cada linha e um eixo X abaixo de cada coluna.</p>
+
+  <h3>Interagindo com pequenos múltiplos</h3>
+  <ul>
+    <li><strong>Rolagem:</strong> se houver mais múltiplos do que cabem na grade, role para ver os demais; eixos categóricos longos também têm barra de rolagem sincronizada entre todos os múltiplos (segure Shift ao usar a roda do mouse).</li>
+    <li><strong>Seleção de dados:</strong> passar o mouse sobre um ponto mostra a tooltip naquele múltiplo específico; selecionar o ponto faz o cross-highlight nos demais visuais, tanto pelo valor do eixo quanto pela categoria do múltiplo.</li>
+    <li><strong>Selecionar rótulo, título ou legenda:</strong> cada um cruza o destaque (cross-highlight) de forma diferente — por valor de eixo, por categoria do subtítulo, ou por categoria de legenda.</li>
+    <li><strong>Ordenação:</strong> é possível ordenar tanto pela categoria de divisão quanto pelo eixo dentro de cada múltiplo.</li>
+  </ul>
+
+  <div class="callout warning">
+    <strong>Limitações atuais dos pequenos múltiplos:</strong>
+    <ul>
+      <li>"Mostrar itens sem dados" pode não se comportar como esperado</li>
+      <li>Não carrega mais categorias ao rolar o eixo categórico (diferente de visuais padrão)</li>
+      <li>Menu de contexto Analisar/Resumir desativado; seleção retangular múltipla desativada; zoom de eixo desativado</li>
+      <li>Amostragem de alta densidade não é suportada para linhas em pequenos múltiplos</li>
+      <li>Concatenação de rótulos, totais em gráficos empilhados, controle deslizante de zoom, linhas de tendência e previsão do painel Análises: todos desativados</li>
+    </ul>
+  </div>
+
+  <h2 id="limites-pontos-dados">Limites de pontos de dados por tipo de visual</h2>
+  <p>Cada visual do Power BI usa uma ou mais <strong>estratégias de redução de dados</strong> para lidar com volumes que vão de poucos pontos a petabytes, equilibrando velocidade de renderização com fidelidade de representação.</p>
+
+  <table class="term-table">
+    <tr><th>Estratégia</th><th>Como funciona</th></tr>
+    <tr><td>Data windowing (segmentação)</td><td>Carrega fragmentos do modelo progressivamente conforme o usuário rola</td></tr>
+    <tr><td>TopN / BottomN</td><td>Mostra apenas os primeiros ou últimos N itens</td></tr>
+    <tr><td>Simple sample</td><td>Mostra primeiro, último e N itens distribuídos uniformemente</td></tr>
+    <tr><td>Amostragem de alta densidade</td><td>Algoritmo aprimorado que respeita melhor outliers e a forma da curva</td></tr>
+    <tr><td>Binned line sampling</td><td>Amostra por outliers dentro de compartimentos (bins) ao longo do eixo</td></tr>
+    <tr><td>Overlapping points sampling</td><td>Amostra por valores sobrepostos, preservando outliers</td></tr>
+    <tr><td>Limites dinâmicos</td><td>Balanceia pontos entre duas hierarquias de agrupamento (eixo e legenda), redistribuindo a cota quando um lado tem menos itens que o esperado</td></tr>
+  </table>
+
+  <p>Limites dinâmicos são aplicados automaticamente quando o servidor suporta SuperDAX (Analysis Services 2016+ para modelos tabulares on-premises, modelos importados, DirectQuery, conexão ao vivo com o serviço ou com AS PaaS).</p>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Tabela de referência rápida por tipo de visual <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <table class="term-table">
+        <tr><th>Visual</th><th>Limite principal</th></tr>
+        <tr><td>Gráfico de área / barras / colunas</td><td>Categorias: janela de 500; Séries: Top 60 (categórico) ou Top 20 (escalar, até 10.000 pontos)</td></tr>
+        <tr><td>Cartão com múltiplas linhas</td><td>Até 3.500 pontos</td></tr>
+        <tr><td>Gráfico combinado</td><td>Mesma estratégia de colunas; a linha não usa o algoritmo de alta densidade</td></tr>
+        <tr><td>Visuais Power BI (customizados)</td><td>Até 30.000 pontos, padrão de 1.000 (definido pelo autor do visual)</td></tr>
+        <tr><td>Donut</td><td>Legenda: Top 1000 (só legenda) ou Top 500 + Top 20 detalhes</td></tr>
+        <tr><td>Mapa coroplético (filled map)</td><td>Até 3.500 pontos; Top 500 categorias, Top 20 séries</td></tr>
+        <tr><td>Funil</td><td>Até 3.500 pontos</td></tr>
+        <tr><td>KPI</td><td>Até 3.500 pontos</td></tr>
+        <tr><td>Gráfico de linha</td><td>Até 3.500 pontos (alta densidade — ver seção seguinte)</td></tr>
+        <tr><td>Mapa</td><td>Até 3.500 pontos (30.000 para Azure Maps)</td></tr>
+        <tr><td>Matriz</td><td>Linhas: janela de 500; Colunas: Top 100</td></tr>
+        <tr><td>Gauge radial</td><td>Sem estratégia de redução (valor único)</td></tr>
+        <tr><td>Segmentador</td><td>Janela de 200</td></tr>
+        <tr><td>Dispersão (alta densidade)</td><td>3.500 por padrão, até 10.000 em opções avançadas</td></tr>
+        <tr><td>Pizza</td><td>Top 1000 (só legenda) ou Top 500 + Top 20 detalhes</td></tr>
+        <tr><td>Visuais R e Python</td><td>Até 150.000 linhas</td></tr>
+        <tr><td>Faixa (ribbon)</td><td>Categorias: janela de 500; Séries: Top 60 (ou até 10.000 em modo escalar)</td></tr>
+        <tr><td>Mapa de formas (preview)</td><td>Até 1.500 pontos</td></tr>
+        <tr><td>Tabela</td><td>Até 150 colunas; janela de 500 linhas</td></tr>
+        <tr><td>Mapa de árvore (tree map)</td><td>Até 3.500 pontos; Top 500 grupo, Top 20 detalhes</td></tr>
+        <tr><td>Cascata (waterfall)</td><td>Até 3.500 pontos; categoria janela de 30, breakdown Top 200</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2 id="amostragem-alta-densidade">Amostragem de linha em alta densidade</h2>
+  <p>Gráficos de linha e área com eixo X contínuo e um grande volume de dados subjacentes (por exemplo, milhares de transações por loja ao longo de um ano) usam um algoritmo de <strong>amostragem de alta densidade</strong> para escolher os pontos mais representativos, mantendo o visual rápido e responsivo.</p>
+
+  <h3>Como funciona</h3>
+  <p>Quando o número de pontos excede o máximo suportado pelo visual, o Power BI divide os dados em compartimentos (<em>bins</em>) e refina essas divisões iterativamente para obter a maior granularidade possível. Dentro de cada bin, o algoritmo identifica o valor mínimo e o máximo — garantindo que outliers e picos importantes sejam capturados e exibidos, mesmo que isso signifique não usar pontos igualmente espaçados no eixo X.</p>
+
+  <table class="term-table">
+    <tr><th>Limite</th><th>Valor</th></tr>
+    <tr><td>Mínimo de pontos por série</td><td>350</td></tr>
+    <tr><td>Máximo geral (maioria dos visuais)</td><td>3.500</td></tr>
+    <tr><td>Máximo de séries por visual</td><td>60</td></tr>
+    <tr><td>Exceção: visuais R</td><td>até 150.000 pontos</td></tr>
+    <tr><td>Exceção: Azure Maps</td><td>até 30.000 pontos</td></tr>
+    <tr><td>Exceção: dispersão (configurações específicas)</td><td>até 10.000 pontos</td></tr>
+  </table>
+
+  <div class="callout warning">
+    Como cada bin é representado pelos valores mínimo e máximo (não por instantes igualmente espaçados), a <strong>tooltip</strong> ao passar o mouse sobre um ponto específico pode não mostrar valor para todas as séries — cada série é dividida em bins de forma independente, então um pico que aparece em uma série pode não coincidir com o bin representativo de outra série no mesmo instante.
+  </div>
+
+  <p>Quando o volume de dados é grande demais, o algoritmo elimina séries (elementos de legenda) em ordem alfabética até respeitar o limite de importação; se houver mais de 60 séries, as excedentes (após a 60ª em ordem alfabética) também são eliminadas. Se os valores não forem numéricos ou de data/hora, o algoritmo de alta densidade não é usado.</p>
+
+  <p>O recurso vem ativado por padrão e pode ser desligado no painel Formatar, seção Geral, no controle deslizante "Amostragem de alta densidade". Não é suportado com "Mostrar itens sem dados", nem com conexão ao vivo a SQL Server Analysis Services 2016 ou anterior (funciona em modelos hospedados no Power BI ou Azure Analysis Services).</p>
+</section>
+
+<section class="page-section" id="page-15">
+  <h1>Visuais personalizados</h1>
+
+  <div class="goal-list">
+    <p>Nesta página você vai aprender a:</p>
+    <ul>
+      <li>Entender as três origens dos visuais do Power BI</li>
+      <li>Buscar, avaliar e importar visuais do AppSource</li>
+      <li>Usar a loja organizacional de visuais personalizados</li>
+      <li>Reconhecer riscos e cuidados básicos ao usar visuais de terceiros</li>
+    </ul>
+  </div>
+
+  <h2 id="origens-visuais">De onde vêm os visuais do Power BI</h2>
+  <p>Os visuais usados em um relatório podem vir de três origens:</p>
+
+  <div class="capability-grid">
+    <div class="capability-card">
+      <h3>Visuais principais (core)</h3>
+      <p>Já disponíveis no painel de Visualizações do Power BI Desktop e do serviço, prontos para uso imediato.</p>
+    </div>
+    <div class="capability-card">
+      <h3>AppSource / importados</h3>
+      <p>Visuais desenvolvidos pela Microsoft ou pela comunidade, publicados no AppSource e importáveis para qualquer relatório.</p>
+    </div>
+    <div class="capability-card">
+      <h3>Visuais próprios</h3>
+      <p>Criados por você ou sua organização, empacotados como arquivo <code>.pbiviz</code> e importados manualmente.</p>
+    </div>
+  </div>
+
+  <p>Para remover um visual principal do painel, clique com o botão direito nele e selecione <strong>Desafixar</strong>. Para restaurar os visuais padrão, use o menu de reticências (...) e selecione <strong>Restaurar visuais padrão</strong>.</p>
+
+  <h2 id="appsource-visuais">Obtendo visuais do AppSource</h2>
+  <p>O AppSource é o repositório de apps, extensões e complementos da Microsoft, incluindo visuais desenvolvidos pela própria Microsoft e pela comunidade. Todo visual publicado ali passa por testes de funcionalidade e qualidade antes da aprovação.</p>
+
+  <div class="callout warning">
+    Visuais criados com o SDK do Power BI podem importar dados de, ou enviar dados para, um serviço de terceiros fora da área geográfica, do limite de conformidade ou da nuvem nacional/regional do seu tenant. Além disso, uma vez importados do AppSource, podem ser atualizados automaticamente sem aviso adicional.
+  </div>
+
+  <h3>Modelos de licenciamento</h3>
+  <table class="term-table">
+    <tr><th>Tipo</th><th>Como funciona</th></tr>
+    <tr><td>Gratuito</td><td>Download e uso sem custo, rotulado como "Free"</td></tr>
+    <tr><td>Licenciado</td><td>Gerenciado pelo centro de administração do Microsoft 365; disponível de forma limitada gratuitamente, com opção de comprar mais recursos direto no AppSource (botão "Buy now")</td></tr>
+    <tr><td>Freemium com compra adicional</td><td>Funcionalidade básica gratuita, recursos extras pagos ("additional purchase may be required"); a transação e a licença são geridas fora das plataformas Microsoft, geralmente com período de teste gratuito</td></tr>
+  </table>
+  <p>Para ver o plano de um visual, selecione-o no AppSource e acesse a aba <strong>Plans + Pricing</strong>. Após a compra, as licenças precisam ser atribuídas a você ou a outros usuários no centro de administração do Microsoft 365.</p>
+
+  <h3>Visuais certificados</h3>
+  <p>Visuais certificados são aqueles que passaram por testes adicionais da equipe do Power BI, garantindo que não acessam serviços ou recursos externos. É possível filtrar por essa certificação diretamente no AppSource. Cada visual também costuma disponibilizar um relatório de amostra para download, ilustrando seu funcionamento.</p>
+
+  <h2 id="loja-organizacional">Loja organizacional de visuais</h2>
+  <p>Administradores do Power BI podem aprovar e disponibilizar visuais personalizados para toda a organização por meio da loja organizacional, com controle centralizado sobre versões, ativação e desativação. Autores de relatórios podem então descobrir, atualizar e usar esses visuais aprovados com facilidade.</p>
+  <p>Para acessar: no painel de Visualizações, clique nas reticências (...), selecione <strong>Obter mais visuais</strong> e, na janela que se abre, escolha a aba <strong>Minha organização</strong>.</p>
+
+  <h2 id="criar-importar-proprios">Criar e importar visuais próprios</h2>
+  <p>Qualquer pessoa pode criar um visual personalizado e empacotá-lo em um arquivo <code>.pbiviz</code>, que pode ser importado para um relatório a partir do computador local. Desenvolvedores web também podem publicar seus visuais no AppSource para uso público, seguindo as diretrizes de desenvolvimento do SDK do Power BI.</p>
+
+  <h2 id="cuidados-visuais-terceiros">Considerações e cuidados ao usar visuais de terceiros</h2>
+  <div class="callout warning">
+    Um visual personalizado pode conter código com riscos de segurança ou privacidade. Só importe visuais de autores e fontes em que você confia.
+  </div>
+
+  <p>Visuais licenciados não são suportados nos seguintes ambientes — se usados ali, o Power BI não consegue informar ao fornecedor (ISV) se o usuário está licenciado, nem bloquear o visual automaticamente:</p>
+  <table class="term-table">
+    <tr><th>Ambiente</th><th>Motivo</th></tr>
+    <tr><td>Report Server (RS)</td><td>Sem Microsoft Entra ID</td></tr>
+    <tr><td>Nuvens soberanas ou governamentais</td><td>Isolamento de conformidade</td></tr>
+    <tr><td>Power BI Embedded (PaaS, App owns data)</td><td>Sem contexto de usuário licenciado</td></tr>
+    <tr><td>Publicar na web (P2W)</td><td>Relatório público, sem autenticação</td></tr>
+  </table>
+</section>
+
+
+    <!-- Paginação -->
+    <div class="pagination">
+      <button class="btn btn-secondary" id="btn-prev" onclick="goToPage(currentPage-1)">← Anterior</button>
+      <span id="page-indicator">Página 1 de 15</span>
+      <button class="btn btn-primary"   id="btn-next" onclick="goToPage(currentPage+1)">Próximo →</button>
+    </div>
+
+    <a href="PowerBI_Home.html" class="home-footer-link">← Voltar ao Home</a>
+  </main>
+</div>
+
+<script>
+// SAFETY NET — garante init mesmo se o arquivo for truncado pelo formatter
+const TOTAL_PAGES = 15;
+const _saved = parseInt(localStorage.getItem('pbiviz_page') || '1') || 1;
+let currentPage = Math.min(Math.max(_saved, 1), TOTAL_PAGES);
+
+document.addEventListener('DOMContentLoaded', function() { goToPage(currentPage); });
+
+function pageExists(n) { return !!document.getElementById('page-' + n); }
+
+function goToPage(n) {
+  if (n < 1 || n > TOTAL_PAGES || !pageExists(n)) return;
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('page-' + n).classList.add('active');
+  currentPage = n;
+  try { localStorage.setItem('pbiviz_page', n); } catch(e) {}
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  updateUI();
+}
+
+function updateUI() {
+  const h1 = document.getElementById('page-' + currentPage)?.querySelector('h1');
+  if (h1) { const el = document.getElementById('bc-page'); if (el) el.textContent = h1.textContent; }
+  document.getElementById('btn-prev').disabled = currentPage === 1;
+  document.getElementById('btn-next').disabled = currentPage === TOTAL_PAGES;
+  document.querySelectorAll('.dot[data-page]').forEach(d => {
+    const p = Number(d.dataset.page);
+    d.className = 'dot ' + (p < currentPage ? 'done' : p === currentPage ? 'current' : 'pending');
+  });
+  document.querySelectorAll('.nav-btn[data-page]').forEach(b => {
+    b.classList.toggle('active', Number(b.dataset.page) === currentPage);
+  });
+  const pageIndicator = document.getElementById('page-indicator');
+  if (pageIndicator) pageIndicator.textContent = 'Página ' + currentPage + ' de ' + TOTAL_PAGES;
+  const pct = Math.round(((currentPage - 1) / (TOTAL_PAGES - 1)) * 100) || 0;
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+// Sidebar / menu gaveta
+function openSidebar()  { document.getElementById('sidebar').classList.add('open'); document.getElementById('sidebar-overlay').classList.add('active'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebar-overlay').classList.remove('active'); }
+document.getElementById('menu-toggle').addEventListener('click', openSidebar);
+document.getElementById('sidebar-overlay').addEventListener('click', closeSidebar);
+
+// Accordions
+function toggleAcc(btn) {
+  const body = btn.nextElementSibling;
+  const open = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !open);
+  body.style.display = open ? 'none' : 'block';
+  btn.querySelector('.acc-arrow').textContent = open ? '▾' : '▴';
+}
+
+// Grupos da sidebar (colapsar/expandir)
+function toggleGroup(header) {
+  const body = header.nextElementSibling;
+  body.classList.toggle('collapsed');
+  const arrow = header.querySelector('span');
+  arrow.textContent = body.classList.contains('collapsed') ? '▸' : '▾';
+}
+
+// Nav buttons
+document.querySelectorAll('.nav-btn[data-page]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    goToPage(Number(btn.dataset.page));
+    if (window.innerWidth <= 768) closeSidebar();
+  });
+});
+
+goToPage(currentPage);
+</script>
+</body>
+</html>

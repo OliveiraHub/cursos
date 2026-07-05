@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Guia de estudo — Copilot no Power BI: visão geral, criação de conteúdo com IA, preparação de dados e tutorial prático.">
+<link rel="icon" type="image/png" href="images/logo.png">
+<title>Copilot no Power BI — Guia de Estudo</title>
+<!-- Barlow (Google Fonts) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- CSS compartilhado -->
+<link rel="stylesheet" href="power-bi.css">
+<style>
+/* CSS específico deste curso */
+</style>
+</head>
+<body>
+
+<header>
+  <img src="images/logo.png" class="header-logo" alt="Logo Power BI">
+  <div>
+    <h1>Copilot no Power BI</h1>
+  </div>
+  <a href="PowerBI_Home.html" class="hub-link">← Home</a>
+</header>
+
+<div class="breadcrumb">
+  <a href="PowerBI_Home.html">Home</a>
+  <span class="bc-sep">›</span>
+  <span>Copilot no Power BI</span>
+  <span class="bc-sep">›</span>
+  <span id="bc-page">Bem-vindo</span>
+</div>
+
+<div class="container">
+  <aside id="sidebar">
+    <div class="nav-group">
+      <div class="nav-group-header" onclick="toggleGroup(this)">Primeiros Passos com Copilot <span>▾</span></div>
+      <div class="nav-group-body">
+        <button class="nav-btn" data-page="1"><span class="dot pending" data-page="1"></span> Visão geral e habilitação</button>
+        <button class="nav-btn" data-page="2"><span class="dot pending" data-page="2"></span> Copilot em relatórios e apps</button>
+      </div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-header" onclick="toggleGroup(this)">Criar e Usar Copilot <span>▾</span></div>
+      <div class="nav-group-body">
+        <button class="nav-btn" data-page="3"><span class="dot pending" data-page="3"></span> Criar conteúdo com Copilot</button>
+        <button class="nav-btn" data-page="4"><span class="dot pending" data-page="4"></span> Copilot no dia a dia</button>
+      </div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-header" onclick="toggleGroup(this)">IA Avançada <span>▾</span></div>
+      <div class="nav-group-body">
+        <button class="nav-btn" data-page="5"><span class="dot pending" data-page="5"></span> Preparar dados para IA</button>
+        <button class="nav-btn" data-page="6"><span class="dot pending" data-page="6"></span> Tutorial: Copilot na prática</button>
+      </div>
+    </div>
+  </aside>
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+  <main>
+    <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu">☰</button>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+
+    <section class="page-section" id="page-1">
+      <h1>Visão geral e habilitação do Copilot</h1>
+
+      <p>O Copilot no Power BI usa inteligência artificial generativa para ajudar você a extrair mais valor dos seus dados. Ele oferece experiências baseadas em chat que vão desde análises rápidas para usuários de negócio até geração de expressões DAX (Data Analysis Expressions) para criadores avançados, além de diversos recursos de IA incorporados ao produto.</p>
+
+      <ul class="goal-list">
+        <li>Fazer perguntas em linguagem natural sobre relatórios e modelos semânticos.</li>
+        <li>Criar e editar páginas de relatório automaticamente a partir de um prompt.</li>
+        <li>Gerar resumos e narrativas inteligentes sobre relatórios ou visuais.</li>
+        <li>Escrever consultas DAX e descrições de medidas.</li>
+      </ul>
+
+      <h2 id="requisitos-de-licenciamento-e-capacidade">Requisitos de licenciamento e capacidade</h2>
+
+      <p>Antes de explorar os recursos, confirme que o ambiente atende aos requisitos mínimos. Esse é o ponto mais importante para entender por que o Copilot pode não aparecer para alguns usuários.</p>
+
+      <table class="term-table">
+        <tr><th>Requisito</th><th>Detalhes</th></tr>
+        <tr><td>Capacidade</td><td>Capacidade Fabric paga (F2 ou superior) ou Power BI Premium (P1 ou superior). Capacidades de teste (trial) e SKUs gratuitos não são compatíveis. Uma licença Power BI Pro ou Premium Per User (PPU) sozinha <strong>não</strong> é suficiente — o Copilot exige capacidade organizacional.</td></tr>
+        <tr><td>Configuração de admin</td><td>A opção "Os usuários podem usar o Copilot e outros recursos baseados em IA do Azure OpenAI" precisa estar ativada. O Copilot vem habilitado por padrão, mas o administrador pode desativá-lo.</td></tr>
+        <tr><td>Região</td><td>A capacidade Fabric precisa estar em uma região compatível com o Fabric.</td></tr>
+        <tr><td>Nuvens soberanas</td><td>Não são compatíveis, devido à disponibilidade de GPU.</td></tr>
+        <tr><td>Preparo de dados</td><td>Os proprietários do modelo semântico devem preparar o modelo para IA, garantindo nomes de campos claros e estrutura adequada, para obter respostas confiáveis.</td></tr>
+      </table>
+
+      <div class="callout warning">
+        <strong>Atenção:</strong> se o locatário (tenant) ou a capacidade estiverem fora dos Estados Unidos ou da França, o Copilot fica desativado por padrão. A exceção é quando o administrador do Fabric ativa a configuração "Os dados enviados ao Azure OpenAI podem ser processados fora da região geográfica, do limite de conformidade ou da instância de nuvem nacional do locatário".
+      </div>
+
+      <p>O Copilot para Power BI aceita até <strong>10.000 caracteres por prompt</strong> em todas as superfícies (experiência autônoma, painel do Copilot em relatórios, Copilot em apps, Power BI Mobile e Power BI Embedded), permitindo instruções mais longas e detalhadas.</p>
+
+      <h2 id="niveis-de-disponibilidade-dos-recursos">Níveis de disponibilidade dos recursos</h2>
+
+      <p>Nem todos os recursos do Copilot estão no mesmo estágio de maturidade:</p>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Disponibilidade geral (GA) <span class="acc-arrow">&#9660;</span></div>
+        <div class="acc-body">
+          <p>O painel do Copilot exibido no lado direito dos relatórios (report agent) é geralmente disponível (GA).</p>
+        </div>
+      </div>
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Em pré-visualização (preview) <span class="acc-arrow">&#9660;</span></div>
+        <div class="acc-body">
+          <p>A experiência autônoma e em tela cheia do Copilot, acessada pela navegação à esquerda do Power BI, e a experiência de Copilot em apps (acessada pela navegação do app) estão em preview. As experiências de Copilot para Data Factory, Data Engineering, Data Science, Data Warehouse e Real-Time Intelligence também estão em preview.</p>
+        </div>
+      </div>
+
+      <h2 id="como-o-copilot-se-encaixa-no-fabric">Como o Copilot se encaixa no Fabric</h2>
+
+      <p>Ativar o Copilot no Fabric libera o acesso ao Copilot em todas as cargas de trabalho (workloads) — o acesso não fica restrito apenas ao Power BI. Ao comprar ou escalar uma capacidade, pode levar até <strong>24 horas</strong> para o Copilot reconhecer a mudança e ficar disponível.</p>
+
+      <p>Para faturamento previsível, as organizações podem usar uma <strong>capacidade dedicada do Copilot no Fabric (FCC)</strong>. Quando existe uma FCC, todo o uso do Copilot no Power BI é cobrado de forma centralizada nela. Sem uma FCC, o Power BI seleciona automaticamente um workspace vinculado a uma capacidade compatível (F2+ ou P1+, em região suportada e com Copilot habilitado) para fins de rastreamento de uso e cobrança — essa seleção pode ser trocada manualmente a qualquer momento.</p>
+
+      <h2 id="habilitar-o-copilot-no-locatario">Habilitar o Copilot no locatário</h2>
+
+      <p>A ativação é feita pelo administrador do Fabric, no <strong>portal de administração do Fabric</strong> (<em>app.fabric.microsoft.com/admin-portal</em>, ou pelo ícone de engrenagem de Configurações no Power BI service &gt; Portal de administração).</p>
+
+      <table class="term-table">
+        <tr><th>Configuração</th><th>O que faz</th></tr>
+        <tr><td>Habilitar o Copilot</td><td>Em Configurações do locatário, ativa "Os usuários podem usar o Copilot e outros recursos baseados em IA do Azure OpenAI" (desligada por padrão) e define para quem a configuração se aplica.</td></tr>
+        <tr><td>Compartilhar dados entre fronteiras geográficas</td><td>Necessária apenas se o Azure OpenAI não estiver disponível na região do locatário; permite que os dados sejam processados fora da área.</td></tr>
+        <tr><td>Habilitar o Copilot autônomo do Power BI (preview)</td><td>Libera a experiência autônoma e multi-item do Copilot. Está habilitada por padrão desde setembro de 2025 para locatários que já têm o Copilot ativo; o admin pode desativá-la para ocultar o ícone na navegação.</td></tr>
+        <tr><td>Habilitar o Copilot em nível de capacidade</td><td>A configuração pode ser delegada aos administradores de capacidade, que podem optar por sobrepor a decisão do administrador de locatário para sua própria capacidade.</td></tr>
+      </table>
+
+      <div class="note">Importante: a configuração de compartilhamento entre fronteiras geográficas não é delegada automaticamente para administradores de capacidade.</div>
+
+      <h2 id="copilot-no-power-bi-desktop">Copilot no Power BI Desktop</h2>
+
+      <p>Para usar o Copilot no Power BI Desktop, é preciso ter acesso de administrador, membro ou colaborador a pelo menos um workspace vinculado a uma capacidade Fabric paga (F2+) ou Power BI Premium (P1+) com o Copilot habilitado.</p>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Primeiro uso do Copilot no Desktop <span class="acc-arrow">&#9660;</span></div>
+        <div class="acc-body">
+          <ol>
+            <li>Abra um relatório do Power BI e selecione <strong>Copilot</strong> na faixa de opções (ribbon).</li>
+            <li>O painel do Copilot solicita a escolha de um workspace compatível — não precisa ser o mesmo workspace onde o relatório será publicado.</li>
+            <li>Selecione o workspace desejado. Apenas workspaces compatíveis com o Copilot aparecem na lista.</li>
+          </ol>
+          <p>Para trocar o workspace associado depois, use a engrenagem de Configurações no canto inferior direito, na seção Copilot (preview) das Opções.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        O botão do Copilot sempre aparece na faixa de opções do Desktop, mas fica desabilitado se a configuração em nível de locatário estiver desligada — diferente do Power BI service, que verifica a disponibilidade em nível de workspace.
+      </div>
+
+      <h2 id="limitacoes-conhecidas">Limitações conhecidas</h2>
+
+      <table class="term-table">
+        <tr><th>Cenário</th><th>Limitação</th></tr>
+        <tr><td>Power BI Premium Per User (PPU)</td><td>O Copilot não é compatível com workspaces baseados em PPU.</td></tr>
+        <tr><td>Versões antigas do Desktop</td><td>Versões anteriores a janeiro de 2025 não têm o painel do Copilot na visualização de relatório.</td></tr>
+        <tr><td>Nuvens soberanas</td><td>Não suportadas; pode ocorrer erro 403 Forbidden ao tentar usar o Copilot.</td></tr>
+        <tr><td>Private Link / rede fechada</td><td>Não é compatível atualmente com esses ambientes.</td></tr>
+      </table>
+    </section>
+<section class="page-section" id="page-2">
+      <h1>Copilot em relatórios e apps</h1>
+
+      <p>Depois de habilitado no locatário, o Copilot pode ser usado dentro de relatórios do Power BI e também dentro de apps publicados — cada contexto com um escopo diferente de conteúdo e de permissões.</p>
+
+      <h2 id="copilot-dentro-de-relatorios">Copilot dentro de relatórios</h2>
+
+      <p>Tanto usuários de negócio quanto criadores de relatório se beneficiam do Copilot ao abrir um relatório: seja para tirar dúvidas sobre os dados exibidos, seja para acelerar a criação de novas páginas ou aprimorar o modelo semântico.</p>
+
+      <div class="capability-grid">
+        <div class="capability-card">
+          <strong>Resumir a página do relatório</strong>
+          <p>Use o Copilot em visuais de narrativa inteligente, no painel do Copilot ou em assinaturas de relatório. Personalize com prompts como "resuma esta página em tópicos" ou "resuma as vendas desta página".</p>
+        </div>
+        <div class="capability-card">
+          <strong>Fazer perguntas sobre os dados</strong>
+          <p>O Copilot procura a resposta primeiro nos visuais existentes da página; se não encontrar, cria um novo visual a partir do modelo semântico, sempre referenciando a fonte utilizada.</p>
+        </div>
+        <div class="capability-card">
+          <strong>Assinaturas de relatório com resumo do Copilot</strong>
+          <p>É possível incluir um resumo gerado pelo Copilot ao configurar assinaturas por e-mail (recurso disponível apenas para assinaturas padrão/Standard).</p>
+        </div>
+      </div>
+
+      <h2 id="recursos-para-autores-de-relatorio">Recursos para autores de relatório</h2>
+
+      <table class="term-table">
+        <tr><th>Tarefa</th><th>O que o Copilot faz</th></tr>
+        <tr><td>Sugerir conteúdo</td><td>Avalia os dados e propõe um esboço do relatório, com páginas sugeridas que você escolhe criar ou não.</td></tr>
+        <tr><td>Criar uma página de relatório</td><td>A partir de um prompt de alto nível, identifica tabelas, campos, medidas e gráficos relevantes e gera a página, que depois pode ser ajustada com as ferramentas normais de edição.</td></tr>
+        <tr><td>Resumir o modelo semântico</td><td>Basta pedir "resuma o modelo" no painel do Copilot para entender melhor os dados disponíveis.</td></tr>
+        <tr><td>Criar um visual de narrativa</td><td>Gera um resumo do relatório inteiro, de páginas específicas ou de visuais selecionados, em poucos cliques.</td></tr>
+        <tr><td>Escrever consultas DAX</td><td>Descreva a consulta desejada em linguagem natural; selecione "Manter" para adicioná-la à guia de consultas e "Executar" (F5) para ver o resultado.</td></tr>
+        <tr><td>Descrever medidas</td><td>Gera descrições para as medidas do modelo semântico, o que serve como documentação para quem constrói relatórios a partir dele.</td></tr>
+      </table>
+
+      <div class="note">O botão de limpar o chat ("clear chat") apaga o histórico e o contexto da conversa — equivale a iniciar um novo chat. Se você repetir exatamente o mesmo prompt em um modelo semântico sem alterações (mesmo esquema, dados e instruções personalizadas) dentro de uma janela de 24 horas, o Copilot responde a partir do cache, e limpar o chat não muda esse comportamento.</div>
+
+      <h2 id="copilot-em-apps">Copilot em apps</h2>
+
+      <p>O Copilot está disponível em apps do Power BI de duas formas:</p>
+
+      <table class="term-table">
+        <tr><th>Modo</th><th>Escopo</th></tr>
+        <tr><td>Copilot com escopo de relatório</td><td>Resume o relatório em exibição ou responde perguntas sobre ele. Disponível em apps de workspace e em org apps (nova versão em preview).</td></tr>
+        <tr><td>Copilot com escopo de app (preview)</td><td>Resume o app com base nos itens que ele contém, ajuda a localizar itens de interesse e responde perguntas com base no conteúdo do app. Disponível apenas em apps de workspace.</td></tr>
+      </table>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">O que o Copilot com escopo de app consegue fazer <span class="acc-arrow">&#9660;</span></div>
+        <div class="acc-body">
+          <ul>
+            <li><strong>Resumir o app</strong> — ex.: "Resuma os relatórios deste app" ou "Do que se trata este app?".</li>
+            <li><strong>Localizar itens no app</strong> — retorna uma lista com links e descrições dos itens relevantes.</li>
+            <li><strong>Resumir um item do app</strong> — ex.: "Resuma as tendências de vendas do ano passado".</li>
+            <li><strong>Responder perguntas com base em um item</strong> — é possível anexar um relatório específico como referência via "Adicionar conteúdo para o Copilot referenciar".</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Itens suportados e não suportados <span class="acc-arrow">&#9660;</span></div>
+        <div class="acc-body">
+          <p><strong>Suportados:</strong> relatórios do Power BI e modelos semânticos.</p>
+          <p><strong>Não suportados:</strong> relatórios paginados, dashboards, pastas de trabalho (workbooks) e conteúdo vinculado (link-embedded).</p>
+        </div>
+      </div>
+
+      <div class="callout warning">
+        O Copilot com escopo de app não reconhece seções de navegação do app e não faz referência a elas nas respostas. Além disso, os itens em apps são versionados: para que o Copilot raciocine sobre as mudanças mais recentes, é preciso atualizar o app.
+      </div>
+
+      <h2 id="dados-do-power-bi-em-fabric-apps-preview">Dados do Power BI em Fabric Apps (preview)</h2>
+
+      <p>Fabric Apps introduz uma nova forma de analisar e visualizar dados quando você precisa de mais flexibilidade ou velocidade de criação do que os relatórios tradicionais permitem. Os relatórios continuam sendo a experiência central de análise; os Fabric Apps os complementam em cenários que exigem iteração mais rápida ou experiências de usuário sob medida.</p>
+
+      <p>Quem deseja analisar e visualizar dados em Fabric Apps deve usar o <strong>modelo de data app</strong>, que já traz primitivas reutilizáveis e capacidades de agente para simplificar a conectividade de dados, a análise assistida por IA e a geração de visuais. Por padrão, os apps criados a partir desse modelo incluem autenticação do Fabric e conectividade com modelos semânticos.</p>
+
+      <div class="info-box">
+        Sem esses recursos incorporados, um agente de IA precisaria lidar sozinho com autenticação, geração de DAX e criação de visuais a cada sessão — o que costuma gerar mais falhas, visuais quebrados ou vazios e consultas DAX desnecessárias. Ao padronizar esse comportamento no modelo, o resultado é maior confiabilidade e visuais mais alinhados às boas práticas de relatórios.
+      </div>
+    </section>
+<section class="page-section" id="page-3">
+      <h1>Criar conteúdo com Copilot</h1>
+
+      <p>Além de responder perguntas, o Copilot pode assumir tarefas de criação: montar páginas de relatório inteiras, responder a uma pergunta pontual sobre os dados, ou gerar um visual de narrativa resumindo uma página. Esta seção reúne o passo a passo de cada fluxo e, principalmente, orientações práticas para escrever prompts eficazes.</p>
+
+      <h2 id="criar-e-editar-relatorios-com-copilot">Criar e editar relatórios com Copilot</h2>
+
+      <p>O Copilot permite criar e editar páginas de relatório usando prompts em linguagem natural, economizando horas de configuração manual.</p>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Passo a passo para começar <span class="acc-arrow">&#9660;</span></div>
+        <div class="acc-body">
+          <ol>
+            <li>Tenha um relatório selecionado (no Power BI service, entre no modo de edição).</li>
+            <li>Na faixa de opções, selecione o ícone do Copilot.</li>
+            <li>No painel do Copilot, escolha <strong>"Sugerir conteúdo para este relatório"</strong> (o Copilot avalia os dados e propõe páginas) ou digite diretamente um prompt descrevendo a página/visuais desejados.</li>
+            <li>O Copilot gera a página com base no pedido.</li>
+            <li>Continue editando pedindo ao Copilot para adicionar, excluir ou alterar visuais — inclusive com desfazer/refazer (undo/redo) para reverter ações recentes.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="callout">
+        Se você não vir o Copilot, é possível que o administrador não o tenha habilitado no Fabric, ou que nenhum modelo semântico esteja selecionado — selecione um modelo semântico para que a opção apareça.
+      </div>
+
+      <div class="callout warning">
+        <strong>Limitações da criação de páginas:</strong> exige que o recurso de Perguntas e Respostas (Q&amp;A) esteja ativado no modelo; não funciona com modelos de streaming em tempo real, conexão live com Analysis Services, ou modelos com medidas implícitas desabilitadas. Visuais personalizados e alterações de estilo/formatação não são suportados, e a edição de visuais complexos pode gerar perda de detalhes.
+      </div>
+
+      <h2 id="perguntar-ao-copilot-sobre-os-dados">Perguntar ao Copilot sobre os dados</h2>
+
+      <p>Em vez de montar visuais manualmente, descreva o que você procura e o Copilot consulta o modelo semântico e devolve um visual com a resposta.</p>
+
+      <table class="term-table">
+        <tr><th>Tipo de pergunta</th><th>Exemplo</th></tr>
+        <tr><td>Medida existente com novo filtro</td><td>"Pode me mostrar o valor de vendas por região?"</td></tr>
+        <tr><td>Top N</td><td>"Quais foram os 5 produtos mais vendidos na América do Norte no mês passado?"</td></tr>
+        <tr><td>Cálculo agregado sobre medida</td><td>"Qual o preço médio da gasolina por galão nos últimos 30 dias?"</td></tr>
+        <tr><td>Cálculo ad hoc via DAX gerado</td><td>"Qual foi o crescimento ano a ano das vendas?" / "Qual a proporção de pedidos de produtos cosméticos em relação ao total?"</td></tr>
+      </table>
+
+      <div class="callout warning">
+        O Copilot ainda <strong>não</strong> responde perguntas que exigem gerar novos insights, como detecção de anomalias, previsões (forecasting) ou identificação de principais fatores de influência. Exemplos que não funcionam: "Por que nossas vendas caem todo mês de julho?" ou "Quantos livros venderemos no ano que vem?".
+      </div>
+
+      <p>Requer que o Q&amp;A esteja habilitado no modelo (em geral já vem ativado; para DirectQuery ou Direct Lake pode ser necessário habilitar manualmente). Esse recurso está disponível apenas no Power BI service, em inglês, e não aplica os filtros/segmentações já ativos na página às respostas geradas no painel do Copilot.</p>
+
+      <div class="info-box">
+        Para melhorar a qualidade das respostas, os autores do modelo podem aplicar modelagem linguística: usar nomes de colunas e medidas únicos e descritivos, seguir boas práticas de modelagem e adicionar sinônimos para termos específicos do negócio.
+      </div>
+
+      <h2 id="criar-um-visual-de-narrativa">Criar um visual de narrativa</h2>
+
+      <p>O visual de narrativa resume o relatório inteiro, páginas específicas ou visuais selecionados, com apenas alguns cliques — e você pode ajustar o tom e o nível de detalhe com prompts.</p>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Como criar (Power BI service) <span class="acc-arrow">&#9660;</span></div>
+        <div class="acc-body">
+          <ol>
+            <li>No painel de Visualizações, selecione o ícone de Narrativa.</li>
+            <li>Em "Escolher um tipo de narrativa", selecione o botão Copilot para usar o novo visual de narrativa.</li>
+            <li>Escolha uma opção na caixa de diálogo "Criar uma narrativa com Copilot" e selecione Criar.</li>
+            <li>Inclua ou exclua visuais e páginas específicas, ou resuma o relatório inteiro.</li>
+            <li>Revise o resumo gerado para conferir a precisão.</li>
+            <li>Para ajustar, use "Adjust your summary with Copilot" com instruções próprias ou um dos prompts sugeridos.</li>
+            <li>Selecione as notas de rodapé para ver a referência aos visuais específicos que embasam cada trecho do resumo.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="note">O visual de narrativa lê o que está no canvas do relatório (não o modelo semântico diretamente) — por isso, visuais e eixos bem nomeados ajudam o Copilot a identificar destaques e insights. Após publicado, o visual não pode ser editado diretamente, apenas via novos prompts; os usuários precisam atualizar o resumo manualmente após filtrar ou alterar a página.</div>
+
+      <h2 id="escrever-prompts-eficazes">Escrever prompts eficazes</h2>
+
+      <p>A qualidade do resultado do Copilot depende diretamente de como o prompt é escrito. Use a tabela abaixo como referência rápida ao criar páginas de relatório ou narrativas.</p>
+
+      <table class="term-table">
+        <tr><th>Faça</th><th>Evite</th></tr>
+        <tr><td>Ser específico sobre métricas, dimensões e período de análise.</td><td>Prompts vagos como "crie uma página de vendas".</td></tr>
+        <tr><td>Nomear claramente tabelas/medidas relevantes quando possível.</td><td>Presumir que o Copilot conhece o contexto de negócio sem pistas no prompt.</td></tr>
+        <tr><td>Iterar com prompts de acompanhamento para refinar (tom, formatação, foco).</td><td>Esperar o resultado perfeito na primeira tentativa.</td></tr>
+        <tr><td>Usar "limpar chat" ao trocar de assunto, para evitar contexto desnecessário.</td><td>Manter uma única conversa longa misturando tópicos não relacionados.</td></tr>
+      </table>
+
+      <h3>Exemplos de prompts para páginas de relatório</h3>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Ver prompts de exemplo <span class="acc-arrow">&#9660;</span></div>
+        <div class="acc-body">
+          <ul>
+            <li>"Crie uma página para avaliar o valor de vendas, a receita e a margem de lucro de diferentes produtos, categorias e subcategorias ao longo do tempo e entre regiões."</li>
+            <li>"Crie uma página para identificar e comparar as características, comportamentos e preferências de diferentes segmentos de clientes com base em dados demográficos, geográficos e transacionais."</li>
+            <li>"Crie uma página para avaliar o impacto e o retorno sobre o investimento de diversas promoções nas vendas, na receita e na aquisição/retenção de clientes."</li>
+            <li>"Crie uma página para monitorar e otimizar níveis de estoque, pontos de reposição, estoque de segurança e custos de produto com base em demanda, lead time e custos de fabricação."</li>
+            <li>"Crie um sumário para este relatório contendo uma breve descrição do que cada página aborda."</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Exemplos de prompts para narrativas</h3>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Ver prompts de exemplo <span class="acc-arrow">&#9660;</span></div>
+        <div class="acc-body">
+          <p><strong>Criar uma narrativa focada:</strong> "Gere um resumo focado no turismo no Havaí."</p>
+          <p><strong>Refinar uma narrativa existente:</strong></p>
+          <ul>
+            <li>"Encurte este resumo e deixe as informações principais em negrito."</li>
+            <li>"Torne o primeiro tópico sobre o tempo de permanência (length of stay)."</li>
+            <li>"Adicione a pergunta 'Quais fatores influenciam a retenção e a taxa de retorno de clientes?'"</li>
+          </ul>
+          <p><strong>Analisar relações específicas nos dados:</strong> "Gere um resumo explicando a relação entre receita, localização e interesse principal."</p>
+        </div>
+      </div>
+    </section>
+
+
+<section class="page-section" id="page-4">
+      <h1>Copilot no dia a dia</h1>
+
+      <p>Além de gerar relatórios e responder perguntas dentro de uma sessão de análise, o Copilot também aparece em vários pontos do uso cotidiano do Power BI: em resumos entregues por e-mail, na busca por conteúdo já existente, na compreensão de modelos semânticos e em praticamente todos os outros pontos de contato da plataforma. Esta página reúne esses cenários de uso "no dia a dia".</p>
+
+      <h2 id="resumos-em-assinaturas-de-email">Resumos do Copilot em assinaturas por e-mail (preview)</h2>
+      <p>É possível incluir um resumo gerado pelo Copilot para uma página de relatório ou para o relatório completo dentro de uma assinatura por e-mail. Todos os destinatários da assinatura recebem esse resumo automaticamente, inclusive quando o relatório é entregue como anexo, pelo OneDrive ou pelo SharePoint. O recurso está disponível apenas para <strong>Assinaturas padrão (Standard Subscriptions)</strong>.</p>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Como configurar o resumo do Copilot em uma assinatura <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <ol>
+            <li>Selecione <strong>Assinar relatório</strong> e depois <strong>Criar uma assinatura</strong>.</li>
+            <li>Escolha <strong>Assinatura padrão</strong>. É possível ajustar o nome da assinatura e os destinatários que devem receber o resumo do Copilot.</li>
+            <li>Escolha receber o resumo de uma única página ou do relatório completo (opção <strong>Anexar relatório completo</strong>). Também é possível entregar o relatório completo para o OneDrive ou SharePoint — o resumo do Copilot continua sendo enviado por e-mail, junto com o link para o local de armazenamento.</li>
+            <li>Agende a frequência de entrega (diária, semanal ou mensal), com datas de início e término.</li>
+            <li>Na seção <strong>Resumo gerado por Copilot (preview)</strong>, selecione <strong>Visualizar resumo</strong> para ver um exemplo do texto gerado.</li>
+            <li>Em assinaturas já existentes, é possível ativar o recebimento do resumo por meio de um botão de alternância (toggle).</li>
+            <li>Opcionalmente, inclua assunto do e-mail, mensagem, imagem da página, link para o relatório no Power BI e permissão de visualização.</li>
+            <li>Salve a assinatura. Use o botão <strong>Enviar agora</strong> para testar o envio imediatamente a todos os destinatários.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="callout">
+        Em novas assinaturas elegíveis, o resumo do Copilot vem habilitado por padrão — mas pode ser desativado a qualquer momento. O resumo mostra um retrato do relatório no momento em que a assinatura foi executada e muda conforme o agendamento e os dados.
+      </div>
+
+      <p>Limitações importantes:</p>
+      <ul>
+        <li>Não é suportado para assinaturas dinâmicas por destinatário, relatórios paginados, scorecards e dashboards.</li>
+        <li>O resumo roda em nome do proprietário da assinatura (assim como o restante do envio).</li>
+        <li>Não é possível personalizar o resumo com prompts do usuário.</li>
+        <li>Em relatórios muito grandes, o e-mail pode chegar sem o resumo se o Copilot demorar demais para responder.</li>
+        <li>Se a assinatura usa filtros e a opção "Incluir minhas alterações", o resumo é gerado com base no estado do relatório (com os filtros aplicados) no momento em que a assinatura foi salva.</li>
+      </ul>
+
+      <h2 id="busca-de-conteudo-copilot">Encontrar conteúdo com a busca do Copilot</h2>
+      <p>Conforme colegas compartilham conteúdo com você, pode ficar difícil lembrar onde está cada relatório ou modelo. A experiência independente (standalone) do Copilot permite buscar e conversar diretamente com o conteúdo do Power BI. Nesse contexto, "conteúdo" pode significar relatórios, modelos semânticos, aplicativos de workspace, aplicativos organizacionais e agentes de dados (data agents).</p>
+
+      <p>A busca do Copilot só está disponível na experiência standalone e exige que tanto o Fabric Copilot quanto essa experiência estejam habilitados no tenant. Para melhorar a busca, recomenda-se habilitar também a configuração de busca global e a de compartilhamento de dados entre limites geográficos (útil quando o Azure OpenAI não está disponível na região do tenant).</p>
+
+      <h3>Como funciona a busca</h3>
+      <p>Ao fazer uma pergunta ampla, sem anexar um relatório ou modelo específico — por exemplo, "Encontre itens sobre receita de vendas" — o Copilot retorna uma lista de itens relacionados, mostrando ícone do tipo de item, título (com link), workspace, data da última abertura, descrição (gerada automaticamente se o autor não tiver criado uma) e se o item pertence a um aplicativo.</p>
+
+      <div class="callout success">
+        Dica: depois de receber os resultados da busca, continue a conversa pedindo "Resuma o relatório 1" ou "Use 1" para direcionar o Copilot a um item específico.
+      </div>
+
+      <h3 id="metadados-usados-na-busca">O que o Copilot analisa para encontrar conteúdo</h3>
+      <p>O Copilot usa metadados do item (título, descrição, nome do workspace) e também o conteúdo interno, que varia conforme o tipo de item:</p>
+
+      <table class="term-table">
+        <thead>
+          <tr><th>Tipo de item</th><th>Conteúdo analisado</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Relatórios</td><td>Nomes de páginas, títulos de visuais, títulos do painel de filtros, caixas de texto</td></tr>
+          <tr><td>Modelos semânticos</td><td>Nomes e descrições de tabelas, colunas e medidas; prompts e gráficos de respostas verificadas</td></tr>
+          <tr><td>Agentes de dados</td><td>Descrições publicadas, consultas de exemplo, esquema da fonte de dados</td></tr>
+          <tr><td>Apps de workspace/organizacionais</td><td>Relatórios incluídos no aplicativo</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Sinais que aumentam a relevância de um item</h3>
+      <p>Quando há muitos itens candidatos, o Copilot prioriza aqueles que: foram marcados como favoritos, foram abertos recentemente, estão endossados, são populares/muito visualizados na organização, fazem parte de um app, ou foram marcados como aprovados para Copilot.</p>
+
+      <h2 id="tornar-itens-descobriveis">Boas práticas para tornar seus itens mais descobertos</h2>
+      <div class="goal-list">
+        <ul>
+          <li><strong>Adicione descrições</strong> em linguagem natural, explicando do que trata o item.</li>
+          <li><strong>Use palavras-chave únicas</strong> para diferenciar itens com nomes parecidos.</li>
+          <li><strong>Aplique um rótulo de endosso</strong> (por exemplo, Promovido) — qualquer criador com acesso de edição pode aplicá-lo.</li>
+          <li><strong>Marque itens importantes como favoritos</strong> — isso sinaliza relevância ao Copilot.</li>
+        </ul>
+      </div>
+
+      <h3 id="aprovado-para-copilot">Itens "Aprovados para Copilot"</h3>
+      <p>Administradores de workspace controlam se o Copilot pode buscar em todo o conteúdo do workspace ou apenas no conteúdo marcado como <strong>Aprovado para Copilot</strong>. Essa opção fica em Configurações do workspace, em Delegated settings, na seção Copilot e Azure OpenAI service. Administradores de tenant também podem definir esse comportamento como padrão. Mudanças levam até 24 horas para refletir na busca.</p>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Quando um item é considerado "Aprovado para Copilot"? <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <ul>
+            <li>Agentes de dados do Fabric são sempre considerados aprovados.</li>
+            <li>Modelos semânticos precisam ter a caixa <strong>Aprovado para Copilot</strong> marcada por um criador.</li>
+            <li>Uma vez marcado o modelo, todos os relatórios que o usam também passam a ser considerados aprovados.</li>
+            <li>Apps de workspace/organizacionais são sempre considerados aprovados, mas os relatórios dentro deles só são considerados aprovados se o modelo semântico subjacente tiver sido marcado explicitamente.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Considerações e limitações da busca</h3>
+      <ul>
+        <li>O Copilot respeita as permissões do usuário: só aparecem resultados de itens aos quais o usuário já tem acesso.</li>
+        <li>Elementos ocultos (tabelas e colunas ocultas) não são pesquisados.</li>
+        <li>Modelos semânticos marcados apenas como "descobríveis" não aparecem na busca, a menos que o usuário já tenha acesso direto ao modelo.</li>
+        <li>Usuários com acesso via grupos do Microsoft 365 (grupos unificados) não conseguem encontrar esses itens pelo Copilot.</li>
+        <li>Edições diretas em um item (renomear um visual, por exemplo) refletem na busca em até cinco minutos; edições indiretas (como renomear o workspace) podem levar até 24 horas.</li>
+        <li>Perguntas com mais contexto natural (ex.: "Encontre relatórios sobre receita do Q4 ao longo do tempo") funcionam melhor do que buscas por palavra-chave isolada (ex.: "Q4").</li>
+      </ul>
+
+      <h2 id="copilot-com-modelos-semanticos">Usar o Copilot com modelos semânticos</h2>
+      <p>O Copilot pode apoiar tanto o <strong>desenvolvimento</strong> quanto o <strong>consumo</strong> de modelos semânticos. Mas, para obter bons resultados, é necessário primeiro preparar os dados, o modelo e os usuários — sem essa preparação, o Copilot tende a produzir respostas de baixa qualidade, incorretas ou até enganosas (veja a página "Preparar dados para IA" para o passo a passo completo).</p>
+
+      <div class="callout warning">
+        Importante: não é possível habilitar ou desabilitar o Copilot para experiências específicas. Se o Copilot em Fabric estiver habilitado para um usuário ou grupo de segurança, todas as cargas de trabalho e experiências do Copilot ficam acessíveis.
+      </div>
+
+      <h3 id="fazer-perguntas-ao-modelo">Fazer perguntas sobre os dados do modelo</h3>
+      <p>Ao desenvolver um modelo, você pode usar o painel de chat do Copilot para explorar e validar os dados, além de usar o Power Query e consultas DAX. Esse uso é útil principalmente para <strong>validar como o Copilot se comportará</strong> quando os usuários finais consumirem o modelo — é o principal caso de uso de "Ask data questions" durante o desenvolvimento.</p>
+
+      <p>O Copilot usa como contexto (dados de "grounding"): metadados do relatório da página atual, o histórico da conversa na sessão, o esquema completo do modelo (tabelas, colunas, medidas, relacionamentos, grupos de cálculo) e propriedades como descrições, tipos de dados e categorias de dados. Ficam de fora: páginas ocultas, campos ocultos e tabelas marcadas como privadas.</p>
+
+      <p>A resposta do Copilot normalmente inclui três partes: um <strong>visual</strong> (card, gráfico de linha, tabela — escolhido automaticamente pelo Copilot), um <strong>resumo em linguagem natural</strong> do resultado, e, quando aplicável, uma <strong>solicitação de esclarecimento</strong> ou mensagem de erro.
+
+      <div class="callout warning">
+        Cuidado: ao usar o Copilot com metadados de relatório como contexto, esses metadados podem conter valores sensíveis (por exemplo, valores de colunas). Isso vale tanto para o formato legado de metadados quanto para o formato PBIR (Power BI enhanced report).
+      </div>
+
+      <h3 id="melhorar-respostas-copilot">Como melhorar a qualidade das respostas</h3>
+      <p>Respostas incorretas geralmente vêm de prompts ruins ou de problemas no modelo. Alguns exemplos:</p>
+
+      <table class="term-table">
+        <thead>
+          <tr><th>Causa</th><th>Exemplo / Explicação</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Prompt vago ou incompleto</td><td>Descrever o resultado desejado de forma ambígua reduz a chance de uma resposta útil.</td></tr>
+          <tr><td>Prompt incorreto</td><td>Erros de digitação em nomes de campos, tabelas ou medidas fazem o Copilot referenciar o campo errado.</td></tr>
+          <tr><td>Excesso de contexto no chat</td><td>O histórico da conversa é usado como dado de contexto; feche e reabra o painel do Copilot para limpar esse histórico antes de um novo prompt.</td></tr>
+          <tr><td>Modelo mal projetado</td><td>Modelos que não seguem boas práticas (ex.: esquema estrela) tendem a gerar respostas ruins com qualquer ferramenta de consumo.</td></tr>
+          <tr><td>Convenções de nomenclatura ruins</td><td>Nomes com siglas, abreviações e pontuação excessiva confundem tanto o usuário quanto o Copilot.</td></tr>
+          <tr><td>Falta de modelagem linguística</td><td>Sem sinônimos e verbos configurados (o mesmo mecanismo usado pelo recurso de Perguntas e Respostas), o Copilot erra mais.</td></tr>
+          <tr><td>Complexidade excessiva</td><td>Modelos com muitos campos, dependências e lógica de negócio (ex.: conversão de moeda, tabelas desconectadas) aumentam a chance de erro.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout success">
+        Dica: use o botão "Adicionar à página" para colocar o visual gerado pelo Copilot no canvas do relatório e inspecionar quais campos e filtros foram realmente usados.
+      </div>
+
+      <p>Mesmo com prompt e modelo bons, o Copilot pode gerar respostas diferentes para a mesma pergunta, pois seu comportamento é <strong>não determinístico</strong>. Por isso, é importante treinar os usuários para avaliar criticamente as respostas obtidas.</p>
+
+      <h3 id="copilot-dax-query-view">Copilot na visualização de consultas DAX</h3>
+      <p>Na DAX query view, o Copilot pode gerar consultas DAX, refatorar consultas existentes (adicionar comentários, simplificar, substituir variáveis), gerar medidas e explicar conceitos de DAX (funções como <code>CALCULATE</code> ou <code>KEEPFILTERS</code>).</p>
+
+      <p>Vantagens específicas dessa experiência: o Copilot foi desenvolvido em colaboração com os autores da linguagem DAX; não há necessidade de copiar e colar código, pois está integrado ao Power BI Desktop; e, no pós-processamento, o Copilot valida a consulta com um parser DAX, o que reduz a chance de "alucinações".</p>
+
+      <div class="callout warning">
+        Desenvolvedores menos experientes devem sempre validar e entender qualquer código DAX gerado antes de usá-lo, especialmente ao criar medidas que serão adicionadas ao modelo — o Copilot não sabe onde essa medida será usada depois.
+      </div>
+
+      <h3>Dicas específicas para consultas DAX</h3>
+      <ul>
+        <li>Modelos locais (Power BI Desktop) versus conexão live com modelo compartilhado se comportam de forma diferente: em conexão live, o Copilot não vê expressões DAX de medidas nem objetos ocultos/privados, e precisa executar a consulta antes de devolvê-la.</li>
+        <li>O botão <strong>Retry</strong> limpa o cache do Copilot, gerando um novo resultado com o mesmo prompt.</li>
+        <li>Peça ao Copilot para comentar o código gerado — isso ajuda a entender e documentar a consulta.</li>
+        <li>Cheque fontes confiáveis (documentação da Microsoft, comunidade Power BI) quando não entender o código gerado.</li>
+        <li>O Copilot pode ter dificuldade com o uso de variáveis e de grupos de cálculo — inclua os nomes dos itens de cálculo na descrição do grupo de cálculo para ajudar.</li>
+        <li>Funções e sintaxes DAX muito recentes têm mais chance de erro, já que os dados de treinamento têm um limite temporal.</li>
+        <li>Ao gerar medidas, peça sempre por uma <em>consulta</em> — a experiência é otimizada para gerar consultas DAX, não medidas isoladas.</li>
+      </ul>
+
+      <h3 id="gerar-descricoes-medidas">Gerar descrições de medidas com Copilot</h3>
+      <p>Descrições de medidas ajudam tanto consumidores quanto outros desenvolvedores a entender o propósito de uma medida — e melhoram a qualidade de outras experiências do Copilot que usam essas descrições como contexto (grounding data), como a geração de consultas DAX.</p>
+      <p>O Copilot usa como contexto: expressões DAX de medidas e objetos calculados, propriedades de campo (descrições, tipos de dados, categorias) e sinônimos de campo. Para obter boas sugestões, mantenha convenções de nomenclatura consistentes, evite pontuação e abreviações, e nomeie medidas em inglês (ou no idioma padrão do modelo).</p>
+
+      <div class="callout success">
+        Dica: se precisar de descrições em outro idioma, gere-as primeiro em inglês e depois traduza o modelo publicado com outras ferramentas, como o Semantic Link Labs em notebooks.
+      </div>
+
+      <h3 id="consumir-modelo-com-copilot">Consumir um modelo semântico com Copilot</h3>
+      <p>Consumidores usam o Copilot para fazer perguntas sobre os dados quando não encontram a resposta em um relatório, quando querem ver os dados de outra forma (e a personalização de visuais não está habilitada), ou quando preferem perguntar em linguagem natural em vez de usar ferramentas ou código.</p>
+      <p>Essa experiência está disponível no Power BI Desktop, em relatórios publicados (workspace, app ou OrgApp) e no aplicativo móvel do Power BI. Só use o Copilot para consumo depois de preparar o modelo adequadamente (ver "Preparar dados para IA").</p>
+
+      <div class="callout success">
+        Dica: use tags ou o status de endosso (promovido/certificado) para sinalizar aos consumidores quais modelos estão prontos para consumo via Copilot. Para modelos ainda não prontos, considere oferecer personalização de visuais ou explorações como alternativa.
+      </div>
+
+      <h2 id="integracao-copilot-ecossistema">Como o Copilot se integra ao ecossistema do Power BI</h2>
+      <p>O Copilot em Fabric é um assistente de IA generativa que melhora a experiência de análise de dados em toda a plataforma Fabric — cada carga de trabalho, incluindo o Power BI, oferece diferentes experiências de Copilot. Diferentes perfis de usuário (desenvolvedores corporativos, usuários self-service e usuários de negócio) usam essas experiências de formas distintas: para <strong>criar</strong> itens (gerar descrições de medidas, por exemplo) e para <strong>consumir</strong> itens (perguntas no painel de chat de um relatório). Algumas experiências, como a geração de DAX, servem tanto para criação quanto para consumo.</p>
+
+      <h3>O que muda entre as experiências de Copilot</h3>
+      <table class="term-table">
+        <thead>
+          <tr><th>Elemento</th><th>Como varia entre experiências</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Entrada (input)</td><td>Prompt escrito no chat, clique em um botão (ex.: gerar descrições de medida), ou seleção de um visual.</td></tr>
+          <tr><td>Pré-processamento / grounding</td><td>Cada experiência usa dados de contexto diferentes: esquema do modelo, modelo linguístico, metadados do relatório, pontos de dados de visuais etc. O autor pode controlar o que o Copilot enxerga (ocultando campos, páginas ou visuais).</td></tr>
+          <tr><td>Pós-processamento</td><td>Ex.: a DAX query view roda a consulta gerada por um parser antes de aceitar a resposta; a criação de páginas combina a resposta do modelo com o tema do relatório e seus metadados.</td></tr>
+          <tr><td>Saída (output)</td><td>Consulta DAX, explicação em linguagem natural, nova página de relatório, visual com resumo, etc., dependendo da experiência.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Pontos de acesso ao Copilot no Power BI</h3>
+      <div class="capability-grid">
+        <div class="capability-card">
+          <strong>Aplicativo móvel</strong>
+          <p>Experiência standalone acessível na tela inicial do app, para conversar com dados sem abrir um relatório específico; também é possível ver relatórios em apps e usar o Copilot embutido no relatório. Suporta ditado por voz no iOS.</p>
+        </div>
+        <div class="capability-card">
+          <strong>Power BI Desktop</strong>
+          <p>Usado durante o desenvolvimento: perguntas sobre dados, geração de consultas DAX, sinônimos para modelagem linguística e descrições de medidas. Exige conexão com um workspace em capacidade Fabric suportada.</p>
+        </div>
+        <div class="capability-card">
+          <strong>Workspace Fabric</strong>
+          <p>Modelos e relatórios publicados a partir do Desktop, integração Git ou criados no Fabric podem usar o Copilot; notebooks com Semantic Link também podem interagir com o Copilot.</p>
+        </div>
+        <div class="capability-card">
+          <strong>Relatório publicado</strong>
+          <p>Ao se conectar a um modelo de qualquer workspace para criar relatórios, é possível usar o Copilot para perguntas, geração de DAX, visuais e resumos durante a criação.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        Workspaces do tipo Pro, PPU (Premium Per User) ou com SKU F não suportada não oferecem Copilot diretamente. Ainda assim, é possível consumir itens desses workspaces pelo Power BI Desktop e usar o Copilot, desde que o Desktop esteja configurado para consumir capacidade Fabric de um workspace suportado.
+      </div>
+
+      <h3 id="uso-responsavel-copilot">Uso responsável do Copilot no Power BI</h3>
+      <p>Obter valor real do Copilot exige uma cultura de dados saudável e boa adoção do Power BI — não basta simplesmente "ligar" o recurso. Pontos-chave para uma adoção responsável:</p>
+      <ul>
+        <li><strong>Governança:</strong> conceda acesso ao Copilot somente após treinamento dos usuários, liberando em fases.</li>
+        <li><strong>Preparação dos modelos semânticos:</strong> invista tempo em nomenclatura, descrições, boas práticas de modelagem e modelagem linguística — negligenciar isso leva a resultados ruins. O app móvel, inclusive, exibe avisos quando um modelo não está preparado para IA.</li>
+        <li><strong>Preparação dos usuários de negócio:</strong> explique quando usar o Copilot e quando simplesmente consultar o relatório — usar o Copilot para tudo pode ser menos eficiente do que interpretar visuais diretamente.</li>
+        <li><strong>Avaliação das respostas:</strong> como o comportamento é não determinístico, é importante definir expectativas claras sobre como validar as respostas do Copilot.</li>
+      </ul>
+
+      <div class="callout warning">
+        Filtros de conteúdo e recursos de IA responsável rejeitam automaticamente chamadas que contenham certas palavras ou frases potencialmente sensíveis. Se o esquema ou os metadados do seu modelo contiverem esses termos, os prompts relacionados a esse modelo falharão.
+      </div>
+    </section>
+
+    <section class="page-section" id="page-5">
+      <h1>Preparar dados para IA</h1>
+
+      <p>A qualidade das respostas do Copilot depende diretamente da qualidade da preparação do modelo semântico por trás dele. Quando os dados estão bem estruturados e sem ambiguidade, o Copilot consegue interpretar corretamente o contexto de negócio, priorizar as informações certas e entregar respostas consistentes e confiáveis. Quando os dados estão desorganizados ou ambíguos, o Copilot tende a gerar saídas genéricas, imprecisas ou até enganosas.</p>
+
+      <p>O Power BI oferece um conjunto de recursos reunidos sob o nome <strong>Prep data for AI</strong> (Preparar dados para IA), que podem ser autorados tanto no Power BI Desktop quanto no serviço Power BI, e são consumidos em qualquer lugar onde o Copilot esteja disponível.</p>
+
+      <div class="callout">
+        Os recursos de preparação de dados não garantem uma saída específica sempre: o comportamento do Copilot é não determinístico. Mesmo com o mesmo prompt e os mesmos dados de entrada, a resposta pode variar.
+      </div>
+
+      <h2 id="acessar-prep-data-for-ai">Como acessar os recursos de preparação</h2>
+      <p>No <strong>Power BI Desktop</strong>, selecione o botão <strong>Prep data for AI</strong> na faixa de opções (ribbon) da guia Página Inicial. Isso abre uma experiência unificada com três recursos principais: esquema de dados de IA, respostas verificadas e instruções de IA. Todas as atualizações são salvas no modelo semântico — não no relatório.</p>
+      <p>No <strong>serviço Power BI</strong>, selecione o modelo semântico desejado e clique no botão <strong>Prep data for AI</strong> na faixa de opções da página do modelo. Use os recursos disponíveis e selecione <strong>Aplicar</strong> quando estiver satisfeito com as alterações. Para configurar uma resposta verificada, é preciso estar em um workspace habilitado para Copilot, ter permissão de autoria no modelo, estar em modo de edição de uma página de relatório e ter o visual selecionado.</p>
+
+      <div class="callout">
+        Pode levar alguns minutos para que as alterações feitas via Prep data for AI tenham efeito nas respostas do Copilot. Se não perceber o efeito imediatamente, aguarde e tente novamente.
+      </div>
+
+      <h2 id="esquemas-de-dados-de-ia">Esquemas de dados de IA (AI data schemas)</h2>
+      <p>Um esquema de dados de IA permite que o autor do modelo defina um <strong>subconjunto focado</strong> do esquema completo, que o Copilot deve priorizar ao gerar respostas. Ao selecionar apenas os campos mais relevantes, você reduz a ambiguidade e orienta o Copilot a responder com os campos corretos, sem precisar pedir esclarecimentos ao usuário.</p>
+
+      <p><strong>Pré-requisito:</strong> o Power BI Q&amp;A precisa estar habilitado no modelo — caso contrário, as abas do Prep data for AI ficam desabilitadas.</p>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Passo a passo para definir um esquema de dados de IA <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <ol>
+            <li>Selecione o botão <strong>Prep data for AI</strong> (na ribbon do Desktop ou na página do modelo, no serviço).</li>
+            <li>Acesse a aba <strong>Simplificar esquema de dados</strong>.</li>
+            <li>Selecione os campos que o Copilot deve usar — priorize colunas limpas e com pouca ambiguidade, e remova campos que possam confundir o Copilot.</li>
+            <li>Selecione <strong>Aplicar</strong> para salvar as alterações no modelo.</li>
+          </ol>
+          <p>Para testar: abra o painel do Copilot no Desktop, use o seletor de habilidades (skill picker) e escolha "Responder perguntas sobre os dados". Pergunte usando um campo fora do esquema (não deve responder) e depois usando um campo dentro do esquema (deve responder). Em seguida, publique o relatório no serviço Power BI para que os consumidores usem o esquema.</p>
+        </div>
+      </div>
+
+      <h3>Considerações e limitações</h3>
+      <ul>
+        <li>Consumidores do modelo não conseguem ver qual esquema de IA foi configurado.</li>
+        <li>Só se aplica a capacidades do Copilot que consultam o esquema do modelo — não afeta, por exemplo, o resumo de um relatório ou respostas diretas a partir da página.</li>
+        <li>Criação de páginas de relatório, busca e consultas DAX sempre usam o modelo semântico completo, ignorando o esquema de IA.</li>
+        <li>Campos ocultos no modelo são excluídos automaticamente do esquema de IA na primeira configuração.</li>
+        <li>É possível selecionar hierarquias inteiras, mas não componentes individuais isoladamente.</li>
+        <li>Relacionamentos continuam sendo respeitados mesmo que apenas um dos campos relacionados esteja no esquema.</li>
+        <li>Usuários finais não podem desabilitar o esquema de dados de IA.</li>
+      </ul>
+
+      <h2 id="instrucoes-de-ia">Instruções de IA (AI instructions)</h2>
+      <p>As instruções de IA permitem que o autor do modelo forneça <strong>contexto de negócio, lógica e orientações específicas</strong> diretamente no modelo semântico. O Copilot usa essas instruções para interpretar melhor as perguntas dos usuários, incorporando terminologia e prioridades analíticas da organização.</p>
+
+      <p><strong>Pré-requisitos:</strong> modelo semântico no Power BI Desktop ou serviço; Copilot habilitado na organização; Power BI Q&amp;A habilitado no modelo (pode ser ativado durante a configuração).</p>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Como configurar e testar instruções de IA <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <ol>
+            <li>Selecione o botão <strong>Prep data for AI</strong> e acesse a aba <strong>Adicionar instruções de IA</strong>.</li>
+            <li>Escreva instruções sobre o modelo, o negócio, a terminologia e como priorizar os dados.</li>
+            <li>Selecione <strong>Aplicar</strong>.</li>
+            <li>No painel do Copilot no Desktop, use o seletor de habilidades e escolha "Responder perguntas sobre os dados" para testar uma das instruções configuradas.</li>
+            <li>Ajuste as instruções conforme necessário e publique o relatório (ou salve no serviço) quando estiver satisfeito.</li>
+          </ol>
+        </div>
+      </div>
+
+      <h3 id="casos-de-uso-instrucoes">Casos de uso comuns</h3>
+      <table class="term-table">
+        <thead>
+          <tr><th>Categoria</th><th>Exemplos de instrução</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Contexto de negócio e interpretação de dados</td>
+            <td>"A temporada de alta vai de outubro a fevereiro." / "Enquadre os insights com foco em avaliação de risco e tendências de mercado." / "Quando o usuário mencionar ABCD, refere-se ao campo de fatura total." / "Um percentual de rotatividade menor é mais positivo."</td>
+          </tr>
+          <tr>
+            <td>Regras de análise</td>
+            <td>"Sempre analise vendas trimestralmente." / "Para receita, sempre detalhe por trimestre e compare com o campo de indústria." / "Use a tabela sales_fact como fonte primária para perguntas sobre vendas." / "Se perguntarem sobre vendas de produto, sempre peça esclarecimento sobre a localização."</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="boas-praticas-instrucoes">Boas práticas para escrever instruções eficazes</h3>
+      <div class="goal-list">
+        <ul>
+          <li><strong>Seja explícito e específico</strong> — assuma que o Copilot não tem nenhum conhecimento prévio do negócio.</li>
+          <li><strong>Use analogias e exemplos concretos</strong> para deixar clara a intenção (ex.: cite nomes de medidas exatas a usar).</li>
+          <li><strong>Evite ambiguidade</strong> — detalhe o que enfatizar ou evitar.</li>
+          <li><strong>Agrupe instruções por tema</strong> (lógica de datas, métricas-chave, termos do setor), usando seções e cabeçalhos.</li>
+          <li><strong>Teste a ordem das instruções</strong> — a ordem pode afetar o resultado; experimente variações.</li>
+          <li><strong>Divida instruções complexas em passos simples.</strong></li>
+          <li><strong>Mantenha o conjunto de instruções focado</strong> — poucas instruções bem direcionadas tendem a funcionar melhor do que muitas instruções amplas ou conflitantes.</li>
+        </ul>
+      </div>
+
+      <div class="callout">
+        Limite técnico: instruções de IA são limitadas a 10.000 caracteres e são salvas em nível de modelo semântico (não é possível configurá-las por relatório).
+      </div>
+
+      <h3>Considerações e limitações</h3>
+      <ul>
+        <li>As instruções são orientações não estruturadas — o LLM apenas as interpreta, sem garantia de seguí-las à risca.</li>
+        <li>Afetam as capacidades do Copilot, mas não conversas gerais.</li>
+        <li>Não são específicas por perfil de usuário nem modificam aspectos visuais/tema do relatório.</li>
+        <li>Consumidores não conseguem ver quais instruções foram aplicadas ao modelo, nem desativá-las.</li>
+        <li>Podem não ser respeitadas ao criar páginas de relatório ou gerar resumos — nesses casos, use o seletor de habilidades e escolha apenas "Criar novas páginas de relatório".</li>
+      </ul>
+
+      <h2 id="respostas-verificadas">Respostas verificadas (verified answers)</h2>
+      <p>Respostas verificadas são respostas visuais <strong>aprovadas por humanos</strong>, disparadas por frases predefinidas (trigger phrases). Cada resposta verificada inclui uma ou mais frases-gatilho, um visual e filtros opcionais. Elas são armazenadas no modelo semântico, garantindo respostas consistentes e de alta qualidade em todos os relatórios que usam aquele modelo.</p>
+
+      <p>Usos principais: melhorar a <strong>consistência</strong> das respostas para perguntas comuns ou complexas, e aumentar a <strong>precisão do Copilot</strong> ao longo do tempo, já que ele aprende com as interações dos usuários com respostas verificadas.</p>
+
+      <p>Quando um usuário digita um prompt, o Copilot primeiro verifica se há correspondência exata ou semanticamente semelhante com alguma frase-gatilho. Se houver, retorna a resposta verificada em vez de gerar uma nova.</p>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Como configurar uma resposta verificada <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <ol>
+            <li>Selecione o visual desejado. No Desktop, use o menu de três pontos no cabeçalho do visual e escolha <strong>Configurar resposta verificada</strong>. No serviço, é preciso estar em modo de edição, em um workspace habilitado para Copilot.</li>
+            <li>Adicione frases-gatilho manualmente (botões + ou Adicionar) ou use sugestões geradas pelo Copilot com base no visual.</li>
+            <li>Adicione filtros (até três por resposta verificada) selecionando o ícone de filtro.</li>
+            <li>Marque <strong>Disponível para os usuários</strong> nos filtros que devem poder ser ajustados via linguagem natural no prompt (por exemplo, permitir que o usuário troque a região em "Mostre a receita por região" sem precisar criar uma resposta verificada nova para cada região).</li>
+            <li>Selecione <strong>Aplicar</strong> para salvar no modelo.</li>
+          </ol>
+        </div>
+      </div>
+
+      <h3>Tipos de filtro suportados</h3>
+      <ul>
+        <li>Filtros de nível relatório, página ou visual.</li>
+        <li>Filtros categóricos básicos e avançados (startsWith, contains, &gt;, &lt;, &gt;=, &lt;=).</li>
+        <li>Filtros de intervalo de data (ex.: entre jan/2024 e jul/2025, ou antes de 3/4/2025). Filtros de data relativos (YTD, últimos três meses etc.) <strong>não</strong> são suportados.</li>
+        <li>Limite de 10 combinações de filtro por resposta verificada.</li>
+      </ul>
+
+      <h3 id="testar-respostas-verificadas">Testar e gerenciar respostas verificadas</h3>
+      <p>Abra o painel do Copilot (Desktop ou serviço), use o seletor de habilidades e escolha "Responder pergunta sobre os dados", e teste as frases-gatilho configuradas. Para gerenciar (editar ou excluir), acesse a aba <strong>Respostas verificadas</strong> dentro do Prep data for AI. Sempre que adicionar, editar ou excluir uma resposta verificada, atualize o painel do Copilot fechando e reabrindo (ou limpe o histórico do chat).</p>
+
+      <p>Quando o usuário aciona uma resposta verificada, o Copilot exibe sinais visuais de confiança: um <strong>selo de verificação</strong>, a <strong>frase-gatilho correspondente</strong>, um <strong>resumo textual</strong> gerado por IA, e o painel <strong>"Como o Copilot chegou a isso"</strong>, com os dados e filtros usados.</p>
+
+      <h3 id="correspondencia-semantica">Tipos de correspondência de frase-gatilho</h3>
+      <table class="term-table">
+        <thead>
+          <tr><th>Tipo</th><th>Descrição / exemplo</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Correspondência exata</td><td>A frase digitada coincide caractere a caractere com a frase-gatilho (ignorando maiúsculas/minúsculas).</td></tr>
+          <tr><td>Correspondência semântica</td><td>Frase com redação diferente, mas mesma intenção. Ex.: gatilho "Vendas de snowboard por mês" corresponde a "Como as vendas de snowboard mudam ao longo do tempo?".</td></tr>
+        </tbody>
+      </table>
+
+      <p>Suportado na correspondência semântica: sinônimos comuns ou definidos no modelo, reordenação das palavras, inclusão de critérios de filtro no próprio prompt (ex.: "para a região Nordeste"). <strong>Não suportado:</strong> adicionar, remover ou trocar campos/dimensões, ou modificar a medida original da frase.</p>
+
+      <h3>Limites e restrições gerais</h3>
+      <div class="goal-list">
+        <ul>
+          <li>Até 250 respostas verificadas por modelo.</li>
+          <li>Até 15 frases-gatilho por resposta verificada (recomendação: 5 a 7).</li>
+          <li>Limite de 500 caracteres por frase-gatilho.</li>
+          <li>Máximo de 10 combinações de filtro por resposta verificada.</li>
+          <li>Segurança em nível de linha/objeto (RLS/OLS) ainda não é totalmente suportada como controle de segurança para respostas verificadas — não confie apenas nisso durante o preview.</li>
+          <li>Não funcionam com campos ocultos no modelo, nem com visuais que contenham medidas de relatório (report measures).</li>
+          <li>Integração com Git não é suportada.</li>
+          <li>Tipos de visual não suportados: caixa de texto, Data Q&amp;A, visuais de IA, key influencers, narrativa com Copilot, smart narratives (antiga), árvore de decomposição, visuais de previsão (R/Python) e visuais personalizados.</li>
+        </ul>
+      </div>
+
+      <h2 id="configuracoes-de-ia">Configurações de IA (AI settings)</h2>
+      <p>A página de configurações de preparação de dados para IA controla como o Copilot interage com os dados do modelo, incluindo o comportamento de indexação.</p>
+
+      <table class="term-table">
+        <thead>
+          <tr><th>Configuração</th><th>Descrição</th><th>Padrão</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Indexação do Copilot</td>
+            <td>Indexa metadados do modelo e valores de coluna para que o Copilot responda perguntas de forma mais rápida e precisa.</td>
+            <td>Habilitada automaticamente após a migração para o novo formato de arquivo do Copilot (editável)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>No Power BI Desktop existe também a configuração <strong>Local Desktop Indexing</strong>, que permite indexar localmente fontes de dados externas (DirectQuery, conexão live) para o Copilot. Ela é configurável por máquina, no diálogo de configurações do Prep data for AI, e se aplica apenas a DirectQuery e conexão live.</p>
+
+      <h2 id="otimizar-modelo-para-copilot">Otimizar o modelo semântico para o Copilot</h2>
+      <p>Antes de usar o Copilot com um modelo semântico, avalie e limpe os dados para que o Copilot consiga extrair insights corretamente. As recomendações a seguir ajudam a gerar relatórios mais precisos.</p>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Boas práticas de modelagem para relatórios com Copilot <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <table class="term-table">
+            <thead>
+              <tr><th>Elemento</th><th>Recomendação</th><th>Exemplo</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Relacionamentos entre tabelas</td><td>Defina relacionamentos claros e lógicos, indicando a cardinalidade (um-para-muitos, muitos-para-um etc.).</td><td>Relacionamento um-para-muitos de Date[DateID] para Sales[DateID], ativo.</td></tr>
+              <tr><td>Medidas</td><td>Lógica de cálculo padronizada e clara, fácil de explicar.</td><td>Total Sales = SUM(Sales[SaleAmount]), com descrição "Soma de todos os valores de venda".</td></tr>
+              <tr><td>Nomenclatura de medidas</td><td>Nomes descritivos, sem abreviações.</td><td>"Average Customer Rating" em vez de "AvgRating".</td></tr>
+              <tr><td>Medidas predefinidas</td><td>Inclua as medidas que os usuários mais provavelmente pedirão.</td><td>YTD Sales, MoM Growth.</td></tr>
+              <tr><td>Tabelas fato</td><td>Delimite claramente as tabelas de fatos (dados quantitativos).</td><td>FactSales, FactTransactions, FactVisits.</td></tr>
+              <tr><td>Tabelas dimensão</td><td>Crie tabelas de dimensão com atributos descritivos.</td><td>DimProduct (ProductName, Category, Brand); DimCustomer (CustomerName, City, Segment).</td></tr>
+              <tr><td>Hierarquias</td><td>Estabeleça hierarquias lógicas para drill-down.</td><td>Ano &gt; Trimestre &gt; Mês &gt; Dia; País &gt; Estado &gt; Cidade.</td></tr>
+              <tr><td>Nomes de colunas</td><td>Rótulos claros, sem IDs ou códigos que exijam consulta externa.</td><td>Renomear "ProdID" para "Product ID" ou "Product Name".</td></tr>
+              <tr><td>Tipos de dados</td><td>Tipos corretos e consistentes em todas as tabelas.</td><td>Sales[SaleAmount] como número decimal (não texto); Date[Date] como data.</td></tr>
+              <tr><td>Tipos de relacionamento</td><td>Especifique claramente cardinalidade e status (ativo/inativo).</td><td>Date-Sales como muitos-para-um (ativo); relacionamentos role-playing marcados como inativos quando apropriado.</td></tr>
+              <tr><td>Consistência dos dados</td><td>Valores padronizados nas colunas.</td><td>Coluna Status sempre com "Open", "Closed", "Pending" (não misturar maiúsculas/minúsculas).</td></tr>
+              <tr><td>KPIs</td><td>Defina KPIs relevantes e comumente usados.</td><td>ROI, CAC, LTV como medidas explícitas.</td></tr>
+              <tr><td>Cronograma de atualização</td><td>Comunique claramente a frequência de atualização dos dados.</td><td>Texto explicando: "Dados atualizados diariamente às 6h UTC".</td></tr>
+              <tr><td>Segurança</td><td>Defina papéis de segurança em nível de linha quando houver dados sensíveis.</td><td>Papel "Equipe de Vendas" filtrando Sales[Region] = USERNAME().</td></tr>
+              <tr><td>Metadados</td><td>Documente a estrutura do modelo (tabelas, colunas, relacionamentos, medidas).</td><td>Descrições em tabelas/colunas, mais um dicionário de dados externo.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p>Para consultas DAX geradas pelo Copilot, dois cuidados adicionais são especialmente úteis:</p>
+      <ul>
+        <li><strong>Descrições em medidas, tabelas e colunas:</strong> definam claramente o elemento e como deve ser usado (apenas os primeiros 200 caracteres são considerados pelo Copilot).</li>
+        <li><strong>Descrições em grupos de cálculo:</strong> como os itens de cálculo não entram nos metadados do modelo, use a descrição da coluna do grupo de cálculo para listar e explicar cada item (ex.: "Current", "MTD", "QTD", "YTD", "PY", "YOY").</li>
+      </ul>
+
+      <h2 id="faq-preparar-dados-ia">Perguntas frequentes</h2>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Quais recursos existem hoje para preparar meus dados para o Copilot? <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <p>Quatro recursos principais: <strong>esquemas de dados de IA</strong> (subconjunto do esquema para consumo do Copilot), <strong>respostas verificadas</strong> (respostas validadas e aprovadas pelo autor), <strong>instruções de IA</strong> (contexto de negócio e mapeamentos de terminologia) e <strong>descrições</strong> em tabelas/colunas (usadas em consultas DAX e na busca do Copilot).</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Em que ordem devo implementar esses recursos? <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <ol>
+            <li><strong>Defina o esquema de dados de IA</strong> — selecione tabelas, campos e medidas que o Copilot deve usar para responder.</li>
+            <li><strong>Crie respostas verificadas</strong> para perguntas comuns ou sutis, usando visuais existentes.</li>
+            <li><strong>Adicione instruções de IA</strong> para orientar o comportamento do Copilot no nível do modelo, mapeando terminologia de negócio.</li>
+            <li><strong>Adicione descrições</strong> a tabelas e colunas, construindo uma base sólida para capacidades futuras.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Posso configurar esses recursos por relatório, em vez de no modelo? <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <p>Não. Hoje, esquema de dados de IA, respostas verificadas, instruções e descrições são configurados apenas no nível do <strong>modelo semântico</strong>, não por relatório individual.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Quais capacidades do Copilot cada recurso afeta? <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <table class="term-table">
+            <thead>
+              <tr><th>Capacidade</th><th>Esquema de IA</th><th>Respostas verificadas</th><th>Instruções de IA</th><th>Descrições</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Resumir relatório</td><td>Não</td><td>Não</td><td>Sim</td><td>Não</td></tr>
+              <tr><td>Pergunta sobre visuais do relatório</td><td>Não</td><td>Sim</td><td>Sim</td><td>Não</td></tr>
+              <tr><td>Pergunta sobre o modelo semântico</td><td>Sim</td><td>Sim</td><td>Sim</td><td>Não</td></tr>
+              <tr><td>Criar página de relatório</td><td>Não</td><td>Não</td><td>Sim</td><td>Não</td></tr>
+              <tr><td>Busca</td><td>Não</td><td>Sim</td><td>Não</td><td>Sim</td></tr>
+              <tr><td>Consulta DAX</td><td>Não</td><td>Não</td><td>Sim</td><td>Sim</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Quero que o Copilot escolha o campo certo. Qual recurso usar? <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <p>Primeiro, ajuste o <strong>esquema de dados de IA</strong>, removendo campos irrelevantes. Depois, crie <strong>respostas verificadas</strong> para os visuais mais consultados. Por fim, use <strong>instruções de IA</strong> para ajustes finos — recomendado após os outros dois recursos já estarem configurados.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Quero que o Copilot entenda um termo específico do meu negócio. Qual recurso usar? <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <p>Use <strong>instruções de IA</strong> para mapear termos internos a campos do modelo. Exemplo: "Se a equipe chama os vendedores de 'closers', defina que vendedores também são conhecidos como closers."</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">E se o termo envolver condições ou agrupamentos (ex.: "alto desempenho")? <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <p>Também é resolvido com <strong>instruções de IA</strong>, descrevendo a regra por extenso. Exemplo: "Alto desempenho significa um vendedor que atinge 100% ou mais da meta mensal." Ou definições de período: "Temporada de alta = junho a setembro."</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Quero que o Copilot acerte as perguntas mais frequentes dos usuários. Qual recurso usar? <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <p>Use <strong>respostas verificadas</strong>: escolha o visual certo e configure frases-gatilho que reflitam como os usuários realmente perguntam.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Posso ter definições diferentes do mesmo termo para públicos diferentes? <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <p>Não, hoje não é possível manter um glossário segmentado por grupo de usuários nem duas definições diferentes para o mesmo termo dentro do mesmo modelo.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Por que o Copilot diz não ver um campo que está no esquema de IA? <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <p>Quando o esquema do modelo é grande demais, ele é reduzido automaticamente para que o Copilot consiga processá-lo. É possível confirmar isso baixando o diagnóstico do Copilot e procurando pelo aviso "AgentSchemaReduced".</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">O que significa "Copilot is currently syncing with the data model"? <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <p>Significa que o modelo está em processo de indexação (necessário para que o Copilot busque valores específicos, como "Maui" em uma coluna de nomes de ilhas). A indexação ocorre quando o Q&amp;A está habilitado e é refeita quando o Power BI detecta mudanças no modelo (publicação, atualização de dados, etc.). A mensagem some sozinha quando a indexação termina, e não impede o uso do Copilot enquanto isso — apenas valores novos ou alterados podem não refletir até o fim do processo.</p>
+          <p>Limites técnicos: até 5 milhões de valores de instância ou 1.000 entidades de modelo (tabelas/colunas) são indexados; textos com mais de 100 caracteres não são indexados; para DirectQuery, apenas fontes que suportam <code>APPROXIMATEDISTINCTCOUNT</code> são indexadas nessas colunas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" id="page-6">
+      <h1>Tutorial: Copilot na prática</h1>
+
+      <p>Este tutorial apresenta um passo a passo prático, do início ao fim, para usar o Copilot no Power BI: desde a preparação de um modelo semântico até a obtenção de insights com linguagem natural. O cenário de exemplo é o de uma empresa de software que acompanha oportunidades e receita de vendas por região, tamanho de negócio e canal (direto ou parceiros).</p>
+
+      <div class="callout warning">
+        Este tutorial usa recursos em preview e pode não representar exatamente a experiência final do produto.
+      </div>
+
+      <h2 id="tutorial-comecando">Começando: pré-requisitos e configuração</h2>
+      <p>Para usar o Copilot no Power BI Desktop, você precisa de acesso de administrador, membro ou colaborador a pelo menos um workspace associado a uma capacidade Fabric paga (F2 ou superior), a uma capacidade Premium (P1 ou superior) com Copilot habilitado, ou a uma capacidade Fabric Copilot dedicada.</p>
+      <p>Na primeira utilização do Copilot no Desktop, você escolherá um workspace compatível com Copilot ao clicar no botão Copilot na faixa de opções — esse workspace não precisa ser o mesmo onde o relatório será publicado depois. Se você já tiver acesso a uma capacidade Fabric Copilot, essa escolha é pulada automaticamente.</p>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Configurações necessárias antes de começar <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <p><strong>No Power BI Desktop:</strong> em Arquivo &gt; Opções e configurações &gt; Opções &gt; Recursos de visualização, confirme que a opção <strong>Prep data for AI</strong> está marcada.</p>
+          <p><strong>No serviço Power BI:</strong> peça a um administrador de tenant ou capacidade para confirmar, no Portal de administração (em Governança e insights &gt; Configurações do tenant), que as seguintes opções estão habilitadas:</p>
+          <ul>
+            <li>Usuários podem usar o Copilot e outros recursos baseados em Azure OpenAI.</li>
+            <li>Usuários podem acessar a experiência standalone do Copilot no Power BI (preview).</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>O arquivo de exemplo usado neste tutorial (<em>Revenue Opportunities.pbix</em>) está disponível no repositório de exemplos do Power BI no GitHub, na pasta de relatórios de amostra.</p>
+
+      <h2 id="tutorial-preparar-modelo">Preparando o modelo semântico para IA</h2>
+      <p>Antes de consumir dados com o Copilot, prepare o modelo aplicando boas práticas: organização do modelo (descrições de campo, ocultar colunas/medidas não relevantes, evitar nomes duplicados entre tabelas), convenções de nomenclatura consistentes, descrições concisas, bom design de modelo (esquema estrela) e simplicidade (remover objetos não utilizados, relacionamentos ambíguos, padrões complexos).</p>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Passo 1 — Simplificar o esquema de dados <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <ol>
+            <li>No Power BI Desktop, selecione o ícone <strong>Prep data for AI</strong> na guia Página Inicial.</li>
+            <li>Selecione <strong>Simplificar o esquema de dados</strong>.</li>
+            <li>Desmarque os campos que não são relevantes para o Copilot analisar. No exemplo do tutorial: desmarcar o campo de ID único (Account ID) na tabela Accounts, e os campos auxiliares de ordenação (Day Sort Order, Month Sort Order) na tabela Dates.</li>
+            <li>Selecione <strong>Aplicar</strong> e depois <strong>Fechar</strong> para voltar à visualização do relatório.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Passo 2 — Criar respostas verificadas <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <ol>
+            <li>Na página "Opportunity Overview", clique com o botão direito no visual <strong>Pipeline by Stage</strong> e selecione <strong>Configurar resposta verificada</strong>.</li>
+            <li>Use as sugestões geradas pelo Copilot com base no visual, gere novas sugestões com "Atualizar", ou adicione frases manualmente com o botão (+).</li>
+            <li>Exemplo de frases-gatilho adicionadas: "Quantas oportunidades existem em cada estágio de vendas?" e "Como o número de oportunidades varia por estágio de vendas?".</li>
+            <li>Selecione <strong>Aplicar</strong> e revise a lista completa em "Todas as respostas verificadas", onde é possível ver a contagem de frases vinculadas a cada visual.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Passo 3 — Adicionar instruções de IA <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <p>Selecione <strong>Adicionar instruções de IA</strong> e insira um texto orientando o Copilot sobre a terminologia do negócio. Exemplo usado no tutorial (empresa de software com canais de venda direto e via parceiros):</p>
+          <ul>
+            <li>"Key earners" refere-se aos três parceiros com maior receita total.</li>
+            <li>Se perguntarem sobre "Clientes", "Consumidores" ou "Organizações", usar a tabela Accounts.</li>
+            <li>Para perguntas sobre ciclo de vendas, sempre usar a medida Average Opportunity Days.</li>
+            <li>"Opportunity Days" é sinônimo de duração do ciclo de vendas ou tempo até o fechamento (TTC).</li>
+            <li>"Leads", "Deals", "Potential Deals" e "Sales Prospects" referem-se à tabela de oportunidades.</li>
+            <li>Se perguntarem sobre estágios iniciais de uma oportunidade, mostrar apenas o estágio "Solution".</li>
+            <li>Se o público for a liderança, priorizar receita, contagem de oportunidades e número de negócios no estágio de fechamento.</li>
+          </ul>
+          <p>Selecione <strong>Aplicar</strong> e feche o diálogo.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Passo 4 — Testar antes de publicar <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <p>No painel do Copilot, teste perguntas comuns para validar as instruções e o esquema simplificado. Exemplo: "Quais três afiliados tiveram mais leads na zona leste?" — a resposta deve usar corretamente os termos e variações definidos nas instruções de IA. Use os botões de like/dislike para dar feedback.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Passo 5 — Publicar, documentar e aprovar <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <ol>
+            <li><strong>Publicar:</strong> selecione o botão Publicar na guia Página Inicial, salve as alterações e escolha o workspace de destino.</li>
+            <li><strong>Descrições:</strong> em Arquivo &gt; Configurações, preencha a descrição do relatório com contexto natural (ex.: "Uma análise abrangente de oportunidades de vendas e distribuição de receita..."). Repita o processo para a descrição do modelo semântico (via "Exibir modelo semântico" &gt; Arquivo &gt; Configurações), detalhando o que o modelo cobre: estágios de venda, receita por tamanho e região, contas, parceiros, produtos etc.</li>
+            <li><strong>Aprovar para Copilot:</strong> nas configurações do modelo semântico, expanda a seção "Aprovado para Copilot", marque a caixa e selecione Aplicar. Isso sinaliza que o modelo está pronto para experiências de IA — modelos não aprovados exibem avisos ao usuário, recomendando cautela e contato com o proprietário do conteúdo.</li>
+          </ol>
+        </div>
+      </div>
+
+      <h2 id="tutorial-descobrir-perguntar">Descobrindo dados e fazendo perguntas</h2>
+      <p>Com o modelo preparado e publicado, abra o serviço Power BI (app.powerbi.com) e selecione <strong>Copilot</strong> no menu de navegação lateral para acessar a experiência standalone.</p>
+
+      <h3>Descobrir conteúdo</h3>
+      <p>O Copilot ajuda a localizar relatórios, modelos, relatórios em apps e agentes de dados mesmo quando você não lembra o nome exato ou o workspace, usando metadados (nomes, descrições, títulos de visuais, caixas de texto) e sinais como visualizações recentes, endossos, favoritos e popularidade.</p>
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Exemplo de fluxo de descoberta <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <ol>
+            <li>Pergunte: "Onde encontro dados sobre o funil de vendas, incluindo oportunidades, estágios e metas?"</li>
+            <li>O Copilot retorna uma lista de itens correspondentes, restrita ao que você tem permissão de acessar, considerando título, descrição, conteúdo detalhado, respostas verificadas e itens recentes/favoritos.</li>
+            <li>Peça um resumo de um item específico: "Forneça um resumo detalhado do conteúdo do segundo item. Preciso entender o que ele contém para poder fazer perguntas."</li>
+            <li>O resumo gerado cobre múltiplas páginas e visuais, com notas de rodapé indicando de qual visual cada insight veio. É possível abrir o relatório diretamente ou usar "Explorar resposta" para salvar como novo item em um workspace.</li>
+          </ol>
+        </div>
+      </div>
+
+      <h3>Fazer perguntas e obter respostas</h3>
+      <p>Se a resposta não estiver visualizada em um relatório existente, o Copilot consulta o modelo e retorna um novo visual, aplicando filtros relativos de data e outros critérios — e pode até gerar consultas DAX ad hoc para cálculos que não existem no modelo.</p>
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Exemplo de fluxo de perguntas <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <ol>
+            <li>Selecione "Adicionar itens para melhores resultados" e escolha a opção Relatórios.</li>
+            <li>No catálogo do OneLake, marque o relatório desejado (ex.: Revenue Opportunities) como contexto adicional e confirme.</li>
+            <li>Pergunte: "Qual foi a receita de cada estado no último ano?"</li>
+            <li>O Copilot retorna um resumo e um visual como resposta. Expanda "Como o Copilot chegou a isso" para revisar os dados e filtros aplicados (por exemplo, o filtro relativo de data para "no último ano"). Selecione o nome do relatório para abrir a versão completa.</li>
+          </ol>
+        </div>
+      </div>
+
+      <h2 id="tutorial-explorar-insights">Explorando dados e obtendo insights</h2>
+      <p>Dentro de um relatório já aberto, selecione o botão Copilot na barra de ações para explorar mais a fundo os dados da página atual.</p>
+
+      <h3>Entender os dados da página</h3>
+      <p>No painel do Copilot, expanda o grupo "Entender os dados" e selecione o prompt sugerido "Sobre o que é esta página do relatório?". O Copilot gera um resumo da página com notas de rodapé — ao selecioná-lo, os visuais correspondentes são destacados na página para facilitar a conferência cruzada.</p>
+
+      <h3>Aprofundar a análise</h3>
+      <p>Para entender como o Copilot interpretou a pergunta (quais campos, medidas ou filtros escolheu), expanda "Como o Copilot chegou a isso" e use a opção Explorar para ajustar os detalhes arrastando e soltando campos.</p>
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Exemplo prático <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <p>Prompt: "Gere um gráfico de funil mostrando o total de oportunidades e seus estágios de venda para produtos Aqua nos últimos três meses." O Copilot retorna um resumo e o visual, aplicando o filtro relativo de data correspondente a "últimos três meses". Use "Explorar resposta" para interagir com o visual, ajustar filtros, reorganizar os dados e, se desejar, salvar a exploração em um workspace.</p>
+        </div>
+      </div>
+
+      <h3>Escrever um resumo</h3>
+      <p>O Copilot pode gerar resumos detalhados sobre tópicos amplos ou perguntas específicas em segundos, economizando o tempo de interpretar os dados manualmente. A resposta inclui as informações mais relevantes com notas de rodapé de referência.</p>
+      <div class="accordion">
+        <div class="acc-toggle" onclick="toggleAcc(this)">Exemplo prático <span class="acc-arrow">&#9656;</span></div>
+        <div class="acc-body">
+          <p>Prompt: "Escreva um resumo executivo para a equipe de liderança sênior, com foco na distribuição dos resultados operacionais entre regiões." O Copilot retorna um resumo e um visual com notas de rodapé apontando os visuais de origem. Ao passar o mouse sobre a resposta, aparece uma opção para copiar o texto e compartilhar com outras pessoas da organização.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        Lembre-se: as saídas do Copilot são não determinísticas — a mesma pergunta pode gerar respostas ligeiramente diferentes em sessões distintas. Estabeleça expectativas claras com os usuários sobre como avaliar e validar essas respostas.
+      </div>
+    </section>
+
+    <!-- Paginação -->
+    <div class="pagination">
+      <button class="btn btn-secondary" id="btn-prev" onclick="goToPage(currentPage-1)">← Anterior</button>
+      <span id="page-indicator">Página 1 de 6</span>
+      <button class="btn btn-primary"   id="btn-next" onclick="goToPage(currentPage+1)">Próximo →</button>
+    </div>
+
+    <a href="PowerBI_Home.html" class="home-footer-link">← Voltar ao Home</a>
+  </main>
+</div>
+
+<script>
+// SAFETY NET — garante init mesmo se o arquivo for truncado pelo formatter
+const TOTAL_PAGES = 6;
+const _saved = parseInt(localStorage.getItem('pbicop_page') || '1') || 1;
+let currentPage = Math.min(Math.max(_saved, 1), TOTAL_PAGES);
+
+document.addEventListener('DOMContentLoaded', function() { goToPage(currentPage); });
+
+function pageExists(n) { return !!document.getElementById('page-' + n); }
+
+function goToPage(n) {
+  if (n < 1 || n > TOTAL_PAGES || !pageExists(n)) return;
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('page-' + n).classList.add('active');
+  currentPage = n;
+  try { localStorage.setItem('pbicop_page', n); } catch(e) {}
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  updateUI();
+}
+
+function updateUI() {
+  const h1 = document.getElementById('page-' + currentPage)?.querySelector('h1');
+  if (h1) { const el = document.getElementById('bc-page'); if (el) el.textContent = h1.textContent; }
+  document.getElementById('btn-prev').disabled = currentPage === 1;
+  document.getElementById('btn-next').disabled = currentPage === TOTAL_PAGES;
+  document.querySelectorAll('.dot[data-page]').forEach(d => {
+    const p = Number(d.dataset.page);
+    d.className = 'dot ' + (p < currentPage ? 'done' : p === currentPage ? 'current' : 'pending');
+  });
+  document.querySelectorAll('.nav-btn[data-page]').forEach(b => {
+    b.classList.toggle('active', Number(b.dataset.page) === currentPage);
+  });
+  const pageIndicator = document.getElementById('page-indicator');
+  if (pageIndicator) pageIndicator.textContent = 'Página ' + currentPage + ' de ' + TOTAL_PAGES;
+  const pct = Math.round(((currentPage - 1) / (TOTAL_PAGES - 1)) * 100) || 0;
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+// Sidebar / menu gaveta
+function openSidebar()  { document.getElementById('sidebar').classList.add('open'); document.getElementById('sidebar-overlay').classList.add('active'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebar-overlay').classList.remove('active'); }
+document.getElementById('menu-toggle').addEventListener('click', openSidebar);
+document.getElementById('sidebar-overlay').addEventListener('click', closeSidebar);
+
+// Accordions
+function toggleAcc(btn) {
+  const body = btn.nextElementSibling;
+  const open = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !open);
+  body.style.display = open ? 'none' : 'block';
+  btn.querySelector('.acc-arrow').textContent = open ? '▾' : '▴';
+}
+
+// Grupos da sidebar (colapsar/expandir)
+function toggleGroup(header) {
+  const body = header.nextElementSibling;
+  body.classList.toggle('collapsed');
+  const arrow = header.querySelector('span');
+  arrow.textContent = body.classList.contains('collapsed') ? '▸' : '▾';
+}
+
+// Nav buttons
+document.querySelectorAll('.nav-btn[data-page]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    goToPage(Number(btn.dataset.page));
+    if (window.innerWidth <= 768) closeSidebar();
+  });
+});
+
+goToPage(currentPage);
+</script>
+</body>
+</html>

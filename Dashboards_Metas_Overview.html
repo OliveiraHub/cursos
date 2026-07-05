@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Guia de estudo — Dashboards, Mobile e Metas no Power BI: layouts mobile, dashboards, alertas, scorecards e metas.">
+<link rel="icon" type="image/png" href="images/logo.png">
+<title>Dashboards, Mobile e Metas — Guia de Estudo</title>
+<!-- Barlow (Google Fonts) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- CSS compartilhado -->
+<link rel="stylesheet" href="power-bi.css">
+<style>
+/* CSS específico deste curso */
+</style>
+</head>
+<body>
+
+<header>
+  <img src="images/logo.png" class="header-logo" alt="Logo Power BI">
+  <div>
+    <h1>Dashboards, Mobile e Metas</h1>
+  </div>
+  <a href="PowerBI_Home.html" class="hub-link">← Home</a>
+</header>
+
+<div class="breadcrumb">
+  <a href="PowerBI_Home.html">Home</a>
+  <span class="bc-sep">›</span>
+  <span>Dashboards, Mobile e Metas</span>
+  <span class="bc-sep">›</span>
+  <span id="bc-page">Bem-vindo</span>
+</div>
+
+<div class="container">
+  <aside id="sidebar">
+    <div class="nav-group">
+      <div class="nav-group-header" onclick="toggleGroup(this)">Mobile <span>▾</span></div>
+      <div class="nav-group-body">
+        <button class="nav-btn" data-page="1"><span class="dot pending" data-page="1"></span> Relatórios otimizados para mobile</button>
+      </div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-header" onclick="toggleGroup(this)">Dashboards <span>▾</span></div>
+      <div class="nav-group-body">
+        <button class="nav-btn" data-page="2"><span class="dot pending" data-page="2"></span> Introdução a dashboards e tiles</button>
+        <button class="nav-btn" data-page="3"><span class="dot pending" data-page="3"></span> Fixar conteúdo em dashboards</button>
+        <button class="nav-btn" data-page="4"><span class="dot pending" data-page="4"></span> Alertas e conteúdo rico</button>
+        <button class="nav-btn" data-page="5"><span class="dot pending" data-page="5"></span> Boas práticas e temas</button>
+      </div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-header" onclick="toggleGroup(this)">Metas e Scorecards <span>▾</span></div>
+      <div class="nav-group-body">
+        <button class="nav-btn" data-page="6"><span class="dot pending" data-page="6"></span> Introdução a metas e scorecards</button>
+        <button class="nav-btn" data-page="7"><span class="dot pending" data-page="7"></span> Automatizar e atualizar metas</button>
+        <button class="nav-btn" data-page="8"><span class="dot pending" data-page="8"></span> Gerenciar e compartilhar metas</button>
+        <button class="nav-btn" data-page="9"><span class="dot pending" data-page="9"></span> Hierarquias em scorecards</button>
+      </div>
+    </div>
+  </aside>
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+  <main>
+    <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu">☰</button>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+
+    <section class="page-section" id="page-1">
+  <h1>Relatórios otimizados para mobile</h1>
+
+  <p>Usuários de dispositivos móveis podem visualizar qualquer página de relatório do Power BI nos aplicativos móveis. No entanto, relatórios projetados para uso em um computador podem ser difíceis de ler e interagir em telas de celular. Para resolver isso, o Power BI permite criar <strong>layouts mobile</strong> adicionais para as páginas de um relatório, otimizados especificamente para telas pequenas.</p>
+
+  <div class="callout">
+    Quando existe um layout mobile para uma página, ele é exibido automaticamente sempre que o dispositivo está na orientação retrato. Se o usuário girar o telefone para o lado (paisagem), o Power BI mostra a versão normal (não otimizada) do relatório, igual à do computador.
+  </div>
+
+  <p>Nos aplicativos móveis, os relatórios que possuem páginas otimizadas para celular exibem um ícone especial indicando essa disponibilidade.</p>
+
+  <div class="note">
+    Os layouts mobile só aparecem quando o relatório é aberto pelos aplicativos móveis do Power BI (iOS e Android). Em um navegador web, o relatório sempre é exibido no layout padrão, mesmo em um celular.
+  </div>
+
+  <h2 id="visao-geral-recursos-mobile">Recursos para criar relatórios mobile</h2>
+  <p>O Power BI oferece um conjunto de recursos dedicados à criação de versões otimizadas para celular:</p>
+
+  <div class="capability-grid">
+    <div class="capability-card">
+      <h3>Modo de exibição em layout mobile</h3>
+      <p>Um editor dedicado no qual você cria o layout mobile automaticamente ou arrastando e soltando visuais em um canvas interativo que emula um telefone.</p>
+    </div>
+    <div class="capability-card">
+      <h3>Criação automática</h3>
+      <p>A opção de auto-criação gera um layout mobile inicial a partir do relatório existente, que pode ser usado como está ou ajustado depois.</p>
+    </div>
+    <div class="capability-card">
+      <h3>Painel de formatação</h3>
+      <p>Permite ajustar com precisão as configurações de formato de cada visual especificamente para a versão mobile.</p>
+    </div>
+    <div class="capability-card">
+      <h3>Visuais e slicers adaptáveis</h3>
+      <p>Diversos visuais e segmentações de dados podem ser otimizados para funcionar bem em telas pequenas.</p>
+    </div>
+  </div>
+
+  <p>Com esses recursos, você pode selecionar, reorganizar e reformatar apenas os visuais relevantes para o público mobile, criando páginas atraentes, focadas e fáceis de usar em celulares.</p>
+
+  <div class="callout success">
+    Se você criar o layout mobile no Power BI Desktop, basta publicar o relatório principal do Desktop para o serviço Power BI — a versão mobile é publicada junto automaticamente. Se o layout mobile for criado diretamente no serviço Power BI, basta salvar o relatório.
+  </div>
+
+  <h2 id="modo-layout-mobile">O modo de exibição em layout mobile</h2>
+  <p>O modo de layout mobile está disponível tanto no Power BI Desktop quanto no serviço Power BI. Para abri-lo, use o alternador de layout na parte inferior da página ou selecione a faixa de opções <strong>Exibir</strong> e escolha <strong>Layout mobile</strong>.</p>
+
+  <p>Esse modo de exibição reúne os seguintes componentes:</p>
+
+  <table class="term-table">
+    <thead>
+      <tr><th>Componente</th><th>Função</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Canvas de layout mobile</td><td>Área interativa com grade fina para posicionar os visuais; possui controles para ligar/desligar a grade, o encaixe automático (snap-to-grid) e travar visuais no lugar.</td></tr>
+      <tr><td>Painel de visuais da página</td><td>Lista todos os visuais (visíveis e ocultos) da página original do relatório, para arrastar até o canvas mobile.</td></tr>
+      <tr><td>Painel de visualizações</td><td>Mostra as configurações de formato do visual selecionado no canvas, permitindo estilizá-lo para a versão mobile.</td></tr>
+      <tr><td>Painel de seleção</td><td>Permite alterar a ordem de camadas (layering) dos visuais no canvas.</td></tr>
+      <tr><td>Opção de criação automática</td><td>Gera um layout mobile completo a partir dos visuais do relatório, servindo como ponto de partida.</td></tr>
+    </tbody>
+  </table>
+
+  <p>O canvas é interativo, permitindo testar o comportamento de botões, slicers e visuais antes mesmo de publicar o relatório — embora algumas limitações se apliquem (por exemplo, tooltips ficam desabilitados no canvas de edição, mas funcionam normalmente no aplicativo móvel publicado).</p>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">O que afeta a qualidade da criação automática? <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <ul>
+        <li>O mecanismo lê o relatório da esquerda para a direita, de cima para baixo — layouts com forte componente vertical (como um menu de navegação lateral) tendem a ficar piores.</li>
+        <li>Imagens de fundo (background) não são suportadas pelo mecanismo de criação automática.</li>
+        <li>Excesso de sobreposição de visuais é um desafio; o resultado pode não ser ideal.</li>
+        <li>Se houver muitos visuais (incluindo ocultos), nem todos cabem no canvas — os que sobrarem continuam listados no painel de visuais da página.</li>
+        <li>Seleções de slicers feitas no canvas mobile não são preservadas ao alternar para o layout web, e vice-versa; ao publicar, prevalecem as seleções definidas no layout web.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="criar-layout-mobile">Como criar um layout mobile</h2>
+  <p>Para montar o layout mobile, o essencial é:</p>
+  <ol>
+    <li>Abrir o modo de layout mobile no relatório desejado.</li>
+    <li>Usar <strong>Criação automática</strong> para gerar um ponto de partida (pode ser desfeito com Ctrl+Z se o resultado não agradar) ou montar manualmente.</li>
+    <li>Arrastar visuais do painel de visuais da página para o canvas — ao soltar, eles se encaixam na grade automaticamente.</li>
+    <li>Redimensionar cada visual selecionando-o e arrastando as alças nos cantos (mantenha Shift pressionado para preservar a proporção).</li>
+    <li>Ajustar a ordem de camadas pelo painel de seleção, já que cada novo visual é adicionado acima dos demais.</li>
+    <li>Remover visuais indesejados clicando no X no canto do visual ou selecionando-o e pressionando Delete; o botão de borracha no painel remove todos de uma vez.</li>
+  </ol>
+
+  <div class="note">
+    Remover um visual do canvas mobile não o exclui do relatório: ele continua disponível no painel de visuais da página e o layout original (desktop) permanece inalterado. É possível também arrastar visuais ocultos para o canvas — eles só aparecerão quando sua visibilidade mudar no relatório principal (útil para cenários com bookmarks).
+  </div>
+
+  <h2 id="formatacao-mobile">Otimizando a formatação dos visuais para mobile</h2>
+  <p>O painel de visualizações permite ajustar com precisão o formato de cada visual no layout mobile. Ao selecionar um visual pela primeira vez, suas configurações herdam os valores do layout desktop — mas assim que você altera qualquer configuração, ela se desconecta do desktop e passa a valer apenas para a versão mobile (um ícone indica que a configuração foi alterada). É possível reverter as mudanças por categoria (opção <em>Clear mobile changes</em>) ou para o visual inteiro (menu <em>Clear mobile formatting</em>).</p>
+
+  <div class="callout warning">
+    Configurações de tamanho e posição nunca são herdadas do layout desktop, portanto nunca exibem indicador de alteração — elas são sempre específicas do mobile.
+  </div>
+
+  <p>Alguns ajustes de formatação particularmente úteis para telas pequenas:</p>
+  <ul>
+    <li><strong>Orientação da grade:</strong> elementos empilhados verticalmente no desktop (como um navegador de páginas) costumam funcionar melhor na horizontal em telas de celular.</li>
+    <li><strong>Forma dos elementos:</strong> uma forma usada no desktop (por exemplo, um retângulo de fundo) pode ser convertida em outra forma (como uma linha) para servir de elemento decorativo no mobile.</li>
+    <li><strong>Tamanho da fonte:</strong> fontes do layout desktop costumam ser grandes demais para o mobile; reduzi-las (e ajustar a unidade de exibição, como de milhares para milhões) ajuda o texto a caber melhor.</li>
+    <li><strong>Tamanho e posição:</strong> além da grade fina e das guias inteligentes do canvas, é possível definir valores exatos de tamanho e posição, inclusive selecionando vários visuais ao mesmo tempo.</li>
+    <li><strong>Economia de espaço:</strong> desativar legendas e eixos e ativar rótulos de dados centralizados pode manter a clareza de um gráfico usando menos espaço vertical.</li>
+  </ul>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Visuais responsivos e slicers no mobile <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <p>Muitos visuais, especialmente gráficos, são responsivos por padrão: eles se adaptam dinamicamente ao tamanho disponível, priorizando os dados (por exemplo, removendo espaçamento ou movendo a legenda para o topo conforme o visual encolhe). Se a responsividade atrapalhar sua formatação manual, desative-a em <em>Geral &gt; Propriedades &gt; Opções avançadas &gt; Responsivo</em>.</p>
+      <p>Slicers também podem ser configurados para mobile: você decide se permitem seleção única ou múltipla, e se são verticais, horizontais ou responsivos (slicers responsivos precisam ser horizontais). Um slicer responsivo mostra mais ou menos opções conforme seu tamanho, podendo virar apenas um ícone de filtro quando muito pequeno.</p>
+    </div>
+  </div>
+
+  <h2 id="camadas-visuais-mobile">Reorganizando a camada (layering) dos visuais</h2>
+  <p>Depois de posicionar os visuais no canvas, use o <strong>painel de seleção</strong> para ajustar a ordem de sobreposição, se necessário:</p>
+  <ul>
+    <li>O painel lista todos os visuais do canvas: o primeiro da lista fica na camada mais acima, o último na camada mais abaixo.</li>
+    <li>Para reordenar, arraste e solte um item na lista ou use os botões de seta para movê-lo para cima ou para baixo.</li>
+    <li>O painel também mostra o status de visibilidade de cada visual, mas essa visibilidade só pode ser alterada no layout desktop (não no modo mobile).</li>
+  </ul>
+
+  <h2 id="boas-praticas-mobile">Boas práticas para layouts mobile</h2>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Planeje desktop e mobile juntos <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <p>Construa os layouts desktop e mobile de cada página em conjunto, para manter coerência entre eles. Ao duplicar uma página que já tem os dois layouts, ambos são duplicados — por isso, vale criar uma página "modelo" com elementos recorrentes (cabeçalho, navegador de páginas) e usá-la como base para as demais páginas do relatório.</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Foque no conteúdo essencial <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <ul>
+        <li>Inclua apenas os visuais mais significativos e usados com frequência.</li>
+        <li>Reduza o tamanho da fonte dos títulos (nunca abaixo de 9 pontos).</li>
+        <li>Remova detalhes pouco relevantes, como títulos de eixo, linhas de grade e legendas, sempre que possível.</li>
+        <li>Posicione navegadores de página e slicers na horizontal, em vez de na vertical.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Espace bem os elementos <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <p>Evite espaços em branco desnecessários dentro de cada visual, mas mantenha ao menos 6 a 8 pontos de espaçamento entre elementos (tanto na vertical quanto na horizontal). Considere expandir os visuais até a largura máxima da tela (323 pontos), lembrando que uma margem padrão já é aplicada automaticamente. Evite colocar visuais lado a lado, exceto visuais de elemento único (cartões, KPIs) ou não relacionados a dados (botões).</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Organize os visuais como uma narrativa <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <p>O fluxo do layout mobile é de cima para baixo. Posicione os visuais mais importantes no topo da página, agrupe visuais relacionados em sequência e deixe os menos relevantes mais abaixo (acessíveis por rolagem) ou simplesmente fora do layout mobile. Menos visuais significa carregamento mais rápido e melhor desempenho.</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Evite barras de rolagem internas <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <p>Defina a altura de cada visual de forma que todos os seus elementos internos fiquem visíveis, sem cortes — isso evita uma barra de rolagem dentro do próprio visual, além da barra de rolagem da página. Lembre-se de que dispositivos móveis variam de altura.</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Comece pela criação automática <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <p>Use a opção de criação automática de layout mobile como ponto de partida: ela posiciona os visuais do relatório no canvas tentando preservar a funcionalidade do layout desktop. A partir daí, refine o resultado com as opções de formatação do modo mobile.</p>
+    </div>
+  </div>
+
+  <h3>Tamanhos mínimos recomendados por tipo de visual</h3>
+  <p>A tabela a seguir resume as categorias de tamanho mínimo recomendado (a largura máxima da tela no canvas mobile é 323 pt):</p>
+
+  <table class="term-table">
+    <thead>
+      <tr><th>Categoria</th><th>Tamanho mínimo</th><th>Exemplos de visuais</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>XL</td><td>323 x 270 pt</td><td>Mapa, mapa preenchido, matriz, tabela, cartão de múltiplas linhas, árvore de decomposição, principais fatores de influência, relatório paginado</td></tr>
+      <tr><td>L</td><td>323 x 180 pt</td><td>Gráficos de barras, colunas, linhas, área, pizza, rosca, funil, dispersão, cascata, Q&A, treemap, ribbon</td></tr>
+      <tr><td>M</td><td>323 x 100 pt</td><td>Slicers de lista, contínuos, de data relativa, botões de navegação/bookmark, caixa de texto</td></tr>
+      <tr><td>S</td><td>158 x 100 pt</td><td>Botão, cartão, medidor (gauge), KPI, forma</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="page-section" id="page-2">
+  <h1>Introdução a dashboards e tiles</h1>
+
+  <h2 id="o-que-e-dashboard">O que é um dashboard</h2>
+  <p>Um <strong>dashboard</strong> do Power BI é uma única página — muitas vezes chamada de canvas — que conta uma história por meio de visualizações. Por estar limitado a uma única página, um dashboard bem projetado traz apenas os destaques dessa história; os detalhes ficam nos relatórios relacionados.</p>
+
+  <div class="callout">
+    Dashboards são um recurso do serviço Power BI e não existem no Power BI Desktop. Você não pode criar dashboards em dispositivos móveis, mas pode visualizá-los e compartilhá-los por lá.
+  </div>
+
+  <p>As visualizações que aparecem em um dashboard são chamadas de <strong>tiles</strong> (blocos). Você fixa (pin) tiles em um dashboard a partir de relatórios, e cada relatório é baseado em um modelo semântico. Assim, um dashboard funciona como uma porta de entrada para os relatórios e modelos semânticos subjacentes: selecionar uma visualização leva você até o relatório e o modelo que a originaram.</p>
+
+  <h2 id="dashboard-vs-relatorio">Dashboard x relatório: principais diferenças</h2>
+  <p>Dashboards e relatórios parecem semelhantes — ambos são telas cheias de visualizações —, mas há diferenças importantes:</p>
+
+  <table class="term-table">
+    <thead>
+      <tr><th>Capacidade</th><th>Dashboards</th><th>Relatórios</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Páginas</td><td>Uma única página</td><td>Uma ou mais páginas</td></tr>
+      <tr><td>Fontes de dados</td><td>Um ou mais relatórios/modelos semânticos por dashboard</td><td>Um único modelo semântico por relatório</td></tr>
+      <tr><td>Drill down em visuais</td><td>Somente se uma página inteira foi fixada</td><td>Sim</td></tr>
+      <tr><td>Disponível no Power BI Desktop</td><td>Não</td><td>Sim</td></tr>
+      <tr><td>Filtragem</td><td>Não é possível filtrar/segmentar o dashboard (é possível filtrar um tile em modo foco, sem salvar)</td><td>Sim, com várias formas de filtrar, destacar e segmentar</td></tr>
+      <tr><td>Perguntas em linguagem natural (Q&amp;A)</td><td>Sim</td><td>Sim, com permissão de edição</td></tr>
+      <tr><td>Criar alertas</td><td>Sim, para tiles em certas condições</td><td>Não</td></tr>
+      <tr><td>Assinatura (subscribe)</td><td>Sim</td><td>Sim</td></tr>
+      <tr><td>Ver tabelas/campos do modelo semântico</td><td>Não (mas é possível exportar dados)</td><td>Sim</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout warning">
+    É necessária uma licença Power BI Pro ou Premium Per User (PPU) para criar dashboards em workspaces compartilhados. Em <strong>Meu workspace</strong>, é possível criar dashboards sem essas licenças.
+  </div>
+
+  <h2 id="vantagens-dashboards">Vantagens dos dashboards</h2>
+  <p>Dashboards são uma forma de monitorar o negócio e ver as métricas mais importantes de relance. As visualizações podem vir de um único modelo semântico ou de vários, e de um único relatório ou de vários — combinando dados locais (on-premises) e na nuvem em uma visão consolidada.</p>
+
+  <div class="callout success">
+    Um dashboard não é apenas uma imagem estática: ele é altamente interativo, e os tiles são atualizados conforme os dados subjacentes mudam.
+  </div>
+
+  <p>A capacidade de criar um dashboard é considerada um recurso de "criador" (creator) e exige permissão de edição sobre o relatório de origem. Colegas com quem um relatório foi apenas compartilhado (ou que o acessam via um app do Power BI) normalmente têm apenas permissão de consumo e não conseguem fixar tiles.</p>
+
+  <h2 id="o-que-e-tile">O que é um tile</h2>
+  <p>Um <strong>tile</strong> é um instantâneo (snapshot) dos seus dados, fixado no dashboard. É possível criar tiles a partir de relatórios, de outros dashboards, da caixa de perguntas do Q&A, do Excel, de relatórios paginados do SQL Server Reporting Services (SSRS) e mais. Além de fixar tiles existentes, você pode criar tiles independentes diretamente no dashboard usando o controle <strong>Add tile</strong> — como caixas de texto, imagens, vídeos, dados em streaming e conteúdo web.</p>
+
+  <div class="term-table-wrap">
+    <table class="term-table">
+      <thead>
+        <tr><th>Origem</th><th>Como o tile chega ao dashboard</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Relatório</td><td>Fixando um visual ou uma página inteira</td></tr>
+        <tr><td>Outro dashboard</td><td>Fixando um tile já existente</td></tr>
+        <tr><td>Excel (OneDrive corporativo)</td><td>Fixando um intervalo de células, tabela ou planilha inteira</td></tr>
+        <tr><td>Q&amp;A</td><td>Fixando a visualização gerada por uma pergunta em linguagem natural</td></tr>
+        <tr><td>SSRS / Power BI Report Server</td><td>Fixando itens de relatórios paginados locais</td></tr>
+        <tr><td>Add tile (direto no dashboard)</td><td>Criando tiles autônomos de imagem, vídeo, texto, streaming ou web</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Interagindo com tiles</h3>
+  <ul>
+    <li><strong>Mover e redimensionar:</strong> arraste o tile pelo dashboard; passe o cursor sobre ele e use a alça de redimensionamento.</li>
+    <li><strong>Menu de ações:</strong> passe o mouse sobre o tile e selecione as reticências (...) para adicionar comentários, abrir o relatório de origem, ver em modo foco, exportar os dados, editar título/subtítulo e hyperlink, executar insights, fixar o tile em outro dashboard ou excluí-lo.</li>
+    <li><strong>Selecionar um tile</strong> normalmente leva você ao relatório, workbook do Excel Online, relatório SSRS ou pergunta do Q&A que o originou (ou a um link personalizado, se definido).</li>
+  </ul>
+
+  <div class="callout warning">
+    Se a visualização original usada para criar o tile mudar (por exemplo, um gráfico de linhas alterado para gráfico de barras no relatório), o tile fixado no dashboard <strong>não</strong> muda de tipo — apenas os dados são atualizados. Algumas alterações visuais (cor de fundo, largura/altura, tooltips) também não se refletem no tile.
+  </div>
+
+  <h2 id="criar-dashboard-a-partir-de-relatorio">Criando um dashboard a partir de um relatório</h2>
+  <p>A forma mais simples de começar é fixar visualizações de um relatório existente. O fluxo essencial é:</p>
+  <ol>
+    <li>Abra o relatório em modo de edição.</li>
+    <li>Passe o cursor sobre a visualização que deseja fixar e selecione o ícone de pin.</li>
+    <li>Escolha fixar em um dashboard <strong>existente</strong> (selecionando-o na lista) ou em um <strong>novo</strong> dashboard (informando um nome).</li>
+    <li>Selecione <strong>Fixar (Pin)</strong>. O Power BI cria o dashboard no workspace atual e exibe uma mensagem de sucesso; selecione <strong>Ir para o dashboard</strong> para conferir o tile recém-criado.</li>
+    <li>Repita o processo para fixar mais visualizações no mesmo dashboard, escolhendo "dashboard existente" nas próximas vezes.</li>
+  </ol>
+
+  <div class="callout">
+    É possível fixar uma página de relatório inteira de uma só vez (pin de página inteira). Nesse caso os tiles resultantes são "ao vivo" (live): você pode interagir diretamente com eles no dashboard, e alterações feitas depois no relatório (novos filtros, campos) se refletem no tile automaticamente.
+  </div>
+
+  <h3>Limitações ao fixar visuais em dashboards</h3>
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Formatação que se perde ao fixar <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <ul>
+        <li>Borda, sombra e configurações de fundo, além da formatação de título/subtítulo (exceto o próprio texto), são ignoradas no tile.</li>
+        <li>Cartões (card visuals) exibem o valor sempre na fonte "DIN" em texto preto (a cor pode ser trocada por meio de um tema de dashboard personalizado).</li>
+        <li>Formatação condicional não é aplicada.</li>
+        <li>Fontes personalizadas fora da lista suportada pelo Power BI não são aplicadas.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Interatividade que se perde ao fixar <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <ul>
+        <li>Se você fixar apenas um visual (não a página inteira), filtros e slicers do relatório podem não persistir da mesma forma no tile.</li>
+        <li>Botões que acionam bookmarks ou aplicam/limpam filtros não têm efeito em um tile de dashboard — essas ações só fazem sentido dentro do contexto de um relatório.</li>
+        <li>Como visualizador (não criador) do dashboard, geralmente não é possível mover ou redimensionar tiles.</li>
+        <li>Nem todos os visuais personalizados, slicers específicos ou tipos não suportados podem ser fixados; imagens de fundo muito grandes também podem impedir a fixação.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="duplicar-dashboard">Criando uma cópia de um dashboard</h2>
+  <p>Duplicar um dashboard é útil para testar mudanças sem afetar o original, distribuir versões por colega/região/equipe, ou reaproveitar um layout com uma nova fonte de dados de estrutura semelhante. Apenas o criador do dashboard pode duplicá-lo; dashboards recebidos como parte de um app não podem ser duplicados.</p>
+
+  <ol>
+    <li>Abra o dashboard que deseja copiar.</li>
+    <li>Selecione <strong>Arquivo &gt; Salvar uma cópia</strong>.</li>
+    <li>Dê um nome à cópia e selecione <strong>Duplicar</strong>.</li>
+    <li>O novo dashboard é salvo no mesmo workspace do original.</li>
+    <li>Abra a cópia e edite conforme necessário: mova, renomeie ou redimensione tiles; edite hyperlinks; adicione novos tiles a partir do menu do dashboard, de Q&A ou de relatórios; ajuste configurações em <strong>Arquivo &gt; Configurações</strong> (nome, Q&A ativado/desativado, fluxo dos tiles).</li>
+  </ol>
+</section>
+
+<section class="page-section" id="page-3">
+  <h1>Fixar conteúdo em dashboards</h1>
+
+  <p>Além de fixar visuais diretamente de um relatório, o Power BI oferece diversas outras formas de adicionar tiles a um dashboard: copiando de outro dashboard, a partir de uma pasta de trabalho do Excel, a partir de um resultado do Q&A, ou fixando uma página de relatório inteira como um tile único e interativo.</p>
+
+  <div class="callout">
+    Pré-requisitos comuns a essas operações: uma licença Fabric gratuita é suficiente para editar dashboards em <strong>Meu workspace</strong>; para editar dashboards em outros workspaces é necessária uma licença Power BI Pro e, no mínimo, o papel de <strong>Colaborador (Contributor)</strong> nesse workspace.
+  </div>
+
+  <h2 id="fixar-de-outro-dashboard">Fixar um tile de um dashboard para outro</h2>
+  <p>Uma forma de adicionar um tile a um dashboard é copiá-lo de outro dashboard já existente. Ao selecionar esse tile depois, ele continua vinculado ao local original onde foi criado (um relatório ou o Q&A).</p>
+
+  <ol>
+    <li>Abra o dashboard que contém o tile desejado.</li>
+    <li>Passe o cursor sobre o tile, selecione <strong>Mais opções (...)</strong> e escolha <strong>Pin tile</strong>.</li>
+    <li>Escolha fixar em um dashboard existente (selecionando-o na lista) ou em um novo dashboard (informando o nome).</li>
+    <li>Selecione <strong>Fixar</strong>. Se o dashboard de destino ainda não tiver um rótulo de confidencialidade, o Power BI solicitará que você defina um.</li>
+    <li>Uma mensagem de sucesso confirma a operação; selecione <strong>Ir para o dashboard</strong> para ver, renomear, redimensionar, vincular e mover o tile fixado.</li>
+  </ol>
+
+  <div class="note">Não é possível fixar tiles de dashboards que foram apenas compartilhados com você (sem permissão de edição).</div>
+
+  <h2 id="fixar-do-excel">Fixar um tile a partir do Excel</h2>
+  <p>Antes de fixar um tile de uma pasta de trabalho do Excel, é preciso conectar esse arquivo ao serviço Power BI. A conexão traz uma versão vinculada e somente leitura do workbook para o Power BI, permitindo fixar intervalos, tabelas, PivotTables, gráficos e até planilhas inteiras em dashboards.</p>
+
+  <h3>Conectar o workbook</h3>
+  <ol>
+    <li>Faça upload do arquivo Excel para o seu OneDrive corporativo (for work or school).</li>
+    <li>No Power BI, vá até <strong>Meu workspace</strong>, selecione <strong>Carregar &gt; OneDrive – Business</strong> e navegue até o local do arquivo.</li>
+    <li>Selecione o arquivo e escolha <strong>Carregar</strong>. O workbook passa a aparecer no workspace, identificado por um ícone de Excel.</li>
+    <li>Abra o workbook no Power BI selecionando seu nome.</li>
+  </ol>
+
+  <div class="callout warning">
+    Alterações feitas no workbook <em>dentro do Power BI</em> não são salvas e não afetam o arquivo original no OneDrive. Para editar de fato, use <strong>Editar</strong> no canto superior direito, que abre o arquivo no Excel Online ou no Excel desktop — essas mudanças podem levar alguns minutos para se refletir nos tiles já fixados.
+  </div>
+
+  <h3>Fixar um intervalo, tabela ou planilha inteira</h3>
+  <ol>
+    <li>Selecione as células que deseja fixar (para uma tabela, inclua os cabeçalhos; para uma PivotTable, inclua todas as partes visíveis, inclusive filtros).</li>
+    <li>Selecione o ícone de pin.</li>
+    <li>Escolha um dashboard existente ou informe o nome de um novo.</li>
+    <li>Selecione <strong>Fixar</strong>. Uma mensagem de sucesso confirma a criação do tile.</li>
+  </ol>
+
+  <p>Um tile criado a partir de uma tabela ou PivotTable exibe a tabela inteira; se linhas ou colunas forem adicionadas, removidas ou filtradas no workbook original, o tile reflete essas mudanças. Selecionar o tile abre o workbook vinculado no Power BI (é necessária permissão de leitura sobre o arquivo).</p>
+
+  <div class="note">
+    O Power BI usa o Excel Services para recuperar os dados dos workbooks. Por isso, alguns recursos do Excel não têm suporte nos tiles — por exemplo, sparklines, formatação condicional com conjunto de ícones e segmentações de tempo (time slicers).
+  </div>
+
+  <h2 id="fixar-do-qa">Fixar um tile a partir do Q&amp;A</h2>
+  <p>O Q&A é a ferramenta do Power BI para explorar dados usando linguagem natural: você faz uma pergunta e recebe a resposta em forma de visualização, que pode então ser fixada em um dashboard.</p>
+
+  <div class="callout warning">
+    As experiências de Q&amp;A serão descontinuadas em dezembro de 2026. A recomendação é migrar para o Copilot do Power BI, que oferece uma forma mais avançada e integrada de consultar dados em linguagem natural.
+  </div>
+
+  <ol>
+    <li>Abra um dashboard que já tenha ao menos um tile fixado a partir de um relatório (o Q&A busca respostas nos modelos semânticos associados aos tiles daquele dashboard).</li>
+    <li>Na caixa de perguntas no topo do dashboard, comece a digitar o que deseja saber sobre os dados.</li>
+    <li>Selecione uma das sugestões apresentadas ou pressione Enter.</li>
+    <li>Selecione <strong>Pin visual</strong> no canto superior direito para adicionar o gráfico gerado ao dashboard.</li>
+    <li>Escolha um dashboard existente (dentro do workspace atual) ou informe o nome de um novo.</li>
+    <li>Selecione <strong>Fixar</strong>. Uma mensagem de sucesso confirma a criação do tile; selecione <strong>Ir para o dashboard</strong> para renomear, redimensionar, adicionar hyperlink e reposicionar o tile.</li>
+  </ol>
+
+  <div class="tooltip-wrap">
+    <span class="tooltip-term">Como o Q&A escolhe os modelos semânticos?</span>
+    <span class="tooltip-box">O Q&A tem acesso a todos os modelos semânticos que possuem ao menos uma visualização fixada no dashboard atual (o dashboard listado no painel de navegação superior).</span>
+  </div>
+
+  <p>Se a caixa de perguntas não aparecer no dashboard, verifique com o administrador do Power BI — é possível desativar o Q&A em nível administrativo.</p>
+
+  <h2 id="fixar-pagina-inteira">Fixar uma página de relatório inteira como tile ao vivo</h2>
+  <p>Outra forma de adicionar um tile é fixar uma página de relatório inteira de uma só vez. Esse método permite levar várias visualizações para o dashboard em uma única ação, e os tiles resultantes são <strong>ao vivo (live)</strong>: você pode interagir com eles diretamente no dashboard, e qualquer alteração feita depois no editor do relatório (novo filtro, mudança de campos) é refletida no tile.</p>
+
+  <div class="callout">
+    Fixar páginas inteiras como tiles ao vivo só está disponível no serviço Power BI (app.powerbi.com), não é possível pelo Power BI Desktop nem pelos aplicativos móveis.
+  </div>
+
+  <ol>
+    <li>Abra o relatório no serviço Power BI e navegue até a página que deseja fixar.</li>
+    <li>Sem nenhuma visualização selecionada, abra o menu <strong>Mais opções (...)</strong> no canto superior direito do relatório e escolha <strong>Pin to a dashboard</strong>.</li>
+    <li>Na caixa de diálogo, escolha um dashboard existente ou informe o nome de um novo. A opção <strong>Pin live page</strong> garante que alterações futuras no relatório apareçam no tile quando a página for atualizada.</li>
+    <li>Selecione <strong>Pin live</strong>. Uma mensagem de sucesso confirma que a página foi adicionada como tile.</li>
+    <li>Abra o dashboard para ver o tile: é possível renomear, redimensionar, vincular e mover a página fixada, além de interagir com ela — por exemplo, selecionar uma barra em um gráfico de colunas para cruzar filtros (cross-filter) e destacar (cross-highlight) as demais visualizações dentro do próprio tile.</li>
+  </ol>
+
+  <div class="callout warning">
+    Não é possível fixar tiles de relatórios que foram apenas compartilhados com você, nem de relatórios em que você tem somente acesso de visualização — é necessária permissão de edição. Além disso, tiles de página de relatório não são interativos quando visualizados nos aplicativos móveis do Power BI.
+  </div>
+</section>
+
+
+<section class="page-section" id="page-4">
+  <h1>Alertas e conteúdo rico em dashboards</h1>
+
+  <h2 id="alertas-de-dados">Alertas de dados no serviço Power BI</h2>
+  <p>Os alertas de dados avisam você quando o valor de um tile de dashboard ultrapassa um limite definido por você. Eles são pessoais: só quem cria o alerta consegue vê-lo, mesmo que o dashboard seja compartilhado com outras pessoas — o dono do dashboard não enxerga os alertas configurados por quem apenas visualiza.</p>
+
+  <div class="info-box">
+    <strong>Onde funciona:</strong> alertas podem ser criados em tiles do Meu Workspace, em dashboards compartilhados que estejam em uma capacidade Premium, ou (com uma licença Power BI Pro) em qualquer outro workspace. Eles ficam sincronizados entre o serviço Power BI e os aplicativos móveis, mas não existem no Power BI Desktop.
+  </div>
+
+  <h2 id="requisitos-alertas">Requisitos e limitações dos alertas</h2>
+  <ul>
+    <li>Só podem ser configurados em tiles fixados a partir de visuais de relatório — apenas gráficos de indicador (gauge), KPIs e cartões.</li>
+    <li>Funcionam também em visuais de conjuntos de dados de streaming, desde que o visual (KPI, cartão ou gauge) tenha sido fixado a partir de um relatório. Tiles de streaming criados diretamente no dashboard (via <em>Adicionar tile &gt; Dados de streaming personalizados</em>) não suportam alertas.</li>
+    <li>Só funcionam com tipos de dados numéricos; não há suporte para cartões com medidas de data ou hora.</li>
+    <li>Só disparam quando os dados são atualizados — não funcionam sobre dados estáticos, e você não recebe alertas duplicados para um valor que não mudou.</li>
+    <li>É possível criar até 250 alertas no total, entre todos os seus modelos.</li>
+    <li>Não há suporte a co-propriedade: para transferir um alerta entre usuários é preciso recriá-lo (e recriar também qualquer fluxo do Power Automate associado).</li>
+  </ul>
+
+  <div class="callout warning">
+    Alertas por dados sensíveis chegam até você por notificação e, opcionalmente, e-mail. Se o dispositivo móvel usado para ver esses alertas for perdido ou roubado, recomenda-se desativar todas as regras de alerta pelo serviço Power BI.
+  </div>
+
+  <h2 id="criar-alerta">Como criar um alerta em um tile</h2>
+  <ol>
+    <li>No dashboard, passe o mouse sobre o tile desejado e selecione as reticências (<strong>...</strong>).</li>
+    <li>Selecione <strong>Gerenciar alertas</strong>.</li>
+    <li>Clique em <strong>+ Adicionar regra de alerta</strong>, mantenha o controle <strong>Ativo</strong> ligado e dê um título ao alerta.</li>
+    <li>Defina a condição (por exemplo, "acima de 100") e a frequência de verificação (a cada hora ou uma vez por dia).</li>
+    <li>Marque a caixa de e-mail se quiser também receber a notificação por e-mail, além da central de notificações.</li>
+    <li>Selecione <strong>Salvar e fechar</strong>.</li>
+  </ol>
+  <p>Quando o dado atualizado cruza o limite configurado, o Power BI verifica quanto tempo passou desde o último alerta enviado; se o intervalo (1 hora ou 24 horas) já passou, um novo alerta é disparado, com link direto para o tile correspondente.</p>
+
+  <h2 id="gerenciar-alertas">Gerenciando e removendo alertas</h2>
+  <p>Existem três formas de gerenciar alertas já criados:</p>
+  <ul>
+    <li><strong>Pelo próprio tile:</strong> reabra <em>Gerenciar alertas</em>, selecione a seta ao lado do nome do alerta para editá-lo, ou a lixeira para excluí-lo.</li>
+    <li><strong>Pelo menu de configurações:</strong> ícone de engrenagem &gt; <em>Configurações</em> &gt; aba <em>Alertas</em>, onde é possível ligar/desligar, editar ou excluir.</li>
+    <li><strong>Nos aplicativos móveis do Power BI</strong>, diretamente no tile.</li>
+  </ul>
+
+  <h2 id="conteudo-rico">Adicionando imagens, vídeos e outros conteúdos</h2>
+  <p>Além de fixar visuais de relatórios, um dashboard aceita tiles criados diretamente nele, sem depender de um relatório de origem: imagem, caixa de texto, vídeo, dados de streaming ou conteúdo web (código incorporado). Isso torna o dashboard mais informativo e visualmente atraente.</p>
+  <p>O caminho geral é o mesmo para qualquer tipo: selecione a seta ao lado de <strong>Editar</strong> no menu superior, escolha <strong>Adicionar um tile</strong> e selecione o tipo desejado.</p>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Adicionar uma imagem <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <p>Útil para exibir, por exemplo, a logomarca da empresa.</p>
+      <ol>
+        <li>Em <em>Adicionar um tile</em>, escolha <strong>Imagem &gt; Avançar</strong>.</li>
+        <li>Informe um título e subtítulo opcionais, a URL da imagem e, se quiser transformar o tile em hyperlink, marque <strong>Definir link personalizado</strong>.</li>
+        <li>Selecione <strong>Aplicar</strong> e depois redimensione/posicione o tile no dashboard.</li>
+      </ol>
+      <div class="callout warning">
+        A imagem precisa estar hospedada em uma URL pública e acessível sem autenticação. Não é possível usar imagens do OneDrive ou SharePoint (exigem login), nem arquivos no formato .svg. Prefira um servidor web público, uma CDN ou um serviço de armazenamento em nuvem com acesso anônimo habilitado (por exemplo, Azure Blob Storage).
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Adicionar uma caixa de texto <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <p>Útil para criar títulos de seção dentro do dashboard (basta digitar o texto e aumentar o tamanho da fonte).</p>
+      <ol>
+        <li>Escolha <strong>Caixa de texto &gt; Avançar</strong>.</li>
+        <li>Preencha título/subtítulo opcionais e o conteúdo formatado do texto.</li>
+        <li>Selecione <strong>Aplicar</strong> e ajuste o tamanho e a posição do tile.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Adicionar um vídeo <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <p>Vídeos do YouTube ou Vimeo tocam diretamente dentro do tile no dashboard.</p>
+      <ol>
+        <li>Escolha <strong>Vídeo &gt; Avançar</strong>.</li>
+        <li>Informe a URL do vídeo e, opcionalmente, título/subtítulo com um link personalizado (por exemplo, para a playlist completa no YouTube).</li>
+        <li>Selecione <strong>Aplicar</strong>, depois redimensione o tile; selecione o tile para reproduzir o vídeo.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-toggle" onclick="toggleAcc(this)">Adicionar conteúdo web (código incorporado) <span class="acc-arrow">▸</span></div>
+    <div class="acc-body">
+      <p>Permite colar qualquer código HTML de incorporação (embed) como tile — por exemplo, um post do Twitter/X, um player de vídeo customizado ou conteúdo de sites como embed.ly.</p>
+      <ol>
+        <li>Escolha <strong>Conteúdo da Web &gt; Avançar</strong>.</li>
+        <li>Cole o código de incorporação (e, se quiser, título/subtítulo).</li>
+        <li>Selecione <strong>Aplicar</strong> e ajuste o tamanho do tile.</li>
+      </ol>
+      <div class="callout">
+        Dicas práticas: use sempre <code>https</code> como origem do iframe (uma origem <code>http</code> resulta em tile em branco); para o player ocupar todo o espaço do tile ao redimensionar, defina <code>width="100%"</code> e <code>height="100%"</code> no código embutido, em vez de valores fixos em pixels.
+      </div>
+    </div>
+  </div>
+
+  <h2 id="editar-tile">Editando os detalhes de um tile</h2>
+  <p>Depois de criado, qualquer tile pode ser reconfigurado:</p>
+  <ol>
+    <li>Passe o mouse sobre o canto superior direito do tile e selecione as reticências (<strong>...</strong>).</li>
+    <li>Selecione <strong>Editar detalhes</strong> para abrir a janela de detalhes do tile.</li>
+    <li>Altere o título, o subtítulo e, na seção de funcionalidade, defina um <strong>link personalizado</strong> — o destino pode ser uma página externa, outro dashboard ou relatório do mesmo workspace, ou um relatório SSRS. Por padrão, selecionar um tile leva ao relatório de origem (ou ao Q&amp;A, se foi criado ali).</li>
+    <li>Selecione <strong>Aplicar</strong>/<strong>Salvar</strong> para confirmar.</li>
+  </ol>
+  <p>Outras ações disponíveis pelo mesmo menu de reticências:</p>
+  <ul>
+    <li><strong>Fixar tile:</strong> duplica o tile para outro dashboard, existente ou novo.</li>
+    <li><strong>Excluir tile:</strong> remove o tile do dashboard, mas não apaga o visual original no relatório de onde ele veio.</li>
+  </ul>
+  <p>Para trocar a visualização exibida em um tile já existente, não há edição direta: exclua o tile e adicione um novo a partir do visual desejado.</p>
+</section>
+
+<section class="page-section" id="page-5">
+  <h1>Boas práticas e temas de dashboard</h1>
+
+  <h2 id="pensando-no-publico">Pense no público antes de desenhar</h2>
+  <p>Um bom dashboard prioriza a informação mais importante de forma limpa e sem excessos. Antes de organizar os tiles, vale responder:</p>
+  <ul>
+    <li>Como o público vai usar o dashboard no dia a dia?</li>
+    <li>Quais métricas realmente ajudam nas decisões?</li>
+    <li>Que suposições culturais ou de contexto podem influenciar as escolhas de design?</li>
+    <li>Do que exatamente esse público precisa para ter sucesso?</li>
+  </ul>
+  <p>Lembre-se: o dashboard é uma visão geral, um ponto único para monitorar o estado atual dos dados — os detalhes ficam nos relatórios e modelos semânticos por trás dele. Só inclua um detalhe no dashboard se for algo que o público realmente precisa acompanhar de perto; o restante pode ser explorado via drill-through nos relatórios subjacentes.</p>
+
+  <h2 id="contar-historia">Conte uma história em uma única tela</h2>
+  <div class="callout">
+    Como os dashboards existem para mostrar informação importante de relance, o ideal é caber tudo em uma única tela, evitando barras de rolagem. Se o layout está poluído, remova tudo que não for essencial. Ao apresentar um dashboard, use o modo de tela cheia, sem distrações.
+  </div>
+  <p>Considere também onde o dashboard será exibido: em um monitor grande é possível incluir mais conteúdo, mas em tablets e celulares um dashboard mais enxuto, com menos tiles, é muito mais legível.</p>
+
+  <h2 id="destacar-informacao">Destaque o que importa</h2>
+  <p>Se textos e visualizações têm todos o mesmo tamanho, fica difícil para o leitor saber onde focar. Cartões (cards) com um número em destaque são uma ótima forma de realçar uma métrica importante — desde que venham acompanhados de contexto suficiente para serem interpretados corretamente.</p>
+  <p>A maioria das pessoas lê de cima para baixo e da esquerda para a direita. Por isso, posicione a informação de nível mais alto no canto superior esquerdo e vá aumentando o detalhe conforme o olhar se move na direção natural de leitura.</p>
+
+  <h2 id="escolher-visualizacao">Use a visualização certa para os dados</h2>
+  <p>Evite variedade só por variedade — cada visual deve ajudar a contar a história, não decorar a tela. Algumas recomendações práticas:</p>
+  <ul>
+    <li>Evite visuais difíceis de ler, como gráficos 3D.</li>
+    <li>Gráficos de pizza, rosca e indicadores circulares raramente são a melhor escolha; gráficos de barras e colunas costumam facilitar mais a comparação de valores lado a lado.</li>
+    <li>Pizzas funcionam melhor com menos de oito categorias e para relações parte-todo, não para comparar partes entre si.</li>
+    <li>Gauges (indicadores) são ótimos para mostrar o status atual em relação a uma meta.</li>
+    <li>Mantenha consistência nas escalas dos eixos, na ordem das dimensões e nas cores usadas para os mesmos valores em diferentes gráficos.</li>
+    <li>Evite mais de três ou quatro dígitos ao exibir números — prefira formatos como "3,4 milhões" em vez de "3.400.000".</li>
+    <li>Não misture períodos de tempo diferentes no mesmo gráfico, nem escalas muito distintas (por exemplo, uma medida em milhões ao lado de outra em milhares) sem usar um eixo secundário.</li>
+    <li>Remova rótulos de dados desnecessários — muitas vezes o próprio gráfico de barras já comunica bem os valores.</li>
+    <li>Escolha a ordenação de acordo com o objetivo: por medida, para destacar o maior/menor valor; por eixo, quando o leitor precisa localizar rapidamente uma categoria específica entre várias.</li>
+  </ul>
+
+  <div class="info-box">
+    Para aprofundar, vale estudar os princípios de Gestalt de percepção visual e consultar referências como <em>Information Dashboard Design</em> e <em>Show Me the Numbers</em>, de Stephen Few, <em>Envisioning Information</em>, de Edward Tufte, e <em>Advanced Presentations by Design</em>, de Andrew Abela.
+  </div>
+
+  <h2 id="layout-mobile">Otimizando um dashboard para celulares</h2>
+  <p>Por padrão, em modo retrato no celular os tiles de um dashboard aparecem um atrás do outro, todos do mesmo tamanho. No serviço Power BI, o dono do dashboard pode criar uma exibição personalizada especificamente para esse modo retrato — o chamado layout para celular.</p>
+  <ol>
+    <li>Abra o dashboard no serviço Power BI.</li>
+    <li>Selecione a seta ao lado de <strong>Editar</strong> e escolha <strong>Layout para celular</strong>.</li>
+    <li>Na tela de edição, arraste, redimensione ou desafixe tiles para montar a versão mobile. Os tiles desafixados vão para o painel de <strong>tiles não fixados</strong>, e ficam lá até serem adicionados de volta.</li>
+    <li>Se quiser desfazer tudo, selecione <strong>Redefinir tiles</strong> para voltar ao estado anterior.</li>
+    <li>Ao terminar, volte para a versão web selecionando <strong>Layout para web</strong> no menu superior.</li>
+  </ol>
+  <div class="callout warning">
+    O Power BI salva o layout para celular automaticamente e em tempo real: enquanto você edita, qualquer pessoa visualizando o dashboard pelo celular já vê as mudanças. Se você desafixar todos os tiles, o dashboard no celular ficará momentaneamente vazio. Além disso, ao girar o telefone para o modo paisagem, o layout exibido volta a ser o layout web padrão, não o layout para celular.
+  </div>
+
+  <h2 id="qr-code-tile">Criando um QR code para um tile</h2>
+  <p>Um QR code conecta qualquer lugar do mundo físico diretamente a uma informação de BI, sem precisar navegar ou pesquisar — por exemplo, colado em um equipamento, em uma parede ou em um e-mail. Quem escaneia o código (e tem acesso ao dashboard) abre o tile direto no aplicativo móvel, em modo foco.</p>
+  <ol>
+    <li>Abra o dashboard no serviço Power BI.</li>
+    <li>Nas reticências do tile desejado, escolha <strong>Abrir em modo foco</strong>.</li>
+    <li>Em modo foco, nas reticências, selecione <strong>Gerar código QR</strong>.</li>
+    <li>Baixe a imagem (gerada em formato JPG, com o mesmo nome do tile) para imprimir ou incluir em um documento/e-mail.</li>
+  </ol>
+  <p>Para imprimir: baixe o arquivo, abra-o em um computador conectado a uma impressora, imprima em tamanho real (100%) e recorte o código para fixá-lo no local relevante.</p>
+
+  <h2 id="temas-dashboard">Temas de dashboard</h2>
+  <p>Os temas de dashboard permitem aplicar uma paleta de cores a todo o dashboard de uma vez — cores corporativas, sazonais ou qualquer outra combinação. Quando um tema é aplicado, todos os visuais do dashboard passam a usar as cores do tema selecionado (com algumas exceções). Alterar as cores dos visuais no dashboard não afeta o relatório de origem.</p>
+  <ol>
+    <li>Abra um dashboard que você possa editar e selecione <strong>Editar &gt; Exibir &gt; Tema</strong>.</li>
+    <li>No painel de temas, escolha um dos <strong>temas prontos</strong> (por exemplo, Claro — o padrão — ou Escuro).</li>
+    <li>Para personalizar, selecione <strong>Personalizado</strong> no menu suspenso e defina cores próprias; ao adicionar uma imagem de fundo, use resolução de pelo menos 1920x1080, hospedada em uma URL pública.</li>
+    <li>Também é possível enviar um arquivo <strong>JSON de tema</strong> — o mesmo tipo de arquivo usado no Power BI Desktop para relatórios, ou obtido na Galeria de Temas da comunidade Power BI.</li>
+    <li>Selecione <strong>Salvar</strong> para aplicar o tema a todos os tiles do dashboard.</li>
+  </ol>
+
+  <div class="term-table">
+    <table>
+      <thead><tr><th>Campo do JSON</th><th>Função</th></tr></thead>
+      <tbody>
+        <tr><td>name</td><td>Nome do tema (único campo obrigatório)</td></tr>
+        <tr><td>foreground / background</td><td>Cores gerais do dashboard</td></tr>
+        <tr><td>dataColors</td><td>Lista de códigos hexadecimais usados nos gráficos</td></tr>
+        <tr><td>tiles</td><td>Cor de fundo e texto dos tiles</td></tr>
+        <tr><td>visualStyles</td><td>Formatação granular por tipo de visual</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Quando um relatório de origem já tem um tema próprio, ao fixar (pin) um tile você pode escolher entre <strong>Manter tema atual</strong> (preserva o tema do relatório, inclusive transparências) ou <strong>Usar tema do dashboard</strong>. Essa opção de "Tile Theming" só aparece quando o relatório foi criado no Power BI Desktop com um tema aplicado e depois publicado no serviço.</p>
+
+  <div class="callout warning">
+    Limitações: temas de dashboard não se aplicam a páginas de relatório ao vivo fixadas, tiles de iframe, tiles SSRS, tiles de pasta de trabalho (workbook) ou imagens. Além disso, temas personalizados só podem ser criados no serviço Power BI (embora sejam visíveis também nos aplicativos móveis) e funcionam apenas em tiles fixados a partir de relatórios.
+  </div>
+</section>
+
+<section class="page-section" id="page-6">
+  <h1>Introdução a metas e scorecards</h1>
+
+  <h2 id="conceito-metas">O que são metas e scorecards</h2>
+  <p>Metas (goals) são um recurso do Power BI para curar e acompanhar objetivos de negócio importantes em um único lugar, promovendo responsabilidade, alinhamento e visibilidade entre equipes. Antes de qualquer passo prático, é essencial entender três conceitos que se encaixam entre si:</p>
+
+  <div class="capability-grid">
+    <div class="capability-card">
+      <h3>Scorecard</h3>
+      <p>É a "coleção": um painel que reúne várias metas relacionadas, para acompanhá-las ao longo do tempo em uma única visão.</p>
+    </div>
+    <div class="capability-card">
+      <h3>Meta (goal)</h3>
+      <p>É uma métrica individual dentro de um scorecard, com um <strong>valor atual</strong> e um <strong>alvo final (target)</strong>, além de datas de início/fim e um status. Uma meta pode ter subgoals (submetas) associados a ela.</p>
+    </div>
+    <div class="capability-card">
+      <h3>Meta manual x meta conectada</h3>
+      <p>Uma meta <strong>manual</strong> tem seu valor atualizado à mão, por check-ins periódicos de uma pessoa responsável. Uma meta <strong>conectada</strong> busca o valor atual automaticamente de um relatório ou modelo semântico existente, atualizando-se sozinha conforme os dados são atualizados.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    Resumindo a relação entre os três: um <strong>scorecard</strong> é composto por uma ou mais <strong>metas</strong>, e cada meta pode ser <strong>manual</strong> (valor digitado por alguém) ou <strong>conectada</strong> (valor puxado direto de um relatório/modelo semântico). É esse encadeamento — scorecard → meta → origem do valor — que estrutura todo o recurso.
+  </div>
+
+  <h2 id="licenciamento-metas">Licenciamento e permissões</h2>
+  <div class="term-table">
+    <table>
+      <thead><tr><th>Permissão</th><th>Requisito mínimo</th></tr></thead>
+      <tbody>
+        <tr><td>Autorar e compartilhar scorecards/metas, fazer check-ins</td><td>Licença Power BI Pro</td></tr>
+        <tr><td>Visualizar scorecards e metas</td><td>Capacidade Premium ou Fabric F64+ com usuário gratuito, ou licença Pro</td></tr>
+        <tr><td>Ver scorecards de exemplo e autorar no Meu Workspace</td><td>Usuário gratuito</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Para criar um scorecard em um workspace específico, é preciso ter papel de <strong>Colaborador</strong> ou <strong>Proprietário</strong> nesse workspace, além de permissão de build sobre o modelo semântico envolvido.</p>
+
+  <h2 id="hub-scorecards">O hub de Scorecards</h2>
+  <p>Ao entrar no serviço Power BI, o item <strong>Scorecards</strong> no painel de navegação leva ao hub de scorecards. Ele é organizado em:</p>
+  <ul>
+    <li><strong>Recomendados:</strong> scorecards e metas mais relevantes para você, curados automaticamente com base em metas atribuídas a você, editadas por você ou com check-in recente. Uma meta só aparece aqui se tiver pelo menos valor atual e alvo final definidos.</li>
+    <li><strong>Recentes, Favoritos, Compartilhados comigo, Todos os scorecards:</strong> abas de navegação para localizar rapidamente qualquer scorecard ao qual você tem acesso.</li>
+  </ul>
+  <p>É possível alternar entre <strong>exibição em lista</strong> e <strong>exibição compacta</strong> (em pré-visualização), que se ajusta melhor a telas variadas e permite redimensionar colunas, mas não permite criar ou editar metas.</p>
+
+  <h2 id="criar-scorecard">Criando um scorecard</h2>
+  <ol>
+    <li>No serviço Power BI, selecione <strong>Métricas</strong> no painel de navegação para abrir o hub de métricas.</li>
+    <li>Selecione <strong>Novo scorecard</strong>.</li>
+    <li>Dê um nome ao scorecard selecionando o ícone de edição ao lado de "Untitled Scorecard".</li>
+    <li>Por padrão, o scorecard é salvo no Meu Workspace; para movê-lo, use <strong>Arquivo &gt; Mover scorecard</strong> e escolha o workspace de destino.</li>
+  </ol>
+  <p>Ao mover o scorecard para um workspace, o Power BI salva ali tanto o scorecard quanto um modelo semântico próprio, criado automaticamente para armazenar os dados de todas as métricas.</p>
+
+  <h2 id="criar-meta-manual">Criando uma meta manual</h2>
+  <ol>
+    <li>Dentro do scorecard, selecione <strong>Nova meta</strong>.</li>
+    <li>Preencha os campos: <strong>nome da meta</strong> (único campo obrigatório), <strong>proprietários</strong> (pessoas ou grupos de distribuição), <strong>valor atual</strong>, <strong>alvo final</strong>, <strong>status</strong> (predefinido ou por regra), e datas de início e término.</li>
+    <li>Selecione <strong>Salvar</strong>.</li>
+  </ol>
+  <p>Se uma meta parecida já existe em outro scorecard, é possível vinculá-la em vez de duplicá-la. Também é possível criar até quatro níveis de submetas (subgoals) dentro de uma meta, cada uma podendo ser manual ou conectada.</p>
+
+  <div class="callout">
+    Toda meta nova nasce com um ciclo de acompanhamento diário (o progresso é calculado dia a dia). Para mudar essa cadência, abra o scorecard, passe o mouse sobre a meta, escolha <strong>Mais opções &gt; Ver detalhes &gt; aba Período de tempo</strong> e ajuste a preferência. Isso altera apenas a tendência exibida, não a frequência real de atualização dos dados.
+  </div>
+
+  <h2 id="metas-conectadas">Criando metas conectadas</h2>
+  <p>Em vez de digitar valores manualmente, é possível conectar o <strong>valor atual</strong>, o <strong>alvo final</strong>, ou ambos, a um ponto de dado real de um relatório do Power BI já existente. A partir daí, o valor passa a ser atualizado automaticamente sempre que o modelo semântico subjacente for atualizado.</p>
+  <ol>
+    <li>Ao criar ou editar uma meta, no campo de valor atual (ou alvo final), selecione <strong>Conectar a dados</strong>.</li>
+    <li>Pesquise e selecione o relatório desejado entre todos os que você tem acesso, em qualquer workspace.</li>
+    <li>Navegue até o visual que contém o dado a acompanhar e selecione o ponto de dado ou o visual — o Power BI mostra um cartão resumindo a medida e os filtros aplicados.</li>
+    <li>Selecione <strong>Conectar</strong> e depois <strong>Salvar</strong>.</li>
+  </ol>
+
+  <p>É possível conectar a diferentes níveis dentro de um visual, e o cálculo varia conforme o nível escolhido:</p>
+  <ul>
+    <li><strong>Visual:</strong> Power BI calcula a medida no nível agregado.</li>
+    <li><strong>Legenda:</strong> filtra a medida pelo item de legenda selecionado.</li>
+    <li><strong>Ponto de dado:</strong> filtra pelo ponto de dado específico.</li>
+    <li><strong>Valor do eixo:</strong> filtra pela categoria selecionada no eixo.</li>
+  </ul>
+  <p>Quando o eixo do visual é um campo de data/hora (série temporal), o Power BI calcula a medida no último ponto da série e também traz o histórico — mas isso só funciona se a data for completa (dia, mês e ano); datas parciais, como "dia da semana" ou "mês", não geram histórico.</p>
+
+  <div class="callout warning">
+    Algumas limitações atuais: em gráfico de barras/colunas 100% empilhado, o Power BI usa o valor da medida, não o percentual; em cartão multilinha e em tabelas com mais de uma coluna de medida, é usada apenas a primeira medida; em gauges e KPIs, apenas o valor é conectado (não o alvo, mínimo ou máximo); Multi-Geo não é suportado; e valores conectados via DirectQuery/Live a um datamart não se atualizam automaticamente.
+  </div>
+
+  <h2 id="atualizacao-metas">Por que uma meta pode não estar atualizando</h2>
+  <ul>
+    <li><strong>Metas manuais</strong> nunca se atualizam sozinhas — dependem de check-ins regulares de quem é responsável por elas.</li>
+    <li><strong>Sem atualização agendada:</strong> o valor de uma meta conectada só muda quando o modelo semântico é atualizado; sem uma atualização agendada configurada, o valor fica parado.</li>
+    <li><strong>Modelos semânticos push</strong> não atualizam metas automaticamente.</li>
+  </ul>
+  <p>De modo geral, metas conectadas só mudam na mesma frequência em que os dados do modelo semântico são atualizados (via importação, conexão direta ou DirectQuery), e o Power BI tira um retrato (snapshot) dos valores no máximo uma vez por dia, sempre retendo o último valor do dia.</p>
+
+  <h2 id="compartilhar-scorecard">Compartilhando um scorecard</h2>
+  <p>A forma mais simples de dar acesso a um scorecard é usar o botão <strong>Compartilhar</strong> na barra de ações do scorecard, escolhendo se quem recebe pode recompartilhar e se pode acessar o modelo semântico subjacente. Também é possível configurar permissões no nível de cada meta individualmente, restringindo quais metas cada pessoa pode ver ou em quais pode fazer check-in — mesmo que ela tenha acesso de visualização ou build ao workspace como um todo.</p>
+
+  <div class="info-box">
+    Outras limitações importantes: metas não suportam BYOK (bring your own key) nem segurança em nível de linha (RLS); não há suporte a publicar na web, a compartilhamento entre tenants (B2B), a capacidades Multi-Geo, nem a cenários de embedded analytics; e o visual de scorecard não funciona em incorporação via SharePoint.
+  </div>
+</section>
+
+
+<section class="page-section" id="page-7">
+  <h1>Automatizar e atualizar metas</h1>
+
+  <div class="goal-list">
+    <p><strong>Nesta página você vai aprender:</strong></p>
+    <ul>
+      <li>Como usar o Power Automate para disparar fluxos a partir de um scorecard</li>
+      <li>Como e quando metas e scorecards são atualizados automaticamente</li>
+      <li>Como dividir uma meta em submetas, incluindo submetas de rollup</li>
+      <li>Como criar regras automatizadas de status</li>
+      <li>Como personalizar e gerenciar os status de um scorecard</li>
+    </ul>
+  </div>
+
+  <h2 id="power-automate-em-metas">Usar o Power Automate para atualizar metas automaticamente</h2>
+  <p>Monitorar scorecards manualmente consome tempo e está sujeito a erros. O Power BI permite acionar fluxos do Power Automate diretamente a partir de um scorecard, ajudando sua organização a reagir mais rápido a mudanças e a manter todos atualizados.</p>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Como criar um fluxo a partir do scorecard <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ol>
+        <li>Na página do hub de Scorecards, selecione o scorecard desejado.</li>
+        <li>Selecione o botão <strong>Criar um fluxo</strong> na faixa de opções. O Power Automate abre a página do conector do Power BI.</li>
+        <li>Escolha um gatilho (trigger) para iniciar o fluxo.</li>
+        <li>Personalize as ações e condições do fluxo conforme o processo de negócio.</li>
+      </ol>
+      <p>O Power Automate oferece ações e gatilhos próprios do Power BI para automatizar processos ligados a scorecards. Para saber o que cada ação ou gatilho faz, use o ícone de informação ao lado do item e selecione <em>Saiba mais</em>.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="callout-icon">💡</span>
+    <div>O Power Automate também pode ser usado para disparar atualizações de metas a partir de eventos como atualização de um conjunto de dados, mudanças de status ou novos check-ins.</div>
+  </div>
+
+  <h2 id="atualizar-metas-e-scorecards">Atualizar metas e scorecards automaticamente</h2>
+  <p>Metas conectadas a um modelo semântico ou a um visual de relatório podem ser atualizadas automaticamente sempre que os dados subjacentes forem atualizados. Ainda assim, problemas de configuração ou de tempo podem impedir que a meta reflita o dado mais recente.</p>
+
+  <table class="term-table">
+    <thead><tr><th>Situação</th><th>O que fazer</th></tr></thead>
+    <tbody>
+      <tr><td>Meta conectada não atualiza</td><td>Confirme se a atualização do conjunto de dados foi concluída e se a meta está corretamente vinculada ao visual do relatório.</td></tr>
+      <tr><td>Atualização manual necessária</td><td>É possível forçar uma atualização pela interface do scorecard, mas isso nem sempre resolve dados desatualizados.</td></tr>
+      <tr><td>Atualizar várias metas de uma vez</td><td>Use o script em PowerShell disponibilizado pela comunidade Power BI para atualizar todas as metas de um workspace.</td></tr>
+      <tr><td>Atualizar scorecards entre workspaces</td><td>Use o script em PowerShell da comunidade de desenvolvedores para coordenar atualizações entre múltiplos workspaces.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout warning">
+    <span class="callout-icon">⚠</span>
+    <div><strong>Boas práticas:</strong> garanta que os modelos semânticos sejam atualizados antes de disparar a atualização das metas, utilize entidades de serviço (service principals) ou identidades gerenciadas para scripts de automação, e monitore os logs de atualização para identificar falhas.</div>
+  </div>
+
+  <h2 id="criar-submetas">Criar submetas</h2>
+  <p>Submetas agrupam metas relacionadas sob uma meta "pai", que pode ser expandida ou recolhida, deixando o scorecard mais organizado e fácil de ler. As submetas podem ser valores independentes do pai ou podem fazer <strong>rollup</strong> (consolidação automática) para o valor da meta pai.</p>
+
+  <div class="callout">
+    <span class="callout-icon">💡</span>
+    <div>Se o objetivo é exibir a mesma meta em vários scorecards sem duplicá-la, use <strong>metas vinculadas</strong> em vez de submetas (veja a página 8).</div>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Como criar uma submeta <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ol>
+        <li>Abra um scorecard.</li>
+        <li>Selecione a meta desejada e escolha <strong>Novo &gt; Adicionar submeta</strong>, ou passe o mouse sobre a meta e use <strong>Mais opções (...) &gt; Nova submeta</strong>.</li>
+        <li>Repita o processo para criar quantas submetas forem necessárias.</li>
+      </ol>
+      <p>Submetas podem ser manuais ou conectadas, da mesma forma que suas metas pai.</p>
+    </div>
+  </div>
+
+  <h3>Submetas de rollup</h3>
+  <p>Rollups consolidam automaticamente os valores das submetas em um valor de meta pai, recalculando sempre que os valores das submetas mudam e preservando o histórico. Funcionam tanto com submetas manuais quanto conectadas.</p>
+  <ol>
+    <li>Selecione o ícone de lápis para editar a meta pai.</li>
+    <li>Ao lado dos campos <strong>Valor atual</strong> e <strong>Meta final</strong>, selecione <strong>Usar submetas</strong>.</li>
+    <li>Escolha o tipo de agregação: <strong>SOMA</strong>, <strong>MÉDIA</strong>, <strong>MÍNIMO</strong> ou <strong>MÁXIMO</strong>.</li>
+  </ol>
+  <p>É possível definir agregações diferentes para o valor atual e para a meta final, o que dá bastante flexibilidade ao modelo.</p>
+
+  <div class="callout warning">
+    <span class="callout-icon">⚠</span>
+    <div><strong>Atenção ao histórico:</strong> se quem cria o rollup não for o proprietário da conexão da meta, o histórico de dados conectados é apagado. Para preservar o histórico, o criador do rollup deve ser a mesma pessoa que é proprietária da conexão da meta. Rollups também sempre mostram o mesmo valor agregado para todos os usuários, independentemente das permissões de nível de meta que cada um tenha.</div>
+  </div>
+
+  <h2 id="regras-automatizadas-de-status">Criar regras automatizadas de status</h2>
+  <p>Em vez de atualizar o status de uma meta manualmente, é possível definir regras que mudam o status com base em valor, percentual da meta atingido, condições de data, ou uma combinação desses fatores.</p>
+
+  <div class="info-box">Para metas conectadas, as regras de status são reavaliadas a cada atualização dos dados do scorecard. Para metas manuais, são reavaliadas a cada novo check-in.</div>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Passo a passo para criar uma regra <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ol>
+        <li>No modo de edição do scorecard, selecione <strong>Mais opções (...) &gt; Ver detalhes</strong> ao lado da métrica.</li>
+        <li>Na guia <strong>Regras de status</strong>, selecione <strong>Nova regra</strong>.</li>
+        <li>Escolha se a regra será baseada em <strong>Valor</strong> ou em <strong>Data</strong>.</li>
+        <li>Selecione o qualificador (por exemplo, maior que, igual a, antes de, depois de).</li>
+        <li>Informe o valor, o percentual da meta atingido, ou a data de referência, dependendo da escolha anterior.</li>
+        <li>Defina o status exibido quando a regra for atendida e o status <strong>Caso contrário</strong>.</li>
+      </ol>
+      <p>Você pode criar múltiplas condições e arrastar as regras para reordenar a prioridade entre elas.</p>
+    </div>
+  </div>
+
+  <div class="callout warning">
+    <span class="callout-icon">⚠</span>
+    <div>Na experiência mobile, a atualização automática das regras de status ainda não é suportada.</div>
+  </div>
+
+  <h2 id="personalizar-status">Personalizar status do scorecard</h2>
+  <p>Quando os status padrão do Power BI não refletem a terminologia da sua organização, é possível personalizá-los totalmente — criar novos, renomear, mudar cores e reordenar por prioridade.</p>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Como gerenciar os status <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <p>No modo de edição do scorecard, acesse <strong>Gerenciar status</strong> pelo ícone de engrenagem, pela seção <strong>Status</strong> do painel de configurações, ou editando uma métrica inline.</p>
+      <ul>
+        <li><strong>Adicionar:</strong> use o botão Adicionar status no topo da lista.</li>
+        <li><strong>Renomear:</strong> selecione o texto do status e digite o novo nome.</li>
+        <li><strong>Mudar cor:</strong> use o seletor de cor ao lado do status.</li>
+        <li><strong>Excluir:</strong> selecione o ícone de lixeira.</li>
+        <li><strong>Reordenar:</strong> use as setas ou arraste o status para a posição desejada — a ordem define a prioridade usada para ordenar metas por status.</li>
+        <li><strong>Restaurar padrão:</strong> selecione Redefinir status no topo da lista.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="callout-icon">💡</span>
+    <div>Ao excluir um status, ele deixa de aparecer como opção em novos check-ins, mas o Power BI preserva o histórico de status excluídos (até 12) tanto no modelo semântico quanto no histórico de check-ins.</div>
+  </div>
+
+  <div class="callout warning">
+    <span class="callout-icon">⚠</span>
+    <div>O Power Automate não oferece suporte a status personalizados de metas.</div>
+  </div>
+</section>
+
+<section class="page-section" id="page-8">
+  <h1>Gerenciar e compartilhar metas</h1>
+
+  <div class="goal-list">
+    <p><strong>Nesta página você vai aprender:</strong></p>
+    <ul>
+      <li>Como acompanhar o progresso das metas com check-ins e notas</li>
+      <li>Como criar assinaturas por e-mail para um scorecard</li>
+      <li>Como configurar permissões em nível de meta</li>
+      <li>Como organizar metas e colunas dentro de um scorecard</li>
+      <li>Como criar metas vinculadas, reutilizadas entre vários scorecards</li>
+    </ul>
+  </div>
+
+  <h2 id="acompanhar-metas">Ficar por dentro das suas metas</h2>
+  <p>O painel de detalhes de uma meta mostra todo o histórico desde a data de início, incluindo check-ins, mudanças de status e notas relevantes. Para acessá-lo, abra o scorecard e selecione o nome da meta.</p>
+  <p>É possível filtrar o scorecard pelos cartões de resumo no topo (por exemplo, metas "em risco" ou "atrasadas") ou usar a busca por palavra-chave para localizar rapidamente uma meta específica, sem perder o contexto das relações entre metas pai e filhas.</p>
+
+  <h3>Registrar um check-in</h3>
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Meta manual <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ol>
+        <li>No scorecard, selecione o nome da meta.</li>
+        <li>No painel de detalhes, selecione <strong>Novo check-in</strong>.</li>
+        <li>Escolha uma data, informe um valor novo ou atualizado, selecione um status e, opcionalmente, inclua uma nota.</li>
+        <li>Selecione <strong>Salvar</strong>. O check-in aparece na seção Atividade do painel de detalhes.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Meta conectada <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ol>
+        <li>No scorecard, selecione o nome da meta e depois <strong>Novo check-in</strong>.</li>
+        <li>Escolha uma data — o valor daquele dia é preenchido automaticamente e não pode ser sobrescrito.</li>
+        <li>Selecione um status, inclua uma nota opcional e selecione <strong>Salvar</strong>.</li>
+      </ol>
+    </div>
+  </div>
+
+  <h3>Seguir metas</h3>
+  <p>Use a função <strong>Seguir</strong> para acompanhar rapidamente as metas de seu interesse, mesmo navegando por scorecards diferentes. Todas as metas seguidas ficam reunidas no hub de Métricas, em <strong>Seguindo</strong>.</p>
+  <div class="callout">
+    <span class="callout-icon">💡</span>
+    <div>Ao seguir uma meta, você recebe notificações do Teams sempre que a definição da meta é atualizada — por exemplo, um novo check-in ou uma mudança de status disparada por regra automatizada. Para parar de receber notificações, use a opção <strong>Deixar de seguir</strong>.</div>
+  </div>
+
+  <h2 id="assinaturas-por-email">Criar assinaturas por e-mail</h2>
+  <p>As assinaturas enviam atualizações periódicas por e-mail sobre um scorecard, mantendo você e sua equipe informados sem precisar acessar o Power BI.</p>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Como configurar uma assinatura <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ol>
+        <li>Abra o scorecard e selecione <strong>Assinar scorecard</strong> na faixa de opções.</li>
+        <li>Selecione <strong>Adicionar nova assinatura</strong>.</li>
+        <li>Defina nome, assunto e mensagem do e-mail.</li>
+        <li>Escolha a frequência: por hora, diária, semanal ou mensal.</li>
+        <li>Configure o horário (hora cheia, 15, 30 ou 45 minutos, AM/PM e fuso horário).</li>
+        <li>Defina a data de início e, opcionalmente, a data de término.</li>
+        <li>Opcionalmente, inclua um link para o scorecard com permissão de visualização para os destinatários.</li>
+        <li>Selecione <strong>Salvar e fechar</strong>.</li>
+      </ol>
+      <p>O e-mail traz uma tabela com até 50 metas, mostrando nome, status, valores e data de vencimento. Assinaturas podem ser editadas, ativadas/desativadas ou excluídas a qualquer momento em <strong>Gerenciar todas as assinaturas</strong>.</p>
+    </div>
+  </div>
+
+  <table class="term-table">
+    <thead><tr><th>Limite / requisito</th><th>Detalhe</th></tr></thead>
+    <tbody>
+      <tr><td>Assinaturas por scorecard</td><td>Até 24, cada uma com destinatários, horários e frequências próprios.</td></tr>
+      <tr><td>Licenciamento</td><td>Requer licença Pro, PPU, ou workspace em capacidade Premium.</td></tr>
+      <tr><td>Assinar outras pessoas</td><td>Exige papel de Contribuidor, Membro ou Admin no workspace, além da licença.</td></tr>
+      <tr><td>Capacidade Premium</td><td>Permite assinar aliases de grupo (internos ou externos) e usuários externos.</td></tr>
+      <tr><td>Sem capacidade Premium</td><td>Destinatários também precisam de licença Pro; só é possível adicionar e-mails do mesmo domínio.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="permissoes-de-nivel-de-meta">Permissões em nível de meta</h2>
+  <p>Em muitas organizações, nem todo mundo deve ver ou editar as mesmas metas — por exemplo, apenas gestores devem enxergar metas de RH e financeiro, enquanto metas operacionais podem ficar visíveis a todos. As permissões em nível de meta resolvem esse cenário.</p>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Como configurar permissões <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ol>
+        <li>No hub de Métricas, selecione o scorecard e depois o ícone de edição (lápis).</li>
+        <li>Selecione o ícone de engrenagem para abrir o painel de configurações do scorecard.</li>
+        <li>Selecione a guia <strong>Permissões</strong>.</li>
+        <li>Selecione <strong>Adicionar função</strong> ou <strong>Mais opções (...)</strong> em uma função existente para abrir as configurações de papel.</li>
+      </ol>
+    </div>
+  </div>
+
+  <p>Cada função pode combinar os seguintes tipos de permissão:</p>
+  <ul>
+    <li><strong>Visualização:</strong> concede acesso para ver metas específicas do scorecard.</li>
+    <li><strong>Atualização:</strong> concede acesso para fazer check-in em aspectos específicos de uma meta — <em>Nota</em> (adicionar notas), <em>Status</em> (atualizar status) e <em>Atual</em> (atualizar o valor atual), em qualquer combinação.</li>
+    <li><strong>Aplicar a todos:</strong> propaga a permissão para todas as submetas existentes e futuras daquela meta.</li>
+  </ul>
+
+  <div class="callout">
+    <span class="callout-icon">💡</span>
+    <div>É possível definir uma função como <strong>padrão</strong>, aplicada a qualquer pessoa que acesse o scorecard e não pertença a outra função específica. Quem pertence a uma função específica assume as permissões dessa função em vez das padrão.</div>
+  </div>
+
+  <div class="callout warning">
+    <span class="callout-icon">⚠</span>
+    <div>As funções de permissão (exceto a padrão) também se aplicam ao modelo semântico gerado pelo scorecard. Permissões em nível de meta são diferentes das permissões de edição do workspace: para dar acesso total de edição ao scorecard, use os papéis de Contribuidor ou Membro no workspace. O suporte completo a segurança em nível de linha (RLS) automática baseada em permissões de meta ainda não está disponível.</div>
+  </div>
+
+  <p>Depois de configurar as funções, compartilhe o scorecard pelo botão <strong>Compartilhar</strong>, escolhendo <strong>Pessoas específicas podem ver e compartilhar</strong> para personalizar quem recebe acesso.</p>
+
+  <h2 id="organizar-scorecard">Organizar colunas, metas e scorecards</h2>
+  <p>Como autor de um scorecard, você pode renomear, ocultar ou reordenar colunas, reordenar metas (inclusive transformando uma meta em submeta de outra) e mover ou copiar o scorecard inteiro para outro workspace.</p>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Reordenar metas e criar submetas por arraste <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <p>Selecione uma meta e arraste-a para cima ou para baixo. Recuando levemente a meta, ela se torna submeta da meta acima — e passa a herdar a cor da meta pai.</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Ocultar, mover e renomear colunas <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ul>
+        <li>No modo de edição, selecione a seta ao lado da coluna &gt; <strong>Configurações da coluna</strong> &gt; <strong>Mover para a direita/esquerda</strong> ou <strong>Ocultar esta coluna</strong>.</li>
+        <li>Para reexibir colunas ocultas, use <strong>Mostrar/Ocultar colunas</strong> e, em <em>Editar colunas de exibição</em>, marque a coluna desejada, arraste para reordenar, ou selecione <strong>Redefinir para o padrão</strong>.</li>
+        <li>Para renomear, selecione a coluna em Configurações da coluna e digite o novo nome (entre 1 e 25 caracteres).</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Mover ou copiar um scorecard</h3>
+  <p>Útil para reutilizar um scorecard modelo entre departamentos, testar um scorecard em "Meu workspace" antes de publicá-lo, ou reaproveitar a definição de metas de um scorecard existente.</p>
+  <ol>
+    <li>No menu Arquivo, selecione <strong>Mover scorecard</strong> ou <strong>Copiar scorecard</strong>.</li>
+    <li>Escolha o workspace de destino na lista e selecione <strong>Continuar</strong>.</li>
+  </ol>
+  <div class="callout">
+    <span class="callout-icon">💡</span>
+    <div>Ao copiar um scorecard, você escolhe se quer incluir ou não o histórico de check-ins — útil para reaproveitar o mesmo modelo em um novo período fiscal.</div>
+  </div>
+
+  <h2 id="metas-vinculadas">Criar metas vinculadas (preview)</h2>
+  <p>Metas vinculadas permitem exibir a mesma meta em vários scorecards, em workspaces diferentes, sem duplicar dados. Check-ins, edições e atualizações aparecem em todos os locais onde a meta está vinculada. É o recurso ideal, por exemplo, quando a liderança tem um scorecard corporativo e cada departamento reutiliza algumas dessas metas no próprio scorecard, somando outras específicas da área.</p>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Como criar uma meta vinculada <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ol>
+        <li>Abra um scorecard e selecione <strong>Editar</strong>.</li>
+        <li>Selecione o botão <strong>Novo</strong>.</li>
+        <li>Selecione <strong>Vincular a meta existente (preview)</strong>.</li>
+        <li>Escolha o scorecard de origem e selecione as metas que deseja incluir.</li>
+        <li>Selecione <strong>Continuar</strong>. As metas vinculadas aparecem no scorecard atual.</li>
+      </ol>
+    </div>
+  </div>
+
+  <p>Só é possível editar a meta a partir da origem (é possível navegar até ela pelo menu de opções da meta vinculada, em <strong>Ir para a meta de origem</strong>); check-ins podem ser feitos direto na meta vinculada, desde que você tenha permissão na origem, e refletem em todos os scorecards que a utilizam.</p>
+
+  <div class="callout warning">
+    <span class="callout-icon">⚠</span>
+    <div><strong>Considerações:</strong> ao vincular várias metas de uma vez, a ordem e as relações pai/filha da origem são preservadas. Metas vinculadas não são filtradas por hierarquia (mantêm seu valor original) e não é possível fazer check-in nelas em uma visão hierárquica filha. Se uma meta de rollup for vinculada a outro scorecard, ela continua mostrando o valor calculado na origem, ignorando submetas do scorecard de destino.</div>
+  </div>
+</section>
+
+<section class="page-section" id="page-9">
+  <h1>Hierarquias em scorecards</h1>
+
+  <div class="goal-list">
+    <p><strong>Nesta página você vai aprender:</strong></p>
+    <ul>
+      <li>O que é uma hierarquia de metas e como ela se relaciona com scorecards em cascata</li>
+      <li>Quais são os pré-requisitos para configurar uma hierarquia</li>
+      <li>Cenários típicos de uso, como consolidar metas regionais em uma meta corporativa</li>
+      <li>Como visualizar e navegar por hierarquias dentro de um scorecard</li>
+    </ul>
+  </div>
+
+  <div class="callout warning">
+    <span class="callout-icon">⚠</span>
+    <div><strong>Recurso descontinuado:</strong> as hierarquias em scorecards (e a visão de heatmap) serão removidas até 15 de abril de 2026. Depois dessa data, esses dois recursos deixam de estar disponíveis, mas os scorecards em si continuam funcionando normalmente.</div>
+  </div>
+
+  <h2 id="introducao-hierarquias">Introdução às hierarquias em scorecards</h2>
+  <p>As métricas do Power BI oferecem suporte a scorecards em cascata, que fazem rollup ao longo de hierarquias configuradas no próprio scorecard. Você define uma hierarquia e mapeia os modelos semânticos usados pelas metas para os níveis da hierarquia e para os campos de proprietário, criando automaticamente uma visão de scorecard para cada "fatia" dos dados.</p>
+
+  <h3>Pré-requisitos</h3>
+  <ul>
+    <li>Workspace em capacidade Premium ou Premium por Usuário (PPU).</li>
+    <li>Permissão de edição no scorecard.</li>
+    <li>Pelo menos uma meta conectada no scorecard.</li>
+    <li>Acesso de build (compilação) aos modelos semânticos conectados ao scorecard.</li>
+  </ul>
+
+  <p>Depois de configurada, a hierarquia faz o Power BI propagar as metas conectadas para cada nível: os usuários podem navegar (drill) pela hierarquia para ver progresso, status e realizar check-ins em diferentes níveis, com valores, status e proprietários mudando conforme o nível selecionado.</p>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Como configurar uma hierarquia <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <ol>
+        <li>No modo de edição do scorecard, selecione <strong>Configurar uma hierarquia</strong> no menu Novo (ou <strong>Gerenciar hierarquias</strong> no slicer Todos).</li>
+        <li>Dê um nome à hierarquia e construa os níveis desejados.</li>
+        <li>Mapeie cada nível para os campos correspondentes nos modelos semânticos conectados às métricas do scorecard, desmarcando campos que não devem entrar no mapeamento.</li>
+        <li>Opcionalmente, mapeie proprietários por nível de hierarquia (a coluna de proprietário passa a mudar dinamicamente conforme a fatia de dados exibida).</li>
+        <li>Salve a hierarquia para ver os valores e proprietários conectados mudarem dinamicamente.</li>
+      </ol>
+      <p>É possível criar múltiplas hierarquias para cruzar diferentes fatias dos dados — por exemplo, uma hierarquia de geografia e outra de produto, permitindo visualizar métricas como "notebooks na Alemanha" usando o slicer.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="callout-icon">💡</span>
+    <div>Metas manuais (sem conexão a dados) também aparecem nos scorecards filhos, mas exibem valores manuais em branco — ainda assim podem receber check-in e ser atualizadas na visão do scorecard filho.</div>
+  </div>
+
+  <table class="term-table">
+    <thead><tr><th>O que é herdado do scorecard original</th><th>O que pode ser editado no scorecard filho</th></tr></thead>
+    <tbody>
+      <tr><td>Metadados da métrica: nome, proprietários, status e datas de início/vencimento</td><td>Dados de check-in: notas, status (quando aplicável) e valores (quando aplicável)</td></tr>
+      <tr><td>Conexões de dados, regras de status e configurações de acompanhamento</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout warning">
+    <span class="callout-icon">⚠</span>
+    <div><strong>Limites e considerações:</strong> até 10.000 itens por hierarquia (somando todos os modelos semânticos), até cinco hierarquias e até cinco níveis por hierarquia. RLS estática e dinâmica é suportada, mas roteada pelo criador da hierarquia — todos os visualizadores do scorecard "assumem" o acesso desse criador. Rollups ainda não são suportados em scorecards filhos, e reutilizar hierarquias entre scorecards também não é possível: cada scorecard precisa da própria hierarquia.</div>
+  </div>
+
+  <h2 id="cenarios-de-uso-hierarquias">Cenários de uso de hierarquias</h2>
+  <p>Scorecards em cascata são especialmente úteis para padronizar metas entre diferentes segmentos de uma organização em grande escala. Três cenários ilustram bem o valor do recurso.</p>
+
+  <div class="capability-grid">
+    <div class="capability-card">
+      <h4>Saúde organizacional entre equipes</h4>
+      <p>Acompanhe engajamento, satisfação e metas de contratação mapeadas por divisão. A liderança sênior enxerga como cada divisão está performando em relação a metas padrão, como taxa de rotatividade, treinamentos de compliance e diversidade nas contratações — tornando o scorecard uma ferramenta de decisão em alto nível.</p>
+    </div>
+    <div class="capability-card">
+      <h4>Métricas de varejo por local e produto</h4>
+      <p>Combine uma hierarquia de geografia com uma hierarquia de produto para cruzar as duas dimensões — por exemplo, métricas de notebooks na Alemanha, ou de um modelo específico em Berlim. Proprietários podem ser mapeados por local, garantindo que cada gerente de filial seja responsável pelas metas da própria unidade.</p>
+    </div>
+    <div class="capability-card">
+      <h4>Hierarquias organizacionais</h4>
+      <p>Use a própria hierarquia organizacional como hierarquia do scorecard, útil sobretudo para métricas de compliance que cada equipe precisa atingir. A liderança consegue ver rapidamente números consolidados e detalhar por equipe para identificar quem está bem e quem está atrasado, com apoio da visão de heatmap para comparação lado a lado.</p>
+    </div>
+  </div>
+
+  <h2 id="visualizar-hierarquias">Visualizar hierarquias no scorecard</h2>
+  <p>Existem duas formas de visualizar e interagir com uma hierarquia dentro de um scorecard.</p>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Visão de lista do scorecard <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <p>Use o slicer para navegar até o nível de hierarquia desejado. A partir daí, você pode abrir o painel de detalhes, ir até um relatório e fazer check-ins normalmente, como em qualquer outro scorecard. Valores conectados, proprietários mapeados e status definidos por regras refletem os dados corretos em cada nível, desde que existam relacionamentos entre os campos da hierarquia nos modelos semânticos subjacentes. Metas manuais aparecem com um ícone de informação indicando quais valores são manuais.</p>
+      <p>Também é possível visualizar interseções entre hierarquias diferentes (por exemplo, uma seleção de produto cruzada com uma seleção de geografia); o cabeçalho do scorecard mostra os dois níveis escolhidos.</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Visão de heatmap <span class="acc-arrow">▾</span></button>
+    <div class="acc-body">
+      <p>Ao selecionar Heatmap nas opções de visão, você monta uma comparação lado a lado entre diferentes níveis da hierarquia — ótima para reuniões de acompanhamento de negócio. Essa experiência fica disponível também em modo de leitura, permitindo que consumidores explorem por conta própria. É possível personalizar quais informações aparecem em cada bloco de meta pelas configurações de exibição, acessadas pelo menu do slicer.</p>
+    </div>
+  </div>
+
+  <div class="callout warning">
+    <span class="callout-icon">⚠</span>
+    <div><strong>Limitações:</strong> requer workspace Premium ou PPU; os mesmos limites de itens, hierarquias e níveis descritos acima se aplicam. Permissões não podem ser definidas por nível de hierarquia — as permissões de nível de meta são as do scorecard original e valem para todos os níveis. O histórico não é suportado em metas hierárquicas (os dados são sempre consultados ao vivo no modelo semântico). Salvar e compartilhar visões de heatmap ainda não é suportado, e há um limite de uma seleção por hierarquia ao visualizar um scorecard hierárquico.</div>
+  </div>
+</section>
+
+
+    <!-- Paginação -->
+    <div class="pagination">
+      <button class="btn btn-secondary" id="btn-prev" onclick="goToPage(currentPage-1)">← Anterior</button>
+      <span id="page-indicator">Página 1 de 9</span>
+      <button class="btn btn-primary"   id="btn-next" onclick="goToPage(currentPage+1)">Próximo →</button>
+    </div>
+
+    <a href="PowerBI_Home.html" class="home-footer-link">← Voltar ao Home</a>
+  </main>
+</div>
+
+<script>
+// SAFETY NET — garante init mesmo se o arquivo for truncado pelo formatter
+const TOTAL_PAGES = 9;
+const _saved = parseInt(localStorage.getItem('pbidash_page') || '1') || 1;
+let currentPage = Math.min(Math.max(_saved, 1), TOTAL_PAGES);
+
+document.addEventListener('DOMContentLoaded', function() { goToPage(currentPage); });
+
+function pageExists(n) { return !!document.getElementById('page-' + n); }
+
+function goToPage(n) {
+  if (n < 1 || n > TOTAL_PAGES || !pageExists(n)) return;
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('page-' + n).classList.add('active');
+  currentPage = n;
+  try { localStorage.setItem('pbidash_page', n); } catch(e) {}
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  updateUI();
+}
+
+function updateUI() {
+  const h1 = document.getElementById('page-' + currentPage)?.querySelector('h1');
+  if (h1) { const el = document.getElementById('bc-page'); if (el) el.textContent = h1.textContent; }
+  document.getElementById('btn-prev').disabled = currentPage === 1;
+  document.getElementById('btn-next').disabled = currentPage === TOTAL_PAGES;
+  document.querySelectorAll('.dot[data-page]').forEach(d => {
+    const p = Number(d.dataset.page);
+    d.className = 'dot ' + (p < currentPage ? 'done' : p === currentPage ? 'current' : 'pending');
+  });
+  document.querySelectorAll('.nav-btn[data-page]').forEach(b => {
+    b.classList.toggle('active', Number(b.dataset.page) === currentPage);
+  });
+  const pageIndicator = document.getElementById('page-indicator');
+  if (pageIndicator) pageIndicator.textContent = 'Página ' + currentPage + ' de ' + TOTAL_PAGES;
+  const pct = Math.round(((currentPage - 1) / (TOTAL_PAGES - 1)) * 100) || 0;
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+// Sidebar / menu gaveta
+function openSidebar()  { document.getElementById('sidebar').classList.add('open'); document.getElementById('sidebar-overlay').classList.add('active'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebar-overlay').classList.remove('active'); }
+document.getElementById('menu-toggle').addEventListener('click', openSidebar);
+document.getElementById('sidebar-overlay').addEventListener('click', closeSidebar);
+
+// Accordions
+function toggleAcc(btn) {
+  const body = btn.nextElementSibling;
+  const open = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !open);
+  body.style.display = open ? 'none' : 'block';
+  btn.querySelector('.acc-arrow').textContent = open ? '▾' : '▴';
+}
+
+// Grupos da sidebar (colapsar/expandir)
+function toggleGroup(header) {
+  const body = header.nextElementSibling;
+  body.classList.toggle('collapsed');
+  const arrow = header.querySelector('span');
+  arrow.textContent = body.classList.contains('collapsed') ? '▸' : '▾';
+}
+
+// Nav buttons
+document.querySelectorAll('.nav-btn[data-page]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    goToPage(Number(btn.dataset.page));
+    if (window.innerWidth <= 768) closeSidebar();
+  });
+});
+
+goToPage(currentPage);
+</script>
+</body>
+</html>

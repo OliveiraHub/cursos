@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Hub de guias de estudo do Power BI — cursos e glossário consolidado.">
+<link rel="icon" type="image/png" href="images/logo.png">
+<title>Power BI — Guias de Estudo</title>
+<!-- Barlow (Google Fonts) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dark:    #1a2e44;
+  --blue:    #0077b6;
+  --teal:    #00b4d8;
+  --light:   #f0f6fb;
+  --text:    #1e293b;
+  --muted:   #64748b;
+  --border:  #cbd5e1;
+  --white:   #ffffff;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --header-h: 64px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Barlow', 'Segoe UI', system-ui, sans-serif;
+  color: var(--text);
+  background: var(--light);
+  line-height: 1.55;
+}
+
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+header {
+  background: linear-gradient(135deg, var(--dark), #12233a);
+  color: var(--white);
+  padding: 2.5rem 1.5rem 3rem;
+  text-align: center;
+}
+header .logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+header img.header-logo { height: 44px; width: 44px; border-radius: 10px; object-fit: contain; }
+header h1 { font-size: 1.9rem; margin-bottom: 0.4rem; }
+header p { color: rgba(255,255,255,0.8); font-size: 1rem; max-width: 620px; margin: 0 auto; }
+
+main {
+  max-width: 1100px;
+  margin: -2rem auto 0;
+  padding: 0 1.5rem 4rem;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  color: var(--dark);
+  margin: 2.5rem 0 1.1rem;
+  font-weight: 700;
+}
+.section-title:first-of-type { margin-top: 0; }
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.course-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 14px rgba(20,40,70,0.1);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.course-card.active:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(20,40,70,0.16); }
+.course-card .course-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+}
+.course-card h3 { font-size: 1.1rem; color: var(--dark); }
+.course-card p.subtitle { font-size: 0.85rem; color: var(--muted); }
+.course-card .course-link {
+  margin-top: auto;
+  display: inline-block;
+  background: var(--blue);
+  color: var(--white);
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: center;
+}
+.course-card .course-link:hover { background: #00639a; text-decoration: none; }
+.course-card.soon { opacity: 0.65; }
+.course-card.soon .course-link {
+  background: var(--border);
+  color: var(--muted);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ---------- Glossário ---------- */
+#glossario-search {
+  width: 100%;
+  max-width: 420px;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  margin-bottom: 1.25rem;
+}
+
+.glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.9rem;
+}
+
+.glossary-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+}
+.glossary-item dt { font-weight: 700; color: var(--dark); margin-bottom: 0.3rem; }
+.glossary-item dd { color: var(--text); font-size: 0.9rem; }
+.glossary-item.hidden { display: none; }
+
+.glossary-empty { color: var(--muted); font-size: 0.9rem; display: none; }
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem 3rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 600px) {
+  header h1 { font-size: 1.5rem; }
+  main { margin-top: -1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-row">
+    <img src="images/logo.png" class="header-logo" alt="Logo Power BI">
+    <h1>Power BI — Guias de Estudo</h1>
+  </div>
+  <p>Guias de estudo em PT-BR sobre o Power BI: visão geral, primeiros passos, licenciamento, tipos de conteúdo e muito mais.</p>
+</header>
+
+<main>
+  <p class="section-title">Cursos disponíveis</p>
+  <div class="course-grid">
+    <div class="course-card active">
+      <div class="course-icon">📊</div>
+      <h3>Fundamentos do Power BI</h3>
+      <p class="subtitle">27 páginas · Visão geral, primeiros passos, licenciamento, tipos de conteúdo e compatibilidade</p>
+      <a href="Fundamentos_Overview.html" class="course-link">Acessar curso →</a>
+    </div>
+    <div class="course-card active">
+      <div class="course-icon">🎨</div>
+      <h3>Criar e Formatar Relatórios</h3>
+      <p class="subtitle">19 páginas · Editor de relatórios, filtros, bookmarks, publicação, desempenho, IA e acessibilidade</p>
+      <a href="Criar_Relatorios_Overview.html" class="course-link">Acessar curso →</a>
+    </div>
+    <div class="course-card active">
+      <div class="course-icon">📈</div>
+      <h3>Visualizações no Power BI</h3>
+      <p class="subtitle">15 páginas · Tipos de gráfico, mapas, cards, slicers, formatação e recursos avançados</p>
+      <a href="Visualizacoes_Overview.html" class="course-link">Acessar curso →</a>
+    </div>
+    <div class="course-card active">
+      <div class="course-icon">🤖</div>
+      <h3>Copilot no Power BI</h3>
+      <p class="subtitle">6 páginas · Habilitação, uso em relatórios e apps, prompts, preparar dados para IA e tutorial prático</p>
+      <a href="Copilot_Overview.html" class="course-link">Acessar curso →</a>
+    </div>
+    <div class="course-card active">
+      <div class="course-icon">📌</div>
+      <h3>Dashboards, Mobile e Metas</h3>
+      <p class="subtitle">9 páginas · Layouts mobile, fixar conteúdo em dashboards, alertas, temas, metas e scorecards</p>
+      <a href="Dashboards_Metas_Overview.html" class="course-link">Acessar curso →</a>
+    </div>
+    <div class="course-card soon">
+      <div class="course-icon">🔗</div>
+      <h3>Administração do Power BI</h3>
+      <p class="subtitle">Em desenvolvimento</p>
+      <a href="#" class="course-link">Em breve</a>
+    </div>
+  </div>
+
+  <p id="glossario" class="section-title">Glossário Consolidado</p>
+  <input type="text" id="glossario-search" aria-label="Buscar no glossário" placeholder="Buscar termo no glossário...">
+  <dl class="glossary-grid" id="glossary-list">
+    <div class="glossary-item"><dt>Serviço Power BI</dt><dd>Plataforma em nuvem (app.powerbi.com) para publicar, compartilhar e colaborar em relatórios e dashboards.</dd></div>
+    <div class="glossary-item"><dt>Power BI Desktop</dt><dd>Aplicativo Windows gratuito para conectar, transformar e modelar dados e criar relatórios.</dd></div>
+    <div class="glossary-item"><dt>Microsoft Fabric</dt><dd>Plataforma de análise "tudo em um" da Microsoft, da qual o Power BI é uma das cargas de trabalho principais.</dd></div>
+    <div class="glossary-item"><dt>Modelo semântico</dt><dd>Antes chamado de "dataset" — contêiner de dados usado para construir relatórios, dashboards e apps; pode combinar múltiplas fontes.</dd></div>
+    <div class="glossary-item"><dt>Relatório</dt><dd>Uma ou mais páginas de visuais interativos baseados em um único modelo semântico.</dd></div>
+    <div class="glossary-item"><dt>Dashboard</dt><dd>Uma única página (canvas) com blocos (tiles) de visuais fixados a partir de relatórios; não suporta filtragem, mas suporta Q&A e alertas.</dd></div>
+    <div class="glossary-item"><dt>App</dt><dd>Coleção de dashboards, relatórios e modelos semânticos empacotados para compartilhamento com indivíduos, grupos ou organizações.</dd></div>
+    <div class="glossary-item"><dt>Workspace</dt><dd>Área colaborativa onde designers armazenam e gerenciam dashboards, relatórios e outros itens do Fabric.</dd></div>
+    <div class="glossary-item"><dt>Tile (bloco)</dt><dd>Uma única visualização exibida em um dashboard, fixada (pinned) a partir de um relatório.</dd></div>
+    <div class="glossary-item"><dt>Pin (fixar)</dt><dd>Ação de adicionar uma visualização de um relatório a um dashboard.</dd></div>
+    <div class="glossary-item"><dt>Q&A</dt><dd>Recurso de IA que permite fazer perguntas sobre os dados em linguagem natural e obter visuais como resposta.</dd></div>
+    <div class="glossary-item"><dt>Copilot</dt><dd>Assistente de IA integrado ao Power BI que ajuda a criar relatórios, analisar dados e gerar resumos em linguagem natural.</dd></div>
+    <div class="glossary-item"><dt>Capacidade (Capacity)</dt><dd>Conjunto dedicado de recursos usado para desempenho e escalabilidade (SKUs Fabric F ou Power BI Premium P).</dd></div>
+    <div class="glossary-item"><dt>Fabric (Grátis)</dt><dd>Licença por usuário gratuita — permite criar conteúdo no Meu workspace e consumir conteúdo em capacidade Premium (F64+).</dd></div>
+    <div class="glossary-item"><dt>Power BI Pro</dt><dd>Licença paga por usuário que permite publicar, compartilhar e colaborar com outros usuários Pro.</dd></div>
+    <div class="glossary-item"><dt>Premium Per User (PPU)</dt><dd>Licença que dá acesso à maioria dos recursos Premium por usuário, sem exigir capacidade dedicada da organização.</dd></div>
+    <div class="glossary-item"><dt>Dataflow</dt><dd>Coleção de etapas de transformação de dados armazenada no serviço, permitindo preparação de dados reutilizável e centralizada.</dd></div>
+    <div class="glossary-item"><dt>Lakehouse</dt><dd>Item do Microsoft Fabric que armazena dados de forma unificada, combinando características de data lake e data warehouse.</dd></div>
+    <div class="glossary-item"><dt>Direct Lake</dt><dd>Modo de consulta do Fabric que lê dados diretamente do OneLake, sem necessidade de importação ou cache.</dd></div>
+    <div class="glossary-item"><dt>DirectQuery</dt><dd>Modo de conexão em que o Power BI consulta a fonte de dados original em tempo real, sem importar os dados para o modelo.</dd></div>
+    <div class="glossary-item"><dt>Esquema em estrela (star schema)</dt><dd>Modelo de dados com uma tabela de fato central cercada por tabelas de dimensão relacionadas a ela.</dd></div>
+    <div class="glossary-item"><dt>Tenant</dt><dd>Instância organizacional do Microsoft Entra onde o Microsoft Fabric e o Power BI são executados.</dd></div>
+    <div class="glossary-item"><dt>SKU</dt><dd>Stock Keeping Unit — identifica o tamanho/tipo de uma capacidade ou licença (ex: F64, P1).</dd></div>
+    <div class="glossary-item"><dt>Relatórios paginados</dt><dd>Relatórios pixel-perfect, prontos para impressão (como faturas), criados no Power BI Report Builder.</dd></div>
+    <div class="glossary-item"><dt>Analisar no Excel</dt><dd>Recurso que gera um arquivo Excel com conexão dinâmica a um modelo semântico do Power BI, para uso com tabelas dinâmicas.</dd></div>
+    <div class="glossary-item"><dt>Drillthrough</dt><dd>Recurso que permite navegar de um dado resumido até uma página de detalhe configurada para aquele contexto, com clique direito.</dd></div>
+    <div class="glossary-item"><dt>Bookmark (marcador)</dt><dd>Estado salvo de um relatório (filtros, seleções, visibilidade de objetos) que pode ser reaplicado com um clique.</dd></div>
+    <div class="glossary-item"><dt>Segurança em nível de linha (RLS)</dt><dd>Row-Level Security — restringe quais linhas de dados cada usuário pode ver em um relatório, com base em papéis (roles) e filtros.</dd></div>
+    <div class="glossary-item"><dt>Tema de relatório</dt><dd>Conjunto de cores, fontes e formatações padrão aplicado a todos os visuais de um relatório de uma só vez.</dd></div>
+    <div class="glossary-item"><dt>Performance Analyzer</dt><dd>Ferramenta do Power BI Desktop/service que mede o tempo de carregamento de cada visual em um relatório.</dd></div>
+    <div class="glossary-item"><dt>Translytical task flow</dt><dd>Recurso (preview) que permite escrever dados de volta na fonte diretamente a partir de um relatório, via user data functions do Fabric.</dd></div>
+    <div class="glossary-item"><dt>Slicer (segmentação de dados)</dt><dd>Controle visual de filtro colocado diretamente na tela do relatório — dropdown, lista, botão ou intervalo de datas.</dd></div>
+    <div class="glossary-item"><dt>Small multiples (múltiplos pequenos)</dt><dd>Recurso que repete o mesmo visual em uma grade, dividido por categoria, para comparar padrões lado a lado.</dd></div>
+    <div class="glossary-item"><dt>Decomposition tree</dt><dd>Visual de IA que sugere automaticamente a próxima dimensão a explorar em uma análise de causa raiz.</dd></div>
+    <div class="glossary-item"><dt>Key influencers</dt><dd>Visual de IA que identifica quais fatores mais influenciam o aumento ou a queda de uma métrica.</dd></div>
+    <div class="glossary-item"><dt>Matriz (matrix)</dt><dd>Visual do tipo tabela dinâmica, com hierarquias de linhas e colunas que podem ser expandidas e recolhidas.</dd></div>
+    <div class="glossary-item"><dt>Formatação condicional</dt><dd>Regras que alteram a aparência de um visual (cor, ícone, barra de dados) com base nos valores dos dados.</dd></div>
+    <div class="glossary-item"><dt>Visual calculation</dt><dd>Camada de cálculo semelhante ao DAX, definida diretamente sobre um visual, sem alterar o modelo de dados.</dd></div>
+    <div class="glossary-item"><dt>AI instructions</dt><dd>Instruções personalizadas que o autor de um modelo semântico escreve para orientar as respostas do Copilot sobre esses dados.</dd></div>
+    <div class="glossary-item"><dt>Verified answers</dt><dd>Pares de pergunta e resposta pré-aprovados que garantem que o Copilot responda corretamente a perguntas comuns sobre um modelo.</dd></div>
+    <div class="glossary-item"><dt>Narrativa inteligente (smart narrative)</dt><dd>Visual que gera automaticamente um resumo em texto, em linguagem natural, sobre os dados de uma página de relatório.</dd></div>
+    <div class="glossary-item"><dt>Layout mobile</dt><dd>Versão de uma página de relatório desenhada especificamente para telas de celular, criada na visualização de layout mobile do Power BI Desktop.</dd></div>
+    <div class="glossary-item"><dt>Meta (goal)</dt><dd>Métrica com uma meta (target) definida, acompanhada ao longo do tempo dentro de um scorecard.</dd></div>
+    <div class="glossary-item"><dt>Scorecard</dt><dd>Coleção de metas organizadas para acompanhar objetivos de negócio, individuais ou de equipe.</dd></div>
+    <div class="glossary-item"><dt>Meta conectada (connected goal)</dt><dd>Meta cujo valor atual é atualizado automaticamente a partir de um relatório ou modelo semântico, em vez de inserido manualmente.</dd></div>
+    <div class="glossary-item"><dt>Alerta de dados</dt><dd>Notificação configurada em um bloco de dashboard, disparada quando o valor cruza um limite definido.</dd></div>
+  </dl>
+  <p class="glossary-empty" id="glossary-empty">Nenhum termo encontrado.</p>
+</main>
+
+<footer>
+  Guia de estudo interno — não indexado para mecanismos de busca.
+</footer>
+
+<script>
+const searchInput = document.getElementById('glossario-search');
+const items = Array.from(document.querySelectorAll('.glossary-item'));
+const emptyMsg = document.getElementById('glossary-empty');
+
+searchInput.addEventListener('input', function() {
+  const q = this.value.trim().toLowerCase();
+  let visibleCount = 0;
+  items.forEach(item => {
+    const text = item.textContent.toLowerCase();
+    const match = text.includes(q);
+    item.classList.toggle('hidden', !match);
+    if (match) visibleCount++;
+  });
+  emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+});
+</script>
+</body>
+</html>

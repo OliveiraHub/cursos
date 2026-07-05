@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Guia de estudo — Fundamentos do Power BI: visão geral, primeiros passos, licenciamento, tipos de conteúdo e compatibilidade.">
+<link rel="icon" type="image/png" href="images/logo.png">
+<title>Fundamentos do Power BI — Guia de Estudo</title>
+<!-- Barlow (Google Fonts) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- CSS compartilhado -->
+<link rel="stylesheet" href="power-bi.css">
+<style>
+/* CSS específico deste curso */
+.license-tier-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+.license-tier-grid .capability-card { text-align: center; }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="images/logo.png" class="header-logo" alt="Logo Power BI">
+  <div>
+    <h1>Fundamentos do Power BI</h1>
+  </div>
+  <a href="PowerBI_Home.html" class="hub-link">← Home</a>
+</header>
+
+<div class="breadcrumb">
+  <a href="PowerBI_Home.html">Home</a>
+  <span class="bc-sep">›</span>
+  <span>Fundamentos do Power BI</span>
+  <span class="bc-sep">›</span>
+  <span id="bc-page">Bem-vindo</span>
+</div>
+
+<div class="container">
+  <aside id="sidebar">
+    <div class="nav-group">
+      <div class="nav-group-header" onclick="toggleGroup(this)">Visão Geral <span>▾</span></div>
+      <div class="nav-group-body">
+        <button class="nav-btn" data-page="1"><span class="dot pending" data-page="1"></span> O que é o Power BI?</button>
+        <button class="nav-btn" data-page="2"><span class="dot pending" data-page="2"></span> Novidades no Power BI</button>
+      </div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-header" onclick="toggleGroup(this)">Primeiros Passos <span>▾</span></div>
+      <div class="nav-group-body">
+        <button class="nav-btn" data-page="3"><span class="dot pending" data-page="3"></span> Entrar no Power BI</button>
+        <button class="nav-btn" data-page="4"><span class="dot pending" data-page="4"></span> Navegar pelo serviço</button>
+        <button class="nav-btn" data-page="5"><span class="dot pending" data-page="5"></span> Pesquisar conteúdo</button>
+        <button class="nav-btn" data-page="6"><span class="dot pending" data-page="6"></span> Dashboards e relatórios compartilhados</button>
+        <button class="nav-btn" data-page="7"><span class="dot pending" data-page="7"></span> Conceitos básicos do serviço</button>
+        <button class="nav-btn" data-page="8"><span class="dot pending" data-page="8"></span> Cenários de ponta a ponta</button>
+        <button class="nav-btn" data-page="9"><span class="dot pending" data-page="9"></span> Obter o Power BI Desktop</button>
+        <button class="nav-btn" data-page="10"><span class="dot pending" data-page="10"></span> Primeiros passos com o Desktop</button>
+        <button class="nav-btn" data-page="11"><span class="dot pending" data-page="11"></span> Primeiros passos com o serviço</button>
+        <button class="nav-btn" data-page="12"><span class="dot pending" data-page="12"></span> Primeiros passos com o Fabric</button>
+        <button class="nav-btn" data-page="13"><span class="dot pending" data-page="13"></span> Amostras nos apps móveis</button>
+      </div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-header" onclick="toggleGroup(this)">Licenciamento <span>▾</span></div>
+      <div class="nav-group-body">
+        <button class="nav-btn" data-page="14"><span class="dot pending" data-page="14"></span> Assinar como indivíduo</button>
+        <button class="nav-btn" data-page="15"><span class="dot pending" data-page="15"></span> Licenciamento self-service e FAQ</button>
+        <button class="nav-btn" data-page="16"><span class="dot pending" data-page="16"></span> Recursos por tipo de licença</button>
+        <button class="nav-btn" data-page="17"><span class="dot pending" data-page="17"></span> Recursos para usuários gratuitos</button>
+        <button class="nav-btn" data-page="18"><span class="dot pending" data-page="18"></span> Guia de licenciamento para organizações</button>
+        <button class="nav-btn" data-page="19"><span class="dot pending" data-page="19"></span> Licenças para usuários de negócio</button>
+        <button class="nav-btn" data-page="20"><span class="dot pending" data-page="20"></span> Licenças do Microsoft Fabric</button>
+      </div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-header" onclick="toggleGroup(this)">Tipos de Conteúdo <span>▾</span></div>
+      <div class="nav-group-body">
+        <button class="nav-btn" data-page="21"><span class="dot pending" data-page="21"></span> Apps no Power BI</button>
+        <button class="nav-btn" data-page="22"><span class="dot pending" data-page="22"></span> Relatórios no Power BI</button>
+        <button class="nav-btn" data-page="23"><span class="dot pending" data-page="23"></span> Dashboards no Power BI</button>
+      </div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-header" onclick="toggleGroup(this)">Compatibilidade <span>▾</span></div>
+      <div class="nav-group-body">
+        <button class="nav-btn" data-page="24"><span class="dot pending" data-page="24"></span> Diagnósticos do Desktop</button>
+        <button class="nav-btn" data-page="25"><span class="dot pending" data-page="25"></span> Idiomas e países/regiões</button>
+        <button class="nav-btn" data-page="26"><span class="dot pending" data-page="26"></span> Navegadores suportados</button>
+        <button class="nav-btn" data-page="27"><span class="dot pending" data-page="27"></span> Documentação de suporte</button>
+      </div>
+    </div>
+  </aside>
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+  <main>
+    <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu">☰</button>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+
+    <section class="page-section" id="page-1">
+      <h1>O que é o Power BI?</h1>
+      <div class="goal-list">
+        <p><strong>Nesta página você vai aprender:</strong></p>
+        <ul>
+          <li>O que é o Power BI e como ele se encaixa no Microsoft Fabric</li>
+          <li>As principais diferenças entre o Power BI Desktop e o serviço Power BI</li>
+          <li>Como começar a usar o Power BI passo a passo</li>
+          <li>Qual componente do Power BI usar para cada necessidade</li>
+        </ul>
+      </div>
+
+      <p>O Power BI é a plataforma de análise de negócios (business analytics) da Microsoft, que ajuda a transformar dados em <em>insights</em> acionáveis. Seja você um usuário de negócio, um criador de relatórios ou um desenvolvedor, o Power BI oferece ferramentas e serviços integrados para conectar, visualizar e compartilhar dados em toda a organização.</p>
+
+      <h2 id="por-onde-comecar">Por onde começar, de acordo com seu papel</h2>
+      <table class="term-table">
+        <thead><tr><th>Eu sou...</th><th>Comece por aqui</th></tr></thead>
+        <tbody>
+          <tr><td>Usuário de negócio visualizando e explorando relatórios</td><td>Conceitos básicos do serviço Power BI</td></tr>
+          <tr><td>Criador de relatórios construindo ou publicando relatórios</td><td>Primeiros passos com o Power BI Desktop</td></tr>
+          <tr><td>Tomador de decisão avaliando o Power BI</td><td>Power BI e Microsoft Fabric e recursos principais</td></tr>
+          <tr><td>Administrador configurando o Power BI para a organização</td><td>Primeiros passos com o portal de administração</td></tr>
+          <tr><td>Desenvolvedor incorporando ou estendendo o Power BI</td><td>Documentação para desenvolvedores do Power BI</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="power-bi-e-microsoft-fabric">Power BI e Microsoft Fabric</h2>
+      <p>O Power BI é um componente central do Microsoft Fabric, fornecendo capacidades de análise e visualização. No Fabric, o Power BI compartilha recursos como integração de dados, dataflows e segurança com as outras experiências do Fabric. Porém, alguns recursos — como relatórios, dashboards e o próprio serviço Power BI — são exclusivos do Power BI.</p>
+      <p>O Microsoft Fabric é uma plataforma de análise "tudo em um" que inclui o Power BI como uma de suas cargas de trabalho principais.</p>
+
+      <div class="callout success">
+        <span class="callout-icon">✔</span>
+        <div><strong>Ponto-chave:</strong> não é necessário migrar nada — seu conteúdo e workspaces do Power BI continuam exatamente os mesmos. Use sua conta existente do Power BI ou do Microsoft 365 para entrar; o Fabric adiciona novas capacidades, mas a interface e a experiência do Power BI permanecem familiares.</div>
+      </div>
+
+      <h3>Power BI x Microsoft Fabric — comparação de recursos</h3>
+      <table class="term-table">
+        <thead><tr><th>Recurso</th><th>Descrição</th><th>Fabric</th><th>Power BI</th></tr></thead>
+        <tbody>
+          <tr><td>Integração com OneLake</td><td>Data lake unificado para todas as cargas de trabalho</td><td>✔</td><td>✔</td></tr>
+          <tr><td>Modo Direct Lake</td><td>Consulta dados no OneLake sem importação ou cache</td><td>✔</td><td>✔</td></tr>
+          <tr><td>Notebooks e Dataflows Gen2</td><td>Preparação avançada de dados, compartilhada em todo o Fabric</td><td>✔</td><td>✔</td></tr>
+          <tr><td>Data Activator</td><td>Alertas e automação em tempo real</td><td>✔</td><td>✔</td></tr>
+          <tr><td>Segurança e governança</td><td>Compartilhadas via Microsoft Purview</td><td>✔</td><td>✔</td></tr>
+          <tr><td>Copilot</td><td>Assistente com IA para insights e criação de relatórios</td><td>✔</td><td>✔</td></tr>
+          <tr><td>Power BI Desktop</td><td>Aplicativo Windows para desenvolvimento de relatórios</td><td></td><td>✔</td></tr>
+          <tr><td>Serviço Power BI</td><td>Plataforma em nuvem para publicação, compartilhamento e colaboração</td><td></td><td>✔</td></tr>
+          <tr><td>Relatórios paginados</td><td>Relatórios prontos para impressão, pixel-perfect</td><td></td><td>✔</td></tr>
+          <tr><td>Marketplace de visuais do Power BI</td><td>Visuais personalizados e integrações</td><td></td><td>✔</td></tr>
+          <tr><td>Q&A e linguagem natural</td><td>Consulta de dados por IA</td><td></td><td>✔</td></tr>
+          <tr><td>Power BI Goals</td><td>Acompanhamento de KPIs e scorecards</td><td></td><td>✔</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="passo-a-passo">Power BI passo a passo</h2>
+      <ol>
+        <li><strong>Comece:</strong> cadastre-se e configure seu workspace. Baixe o Power BI Desktop ou use o serviço Power BI direto no navegador.</li>
+        <li><strong>Conecte e prepare os dados:</strong> conecte-se a fontes como Excel, SQL ou serviços em nuvem. Limpe e molde os dados.</li>
+        <li><strong>Modele e combine os dados:</strong> crie relacionamentos, adicione cálculos e combine fontes para uma visão completa.</li>
+        <li><strong>Construa relatórios e dashboards:</strong> use ferramentas de arrastar e soltar para criar visuais interativos.</li>
+        <li><strong>Explore e analise:</strong> filtre, ordene e faça drill-down para encontrar insights. Use os recursos de análise integrados.</li>
+        <li><strong>Compartilhe e colabore:</strong> publique no serviço Power BI, compartilhe com sua equipe e colabore em tempo real.</li>
+        <li><strong>Administre e proteja:</strong> gerencie acessos, configure funções de segurança e monitore o uso.</li>
+      </ol>
+
+      <h2 id="desktop-x-servico">Power BI Desktop x serviço Power BI</h2>
+      <p>O Power BI tem dois componentes principais: o <strong>Power BI Desktop</strong> e o <strong>serviço Power BI</strong>. O Desktop é ideal para modelagem de dados e criação de relatórios, enquanto o serviço é ideal para compartilhamento e colaboração. Ambos podem se conectar a fontes de dados e criar visualizações. Também existe o aplicativo <strong>Power BI Mobile</strong> para visualizar relatórios em trânsito.</p>
+
+      <table class="term-table">
+        <thead><tr><th>Necessidade</th><th>Use isto</th><th>Por quê</th></tr></thead>
+        <tbody>
+          <tr><td>Criar relatórios</td><td>Power BI Desktop</td><td>Ferramentas completas de modelagem e design de dados</td></tr>
+          <tr><td>Compartilhar com a equipe</td><td>Serviço Power BI</td><td>Recursos de colaboração e compartilhamento</td></tr>
+          <tr><td>Visualizar no celular</td><td>Apps Power BI Mobile</td><td>Otimizado para celulares e tablets</td></tr>
+        </tbody>
+      </table>
+
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Recursos principais do Power BI Desktop <span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <ul>
+            <li>Conecta-se a mais de 100 fontes de dados, incluindo bancos de dados, serviços em nuvem, arquivos e fontes web</li>
+            <li>Usa o Power Query Editor para transformação de dados</li>
+            <li>Cria modelos de dados com DAX, colunas calculadas e relacionamentos</li>
+            <li>Acesso a mais de 30 visuais integrados e personalizados</li>
+            <li>Recursos avançados como analisador de desempenho, ferramentas externas e modelos compostos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Recursos principais do serviço Power BI <span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <ul>
+            <li>Workspaces para colaboração em equipe</li>
+            <li>Criação de apps para distribuir dashboards e relatórios</li>
+            <li>Dataflows para preparação de dados reutilizável</li>
+            <li>Compartilhamento de datasets entre relatórios</li>
+            <li>Dashboards em tempo real e dados em streaming</li>
+            <li>Atualização agendada, assinaturas por e-mail, alertas, Q&A, incorporação de conteúdo e exportação de dados</li>
+            <li>Segurança com RLS (segurança em nível de linha), rótulos de confidencialidade, métricas de uso e logs de auditoria</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 id="ecossistema-power-bi">Ecossistema Power BI</h2>
+      <p>O ecossistema do Power BI inclui ferramentas e recursos especializados para aprimorar relatórios e análises:</p>
+      <ul>
+        <li><strong>Relatórios paginados:</strong> use para relatórios estruturados e prontos para impressão, como faturas. São criados com o Power BI Report Builder.</li>
+        <li><strong>Relatórios locais (on-premises):</strong> com o Power BI Report Server é possível manter relatórios localmente, com a opção de migrar para a nuvem depois.</li>
+      </ul>
+    </section>
+
+    <section class="page-section" id="page-2">
+      <h1>Novidades no Power BI</h1>
+      <p>O Power BI recebe atualizações mensais com novos recursos, melhorias e correções. Esta página resume as categorias de novidades mais recentes — para o changelog completo e histórico detalhado de versões, consulte o arquivo de atualizações do Power BI Desktop diretamente no Microsoft Learn.</p>
+
+      <div class="callout">
+        <span class="callout-icon">💡</span>
+        <div>As atualizações mensais do Power BI costumam ser organizadas nas mesmas categorias: <strong>Copilot e IA</strong>, <strong>Relatórios</strong>, <strong>Modelagem</strong>, <strong>Visualizações</strong>, <strong>Conectividade de dados</strong> e <strong>Outros</strong>.</div>
+      </div>
+
+      <h2 id="categorias-de-novidades">Categorias de novidades</h2>
+      <div class="capability-grid">
+        <div class="capability-card">
+          <h4>Copilot e IA</h4>
+          <p>Assistentes de IA para modelagem, autoria de relatórios e respostas conversacionais sobre os dados (Fabric IQ, Copilot no Microsoft 365).</p>
+        </div>
+        <div class="capability-card">
+          <h4>Relatórios</h4>
+          <p>Novos recursos de formatação e comportamento para visuais como mapas de forma, seletores de data, matriz, cartões e slicers.</p>
+        </div>
+        <div class="capability-card">
+          <h4>Modelagem</h4>
+          <p>Evolução da linguagem DAX, incluindo funções definidas pelo usuário (UDFs) e melhorias na exibição de consultas DAX.</p>
+        </div>
+        <div class="capability-card">
+          <h4>Visualizações</h4>
+          <p>Novos visuais de parceiros e melhorias de formatação em visuais existentes.</p>
+        </div>
+        <div class="capability-card">
+          <h4>Conectividade de dados</h4>
+          <p>Novos conectores e melhorias na conexão com fontes de dados.</p>
+        </div>
+        <div class="capability-card">
+          <h4>Outros</h4>
+          <p>Melhorias de plataforma, como o formato aprimorado de relatório (PBIR) e integração do Power BI com o Microsoft Teams.</p>
+        </div>
+      </div>
+
+      <h2 id="versoes-anteriores">Versões anteriores do Power BI Desktop</h2>
+      <p>Se a sua organização precisar de uma versão anterior, é possível baixá-la, mas recomenda-se sempre usar a versão mais recente do Power BI Desktop quando possível. Versões anteriores têm as seguintes limitações:</p>
+      <ul>
+        <li>Versões anteriores do Power BI Desktop não recebem mais atualizações de manutenção — use a versão mais recente para ter os últimos recursos.</li>
+        <li>Versões anteriores não conseguem abrir arquivos criados ou salvos em versões mais novas do Power BI Desktop.</li>
+        <li>Se você carregar um relatório de uma versão mais nova e salvá-lo em uma versão anterior, perde informações relacionadas aos recursos novos.</li>
+        <li>Somente as versões em inglês do Power BI Desktop são arquivadas.</li>
+      </ul>
+
+      <h2 id="onde-aprender-mais">Onde aprender mais</h2>
+      <ul>
+        <li>Canal oficial do Power BI no YouTube</li>
+        <li>Power BI no X (@MSPowerBI)</li>
+        <li>Fóruns do Power BI na Microsoft Fabric Community</li>
+      </ul>
+    </section>
+
+    <section class="page-section" id="page-3">
+      <h1>Entrar no Power BI</h1>
+      <div class="info-box">Aplica-se a: serviço Power BI (usuários de negócio e criadores/desenvolvedores) e Power BI Desktop. Requer licença Pro ou Premium.</div>
+
+      <p>Este conteúdo é voltado para usuários de negócio do Power BI que estão entrando no serviço Power BI pela primeira vez. Um usuário de negócio é alguém que usa os dados e visualizações em relatórios criados por colegas, confiando nesses dados para tomar decisões de negócio orientadas por dados.</p>
+      <p>Antes de entrar no serviço Power BI, você precisa de uma conta e de uma licença. Um cenário comum é o de funcionários de uma empresa que usam o e-mail corporativo para entrar em sua conta do Power BI, usando licenças compradas e atribuídas pela própria empresa.</p>
+
+      <div class="callout warning">
+        <span class="callout-icon">⚠</span>
+        <div><strong>Importante:</strong> use uma conta corporativa ou de instituição de ensino para entrar no serviço Power BI. Contas pessoais como @hotmail.com ou @gmail.com não são compatíveis.</div>
+      </div>
+
+      <h2 id="entrar-pela-primeira-vez">Entrar pela primeira vez</h2>
+      <ol>
+        <li><strong>Abra o serviço Power BI:</strong> acesse <span class="tooltip-wrap"><span class="tooltip-term">app.powerbi.com</span><span class="tooltip-box">Endereço de acesso direto ao serviço Power BI pelo navegador.</span></span> pelo navegador, ou selecione um link de relatório/dashboard recebido por e-mail de um colega ou do administrador.</li>
+        <li><strong>Digite seu e-mail:</strong> na primeira vez que você entra, o Microsoft verifica se você já tem uma conta Microsoft — informe seu e-mail corporativo ou institucional.</li>
+        <li><strong>Digite sua senha:</strong> use a mesma senha de outros produtos Microsoft, como Outlook e Office. Dependendo da configuração da conta, você pode ser solicitado a informar um código enviado por e-mail ou celular.</li>
+        <li><strong>Revise sua página inicial (Home):</strong> na primeira visita, o Power BI abre a página Home, mostrando todo o conteúdo que você tem permissão para usar. Conteúdo compartilhado por colegas aparece em <strong>Recentes</strong>.</li>
+      </ol>
+
+      <div class="note">Relatórios compartilhados com você também ficam disponíveis em <strong>Compartilhado comigo</strong>, na página Procurar.</div>
+
+      <h2 id="interagir-com-seguranca">Interagir com segurança com o conteúdo</h2>
+      <p>Como usuário de negócio, outras pessoas compartilham conteúdo com você para que você visualize dados e tome decisões de negócio. Ao filtrar, fatiar (slice), assinar, exportar e redimensionar, suas alterações não afetam o modelo semântico subjacente nem o conteúdo original compartilhado — o Power BI é um espaço seguro para explorar e experimentar. Isso não significa que você não possa salvar alterações: elas afetam apenas a sua visão do conteúdo, e você pode sempre restaurar a visão padrão selecionando <strong>Redefinir</strong>.</p>
+
+      <h2 id="sair-do-power-bi">Sair do serviço Power BI</h2>
+      <p>Quando você fecha ou sai do serviço Power BI, suas alterações são salvas e você pode continuar de onde parou. Para fechar, basta fechar a aba do navegador. Se você compartilha o computador com outras pessoas, saia (sign out) toda vez que terminar de usar o Power BI: selecione sua foto de perfil no canto superior direito e escolha <strong>Sair</strong>.</p>
+
+      <h2 id="consideracoes-limitacoes">Considerações e limitações</h2>
+      <ul>
+        <li>Se você se cadastrou no Power BI como indivíduo, entre com o e-mail usado no cadastro.</li>
+        <li>Se você usa mais de uma conta Power BI, será solicitado a escolher uma conta em uma lista ao entrar.</li>
+        <li>Se não tiver uma conta corporativa ou institucional, ainda é possível se cadastrar no Power BI com uma avaliação do Microsoft 365.</li>
+      </ul>
+    </section>
+
+    <section class="page-section" id="page-4">
+      <h1>Navegar pelo serviço Power BI</h1>
+      <p>Esta página ajuda você a se localizar no serviço Power BI como usuário de negócio — alguém que visualiza e interage com relatórios, dashboards e apps criados por outras pessoas.</p>
+
+      <div class="note">Para tarefas de criação, veja a página sobre primeiros passos com o serviço Power BI. Para interações como filtragem, exportação e assinaturas, consulte a documentação de interação com relatórios e dashboards.</div>
+
+      <h2 id="painel-de-navegacao">Painel de navegação</h2>
+      <p>Use o painel de navegação à esquerda para se mover pelo serviço Power BI:</p>
+      <table class="term-table">
+        <thead><tr><th>Item de navegação</th><th>Finalidade</th></tr></thead>
+        <tbody>
+          <tr><td>Home</td><td>Página inicial com itens recentes, favoritos e recomendações</td></tr>
+          <tr><td>Procurar (Browse)</td><td>Listas de conteúdo recente, favorito e compartilhado</td></tr>
+          <tr><td>OneLake</td><td>Descoberta de modelos semânticos e dados reutilizáveis</td></tr>
+          <tr><td>Catálogo OneLake</td><td>Pesquisa de ativos de dados governados em toda a organização</td></tr>
+          <tr><td>Criar</td><td>Construir um novo relatório com base em dados existentes ou adicionar dados para criar um modelo semântico</td></tr>
+          <tr><td>Apps</td><td>Acesso a coleções empacotadas de relatórios e dashboards</td></tr>
+          <tr><td>Workspaces</td><td>Contêineres de conteúdo em equipe</td></tr>
+          <tr><td>Métricas</td><td>Acompanhamento de metas organizacionais e KPIs</td></tr>
+          <tr><td>Copilot</td><td>Assistência de IA para insights (se habilitado)</td></tr>
+          <tr><td>Aprender</td><td>Tutoriais, exemplos e recursos de treinamento</td></tr>
+        </tbody>
+      </table>
+      <p>Alguns itens só aparecem para determinadas funções ou licenças: Monitorar, Tempo Real, Pipelines de implantação e Workloads.</p>
+
+      <h2 id="conceitos-chave">Conceitos-chave</h2>
+      <ul>
+        <li><strong>Dashboards</strong> exibem visuais-chave de um ou mais relatórios em uma única página.</li>
+        <li><strong>Relatórios</strong> contêm múltiplas páginas com visualizações detalhadas.</li>
+        <li><strong>Apps</strong> são coleções organizadas de dashboards e relatórios, empacotadas para a equipe.</li>
+        <li><strong>Workspaces</strong> são contêineres onde o conteúdo é armazenado e organizado.</li>
+      </ul>
+    </section>
+
+    <section class="page-section" id="page-5">
+      <h1>Pesquisar conteúdo no serviço Power BI</h1>
+      <div class="info-box">Aplica-se a: serviço Power BI (usuários de negócio e criadores/desenvolvedores) e Power BI Desktop. Requer licença Pro ou Premium.</div>
+
+      <p>O serviço Power BI inclui ferramentas de pesquisa e filtro para ajudar a encontrar rapidamente dashboards, relatórios, apps e outros conteúdos. Conforme colegas compartilham conteúdo com você e você baixa apps, suas listas podem crescer bastante — a pesquisa e a ordenação global ajudam a navegar por esse conteúdo com eficiência.</p>
+
+      <h2 id="pesquisar-conteudo-h2">Pesquisar conteúdo</h2>
+      <p>Você pode acessar a pesquisa em quase todas as partes do serviço Power BI — procure a caixa ou o ícone de pesquisa. No campo de pesquisa, digite todo ou parte do nome de um dashboard, relatório, pasta de trabalho, workspace, app ou proprietário; o Power BI pesquisa em todo o seu conteúdo.</p>
+      <div class="note">Em algumas áreas, como workspaces, existem dois campos de pesquisa diferentes: o campo da barra de menu pesquisa todo o seu conteúdo, enquanto o campo na área do workspace pesquisa apenas aquele workspace.</div>
+
+      <h2 id="ordenar-listas">Ordenar listas de conteúdo</h2>
+      <p>Quando você tem listas longas de dashboards e relatórios, a ordenação ajuda a encontrar o que precisa. Para mudar o critério de ordenação, selecione a seta à direita do nome da coluna. Nem todas as colunas suportam ordenação — passe o mouse sobre os cabeçalhos para descobrir quais colunas podem ser ordenadas.</p>
+
+      <h2 id="filtrar-listas">Filtrar listas de conteúdo</h2>
+      <p>Outra forma de encontrar conteúdo rapidamente é usar o <strong>Filtro</strong> da lista de conteúdo, disponível no canto superior direito. Os filtros disponíveis dependem de onde você está no serviço Power BI — por exemplo, uma lista de Recentes pode ser filtrada por Tipo de conteúdo, Período ou Proprietário.</p>
+
+      <h2 id="limitacoes-pesquisa">Limitações</h2>
+      <ul>
+        <li>A pesquisa não está habilitada para usuários B2B (convidados) — se um convidado pesquisar, nenhum resultado aparece.</li>
+        <li>A pesquisa atualmente suporta apenas caracteres em inglês.</li>
+        <li>A pesquisa global atualmente só é suportada na nuvem pública (Public cloud).</li>
+      </ul>
+    </section>
+
+    <section class="page-section" id="page-6">
+      <h1>Visualizar dashboards e relatórios compartilhados</h1>
+      <div class="info-box">Aplica-se a: serviço Power BI (usuários de negócio e criadores/desenvolvedores) e Power BI Desktop. Requer licença Pro ou Premium.</div>
+
+      <p>Colegas criam apps, relatórios, dashboards, scorecards, workspaces e modelos semânticos. Ao compartilhar esses itens com você ou pedir sua colaboração, eles podem usar vários métodos. Esta página explica como visualizar e abrir conteúdo que outras pessoas compartilharam com você.</p>
+
+      <h2 id="licencas-para-visualizar">Licenças para visualizar conteúdo compartilhado</h2>
+      <table class="term-table">
+        <thead><tr><th>Situação</th><th>O que é necessário</th></tr></thead>
+        <tbody>
+          <tr><td>Conteúdo fora de uma capacidade Power BI Premium</td><td>Todo usuário de negócio precisa de licença Power BI Pro ou Premium por Usuário (PPU) para visualizar</td></tr>
+          <tr><td>Conteúdo em uma capacidade Power BI Premium</td><td>Usuários sem licença Pro/PPU podem visualizar o conteúdo, mas não podem copiar relatórios nem criar relatórios com base nos modelos semânticos subjacentes</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="compartilhado-comigo">A guia "Compartilhado comigo"</h2>
+      <p>Conteúdo compartilhado diretamente com você aparece na guia <strong>Compartilhado comigo</strong> (você recebe um link por e-mail, ou o criador instala o conteúdo automaticamente para você). Para exibir a lista, selecione <strong>Procurar &gt; Compartilhado comigo</strong> no painel de navegação. Se a lista ficar longa, ordene por coluna, use o campo de palavra-chave ou o painel de Filtros.</p>
+
+      <h2 id="guia-apps">A guia "Apps"</h2>
+      <p>A guia <strong>Apps</strong> mostra apps que outras pessoas compartilham diretamente com você e apps que você baixa. Você obtém esses apps de três formas: recebendo um link por e-mail, tendo o app instalado automaticamente pelo criador, ou instalando o app pela AppSource.</p>
+
+      <h2 id="papeis-workspace">Papéis em um workspace</h2>
+      <p>Criadores também podem compartilhar conteúdo concedendo a você uma função (role) em um workspace. O que você pode fazer com o conteúdo depende da função atribuída: <strong>Visualizador</strong>, <strong>Colaborador</strong>, <strong>Membro</strong> ou <strong>Administrador</strong>.</p>
+    </section>
+
+    <section class="page-section" id="page-7">
+      <h1>Conceitos básicos do serviço Power BI</h1>
+      <p>Use esta página para aprender os principais conceitos e termos do serviço Power BI — incluindo workspaces, relatórios, dashboards e modelos semânticos. Entender esses conceitos facilita navegar pelo serviço Power BI (app.powerbi.com), ler outras páginas sobre Power BI e trabalhar de forma eficaz no Microsoft Fabric.</p>
+
+      <h2 id="criar-e-consumir">Duas grandes atividades</h2>
+      <p>O serviço Power BI permite realizar diversas tarefas, que podem ser divididas em duas categorias principais:</p>
+
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Criar e compartilhar conteúdo (designers/criadores) <span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <ul>
+            <li><strong>Construir relatórios e dashboards:</strong> usar dados de modelos semânticos para projetar visuais interativos que comuniquem insights com eficácia.</li>
+            <li><strong>Organizar conteúdo:</strong> agrupar relatórios, dashboards e datasets relacionados em workspaces ou apps.</li>
+            <li><strong>Colaborar com outros:</strong> compartilhar conteúdo, atribuir funções e gerenciar permissões.</li>
+            <li><strong>Publicar apps:</strong> empacotar dashboards, relatórios e datasets em apps para compartilhamento simplificado.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Consumir e interagir com conteúdo (usuários de negócio) <span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <ul>
+            <li><strong>Visualizar e explorar relatórios:</strong> interagir com visuais, aplicar filtros e fazer drill-down para descobrir insights.</li>
+            <li><strong>Monitorar dashboards:</strong> acompanhar métricas e tendências chave em tempo real.</li>
+            <li><strong>Usar apps:</strong> acessar coleções de relatórios e dashboards compartilhados por outros.</li>
+            <li><strong>Colaborar em metas:</strong> acompanhar o progresso de scorecards e métricas compartilhadas.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 id="glossario-termos-chave">Termos-chave do serviço Power BI</h2>
+      <table class="term-table">
+        <thead><tr><th>Termo</th><th>Definição</th></tr></thead>
+        <tbody>
+          <tr><td>Visualização (Visualization)</td><td>Tipo de gráfico criado por designers para exibir dados de relatórios e modelos semânticos; visualizações são interativas e permitem fatiar, filtrar e fazer drill-down.</td></tr>
+          <tr><td>Modelo semântico (antes chamado de dataset)</td><td>Contêiner de dados usado por designers para construir relatórios, dashboards e apps; pode combinar múltiplas fontes em um único modelo.</td></tr>
+          <tr><td>Dashboard</td><td>Uma única tela com blocos (tiles) de visuais interativos, texto e gráficos, geralmente usada para monitorar métricas ou contar uma história.</td></tr>
+          <tr><td>Relatório (Report)</td><td>Uma ou mais páginas de visuais interativos, texto e gráficos baseados em um único modelo semântico, organizados para responder a perguntas específicas.</td></tr>
+          <tr><td>App</td><td>Uma coleção de dashboards, relatórios e modelos semânticos empacotados para compartilhamento com indivíduos, grupos ou organizações.</td></tr>
+          <tr><td>Workspace</td><td>Área colaborativa onde designers armazenam e gerenciam coleções de dashboards, relatórios e outros itens do Fabric; usuários recebem funções (Admin, Membro, Colaborador ou Visualizador).</td></tr>
+          <tr><td>Licença e assinatura</td><td>Determina o nível de acesso e os recursos disponíveis para usuários no serviço Power BI (licenças gratuita, Pro ou Premium).</td></tr>
+          <tr><td>Capacidade (Capacity)</td><td>Conjunto dedicado de recursos usado para melhorar desempenho e escalabilidade. Capacidades Power BI Premium (SKUs P) e Microsoft Fabric (SKUs F, F64 ou maiores) permitem que usuários com licença gratuita consumam conteúdo compartilhado.</td></tr>
+          <tr><td>Copilot</td><td>Assistente de IA integrado ao Power BI que ajuda a criar relatórios, analisar dados e gerar resumos e insights em linguagem natural. Requer capacidade Fabric paga (F2+) ou Power BI Premium (P1+).</td></tr>
+          <tr><td>Workbook (pasta de trabalho)</td><td>Um arquivo Excel carregado no serviço Power BI, que pode ser visualizado ou usado como fonte de dados para relatórios e dashboards.</td></tr>
+          <tr><td>Dataflow</td><td>Uma coleção de etapas de transformação de dados armazenada no serviço Power BI, permitindo preparação de dados reutilizável e centralizada.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="page-section" id="page-8">
+      <h1>Cenários de ponta a ponta para qualquer nível</h1>
+      <p>Esta página reúne trilhas de aprendizado sequenciais e organizadas por cenário de uso comum do Power BI. Cada trilha leva você do início ao fim para um caso de uso específico, construindo conhecimento progressivamente.</p>
+
+      <h2 id="qual-trilha-seguir">Qual trilha seguir?</h2>
+      <table class="term-table">
+        <thead><tr><th>O que melhor descreve você</th><th>Trilha recomendada</th></tr></thead>
+        <tbody>
+          <tr><td>Totalmente novo em ferramentas de BI</td><td>1. Novo usuário do Power BI</td></tr>
+          <tr><td>Migrando do Excel para o Power BI</td><td>2. Usuário de Excel</td></tr>
+          <tr><td>Apenas visualiza relatórios, não cria</td><td>3. Usuário de negócio</td></tr>
+          <tr><td>Está construindo seus primeiros relatórios</td><td>4. Criador de relatórios</td></tr>
+          <tr><td>Usa Copilot para criar relatórios</td><td>5. Usuário de Copilot</td></tr>
+          <tr><td>Trabalha com preparação de dados e modelagem</td><td>6. Analista de dados</td></tr>
+          <tr><td>Cria experiências interativas avançadas</td><td>7. Criador avançado de relatórios</td></tr>
+          <tr><td>Trabalha em equipe para compartilhar insights</td><td>8. Colaborador</td></tr>
+          <tr><td>Usa o Power BI dentro do Microsoft Fabric</td><td>9. Usuário de Fabric</td></tr>
+          <tr><td>Acessa relatórios no celular</td><td>10. Usuário mobile</td></tr>
+          <tr><td>Gerencia o Power BI para a empresa</td><td>11. Administrador</td></tr>
+          <tr><td>Constrói apps com Power BI incorporado (embedded)</td><td>12. Desenvolvedor</td></tr>
+          <tr><td>Conecta a dados corporativos ao vivo</td><td>13. Usuário DirectQuery</td></tr>
+          <tr><td>Cria relatórios para impressão e PDF</td><td>14. Relatórios prontos para impressão</td></tr>
+          <tr><td>Acompanha metas e KPIs do negócio</td><td>15. Metas e métricas</td></tr>
+        </tbody>
+      </table>
+
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">1–2. Novo usuário / Usuário de Excel <span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <p><strong>Novo usuário:</strong> O que é Power BI? → Obter o Power BI Desktop → Primeiros passos com o Desktop → Conectar a dados → Conhecer o editor de relatórios → Construir o primeiro relatório → Conceitos básicos do serviço → Publicar e compartilhar.</p>
+          <p><strong>Usuário de Excel:</strong> O que é Power BI? → Obter o Desktop → Do Excel ao relatório → Importar pastas de trabalho Excel → Combinar fontes de dados → Conectar-se a datasets do Power BI a partir do Excel → Analisar no Excel.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">3–4. Usuário de negócio / Criador de relatórios <span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <p><strong>Usuário de negócio:</strong> entender seu papel → entrar pela primeira vez → navegar pelo serviço → aprender a terminologia → localizar conteúdo compartilhado → abrir e visualizar relatórios → usar filtros e slicers → obter insights com IA → conversar com os dados via Copilot → assinar relatórios e dashboards → configurar alertas de dados.</p>
+          <p><strong>Criador de relatórios:</strong> instalar o Desktop → conhecer o editor de relatórios e a visão de Relatório → conectar a dados → visualizações e filtros → temas e configurações de página → publicar no serviço → criar dashboard → atualização agendada → compartilhar relatórios e dashboards.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">5–6. Usuário de Copilot / Analista de dados <span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <p><strong>Usuário de Copilot:</strong> visão geral do Copilot → habilitar Copilot → explorar dados com Copilot → criar relatórios e narrativas com IA → escrever consultas DAX e prompts eficazes com Copilot.</p>
+          <p><strong>Analista de dados:</strong> fontes de dados → conectar a dados → Power Query Editor → lakehouses e data warehouses no Fabric → relacionamentos de modelo → medidas DAX e colunas calculadas → referência de funções DAX → cálculos de inteligência de tempo → grupos de cálculo → modelagem tabular.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">7–8. Criador avançado / Colaborador <span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <p><strong>Criador avançado:</strong> bookmarks → botões → drillthrough (incluindo entre relatórios) → tooltips de página → painel de seleção → agrupar visuais → formatação condicional → Performance Analyzer → visuais personalizados da AppSource → acessibilidade.</p>
+          <p><strong>Colaborador:</strong> workspaces (criar, dar acesso) → compartilhar relatórios e dashboards → criar e distribuir apps → workspaces do Fabric → colaborar no Teams e SharePoint → assinaturas → endosso de conteúdo → pipelines de implantação.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">9–10. Usuário de Fabric / Usuário mobile <span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <p><strong>Usuário de Fabric:</strong> o que é o Microsoft Fabric → Power BI no Fabric → lakehouses e pipelines de dados → Real-Time Intelligence → OneLake → workspaces e licenciamento do Fabric.</p>
+          <p><strong>Usuário mobile:</strong> visão geral dos apps móveis → baixar amostras → explorar dashboards e relatórios → visualizar no celular → alertas mobile → relatórios otimizados para mobile → leitura de QR codes.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">11–12. Administrador / Desenvolvedor <span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <p><strong>Administrador:</strong> visão geral da administração → portal de administração → licenciamento e capacidade → configurações do tenant → habilitar Copilot → governança de workspaces → proteção de dados → gateway de dados local → métricas de uso → segurança em nível de linha → migração de SSRS.</p>
+          <p><strong>Desenvolvedor:</strong> visão geral de embedding → embed para clientes vs. para a organização → API REST do Power BI e do Fabric → visuais personalizados (criação e publicação na AppSource) → segurança em cenários incorporados.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">13–15. DirectQuery / Relatórios para impressão / Metas <span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <p><strong>Usuário DirectQuery:</strong> visão geral do DirectQuery → comparação com conexão ao vivo → modelos compostos → Direct Lake → conectar a lakehouses do Fabric → segurança em nível de linha.</p>
+          <p><strong>Relatórios para impressão:</strong> o que são relatórios paginados → Power BI Report Builder → criar e planejar um relatório paginado → fontes de dados e parâmetros → publicar e automatizar exportações.</p>
+          <p><strong>Metas e métricas:</strong> introdução a métricas → criar scorecard → metas conectadas e subgoals → regras de status → permissões → assinaturas → automação com Power Automate.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" id="page-9">
+      <h1>Obter o Power BI Desktop</h1>
+      <p>Baixe o Power BI Desktop gratuitamente para construir consultas, modelos e relatórios avançados que visualizam dados. Você pode criar modelos de dados, projetar relatórios e compartilhar seu trabalho publicando no serviço Power BI.</p>
+
+      <h2 id="duas-formas-de-instalar">Duas formas de instalar</h2>
+      <p>Para obter o Power BI Desktop, use uma das abordagens a seguir. Ambas instalam a versão mais recente.</p>
+
+      <div class="capability-grid">
+        <div class="capability-card">
+          <h4>Microsoft Store</h4>
+          <p>Atualizações automáticas, downloads menores, não exige privilégio de administrador, permite implantação por TI e detecção automática de idioma.</p>
+        </div>
+        <div class="capability-card">
+          <h4>Download direto (.exe)</h4>
+          <p>Pacote único de instalação com todos os idiomas suportados, versões separadas de 32 e 64 bits (32 bits não é mais suportado). Ideal para administradores que automatizam a instalação.</p>
+        </div>
+      </div>
+
+      <div class="callout warning">
+        <span class="callout-icon">⚠</span>
+        <div>A Microsoft atualiza e libera o Power BI Desktop mensalmente. Somente a versão mais recente é suportada — se você contatar o Suporte, será solicitado a atualizar para a versão atual.</div>
+      </div>
+
+      <h2 id="requisitos-minimos">Requisitos mínimos</h2>
+      <table class="term-table">
+        <thead><tr><th>Requisito</th><th>Especificação</th></tr></thead>
+        <tbody>
+          <tr><td>Sistema operacional</td><td>Windows 10 ou Windows Server 2016 ou posterior</td></tr>
+          <tr><td>.NET</td><td>4.7.2 ou posterior</td></tr>
+          <tr><td>Navegador</td><td>Microsoft Edge (Internet Explorer não é mais suportado)</td></tr>
+          <tr><td>Memória (RAM)</td><td>Mínimo 2 GB disponíveis, recomendado 4 GB ou mais</td></tr>
+          <tr><td>Tela</td><td>Mínimo 1440x900 ou 1600x900 (16:9)</td></tr>
+          <tr><td>CPU</td><td>Processador 64-bit (x64) de 1 GHz ou superior recomendado</td></tr>
+          <tr><td>WebView2</td><td>Necessário — instalar separadamente se não vier automaticamente</td></tr>
+        </tbody>
+      </table>
+
+      <div class="note">O Power BI Desktop não é compatível com contas de sistema (system account), pois o WebView2 não oferece suporte a esse tipo de conta.</div>
+
+      <h2 id="instalacao-silenciosa">Instalação por linha de comando (administradores)</h2>
+      <p>Ao instalar, é possível configurar propriedades e opções por meio de opções de linha de comando — útil para administradores que gerenciam a instalação em toda a organização.</p>
+      <table class="term-table">
+        <thead><tr><th>Opção</th><th>Comportamento</th></tr></thead>
+        <tbody>
+          <tr><td><code>-q, -quiet, -s, -silent</code></td><td>Instalação silenciosa</td></tr>
+          <tr><td><code>-passive</code></td><td>Mostra apenas a barra de progresso</td></tr>
+          <tr><td><code>-norestart</code></td><td>Suprime a exigência de reiniciar o computador</td></tr>
+          <tr><td><code>-uninstall</code></td><td>Desinstala o Power BI Desktop</td></tr>
+          <tr><td><code>-repair</code></td><td>Repara a instalação</td></tr>
+        </tbody>
+      </table>
+      <div class="note">Exemplo: <code>PBIDesktopSetup_x64.exe -quiet LANGUAGE=de-DE ACCEPT_EULA=1</code> instala sem interface, em alemão, aceitando o EULA automaticamente.</div>
+
+      <h2 id="ambientes-virtualizados">Ambientes virtualizados</h2>
+      <p>O Power BI Desktop é totalmente suportado no Azure Virtual Desktop e no Windows 365. Executá-lo como aplicativo virtualizado (por exemplo, Citrix publicado) <strong>não é suportado</strong>, exceto nos ambientes citados.</p>
+    </section>
+
+    <section class="page-section" id="page-10">
+      <h1>Primeiros passos com o Power BI Desktop</h1>
+      <div class="goal-list">
+        <p><strong>Neste tutorial você vai:</strong></p>
+        <ul>
+          <li>Conhecer a interface do Power BI Desktop</li>
+          <li>Importar dados do Excel</li>
+          <li>Transformar e limpar dados com o Power Query</li>
+          <li>Criar suas primeiras visualizações</li>
+          <li>Publicar seu relatório no serviço Power BI</li>
+        </ul>
+      </div>
+
+      <p>O Power BI Desktop é um aplicativo Windows gratuito que permite conectar-se a dados, transformá-los e criar relatórios visuais interativos. Faz parte do conjunto Power BI, que também inclui o serviço Power BI (online), onde você publica e compartilha seus relatórios.</p>
+
+      <h2 id="interface-desktop">Explorando a interface do Power BI Desktop</h2>
+      <table class="term-table">
+        <thead><tr><th>Área</th><th>Função</th></tr></thead>
+        <tbody>
+          <tr><td>Faixa de opções (Ribbon)</td><td>Contém guias como Página Inicial, Inserir e Modelagem, com ferramentas para dados e visuais</td></tr>
+          <tr><td>Tela do relatório (Report canvas)</td><td>Área principal onde você constrói e organiza seus visuais</td></tr>
+          <tr><td>Painel de Campos</td><td>Mostra as tabelas e campos do seu modelo de dados — arraste campos para os visuais ou marque as caixas</td></tr>
+          <tr><td>Painel de Visualizações</td><td>Permite escolher e personalizar os tipos de gráfico</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="importar-excel">Importar dados do Excel</h2>
+      <ol>
+        <li>Abra o Power BI Desktop.</li>
+        <li>Selecione <strong>Página Inicial &gt; Obter Dados &gt; Excel</strong>.</li>
+        <li>Navegue até o arquivo Excel e selecione <strong>Abrir</strong>.</li>
+        <li>No painel Navegador, selecione a planilha ou tabela desejada.</li>
+        <li>Selecione <strong>Carregar</strong> para trazer os dados para o Power BI.</li>
+      </ol>
+      <div class="note">Também é possível fazer o caminho inverso com <strong>Analisar no Excel</strong>: no serviço Power BI, abra o relatório ou dataset, selecione <strong>Mais opções (...) &gt; Analisar no Excel</strong>, e o Power BI gera um arquivo Excel com conexão dinâmica ao seu dataset.</div>
+
+      <h2 id="transformar-dados">Transformar e limpar os dados</h2>
+      <ol>
+        <li>Selecione <strong>Transformar Dados</strong> para abrir o Power Query Editor.</li>
+        <li>Use ferramentas como <strong>Remover Colunas</strong>, <strong>Filtrar Linhas</strong> e <strong>Alterar Tipo de Dados</strong>.</li>
+        <li>Ao terminar, selecione <strong>Fechar e Aplicar</strong> para salvar e voltar à tela principal.</li>
+      </ol>
+
+      <h2 id="criar-visualizacoes">Criar suas primeiras visualizações</h2>
+      <ol>
+        <li>No painel de Campos, marque as caixas dos dados que deseja visualizar.</li>
+        <li>O Power BI cria automaticamente um visual com base na seleção.</li>
+        <li>Use o painel de Visualizações para trocar o tipo de gráfico (barras, pizza, mapa etc.).</li>
+        <li>Arraste campos para as áreas Valores, Eixo ou Legenda para personalizar.</li>
+      </ol>
+
+      <div class="callout">
+        <span class="callout-icon">💡</span>
+        <div><strong>Recursos de IA integrados:</strong> use <strong>Q&A</strong> para fazer perguntas em linguagem natural (ex: "Quais foram as vendas por região?") e <strong>Narrativas Inteligentes</strong> para gerar resumos automáticos em texto sobre tendências e pontos-chave dos visuais.</div>
+      </div>
+
+      <h2 id="salvar-publicar">Salvar e publicar o relatório</h2>
+      <ol>
+        <li>Salve localmente com <strong>Arquivo &gt; Salvar</strong>.</li>
+        <li>Para compartilhar, selecione <strong>Publicar</strong> na faixa Página Inicial.</li>
+        <li>Entre no serviço Power BI.</li>
+        <li>Escolha um workspace para publicar o relatório.</li>
+      </ol>
+      <p>Depois de publicado, você pode compartilhar o relatório com colegas, incorporá-lo em dashboards e agendar atualizações de dados.</p>
+    </section>
+
+    <section class="page-section" id="page-11">
+      <h1>Primeiros passos com o serviço Power BI</h1>
+      <div class="info-box">Aplica-se a: Power BI Desktop e serviço Power BI. Requer licença Pro ou Premium por Usuário (PPU) para criar conteúdo.</div>
+
+      <p>Este tutorial é uma introdução a alguns recursos do serviço Power BI. Você vai se conectar a dados, criar um relatório e um dashboard, e fazer perguntas sobre seus dados diretamente no navegador — sem passar pelo Desktop.</p>
+
+      <div class="goal-list">
+        <p><strong>Neste tutorial você vai:</strong></p>
+        <ul>
+          <li>Adicionar dados e criar um relatório a partir de um arquivo Excel de exemplo</li>
+          <li>Usar o Copilot para gerar páginas de relatório</li>
+          <li>Criar visuais do zero e fixá-los (pin) em um dashboard</li>
+          <li>Usar o Q&A para explorar dados em linguagem natural</li>
+          <li>Ajustar o layout dos blocos (tiles) do dashboard</li>
+          <li>Limpar os recursos criados ao final</li>
+        </ul>
+      </div>
+
+      <h2 id="criar-relatorio-servico">Criar um relatório a partir de dados no serviço</h2>
+      <ol>
+        <li>Abra o serviço Power BI (app.powerbi.com).</li>
+        <li>Baixe o arquivo Excel com os dados de exemplo (Financial Sample).</li>
+        <li>Selecione <strong>Meu workspace</strong> no painel de navegação.</li>
+        <li>Selecione <strong>Novo item &gt; Modelo semântico</strong> para iniciar a importação.</li>
+        <li>Na página de adicionar dados, selecione <strong>Excel</strong>, localize o arquivo e escolha <strong>Vincular ao arquivo &gt; Avançar</strong>.</li>
+        <li>Selecione a tabela <em>financials</em> e escolha <strong>Criar</strong>.</li>
+      </ol>
+      <p>O serviço Power BI importa os dados como um modelo semântico e abre a tela do relatório, pronta para criar visuais.</p>
+
+      <h2 id="usar-copilot">Usar o Copilot para criar um relatório</h2>
+      <p>Relatórios têm dois modos: <strong>Edição</strong> e <strong>Leitura</strong>. Peça ao Copilot algo como: "Gerar um relatório do Power BI com base nas vendas brutas" — o Copilot cria uma página de relatório chamada "Relatório de Vendas Brutas". Como o Copilot é baseado em IA, é importante verificar a precisão dos resultados gerados.</p>
+      <div class="note">Se o Copilot não estiver disponível na sua organização, você ainda pode completar o tutorial criando visuais manualmente.</div>
+
+      <h2 id="fixar-dashboard">Fixar (pin) visuais em um dashboard</h2>
+      <p>Passe o mouse sobre um visual, selecione <strong>Fixar visual &gt; Novo dashboard</strong>, dê um nome e selecione <strong>Fixar</strong>. Depois de fixado, o visual aparece no dashboard como um bloco (tile), sempre atualizado com os dados mais recentes.</p>
+
+      <h2 id="criar-visuais-zero">Criar visuais do zero</h2>
+      <ol>
+        <li>No painel de Dados, expanda a tabela e selecione o campo desejado (campos numéricos exibem o símbolo Σ).</li>
+        <li>Selecione também um campo de data — se ele tiver hierarquia, expanda para escolher Trimestre e Ano.</li>
+        <li>Ajuste os filtros conforme necessário.</li>
+        <li>Troque o tipo de visual no painel de Visualizações (ex: de tabela para gráfico de linhas).</li>
+        <li>Fixe o visual no dashboard.</li>
+      </ol>
+
+      <h2 id="explorar-com-qa">Explorar dados com Q&A</h2>
+      <p>Na caixa <strong>Faça uma pergunta sobre seus dados</strong> (disponível em dashboards e no editor de relatórios), digite perguntas como <em>"qual é a média de vendas"</em> ou <em>"total de lucro por país como mapa"</em>. O Q&A tenta reconhecer o padrão da pergunta e exibe o resultado como um visual, que também pode ser fixado no dashboard.</p>
+
+      <div class="note">Ao fixar um bloco, ele sempre mostra os dados no tipo de visualização original no momento em que foi fixado. Se você alterar o tipo de visual no relatório depois, o bloco já fixado não muda — é preciso fixar novamente para criar um novo bloco com o novo tipo.</div>
+
+      <h2 id="ajustar-layout">Ajustar o layout dos blocos</h2>
+      <p>Blocos podem ser redimensionados e reposicionados arrastando os cantos. Em <strong>Mais opções (...) &gt; Editar detalhes</strong> de um bloco, você pode renomear seu título de exibição.</p>
+
+      <h2 id="limpar-recursos">Limpar os recursos</h2>
+      <p>Ao final do tutorial, é uma boa prática excluir o modelo semântico, o relatório e o dashboard criados: em <strong>Meu workspace</strong>, localize o modelo semântico, selecione <strong>Mais opções (...) &gt; Excluir</strong>. Excluir o modelo semântico também exclui todos os relatórios e blocos de dashboard que usam seus dados.</p>
+    </section>
+
+    <section class="page-section" id="page-12">
+      <h1>Primeiros passos com o Microsoft Fabric e Power BI</h1>
+      <p>Neste tutorial você aprende a usar o Microsoft Fabric para preparar, carregar e modelar dados para relatórios do Power BI: usar Dataflows Gen2 para ingerir e transformar dados em um lakehouse, orquestrar atualizações com pipelines de dados, construir um modelo dimensional usando o modo Direct Lake (que lê dados diretamente do lakehouse sem importação) e gerar um relatório automaticamente.</p>
+
+      <div class="info-box">
+        <strong>Pré-requisitos:</strong> Fabric habilitado para a organização, uma conta Power BI, um workspace com capacidade Fabric atribuída (recomenda-se um workspace de não produção) e o arquivo de template do Power Query com consultas de exemplo (dados Contoso).
+      </div>
+
+      <h2 id="criar-lakehouse">1. Criar um lakehouse para armazenar os dados</h2>
+      <p>No workspace, selecione <strong>Novo item &gt; Lakehouse</strong>, dê um nome (ex: <em>SalesLakehouse</em> — apenas letras, números e underscores) e selecione <strong>Criar</strong>.</p>
+
+      <h2 id="dataflows-gen2">2. Preparar e carregar dados com Dataflows Gen2</h2>
+      <ol>
+        <li>No editor do lakehouse, selecione <strong>Novo Dataflow Gen2</strong>, nomeie (ex: <em>OnlineSalesDataflow</em>) e crie.</li>
+        <li>No Power Query Online, importe o template de consultas de exemplo.</li>
+        <li>Ajuste tipos de dados das colunas conforme necessário (ex: definir <em>DateKey</em> como Data/Hora).</li>
+        <li>Configure o destino dos dados no Lakehouse: tabelas de dimensão usam o método <strong>Substituir</strong> (Replace); tabelas de fato que mudam com frequência (como <em>FactOnlineSales</em>) usam <strong>Acrescentar</strong> (Append), preservando os dados existentes.</li>
+        <li>Selecione <strong>Salvar e executar</strong>.</li>
+      </ol>
+
+      <h2 id="pipeline-orquestracao">3. Orquestrar um pipeline de dados</h2>
+      <p>Crie um <strong>Data pipeline</strong> (ex: <em>SalesPipeline</em>) para automatizar a atualização do dataflow e notificar por e-mail em caso de falha:</p>
+      <ol>
+        <li>Adicione uma atividade <strong>Dataflow</strong> apontando para o dataflow criado.</li>
+        <li>Adicione uma atividade <strong>Office 365 Outlook</strong> para enviar e-mail em caso de falha, com corpo de mensagem dinâmico (usando expressões com ID do pipeline, workspace e hora UTC).</li>
+        <li>Conecte a saída "On fail" da atividade de dataflow à atividade de e-mail.</li>
+        <li>Configure um agendamento (ex: execução diária à meia-noite) e execute o pipeline.</li>
+      </ol>
+
+      <h2 id="modelo-semantico-lakehouse">4. Criar um modelo semântico no lakehouse</h2>
+      <p>A partir do lakehouse, selecione <strong>Novo modelo semântico</strong>, nomeie (ex: <em>SalesModel</em>) e selecione as tabelas de fato e dimensão (<em>DimCustomer, DimDate, DimEmployee, DimProduct, DimStore, FactOnlineSales</em>).</p>
+
+      <h3>Esquema em estrela (star schema)</h3>
+      <p>Esse modelo usa um <strong>esquema em estrela</strong>, comum em data warehouses: uma tabela de fato central, cercada por tabelas de dimensão relacionadas a ela. Crie relacionamentos <em>muitos-para-um</em> entre as chaves da tabela de fato e as respectivas dimensões (ex: <em>CustomerKey</em>, <em>ProductKey</em>, <em>StoreKey</em>, <em>DateKey</em>).</p>
+
+      <h3>Criar uma medida DAX</h3>
+      <div class="note"><code>Total Sales Amount = SUM(FactOnlineSales[SalesAmount])</code></div>
+
+      <h2 id="auto-criar-relatorio">5. Gerar um relatório automaticamente</h2>
+      <p>No workspace, sobre o modelo semântico criado, selecione <strong>Mais opções (...) &gt; Criar relatório automaticamente</strong> (Auto-create report). O relatório é gerado e atualizado dinamicamente conforme você seleciona colunas no painel de dados. Selecione <strong>Salvar</strong> para manter uma cópia no workspace.</p>
+    </section>
+
+    <section class="page-section" id="page-13">
+      <h1>Baixar amostras nos aplicativos móveis</h1>
+      <p>Parte da documentação dos aplicativos móveis usa dados de amostra para fins de ilustração. Para acompanhar no seu dispositivo, você pode baixar os dados de amostra para sua conta do serviço Power BI e depois visualizá-los pelo aplicativo Power BI Mobile.</p>
+
+      <div class="info-box">É necessário ter uma conta no serviço Power BI. Se ainda não tiver, cadastre-se para uma avaliação gratuita antes de começar.</div>
+
+      <h2 id="baixar-amostra">Baixar uma amostra</h2>
+      <ol>
+        <li>Abra o serviço Power BI (app.powerbi.com) e selecione <strong>Aprender</strong> no painel de navegação.</li>
+        <li>Na página do Centro de Aprendizado, em <strong>Relatórios de exemplo</strong>, navegue pelas amostras disponíveis.</li>
+        <li>Selecione uma amostra para baixar — ela abre em modo de Leitura.</li>
+      </ol>
+      <p>O Power BI importa a amostra e adiciona um novo dashboard, relatório e modelo semântico ao <strong>Meu workspace</strong>.</p>
+
+      <div class="note">Escolha a amostra descrita no tutorial, guia rápido ou artigo que você está seguindo — depois disso, você já pode visualizar as amostras no seu dispositivo móvel.</div>
+    </section>
+
+    <section class="page-section" id="page-14">
+      <h1>Assinar ou comprar o Power BI como indivíduo</h1>
+      <p>Esta página explica como indivíduos em uma organização podem se cadastrar ou comprar o Power BI quando o autoatendimento (self-service) está habilitado.</p>
+
+      <h2 id="por-onde-comecar-licenciamento">Por onde começar</h2>
+      <table class="term-table">
+        <thead><tr><th>Sua situação</th><th>Caminho recomendado</th></tr></thead>
+        <tbody>
+          <tr><td>Quer explorar o Power BI sem custo</td><td>Cadastre-se em uma licença gratuita do Fabric — trabalhe no Meu workspace e consuma conteúdo em capacidade Premium</td></tr>
+          <tr><td>Precisa de recursos Pro (compartilhamento, colaboração)</td><td>Inicie uma avaliação individual do Power BI ou compre uma licença Pro</td></tr>
+          <tr><td>Quer testar todos os recursos Premium Per User (PPU)</td><td>Inicie uma avaliação de capacidade Fabric — inclui capacidades equivalentes ao PPU</td></tr>
+          <tr><td>Não tem e-mail corporativo/institucional</td><td>Inicie uma avaliação do Microsoft 365 para criar um e-mail corporativo primeiro</td></tr>
+          <tr><td>Autoatendimento bloqueado ou desabilitado</td><td>Seu administrador desabilitou — peça ao administrador de faturamento (Billing admin) para habilitar</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="formas-de-obter-licenca">Formas rápidas de obter uma licença inicial</h2>
+      <ul>
+        <li><strong>Botão publicado:</strong> acesse o site do Power BI e selecione "Começar grátis" — ao entrar com conta corporativa, você recebe uma licença Fabric (Grátis).</li>
+        <li><strong>Link compartilhado por e-mail:</strong> abrir um link de dashboard/relatório/app compartilhado pode disparar uma avaliação de licença na primeira vez.</li>
+        <li><strong>Prompt de upgrade no produto:</strong> ao tentar usar um recurso pago com licença gratuita, você pode escolher iniciar avaliação ou comprar.</li>
+        <li><strong>Gerenciador de conta:</strong> no perfil (canto superior direito), revise seu tipo de licença e escolha comprar ou iniciar avaliação.</li>
+      </ul>
+
+      <div class="callout warning">
+        <span class="callout-icon">⚠</span>
+        <div>É necessária uma conta corporativa ou institucional para se cadastrar no serviço Power BI — contas pessoais (Gmail, Hotmail) não funcionam diretamente. Sem e-mail corporativo, é possível criar um cadastrando-se numa avaliação do Microsoft 365.</div>
+      </div>
+
+      <h2 id="motivos-nao-consigo-assinar">Por que talvez eu não consiga me cadastrar</h2>
+      <ul>
+        <li>O administrador da organização desabilitou o autoatendimento de cadastro ou compra.</li>
+        <li>Você está usando uma conta de e-mail pessoal/consumidor.</li>
+        <li>Você já possui uma licença aplicável (os prompts de "Começar grátis"/"Iniciar avaliação" somem).</li>
+        <li>O período de elegibilidade de avaliação já foi usado nesta conta.</li>
+      </ul>
+    </section>
+
+    <section class="page-section" id="page-15">
+      <h1>Licenciamento self-service e FAQ de avaliação</h1>
+      <p>Este FAQ ajuda a diagnosticar e resolver problemas comuns ao tentar se cadastrar sozinho no serviço Power BI, iniciar (ou estender) uma avaliação, ou comprar/fazer upgrade de uma licença individual por usuário (Fabric [Grátis], Power BI Pro ou Power BI Premium Per User [PPU]).</p>
+
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">O que fazer se aparecer "autoatendimento desabilitado"? <span class="acc-arrow">▾</span></button>
+        <div class="acc-body"><p>Algumas organizações bloqueiam o autoatendimento para que a TI gerencie centralmente todas as licenças, inclusive as gratuitas. Contate o departamento de TI ou help desk para solicitar uma licença.</p></div>
+      </div>
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Por que não posso usar um e-mail pessoal (Gmail, Hotmail)? <span class="acc-arrow">▾</span></button>
+        <div class="acc-body"><p>O cadastro no serviço Power BI exige conta corporativa ou institucional — domínios de e-mail de consumidor não são aceitos.</p></div>
+      </div>
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Posso ter mais de uma licença ao mesmo tempo? <span class="acc-arrow">▾</span></button>
+        <div class="acc-body"><p>Sim. O serviço oferece as capacidades equivalentes à licença mais permissiva que você tiver.</p></div>
+      </div>
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">O que uma licença Fabric (Grátis) me permite fazer? <span class="acc-arrow">▾</span></button>
+        <div class="acc-body"><p>Criar e visualizar conteúdo para você mesmo no Meu workspace, e consumir conteúdo compartilhado a partir de um workspace em capacidade Premium (Fabric F64 ou maior). Você não pode compartilhar seu próprio conteúdo nem colaborar em workspaces fora do Premium.</p></div>
+      </div>
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Por que minha licença gratuita não expira? <span class="acc-arrow">▾</span></button>
+        <div class="acc-body"><p>Licenças Fabric (Grátis) obtidas por autoatendimento permanecem disponíveis, a menos que sejam canceladas ou removidas por um administrador.</p></div>
+      </div>
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">O que acontece quando minha avaliação termina? <span class="acc-arrow">▾</span></button>
+        <div class="acc-body"><p>Sua licença volta ao estado anterior (por exemplo, de volta a Fabric [Grátis] ou Pro), e você perde acesso aos recursos que exigem a camada superior, a menos que compre ou receba uma licença.</p></div>
+      </div>
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Como saber se um workspace está em capacidade Premium? <span class="acc-arrow">▾</span></button>
+        <div class="acc-body"><p>Na lista de Workspaces, um ícone de diamante marca um workspace (e seus apps associados) em capacidade Premium (Fabric F64 ou maior).</p></div>
+      </div>
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Por que sou bloqueado em um workspace PPU mesmo tendo Pro? <span class="acc-arrow">▾</span></button>
+        <div class="acc-body"><p>Workspaces PPU exigem que todos os participantes tenham licença PPU (a menos que o workspace seja movido para capacidade Premium). Uma licença Pro sozinha não dá acesso a recursos exclusivos de PPU.</p></div>
+      </div>
+    </section>
+
+    <section class="page-section" id="page-16">
+      <h1>Recursos por tipo de licença</h1>
+      <p>Os recursos do serviço Power BI variam conforme a licença. Existem três tipos de licença por usuário: <strong>Fabric (Grátis)</strong>, <strong>Power BI Pro</strong> e <strong>Power BI Premium Per User (PPU)</strong>. A licença necessária depende de onde o conteúdo está armazenado, de como você interage com ele e se usa recursos de capacidade Premium.</p>
+
+      <p>Existe também a licença de <strong>capacidade</strong> (SKUs Fabric F ou Power BI Premium P). Usuários Pro e PPU com acesso a uma capacidade (Fabric F64+ ou Power BI Premium) podem criar conteúdo em workspaces atribuídos a essa capacidade e conceder acesso a colegas — inclusive usuários gratuitos.</p>
+
+      <h2 id="tres-licencas-por-usuario">As três licenças por usuário</h2>
+      <div class="capability-grid">
+        <div class="capability-card">
+          <h4>Licença gratuita</h4>
+          <p>Conecta a dados e cria relatórios/dashboards para uso próprio. Não pode compartilhar ou colaborar, exceto consumindo conteúdo Pro/PPU hospedado em capacidade Premium.</p>
+        </div>
+        <div class="capability-card">
+          <h4>Power BI Pro</h4>
+          <p>Cria, lê e interage com conteúdo publicado por outros. Compartilha e colabora com outros usuários Pro; em capacidade Premium, também colabora com usuários gratuitos e PPU.</p>
+        </div>
+        <div class="capability-card">
+          <h4>Premium Per User (PPU)</h4>
+          <p>Todas as capacidades do Pro, mais a maioria dos recursos de capacidade Premium. Compartilha apenas com outros usuários PPU, exceto em workspaces de capacidade Premium.</p>
+        </div>
+      </div>
+
+      <h2 id="tabela-capacidades-licenca">Capacidades por tipo de licença</h2>
+      <table class="term-table">
+        <thead><tr><th>Tipo de licença</th><th>Em capacidade compartilhada</th><th>Extra em capacidade Premium</th></tr></thead>
+        <tbody>
+          <tr><td>Fabric (Grátis)</td><td>Acessa conteúdo criado para si mesmo</td><td>Consome conteúdo compartilhado por usuários Pro ou PPU</td></tr>
+          <tr><td>Power BI Pro</td><td>Publica em outros workspaces, compartilha dashboards, assina relatórios, compartilha com usuários Pro</td><td>Distribui conteúdo para usuários gratuitos ou PPU</td></tr>
+          <tr><td>Premium Per User (PPU)</td><td>Publica, compartilha dashboards, assina relatórios, compartilha com usuários PPU</td><td>Distribui conteúdo para usuários gratuitos e Pro</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="page-section" id="page-17">
+      <h1>Recursos disponíveis para usuários gratuitos</h1>
+      <p>Com uma licença gratuita do Power BI, você pode visualizar e interagir com relatórios, dashboards, apps e outros conteúdos que colegas compartilham com você — desde que esse conteúdo esteja hospedado em uma capacidade qualificada (Fabric F64+ ou Premium). O que você pode fazer depende de três fatores: seu tipo de licença, sua função/permissões, e onde o conteúdo está armazenado.</p>
+
+      <h2 id="dois-cenarios-usuario-gratuito">Dois cenários típicos</h2>
+      <table class="term-table">
+        <thead><tr><th>Cenário</th><th>O que significa</th></tr></thead>
+        <tbody>
+          <tr><td>1. Conteúdo no Meu workspace (pessoal)</td><td>Uso individual apenas — não é possível colaborar com colegas; ninguém mais pode ver esse conteúdo</td></tr>
+          <tr><td>2. Conteúdo em workspace na capacidade (Fabric F64+ ou Premium)</td><td>Usuário gratuito com função de Visualizador (Viewer) pode ver e interagir com apps, dashboards e relatórios compartilhados por usuários Pro/PPU nessa capacidade</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="o-que-usuario-gratuito-pode-fazer">Padrão geral de permissões</h2>
+      <ul>
+        <li><strong>Pode:</strong> abrir, favoritar, visualizar e interagir com dashboards e relatórios (filtrar, fatiar, fazer drill-down, usar Q&A), assinar a si mesmo, exportar (se habilitado pelo admin), atualizar dados (se permitido).</li>
+        <li><strong>Não pode:</strong> criar novo app, editar/republicar conteúdo de outros, compartilhar com outros usuários, criar relatório em outro workspace, gerenciar permissões.</li>
+      </ul>
+
+      <div class="note">Alguns recursos (marcados com * na documentação original) podem ser habilitados ou desabilitados por configurações do administrador ou do tenant, variando entre organizações.</div>
+    </section>
+
+    <section class="page-section" id="page-18">
+      <h1>Guia de licenciamento para organizações</h1>
+      <div class="info-box">Conteúdo voltado a administradores: como adquirir e gerenciar licenças do Power BI para a organização.</div>
+
+      <h2 id="licencas-e-capacidade">Licença por usuário + capacidade</h2>
+      <p>O uso do serviço Power BI exige uma licença por usuário (Fabric [Grátis], Pro ou PPU) <strong>e</strong> uma assinatura de capacidade. Existem dois tipos de assinatura de capacidade para organizações: <strong>padrão</strong> e <strong>Premium</strong>. Cada assinatura Microsoft 365 E5 inclui capacidade padrão e uma licença Pro.</p>
+
+      <h2 id="papeis-administrativos">Funções administrativas</h2>
+      <ul>
+        <li><strong>Billing admin:</strong> necessário para comprar ou atribuir licenças à organização.</li>
+        <li><strong>License/User admin:</strong> gerencia licenças depois da compra.</li>
+      </ul>
+
+      <h2 id="opcoes-de-compra">Opções de compra</h2>
+      <ol>
+        <li>Comprar uma assinatura Fabric que inclui o Power BI.</li>
+        <li>Comprar licenças Power BI Pro (incluída no Microsoft 365 E5) ou PPU.</li>
+        <li>Usar o assistente de cadastro do Power BI Pro.</li>
+        <li>Iniciar uma avaliação gratuita de 60 dias do Fabric (inclui 1 TB de armazenamento).</li>
+        <li>Obter licenças gratuitas Fabric (Grátis) — inclui acesso a recursos pagos do serviço Power BI, mas sem capacidade Fabric.</li>
+        <li>Iniciar uma avaliação Pro gratuita de 30 dias (até 25 licenças).</li>
+      </ol>
+
+      <h2 id="atribuir-licencas">Atribuir licenças</h2>
+      <p>Após a compra, as licenças são atribuídas via <strong>Microsoft 365 admin center</strong> (Faturamento &gt; Licenças) ou <strong>Portal do Azure</strong> (Microsoft Entra ID &gt; Licenças &gt; Atribuir).</p>
+
+      <h2 id="quando-usar-self-service">Quando usar autoatendimento (self-service)</h2>
+      <div class="capability-grid">
+        <div class="capability-card">
+          <h4>Use quando...</h4>
+          <p>Organização grande e descentralizada; empresas pequenas com poucas licenças Pro; indivíduos querendo experimentar antes de comprar para toda a organização.</p>
+        </div>
+        <div class="capability-card">
+          <h4>Desabilite quando...</h4>
+          <p>A organização precisa de processos de compliance, treinamento obrigatório, controle de custos por contrato corporativo, ou restrições de privacidade de dados.</p>
+        </div>
+      </div>
+
+      <h2 id="cenarios-especiais">Cenários especiais</h2>
+      <ul>
+        <li><strong>Usuários convidados (guest):</strong> quem compartilha precisa de licença Pro/PPU; o convidado precisa de licença Pro/PPU própria, ou apenas Fabric (Grátis) se o conteúdo estiver em capacidade Premium/Fabric F64+.</li>
+        <li><strong>Expiração de licença:</strong> período de carência de 90 dias (compra por volume) ou 30 dias (compra direta); avaliações não têm carência.</li>
+      </ul>
+    </section>
+
+    <section class="page-section" id="page-19">
+      <h1>Licenças e assinaturas para usuários de negócio</h1>
+      <p>O que você pode fazer no serviço Power BI depende de três fatores: o tipo de licença/assinatura que você usa, o tipo de workspace que armazena o conteúdo, e as funções/permissões que você tem nesse workspace.</p>
+
+      <h2 id="capacidades-por-licenca-negocio">Capacidades por licença</h2>
+      <table class="term-table">
+        <thead><tr><th>Capacidade</th><th>Licença gratuita</th><th>Pro</th><th>PPU</th></tr></thead>
+        <tbody>
+          <tr><td>Ver conteúdo compartilhado em capacidade Premium</td><td>Sim</td><td>Sim</td><td>Sim</td></tr>
+          <tr><td>Ver conteúdo compartilhado em workspaces não-Premium</td><td>Não</td><td>Sim</td><td>Sim</td></tr>
+          <tr><td>Criar conteúdo no Meu workspace</td><td>Sim</td><td>Sim</td><td>Sim</td></tr>
+          <tr><td>Publicar em app workspaces</td><td>Não</td><td>Sim</td><td>Sim</td></tr>
+          <tr><td>Compartilhar conteúdo com outros</td><td>Não</td><td>Sim</td><td>Sim</td></tr>
+          <tr><td>Usar recursos exclusivos de PPU</td><td>Não</td><td>Não</td><td>Sim</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="capacidade-premium-explicada">Capacidade Premium</h2>
+      <p>Premium é uma assinatura organizacional que permite armazenar conteúdo em um contêiner virtual chamado <strong>capacidade Premium</strong>. Com ela, qualquer pessoa com permissão — dentro ou fora da organização, mesmo com licença gratuita — pode usar o conteúdo armazenado nesse contêiner. Quem cria o conteúdo precisa de licença paga (Pro ou PPU); quem apenas consome pode ter licença gratuita, desde que tenha uma função atribuída no workspace.</p>
+
+      <div class="callout warning">
+        <span class="callout-icon">⚠</span>
+        <div>Para usuários gratuitos acessarem relatórios, tanto o relatório quanto o modelo semântico subjacente precisam estar em capacidade Premium. Se apenas o relatório estiver, o usuário gratuito recebe um prompt para upgrade.</div>
+      </div>
+
+      <h2 id="resumo-cenarios-licenca">Resumo por cenário</h2>
+      <table class="term-table">
+        <thead><tr><th>Licença</th><th>Fora da capacidade Premium</th><th>Em capacidade Premium</th></tr></thead>
+        <tbody>
+          <tr><td>Gratuita</td><td>Sandbox pessoal — cria e usa conteúdo próprio, sem compartilhar</td><td>Interage com conteúdo atribuído à capacidade Premium e compartilhado com você</td></tr>
+          <tr><td>Pro</td><td>Colabora com outros usuários Pro e PPU</td><td>Colabora com usuários gratuitos, Pro e PPU</td></tr>
+        </tbody>
+      </table>
+
+      <div class="note">Você pode ter mais de uma licença — o serviço sempre entrega a experiência da licença mais permissiva que você possuir.</div>
+    </section>
+
+    <section class="page-section" id="page-20">
+      <h1>Entender as licenças do Microsoft Fabric</h1>
+      <p>Licenças e capacidades do Microsoft Fabric determinam como usuários criam, compartilham e visualizam itens na organização. Para colaborar, é necessário ter uma capacidade F ou P e ao menos uma licença por usuário.</p>
+
+      <h2 id="blocos-fundamentais">Blocos fundamentais</h2>
+      <ul>
+        <li><strong>Tenant:</strong> o Microsoft Fabric roda em um tenant do Microsoft Entra, associado a um domínio DNS principal.</li>
+        <li><strong>Capacidade:</strong> reside em um tenant; cada capacidade é um pool de recursos dedicado, medido em Capacity Units (CUs).</li>
+        <li><strong>Workspace:</strong> reside dentro de uma capacidade; contêiner de itens do Fabric. Cada usuário tem um "Meu workspace" pessoal.</li>
+      </ul>
+
+      <h2 id="tabela-skus-fabric">SKUs de capacidade Fabric</h2>
+      <table class="term-table">
+        <thead><tr><th>SKU Fabric</th><th>Capacity Units (CUs)</th><th>SKU Power BI equivalente</th></tr></thead>
+        <tbody>
+          <tr><td>F2</td><td>2</td><td>—</td></tr>
+          <tr><td>F4</td><td>4</td><td>—</td></tr>
+          <tr><td>F8</td><td>8</td><td>EM/A1</td></tr>
+          <tr><td>F16</td><td>16</td><td>EM2/A2</td></tr>
+          <tr><td>F32</td><td>32</td><td>EM3/A3</td></tr>
+          <tr><td>F64</td><td>64</td><td>P1/A4</td></tr>
+          <tr><td>F128</td><td>128</td><td>P2/A5</td></tr>
+          <tr><td>F256</td><td>256</td><td>P3/A6</td></tr>
+          <tr><td>F512</td><td>512</td><td>P4/A7</td></tr>
+          <tr><td>F1024</td><td>1024</td><td>P5/A8</td></tr>
+        </tbody>
+      </table>
+      <div class="note">F64 é o limiar importante: a partir dele, usuários com licença gratuita (Fabric [Grátis]) e função de Visualizador podem ver conteúdo Power BI sem precisar de licença paga. A Microsoft está migrando os SKUs Premium por capacidade (P) para os SKUs Fabric (F) — novos clientes devem preferir F.</div>
+
+      <h2 id="tipos-de-workspace">Tipos de workspace</h2>
+      <table class="term-table">
+        <thead><tr><th>Tipo</th><th>O que permite</th></tr></thead>
+        <tbody>
+          <tr><td>Power BI Pro</td><td>Recursos básicos de Power BI e colaboração em relatórios/dashboards/scorecards</td></tr>
+          <tr><td>Power BI Premium Per User (PPU)</td><td>Maioria dos recursos Premium: dataflows, datamarts, 48 atualizações/dia, modelos &gt;1GB, endpoint XMLA</td></tr>
+          <tr><td>Power BI Embedded (SKUs A)</td><td>Incorporar visuais e análises em aplicações internas/externas</td></tr>
+          <tr><td>Fabric (SKUs F)</td><td>Todas as experiências do Fabric — criar, compartilhar e distribuir qualquer item</td></tr>
+          <tr><td>Power BI Premium (SKUs P)</td><td>Todas as experiências do Fabric quando habilitado pelo admin</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="tres-licencas-individuais">As três licenças individuais no Fabric</h2>
+      <ul>
+        <li><strong>Grátis:</strong> concedida automaticamente no primeiro acesso ao portal Fabric. Permite criar itens não-Power-BI apenas em workspace com capacidade F ou de avaliação.</li>
+        <li><strong>Pro:</strong> permite compartilhar conteúdo Power BI. Toda organização precisa de ao menos um usuário Pro ou PPU.</li>
+        <li><strong>PPU:</strong> acesso à maioria dos recursos Premium por usuário, sem provisionar uma capacidade Fabric — mais econômico para times pequenos (&lt; 250 usuários) que só precisam de recursos Power BI.</li>
+      </ul>
+    </section>
+
+    <section class="page-section" id="page-21">
+      <h1>Apps no Power BI</h1>
+      <div class="info-box">Aplica-se a: serviço Power BI (usuários de negócio e criadores/desenvolvedores) e Power BI Desktop. Requer licença Pro ou Premium.</div>
+
+      <p>Designers do Power BI criam conteúdo empacotado oficial e o distribuem para um público amplo organizado como um <strong>app</strong>. Apps são criados em workspaces onde membros colaboram no conteúdo, e depois publicados para indivíduos, grandes grupos ou toda a organização. Um app pode ter permissões diferentes das definidas no workspace, o que facilita o gerenciamento de acessos.</p>
+
+      <h2 id="o-que-e-um-app">O que é um app do Power BI?</h2>
+      <p>Um app combina conteúdo relacionado — dashboards, planilhas, modelos semânticos e relatórios — tudo em um só lugar. Um app tem um ou mais itens de cada tipo de conteúdo, empacotados juntos.</p>
+
+      <div class="note"><strong>App de template (template app):</strong> um tipo especial de app, usado por parceiros do Power BI para empacotar dados analíticos e distribuir via AppSource ou serviço web próprio. Requer licença Pro ou PPU para instalar, personalizar e distribuir.</div>
+
+      <h2 id="permissoes-app">Permissões para abrir um app</h2>
+      <p>O destinatário precisa de licença Power BI Pro ou PPU, ou o app precisa ser compartilhado a partir de uma capacidade Premium.</p>
+
+      <h2 id="vantagens-apps">Vantagens dos apps</h2>
+      <p>Apps facilitam compartilhar vários tipos de conteúdo de uma vez. Depois de instalado, você não precisa lembrar os nomes de vários dashboards ou relatórios separados — tudo fica junto em um app, acessível pelo navegador ou celular. Quando o autor do app libera atualizações, você é notificado ou já vê as mudanças automaticamente.</p>
+
+      <h2 id="obter-novo-app">Como obter um novo app</h2>
+      <ol>
+        <li><strong>Marketplace de apps:</strong> selecione <strong>Apps</strong> no painel de navegação &gt; <strong>Obter apps</strong>, e navegue pela lista (apps organizacionais só aparecem para pessoas da sua empresa; template apps são publicados pela Microsoft e pela comunidade).</li>
+        <li><strong>Instalação automática:</strong> o designer do app instala automaticamente na sua conta.</li>
+        <li><strong>Link direto por e-mail:</strong> selecionar o link abre o app no serviço Power BI (no celular, essa é a única forma de instalar um app fora do marketplace).</li>
+      </ol>
+    </section>
+
+    <section class="page-section" id="page-22">
+      <h1>Relatórios no Power BI</h1>
+      <div class="info-box">Aplica-se a: serviço Power BI (usuários de negócio e criadores/desenvolvedores) e Power BI Desktop.</div>
+
+      <p>Um relatório do Power BI é uma visão multiperspectiva de um modelo semântico, com visuais que representam descobertas e insights sobre esse modelo. Um relatório pode ter um único visual ou muitas páginas de visuais.</p>
+
+      <h2 id="partes-de-um-relatorio">Partes de um relatório</h2>
+      <ul>
+        <li>Um relatório pode ter várias páginas (abas), cada uma com múltiplos visuais e um título de página.</li>
+        <li>O painel de <strong>Filtros</strong> mostra todos os filtros aplicados (pode ser recolhido).</li>
+        <li>O banner mostra o título do relatório e o rótulo de confidencialidade; ao selecioná-lo, você vê a localização, a data da última atualização e o contato do criador.</li>
+        <li>A barra de ações contém links para ações disponíveis (editar, assinar, compartilhar — dependendo de permissões); todos os usuários podem comentar, ver um bookmark ou gerar insights automáticos.</li>
+      </ul>
+
+      <h2 id="interagir-com-seguranca-relatorio">Interagir com segurança</h2>
+      <p>O relatório é baseado em um único modelo semântico. Ao filtrar, fatiar, assinar e exportar, você não corrompe o relatório nem afeta o modelo semântico ou o conteúdo original compartilhado. Suas alterações afetam apenas a sua visão — use <strong>Redefinir</strong> para voltar ao padrão.</p>
+
+      <h2 id="dashboards-vs-relatorios">Dashboards x Relatórios</h2>
+      <table class="term-table">
+        <thead><tr><th>Capacidade</th><th>Dashboards</th><th>Relatórios</th></tr></thead>
+        <tbody>
+          <tr><td>Páginas</td><td>Uma única página</td><td>Uma ou mais páginas</td></tr>
+          <tr><td>Fontes de dados</td><td>Um ou mais relatórios/modelos por dashboard</td><td>Um único modelo semântico por relatório</td></tr>
+          <tr><td>Filtragem</td><td>Não é possível filtrar ou fatiar</td><td>Sim, várias formas de filtrar, destacar e fatiar</td></tr>
+          <tr><td>Ver tabelas e campos do modelo</td><td>Não (só é possível exportar dados)</td><td>Sim, conforme suas permissões</td></tr>
+          <tr><td>Personalização</td><td>Não</td><td>Sim — cross-filter, mudar tipo de visual, bookmarks, comentários, QR code, Analisar no Excel, e mais</td></tr>
+          <tr><td>Fixar (pin)</td><td>Só pode fixar tiles existentes de um dashboard para outro</td><td>Pode fixar visuais e páginas inteiras em qualquer dashboard</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="page-section" id="page-23">
+      <h1>Dashboards no Power BI</h1>
+      <div class="info-box">Aplica-se a: serviço Power BI (usuários de negócio e criadores/desenvolvedores) e Power BI Desktop. Requer licença Pro ou Premium.</div>
+
+      <p>Um dashboard do Power BI é uma única página, muitas vezes chamada de "canvas", que usa visualizações para contar uma história. Por ser limitado a uma página, um dashboard bem projetado contém apenas os elementos mais importantes dessa história.</p>
+
+      <h2 id="termos-essenciais-dashboard">Termos essenciais</h2>
+      <table class="term-table">
+        <thead><tr><th>Termo</th><th>Definição</th></tr></thead>
+        <tbody>
+          <tr><td>Tile (bloco)</td><td>Uma única visualização (gráfico, número, imagem) exibida no dashboard, fixada a partir de um relatório</td></tr>
+          <tr><td>Pin (fixar)</td><td>A ação de adicionar uma visualização de um relatório a um dashboard</td></tr>
+          <tr><td>Modelo semântico</td><td>Os dados subjacentes que alimentam relatórios e dashboards</td></tr>
+          <tr><td>Relatório</td><td>Coleção de várias páginas de visualizações baseadas em um único modelo semântico</td></tr>
+          <tr><td>Q&A</td><td>Recurso que permite fazer perguntas sobre os dados em linguagem natural</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <span class="callout-icon">💡</span>
+        <div><strong>Ponto-chave:</strong> dashboards exibem visualizações de um ou mais relatórios em uma única página. Diferente dos relatórios, dashboards não suportam filtragem ou fatiamento, mas suportam consultas Q&A em linguagem natural e alertas de dados.</div>
+      </div>
+
+      <h2 id="vantagens-dashboards">Vantagens dos dashboards</h2>
+      <p>Dashboards são uma ótima forma de monitorar o negócio, encontrar respostas e ver as métricas mais importantes rapidamente. As visualizações podem vir de um ou mais modelos semânticos ou relatórios, combinando dados locais e na nuvem em uma visão consolidada. Um dashboard não é apenas uma imagem estática — é um canvas interativo, e os blocos se atualizam conforme os dados subjacentes mudam.</p>
+
+      <h2 id="explorar-amostra-dashboard">Explorar um dashboard de amostra</h2>
+      <ol>
+        <li>Abra o serviço Power BI e selecione <strong>Aprender</strong> no painel de navegação.</li>
+        <li>Em Relatórios de exemplo, selecione <em>Sales and Marketing Sample</em>.</li>
+        <li>O Power BI instala a amostra no Meu workspace — abra o dashboard.</li>
+      </ol>
+      <p>Experimente: passe o mouse sobre um bloco e selecione <strong>Mais opções (...) &gt; Abrir relatório</strong> para ver a origem; use a caixa de Q&A para perguntar algo como "total de unidades este ano"; passe o mouse sobre um bloco para ver detalhes em um tooltip.</p>
+
+      <h2 id="dashboards-vs-relatorios-2">Dashboards x Relatórios (visão do usuário de negócio)</h2>
+      <table class="term-table">
+        <thead><tr><th>Capacidade</th><th>Dashboards</th><th>Relatórios</th></tr></thead>
+        <tbody>
+          <tr><td>Caixa de pergunta (Q&A)</td><td>Quase sempre disponível</td><td>Sem campo de Q&A dedicado</td></tr>
+          <tr><td>Configurar alertas</td><td>Sim, alertas por e-mail quando condições são atendidas</td><td>Não</td></tr>
+          <tr><td>Filtragem</td><td>Não</td><td>Sim</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="page-section" id="page-24">
+      <h1>Diagnósticos do Power BI Desktop</h1>
+      <p>Para oferecer melhor suporte e diagnóstico, o Power BI Desktop pode coletar e enviar informações de diagnóstico. Você só deve salvar esses detalhes quando o Suporte da Microsoft solicitar.</p>
+
+      <h2 id="como-salvar-diagnosticos">Como salvar informações de diagnóstico</h2>
+      <ol>
+        <li>No Power BI Desktop, selecione <strong>Arquivo &gt; Opções e configurações &gt; Opções</strong>.</li>
+        <li>Em <strong>Global</strong>, selecione <strong>Diagnósticos</strong>.</li>
+        <li>Selecione <strong>Habilitar rastreamento (Enable tracing)</strong>.</li>
+        <li>Selecione <strong>Coletar informações de diagnóstico</strong>.</li>
+        <li>Revise as informações no diálogo, escolha o local para salvar (padrão: pasta Documentos) e selecione <strong>Salvar</strong>.</li>
+      </ol>
+      <p>O Power BI gera um arquivo ZIP chamado <code>PBIDesktopDiagnosticInfo.[timestamp].zip</code>, que pode ser enviado ao Suporte da Microsoft quando solicitado.</p>
+
+      <h2 id="conteudo-do-zip">O que o ZIP pode conter</h2>
+      <table class="term-table">
+        <thead><tr><th>Arquivo</th><th>Conteúdo</th></tr></thead>
+        <tbody>
+          <tr><td>ErrorsInfo.yaml</td><td>Detalhes de erros ocorridos (só se um diálogo de erro apareceu)</td></tr>
+          <tr><td>AnalysisServicesInfo.trc</td><td>Desempenho do modelo de dados</td></tr>
+          <tr><td>SessionDeviceInfo.txt</td><td>Informações de sessão e dispositivo</td></tr>
+          <tr><td>DatabaseSchema.json / DataModelSchema.json / CSDL.xml</td><td>Estrutura do modelo de dados</td></tr>
+          <tr><td>AutoPageRefresh.json</td><td>Configurações de atualização de dados</td></tr>
+          <tr><td>Pasta Traces</td><td>Informações detalhadas de sessão e dispositivo</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="tipos-de-info-coletada">O que é coletado</h2>
+      <ul>
+        <li><strong>Desempenho do modelo:</strong> locale, versão do Desktop, caminho do arquivo .pbix, modo do modelo (import/DirectQuery/misto), consultas usadas em visuais.</li>
+        <li><strong>Sessão e dispositivo:</strong> sistema operacional, hardware, versão e configuração do Desktop, ambiente de nuvem (tenant), consultas Power Query.</li>
+        <li><strong>Estrutura do modelo:</strong> tabelas, colunas, relacionamentos, colunas calculadas, medidas, funções de segurança (roles).</li>
+        <li><strong>Atualização de dados:</strong> configurações de atualização incremental e agregações — relevante para problemas de desempenho e atualização automática de página.</li>
+      </ul>
+
+      <div class="note">Ao usar a porta de diagnóstico do Power BI Desktop para rastreamento externo, não é suportado fazer alterações no modelo — isso pode causar corrupção e perda de dados.</div>
+    </section>
+
+    <section class="page-section" id="page-25">
+      <h1>Idiomas e países/regiões suportados</h1>
+      <p>Esta página cobre os idiomas e países/regiões suportados para o serviço Power BI, o Power BI Desktop e a documentação do Power BI. Também aborda recursos de localidade que permitem construir relatórios multilíngues — por exemplo, um relatório pode ser renderizado em português para alguns usuários e em inglês, espanhol ou japonês para outros.</p>
+
+      <h2 id="idiomas-servico">Idiomas do serviço Power BI</h2>
+      <p>O serviço Power BI (no navegador) está disponível em <strong>44 idiomas</strong>, incluindo árabe, alemão, chinês (simplificado e tradicional), coreano, espanhol, francês, hebraico, hindi, italiano, japonês, <strong>português (Brasil)</strong>, português (Portugal), russo, turco, entre outros.</p>
+
+      <div class="accordion">
+        <button class="acc-toggle" aria-expanded="false" onclick="toggleAcc(this)">Ver lista completa dos 44 idiomas <span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <p>Árabe, Basco, Búlgaro, Catalão, Chinês (Simplificado), Chinês (Tradicional), Croata, Tcheco, Dinamarquês, Holandês, Inglês, Estoniano, Finlandês, Francês, Galego, Alemão, Grego, Hebraico, Hindi, Húngaro, Indonésio, Italiano, Japonês, Cazaque, Coreano, Letão, Lituano, Malaio, Norueguês (Bokmål), Polonês, Português (Brasil), Português (Portugal), Romeno, Russo, Sérvio (Cirílico), Sérvio (Latino), Eslovaco, Esloveno, Espanhol, Sueco, Tailandês, Turco, Ucraniano, Vietnamita.</p>
+        </div>
+      </div>
+
+      <h2 id="idiomas-desktop">Idiomas do Power BI Desktop</h2>
+      <p>O Power BI Desktop está disponível nos mesmos idiomas do serviço, <strong>exceto hebraico e árabe</strong> — o Desktop não suporta idiomas da direita para a esquerda (RTL).</p>
+      <div class="note">O Power BI traduz menus, botões, mensagens e conteúdo gerado automaticamente (títulos, filtros, tooltips) — mas <strong>seus dados não são traduzidos automaticamente</strong>. Recursos como conexão com Dynamics CRM, Google Analytics, Salesforce e a exploração via Q&A permanecem apenas em inglês.</div>
+
+      <h2 id="configurar-idioma">Como configurar o idioma</h2>
+      <ul>
+        <li><strong>No serviço:</strong> Ícone de Configurações &gt; Configurações &gt; guia Geral &gt; Idioma.</li>
+        <li><strong>No Desktop:</strong> Arquivo &gt; Opções e configurações &gt; Opções &gt; Configurações Regionais — permite ajustar o idioma da aplicação, a localidade de importação de dados e o idioma do modelo.</li>
+      </ul>
+
+      <div class="note">Uma vez criado, o idioma de um modelo do Power BI <strong>não pode ser alterado</strong>. O idioma do modelo afeta como strings são comparadas/ordenadas e como o Desktop nomeia tabelas de data ocultas (ex: Mês/Month/Mois).</div>
+
+      <h2 id="idiomas-ajuda">Idiomas da documentação de ajuda</h2>
+      <p>A ajuda está localizada em 10 idiomas: chinês (simplificado e tradicional), francês, alemão, italiano, japonês, coreano, <strong>português (Brasil)</strong>, russo e espanhol.</p>
+    </section>
+
+    <section class="page-section" id="page-26">
+      <h1>Navegadores suportados</h1>
+      <p>O Power BI e o Microsoft Fabric são projetados para funcionar com qualquer navegador moderno suportado, embora o desempenho varie conforme a escolha do navegador. O Internet Explorer <strong>não é mais suportado</strong> — recomenda-se fortemente um navegador moderno, como o Microsoft Edge.</p>
+
+      <h2 id="navegadores-suportados-lista">Navegadores compatíveis</h2>
+      <table class="term-table">
+        <thead><tr><th>Navegador</th><th>Versão mínima</th></tr></thead>
+        <tbody>
+          <tr><td>Microsoft Edge</td><td>Versão 120 ou mais recente</td></tr>
+          <tr><td>Chrome (desktop)</td><td>Mais recente que a versão 94, no Windows 10 versão 1703 ou posterior</td></tr>
+          <tr><td>Safari (Mac)</td><td>Versão mais recente / 16.4 ou posterior</td></tr>
+          <tr><td>Firefox (desktop)</td><td>Mais recente que a versão 93 (pode alterar as fontes exibidas)</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout warning">
+        <span class="callout-icon">⚠</span>
+        <div>O Power BI e o Fabric não funcionam em nenhum navegador no iOS 10 ou versões anteriores.</div>
+      </div>
+
+      <h2 id="fontes-consideracoes">Fontes e considerações</h2>
+      <p>Por padrão, o Power BI usa a fonte Segoe UI para texto e Din para números. Essas fontes podem não estar disponíveis em dispositivos que não sejam Windows (como Mac), então a aparência de um relatório pode variar entre Windows e Mac. As fontes Calibri e Cambria só vêm instaladas em Macs que também têm o Microsoft Office instalado.</p>
+
+      <h2 id="cookies-terceiros">Habilitar cookies de terceiros</h2>
+      <p>Muitas áreas do Power BI exigem cookies de terceiros habilitados no navegador:</p>
+      <ul>
+        <li><strong>Microsoft Edge:</strong> Configurações &gt; Privacidade, pesquisa e serviços &gt; Cookies — desative "Bloquear cookies de terceiros".</li>
+        <li><strong>Chrome:</strong> Configurações &gt; Privacidade e segurança &gt; Cookies de terceiros.</li>
+        <li><strong>Firefox:</strong> Configurações &gt; Privacidade e segurança &gt; Cookies e dados de sites &gt; Gerenciar exceções, adicionando <code>app.powerbi.com</code>.</li>
+      </ul>
+    </section>
+
+    <section class="page-section" id="page-27">
+      <h1>Documentação de suporte do Power BI</h1>
+      <p>Esta página resume os recursos oficiais para obter ajuda e resolver problemas no Power BI.</p>
+
+      <h2 id="status-servico">Fique informado sobre o status do serviço</h2>
+      <ul>
+        <li>Manutenções planejadas</li>
+        <li>Notificações de interrupção de serviço</li>
+        <li>Verificação de interrupções em toda a plataforma (service-wide outages)</li>
+      </ul>
+
+      <h2 id="antes-de-contatar-suporte">Antes de contatar o Suporte da Microsoft</h2>
+      <ul>
+        <li>Consulte o checklist "antes de contatar o suporte"</li>
+        <li>Acompanhe a integridade do serviço no Microsoft 365</li>
+        <li>Procure uma resposta no fórum da comunidade Power BI</li>
+      </ul>
+
+      <h2 id="obter-suporte">Obter suporte para o Power BI</h2>
+      <ul>
+        <li>Conheça suas opções de suporte</li>
+        <li>Abra um chamado de suporte (support ticket)</li>
+        <li>Seja eficiente nas solicitações de suporte</li>
+        <li>Acesse dados de clientes com permissão adequada</li>
+        <li>Capture informações de diagnóstico (ver página anterior)</li>
+        <li>Mova o Power BI entre regiões, se necessário</li>
+      </ul>
+    </section>
+
+    <!-- Paginação -->
+    <div class="pagination">
+      <button class="btn btn-secondary" id="btn-prev" onclick="goToPage(currentPage-1)">← Anterior</button>
+      <span id="page-indicator">Página 1 de 27</span>
+      <button class="btn btn-primary"   id="btn-next" onclick="goToPage(currentPage+1)">Próximo →</button>
+    </div>
+
+    <a href="PowerBI_Home.html" class="home-footer-link">← Voltar ao Home</a>
+  </main>
+</div>
+
+<script>
+// SAFETY NET — garante init mesmo se o arquivo for truncado pelo formatter
+const TOTAL_PAGES = 27;
+const _saved = parseInt(localStorage.getItem('pbif_page') || '1') || 1;
+let currentPage = Math.min(Math.max(_saved, 1), TOTAL_PAGES);
+
+document.addEventListener('DOMContentLoaded', function() { goToPage(currentPage); });
+
+function pageExists(n) { return !!document.getElementById('page-' + n); }
+
+function goToPage(n) {
+  if (n < 1 || n > TOTAL_PAGES || !pageExists(n)) return;
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('page-' + n).classList.add('active');
+  currentPage = n;
+  try { localStorage.setItem('pbif_page', n); } catch(e) {}
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  updateUI();
+}
+
+function updateUI() {
+  const h1 = document.getElementById('page-' + currentPage)?.querySelector('h1');
+  if (h1) { const el = document.getElementById('bc-page'); if (el) el.textContent = h1.textContent; }
+  document.getElementById('btn-prev').disabled = currentPage === 1;
+  document.getElementById('btn-next').disabled = currentPage === TOTAL_PAGES;
+  document.querySelectorAll('.dot[data-page]').forEach(d => {
+    const p = Number(d.dataset.page);
+    d.className = 'dot ' + (p < currentPage ? 'done' : p === currentPage ? 'current' : 'pending');
+  });
+  document.querySelectorAll('.nav-btn[data-page]').forEach(b => {
+    b.classList.toggle('active', Number(b.dataset.page) === currentPage);
+  });
+  const pageIndicator = document.getElementById('page-indicator');
+  if (pageIndicator) pageIndicator.textContent = 'Página ' + currentPage + ' de ' + TOTAL_PAGES;
+  const pct = Math.round(((currentPage - 1) / (TOTAL_PAGES - 1)) * 100) || 0;
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+// Sidebar / menu gaveta
+function openSidebar()  { document.getElementById('sidebar').classList.add('open'); document.getElementById('sidebar-overlay').classList.add('active'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebar-overlay').classList.remove('active'); }
+document.getElementById('menu-toggle').addEventListener('click', openSidebar);
+document.getElementById('sidebar-overlay').addEventListener('click', closeSidebar);
+
+// Accordions
+function toggleAcc(btn) {
+  const body = btn.nextElementSibling;
+  const open = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !open);
+  body.style.display = open ? 'none' : 'block';
+  btn.querySelector('.acc-arrow').textContent = open ? '▾' : '▴';
+}
+
+// Grupos da sidebar (colapsar/expandir)
+function toggleGroup(header) {
+  const body = header.nextElementSibling;
+  body.classList.toggle('collapsed');
+  const arrow = header.querySelector('span');
+  arrow.textContent = body.classList.contains('collapsed') ? '▸' : '▾';
+}
+
+// Nav buttons
+document.querySelectorAll('.nav-btn[data-page]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    goToPage(Number(btn.dataset.page));
+    if (window.innerWidth <= 768) closeSidebar();
+  });
+});
+
+goToPage(currentPage);
+</script>
+</body>
+</html>
